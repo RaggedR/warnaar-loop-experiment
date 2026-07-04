@@ -14,6 +14,14 @@ You are the final agent. The experiment is over. Your job is to read everything 
 
 Read everything in `scratch/`, `expository/`, and all `synthesis-*.md` files. Read the problem statement in `problem-description/conjecture.tex`. Take your time — the quality of this document depends on thoroughness.
 
+Also read the registry (`registry/warnaar.json`) and run its reports — they are the audited skeleton of the whole experiment:
+
+```bash
+python3 code/registry_validate.py registry/warnaar.json --report successful-path
+python3 code/registry_validate.py registry/warnaar.json --report dead-ends
+python3 code/registry_validate.py registry/warnaar.json --report frontier
+```
+
 ## Output
 
 Write `final-report.tex` in `loop-experiment/`. This is a LaTeX document that compiles to a self-contained PDF. It has three parts:
@@ -53,6 +61,8 @@ Collect every broken assumption discovered across all agents and layers. These a
 ## Rules
 
 - **Be honest.** If the experiment produced no real progress toward the conjecture, say that. A clear map of what doesn't work is valuable.
+- **Respect the trust boundary.** Part 2 may present as *theorems* only registry nodes at `proved` or above; `verified`/`lean-verified` nodes say so (naming the verify report or Lean declaration). Anything below `proved` is presented as evidence or a reformulation, not a result. Note inherited caveats from `sources.json` corrections (e.g. computer-assisted dependencies).
+- **Cite with provenance.** External results carry their `paper_slug/chunk_NNN` + locator citations into the report. Run `python3 code/citation_check.py final-report.tex` before compiling.
 - **Be specific.** Name the theorems, the identities, the exact step where things broke.
 - **Credit the agents.** Note which seed and layer produced each insight. The trajectory matters.
 - **Compile it.** Run `pdflatex` and verify it builds. This is a real document, not notes.

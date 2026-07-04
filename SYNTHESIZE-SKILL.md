@@ -72,6 +72,44 @@ You may spawn read-only sub-agents to help process the input files in parallel. 
 
 Sub-agents report back to you — they do not write to `scratch/` or `synthesis-*.md`.
 
+## Provenance (trust boundaries + citations)
+
+You are the compression step, and compression is exactly where provenance
+dies. Two mechanical duties (see `CITATIONS-README.md`, `REGISTRY-README.md`):
+
+1. **Preserve citations verbatim.** When a scratch file cites
+   `paper_slug/chunk_NNN` with a locator, your synthesis carries the full
+   reference through — never compress it to an author name or "the identity
+   in the literature." Trust qualifiers in `corrections` entries (e.g.
+   "computer-assisted proof") must also survive into the synthesis.
+2. **Update the registry.** `registry/warnaar.json` is the durable form of
+   your sections 2-4: promote/demote nodes per the verifier reports (a node
+   becomes `verified` ONLY with a `review` field pointing at the verify
+   report), record new dead ends with `reason` + `refutation` level, and add
+   `unclassified` children for old results the agents leaned on. The
+   GREEN/YELLOW/dead items you write in prose should each correspond to a
+   registry node.
+3. **Backfill citations by use.** You are reading the scratch files at the
+   cheapest possible moment to recover provenance — before it is another
+   layer deeper. When a scratch file leans on an external result WITHOUT a
+   `paper_slug/chunk_NNN` citation ("by Uncu's theorem...", "the CW
+   recursion..."), spend the ten seconds: find the chunk
+   (`python3 ../rag_query.py "..." --summaries-only`, or grep
+   `../literature/chunks/<slug>/`), put the full reference into your
+   synthesis, and register the paper in `sources.json` at its honest level.
+   If you cannot find a chunk behind the claim, register the paper at
+   `recalled` — that records, honestly, that nothing in the corpus backs it
+   yet. Do NOT sweep old run directories; backfill only what this layer's
+   files actually lean on.
+
+Before writing the synthesis file, run and fix what is real:
+```bash
+python3 code/registry_validate.py registry/warnaar.json
+python3 code/citation_check.py <the scratch files you read>
+```
+The frontier report (`--report frontier`) should agree with your
+Recommendations section — if it doesn't, one of them is wrong.
+
 ## Rules
 
 - **Be honest about failure.** A synthesis that hides failed approaches is worse than useless.

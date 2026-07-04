@@ -38,6 +38,40 @@ This returns the most relevant chunks from the corpus. Use it to:
 
 You should formulate queries based on where your proof attempt is heading, not on generic keywords. Good queries are specific: "bounded cylindric partition transfer matrix eigenvalues" not "partition positivity."
 
+## Provenance (trust boundaries + citations)
+
+Read `REGISTRY-README.md` and `CITATIONS-README.md` once. Then:
+
+1. **Orient from the registry, not from prose.** Run
+   `python3 code/registry_validate.py registry/warnaar.json --report frontier`
+   (and `--report dead-ends`) to see where work remains and which routes are
+   dead — and how dead (`judgment` dead ends are revisitable; `proved` ones
+   are not).
+2. **Cite chunks, not memories.** When a claim from the literature enters
+   your scratch file, cite it as `paper_slug/chunk_NNN` plus a locator
+   (Thm/Eq/label). "Uncu's mod-13 theorem" is a memory aid, not a citation.
+   Register each cited paper in `sources.json` at its honest extraction level
+   (`recalled < rag-summary < chunk-read < context-read < paper-read`) — ten
+   seconds per paper.
+3. **A fact below `context-read` may not be load-bearing.** Before a proof
+   step rests on an external statement, read the surrounding chunks and check
+   its hypotheses — the corpus is on disk at `../literature/chunks/<slug>/`;
+   this costs one Read. Misapplied hypotheses from an unretrieved chunk are
+   the characteristic RAG failure.
+4. **Record wrong readings, never delete them.** If you discover a source was
+   misread, add a `corrections` entry to `sources.json`. A deleted wrong
+   claim gets re-hallucinated by the next synthesis; a recorded one cannot.
+5. **Update the registry** (`registry/warnaar.json`) when your attempt opens,
+   closes, or kills a node. Dead ends need a `reason` (and a `refutation`
+   level if you have evidence). Do not claim `proved` above unproved
+   children — the boundary rule. If you cite an old pre-registry result, add
+   it as an `unclassified` child instead of trusting it from prose.
+6. **Before finishing**, run both validators and fix what is real:
+   ```bash
+   python3 code/citation_check.py scratch/prove-seed{N}-layer{L}.md
+   python3 code/registry_validate.py registry/warnaar.json
+   ```
+
 ## Phase: Compute
 
 Before you try to prove anything, **understand the objects through computation**.
