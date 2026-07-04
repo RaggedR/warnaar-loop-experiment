@@ -1,148 +1,158 @@
-# HANDOVER — trust boundaries, citations, and the general theory
+# HANDOVER — Theorem 3: consolidation preservation
 
-Date: 2026-07-04. Session: installed trust boundaries + citation provenance
-into the loop experiment (third deployment of the Clio/MacBeth conventions),
-then sketched the general theory. This file is for the next instance: state
-first, then the theory sketch — which is the proposed next piece of work.
+Date: 2026-07-04. Session: drafted the general theory of trust systems,
+Lean-verified Lemmas 1–2, deep-read the two load-bearing prior-art sources,
+pushed everything. This file is for the next instance. State first, then the
+one remaining piece of real content: **Theorem 3**. It is the hard part, the
+real risk, and the thing that decides whether the paper is a paper.
 
-## State: what is installed and where
+## State: what is done and where
 
-All committed and pushed (`f11b5c9`, RaggedR/warnaar-loop-experiment, main).
+All in the containers repo, commit `a25156f`, RaggedR/ghani-containers, main:
 
 ```
-code/citation_check.py       # RAG-citation validator; checks chunks EXIST on disk
-code/registry_validate.py    # trust-boundary validator
-sources.json                 # 5 seeded sources; loop-sources-v1 format
-registry/warnaar.json        # ONE tree for the whole conjecture, 22 nodes
-CITATIONS-README.md          # convention: slug/chunk_NNN + locator at point of use
-REGISTRY-README.md           # trust levels, boundary rule, refutation levels
-PROVE-SKILL.md               # + Provenance section (6 duties, validators wired)
-SYNTHESIZE-SKILL.md          # + preserve citations, update registry, BACKFILL BY USE
-FINAL-SKILL.md               # + Part 2 gated on registry trust levels
+notes/TRUST_SYSTEMS_THEORY.md    # the theory note: §1 defs, §2 Lemma 2.2,
+                                 # §3 Lemma 3.2 + Cor 3.4/3.5, §4 Theorem 3
+                                 # target, §5 negative provenance, §6 preserved
+                                 # disagreement, §7 prior art (deep-read level)
+notes/TRUST_SYSTEMS_THEORY.pdf   # compiled, 0 missing glyphs (pipeline below)
+lean/Containers/Containers/Trust.lean   # 478 lines, sorry-free, Lean 4 core
+                                        # (v4.30.0), NO Mathlib
 ```
 
-Design decisions already made (do not relitigate without new evidence):
+Trust status of the note itself (it obeys its own rules):
 
-- **One big tree** (Robin's explicit choice), programs as subtrees under root.
-- **Extraction ladder**: `recalled < rag-summary < chunk-read < context-read
-  < paper-read`. `recalled` = from training memory, no chunk behind it — new
-  level, did not exist in Clio/MacBeth. Load-bearing floor: `context-read`,
-  because the characteristic RAG failure is a true theorem whose hypotheses
-  live in an unretrieved chunk.
-- **Registry trust**: `speculative < computed < proved < verified <
-  lean-verified`. `verified` = MacBeth's `peer-reviewed`, mapped onto the
-  loop's EXISTING verifier-seed practice (SOLID verdicts); `review` field
-  points at `*/scratch/verify-seedN-layerL.md`.
-- **Seeding was artifact-only**: layer-4 G-items with verifier reports /
-  proof .tex / Lean declarations. No labels from synthesis prose alone.
-  Everything else backfills by use as `unclassified`.
-- Uncu's thm:m13 is computer-assisted (caveat N1) — recorded as a
-  `corrections` entry in sources.json. Corrections carry trust *qualifiers*,
-  not just wrong readings; they must survive compression.
+- **Lemma 2.2** (certificate lemma: τ = greatest sound assignment) —
+  `lean-verified` (`sound_le_tau`, `tau_sound`, `derivGrade_le_tau`,
+  `tau_le_derivGrade` in Trust.lean).
+- **Lemma 3.2** (trust transport along morphisms) — `lean-verified`
+  (`tau_transport`).
+- **Prior art** — `paper-read` for the two load-bearing sources
+  (arXiv:2605.10829 Brinke et al.; arXiv:2604.00034 Bloomfield–Rushby).
+- **Theorem 3** — `speculative`. That is your job.
 
-Known facts that save you time:
+Corrections the formalization forced on the prose (already folded into the
+note; do not un-fix them):
 
-- `synthesis-layer4.md` has ZERO machine-resolvable citations — four
-  consolidation layers erased all provenance. This is the motivating
-  evidence; cite it when explaining the system.
-- G19 (β-map) is the live boundary-rule example: proved child under an
-  in-progress parent (open lemma Q1). "PROVED... MODULO Q1" is now structure.
-- The sibling deployments live in `~/git/containers/scratch/`
-  ({clio,macbeth}-{registry,citations}); field report to Neil:
-  `scratch/report-ghani-trust-citations.md`. Robin's Lean formalization of
-  the registry comonad: containers repo, `ProofSearchN.lean` (no sorry).
-- Validators were adversarially tested (boundary violation, missing review,
-  shallow sources, hallucinated chunk refs — all caught). Do the same for
-  anything you add.
-- Bulletin note comparing all three deployments:
-  `~/.claude/tmp/notes/trust-system-third-deployment-loop-experiment.md`.
+1. **T must be a bounded chain**, not an arbitrary lattice — sup-attainment
+   in the max-min recursion fails otherwise. Corroborated independently:
+   Brinke et al. need a total order for their min-max results too, and for
+   them min-max is an *application* semiring, NOT one of their provenance
+   semirings (my earlier citation said otherwise; fixed).
+2. **Morphisms need strictness at bottom**: φ(⊥) = ⊥′. Without it,
+   trust transport is false (unclassified leaves must stay unclassified).
+3. **Well-foundedness of the premise relation is load-bearing.** The Lean
+   counterexample `cyc` (Trust.lean, end of file): a 2-cycle where the
+   everywhere-`hi` assignment is Sound but no derivation exists — circular
+   citation inflates trust past every local check. Deployed validators are
+   safe only because the JSON registries are trees; **a generic validator
+   must check acyclicity explicitly**.
 
-## Next work: the general theory
+## Theorem 3: what to actually prove
 
-Three deployments of one idea is enough to abstract. Proposed shape — a
-Kodamai-flavoured ACT paper: definitions + two lemmas + one real theorem,
-with the three running systems as the experiments section and the field
-report as data. Robin has seen and engaged with this sketch.
+Target statement (note §4): the memory pipeline
+`scratch → synthesis-1 → … → synthesis-4 → proof` is a chain of container
+morphisms — **shapes forward** (claims get restated), **positions backward**
+("where did this come from?"). A citation is the *cached value of the
+position pullback*. Conjecture:
 
-### The data of a trust system
+> If a consolidation step C carries a genuine position map (not just a shape
+> map), then τ∘C = τ — trust is preserved through consolidation.
 
-- **Dependency structure 𝒟**: a multicategory. Objects = claims; a multimap
-  f: y₁,…,yₙ → x is a checking step (a derivation with premises).
-- **Check-poset T**: the environment's available checks, ordered by
-  strength. This is the deployment parameter, indexed by *how knowledge
-  arrives*: browse-agent summaries (Clio), identity-fragile feeds (MacBeth),
-  windowed verbatim chunks (loop).
-- **Grading** s: multimaps → T: the strength of the check that step received.
+The empirical anchor, both directions:
 
-Canonical trust: τ(x) = max over derivations of x of (min of all step- and
-leaf-grades in the derivation tree) — widest-bottleneck value in the
-max-min semiring ⟨T, max, min⟩. Weakest link along a chain; best derivation
-among alternatives.
+- **Counterexample for the converse**: `synthesis-layer4.md` in THIS repo has
+  zero machine-resolvable citations after four consolidation layers. That is
+  a shape-only container morphism: claims restated, positions dropped, τ
+  degrades to `recalled` everywhere. Run `code/citation_check.py` on it to
+  reproduce.
+- **Positive case**: the post-installation convention (SYNTHESIZE-SKILL.md's
+  backfill-by-use duty) is exactly "carry the position map". If the theorem
+  holds, that duty is not hygiene, it is the preservation hypothesis.
 
-### The results, in expected order of difficulty
+### The structural insight to chase first
 
-1. **Certificate lemma** (afternoon): an assignment t is *sound* iff each
-   claim has a derivation with t(x) ≤ ⋀ᵢ t(yᵢ) ∧ s(f). The boundary rule is
-   exactly node-local soundness; the validators are certificate checkers;
-   τ is the greatest sound assignment (fixpoint of the max-min operator).
-   Trust inflation = claiming above τ. `unclassified` = leaf graded near ⊥,
-   capping everything above it — no extra mechanism needed.
-2. **Opaque-restriction lemma** (afternoon): a morphism of trust systems is
-   a functor of dependency structures + a monotone map of check-posets,
-   laxly compatible with grading. An external paper is the image of an
-   opaque restriction — you see only the root, graded in the extraction
-   poset; the "all sources below context-read blocks proved" rule is the
-   interface map T_extraction → T_registry. Corollary: the citation
-   convention and the registry are ONE construction. Cross-agent citation
-   (Clio ↔ MacBeth) = composition along such a morphism — Phase 4 of the
-   trust-boundary design, done properly.
-3. **Consolidation preservation theorem** (the real content, the real
-   risk): the memory pipeline scratch → synthesis → proof is a chain of
-   container morphisms — shapes forward (claims restated), positions
-   backward ("where did this come from?"). A citation is the cached value
-   of the position pullback. Theorem to aim for: if consolidation C carries
-   a genuine position map (not just a shape map), then τ∘C = τ.
-   synthesis-layer4 is the counterexample for the converse: shape-only map,
-   τ degrades to `recalled` everywhere. The hard part is formalizing "what
-   consolidation preserves" without trivializing it.
-4. **Negative provenance**: dead ends with `refutation` grades are the same
-   construction applied inside the order — positive claims justified above
-   it, negative claims within it. Possibly bi-Heyting flavour; possibly
-   just a remark. Wrong reasons silently prune live branches, so refutation
-   grades matter operationally (the frontier includes judgment-level dead
-   ends).
+Consolidation-with-citations may **factor through opaque restriction**
+(note Def 3.3) with φ = id: a synthesis document that cites its scratch
+sources is, trust-theoretically, an external paper whose interface map is
+the identity. If that factoring works, Theorem 3 is a corollary of Lemma 3.2
+applied twice (once in each direction along the position map) and the whole
+paper is ONE construction instantiated three ways. Check this before
+inventing new machinery — it might be an afternoon, not a month.
 
-### Prior art — cite, don't reinvent
+### The trivialization risk (why this is the hard part)
 
-Green–Karvounarakis–Tannen, *Provenance semirings* (PODS 2007), and the
-why/how-provenance literature: max-min trust propagation is a known semiring
-instance there. Our additions, honestly scoped: (a) the check-poset as
-deployment parameter — the epistemics of how knowledge arrives; (b)
-consolidation as a lossy endofunctor and the container-morphism preservation
-condition (databases don't dream); (c) graded negative provenance.
+Both failure modes kill the theorem:
 
-**Preserved disagreement** (do not force consensus): whether the
-directed-container framing yields theorems or only language over "labelled
-rose trees with path lookup". Evidence for: ProofSearchN.lean's comonad laws
-hold with content (duplicate = full sub-search at every node = exactly what
-a resumed session reads). Burden of proof: a theorem that USES duplicate
-non-trivially. If you find one, the framing earns its keep; if not, say so
-in the paper.
+- **Too weak**: define "genuine position map" as "preserves τ" — circular,
+  content-free.
+- **Too strong**: demand the position map be a section of the shape map on
+  the nose — then no real consolidation qualifies (synthesis genuinely
+  merges and rephrases; the map is many-to-one on shapes).
 
-### Practical payoff (mai nafka minah)
+The correct middle is probably: position map = for every claim in the image,
+a chosen derivation in the source whose grade the citation caches; the
+theorem then says the max-min value is stable under this choice. Formalizing
+"what consolidation preserves" without trivializing it is the entire
+difficulty. If you cannot find the middle, SAY SO in the note — a scoped
+negative ("here are two natural definitions and each fails, here is why")
+is publishable content for this kind of paper.
 
-A fourth deployment becomes an instantiation: choose T, point at the
-dependency structure, one generic validator parametrized over T replaces
-the per-agent Python ports. If you start the paper, also consider writing
-that generic validator — it is simultaneously the reference implementation
-and the strongest argument that the abstraction is right.
+### Connection to the preserved disagreement
 
-### Where to start
+Note §6 / previous handover: does the directed-container framing yield
+theorems or only language? Burden of proof: **a theorem that USES
+`duplicate` non-trivially**. Theorem 3 is the candidate. In
+`ProofSearchN.lean` (containers repo), duplicate = full sub-search at every
+node = exactly what a resumed session reads. If the position-pullback story
+needs duplicate (positions of positions = provenance of provenance = the
+citation chain through multiple consolidation layers), the framing earns its
+keep. If Theorem 3 goes through with plain trees and path lookup, be honest:
+the containers add nothing and the paper should say so.
 
-1. Read the field report (`~/git/containers/scratch/report-ghani-trust-citations.md`)
-   — its "structural reading" section is the seed of lemma 2.
-2. Draft definitions + lemmas 1-2 in a note (containers repo `notes/` is the
-   natural home; this repo is for the Warnaar experiment itself).
-3. Before writing anything long, search for existing work on trust/provenance
-   in multi-agent LLM systems — the semiring part is old; the agent-memory
-   part may have recent neighbours.
+## Traps and known facts (save yourself the time)
+
+- **`Deriv` in Trust.lean uses membership-indexed premise functions**
+  (`sub : ∀ y, y ∈ S.prems f → Deriv S y`), so derivation *extensionality*
+  is not developed. Theorem 3 compares derivations across systems — you
+  will likely need a proper equality/isomorphism on Deriv, or to work with
+  derivGrade values only (recommended: values only, avoid Deriv equality).
+- `derivGrade` and `tau` are `noncomputable` (Deriv.rec + Classical.dite).
+  Fine for proofs; do not try to #eval them.
+- Lean core only, no Mathlib. `Chain` is a hand-rolled class in Trust.lean
+  with `cmin`/`cmax` and a small lemma library — extend that, don't import.
+- `by decide` does NOT work for ∀ over small inductive types in core —
+  use explicit case analysis (see the `Two` lemmas at the end of Trust.lean).
+- PDF pipeline (unicode math in markdown, zero missing glyphs):
+  ```
+  pandoc TRUST_SYSTEMS_THEORY.md -o TRUST_SYSTEMS_THEORY.pdf \
+    --pdf-engine=lualatex -V mainfont="STIX Two Text" \
+    -V mainfontfallback="STIX Two Math:mode=harf" \
+    -V mainfontfallback="DejaVuSans:mode=harf" -V monofont="Menlo" \
+    -V monofontfallback="STIX Two Math:mode=harf" \
+    -V monofontfallback="DejaVuSans:mode=harf" \
+    -V geometry:margin=2.5cm -V fontsize=11pt
+  ```
+- In the containers repo, `scratch/clio-registry/` and
+  `scratch/macbeth-registry/` have uncommitted changes from ANOTHER
+  instance. Leave them alone.
+- The previous handover's installed-state summary (validators, registry,
+  extraction ladder, design decisions) is in git history: `260bc50`. The
+  design decisions there still stand — do not relitigate without evidence.
+
+## Where to start
+
+1. Read note §3–§4 (`~/git/containers/notes/TRUST_SYSTEMS_THEORY.md`) and
+   the `Mor`/`tau_transport` section of Trust.lean — Theorem 3 must
+   compose with these, not replace them.
+2. Try the opaque-restriction factoring on paper FIRST (an afternoon).
+   Test it against the concrete pipeline in this repo: pick one claim in
+   `synthesis-layer4.md`, trace it back through the layers by hand, and ask
+   whether the trace is a position map in your candidate definition.
+3. Only then formalize. Extend Trust.lean with a `Consolidation` structure
+   (shape map on claims + position data) and aim at `tau_consolidate`.
+   The formalization has already caught three real errors in the prose —
+   expect it to catch more; that is the point.
+4. When done (or scoped-negative), update the note + PDF, push to
+   ghani-containers, and update the bulletin note
+   (`~/.claude/tmp/notes/trust-system-third-deployment-loop-experiment.md`).
