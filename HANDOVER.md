@@ -2,13 +2,13 @@
 
 Date: 2026-07-04. Session: drafted the general theory of trust systems,
 Lean-verified Lemmas 1–2, deep-read the two load-bearing prior-art sources,
-pushed everything. This file is for the next instance. State first, then the
-one remaining piece of real content: **Theorem 3**. It is the hard part, the
-real risk, and the thing that decides whether the paper is a paper.
+then **proved and Lean-verified Theorem 3 itself** (same session, commit
+`ded8ddc`). This file is for the next instance. State first, then what
+remains: the composition/duplicate question and the paper.
 
 ## State: what is done and where
 
-All in the containers repo, commit `a25156f`, RaggedR/ghani-containers, main:
+Containers repo, commits `a25156f` + `ded8ddc`, RaggedR/ghani-containers, main:
 
 ```
 notes/TRUST_SYSTEMS_THEORY.md    # the theory note: §1 defs, §2 Lemma 2.2,
@@ -29,7 +29,9 @@ Trust status of the note itself (it obeys its own rules):
   (`tau_transport`).
 - **Prior art** — `paper-read` for the two load-bearing sources
   (arXiv:2605.10829 Brinke et al.; arXiv:2604.00034 Bloomfield–Rushby).
-- **Theorem 3** — `speculative`. That is your job.
+- **Theorem 3** — `lean-verified` (`tau_consolidate` + the `Consolidation`
+  structure + shape-only counterexample `ground`/`layer4`, all in
+  Trust.lean; note §4 rewritten with Definition 4.1 / Theorem 4.2).
 
 Corrections the formalization forced on the prose (already folded into the
 note; do not un-fix them):
@@ -48,75 +50,73 @@ note; do not un-fix them):
    safe only because the JSON registries are trees; **a generic validator
    must check acyclicity explicitly**.
 
-## Theorem 3: what to actually prove
+## Theorem 3: what was proved
 
-Target statement (note §4): the memory pipeline
-`scratch → synthesis-1 → … → synthesis-4 → proof` is a chain of container
-morphisms — **shapes forward** (claims get restated), **positions backward**
-("where did this come from?"). A citation is the *cached value of the
-position pullback*. Conjecture:
+Definition 4.1 / Theorem 4.2 in the note, `Consolidation`/`tau_consolidate`
+in Trust.lean. A consolidation over the same check-chain is:
 
-> If a consolidation step C carries a genuine position map (not just a shape
-> map), then τ∘C = τ — trust is preserved through consolidation.
+- **shapes forward**: claim map + step map, premises corresponding, grades
+  not dropping (= the forward data of a Mor at φ = id);
+- **positions backward**: a map ρ sending every target step into a
+  consolidated claim back to a source step *per preimage*, premises
+  corresponding, target grade **cached**: s′(f′) ≤ s(ρ(f′)). A citation is
+  the cached value of ρ at one step.
 
-The empirical anchor, both directions:
+Theorem: τ′(onClaim x) = τ(x). Forward = `tau_transport` at φ = id;
+backward = well-founded induction on the SOURCE only (attainment picks the
+target's best step, ρ pulls it back, premise correspondence re-indexes the
+IH). The trivialization trap was avoided by making Definition 4.1 never
+mention τ: it is bisimulation-style and node-local, so validators can check
+it, and preservation is a theorem about it.
 
-- **Counterexample for the converse**: `synthesis-layer4.md` in THIS repo has
-  zero machine-resolvable citations after four consolidation layers. That is
-  a shape-only container morphism: claims restated, positions dropped, τ
-  degrades to `recalled` everywhere. Run `code/citation_check.py` on it to
-  reproduce.
-- **Positive case**: the post-installation convention (SYNTHESIZE-SKILL.md's
-  backfill-by-use duty) is exactly "carry the position map". If the theorem
-  holds, that duty is not hygiene, it is the preservation hypothesis.
+Empirical anchors, both directions:
 
-### The structural insight to chase first
+- `synthesis-layer4.md` in THIS repo: shape-only map, zero
+  machine-resolvable citations, τ degrades to `recalled`. Formal shadow:
+  `ground`/`layer4` in Trust.lean (τ falls `hi` → ⊥; no Consolidation
+  between them can exist, by the theorem itself).
+- SYNTHESIZE-SKILL.md's backfill-by-use duty = "carry ρ". Not hygiene;
+  the preservation hypothesis.
 
-Consolidation-with-citations may **factor through opaque restriction**
-(note Def 3.3) with φ = id: a synthesis document that cites its scratch
-sources is, trust-theoretically, an external paper whose interface map is
-the identity. If that factoring works, Theorem 3 is a corollary of Lemma 3.2
-applied twice (once in each direction along the position map) and the whole
-paper is ONE construction instantiated three ways. Check this before
-inventing new machinery — it might be an afternoon, not a month.
+### The preserved disagreement: honest outcome (note §6)
 
-### The trivialization risk (why this is the hard part)
+The Lean proof of Theorem 3 does NOT use `duplicate` — plain trees and
+well-founded induction. The containers supplied the *definition* (ρ is
+genuinely a position map; "shapes forward, positions backward" guided
+Definition 4.1) but not the *lemma*. Burden still unmet. One live
+candidate remains: **composition of consolidations** — provenance of
+provenance, citation chains through multiple layers, where composing the
+ρ's ought to be duplicate-shaped. If you prove a composition theorem that
+genuinely needs duplicate, the framing earns its keep; otherwise the paper
+says "language, not lemmas" (§6 already says this — don't soften it).
 
-Both failure modes kill the theorem:
+## What remains
 
-- **Too weak**: define "genuine position map" as "preserves τ" — circular,
-  content-free.
-- **Too strong**: demand the position map be a section of the shape map on
-  the nose — then no real consolidation qualifies (synthesis genuinely
-  merges and rephrases; the map is many-to-one on shapes).
-
-The correct middle is probably: position map = for every claim in the image,
-a chosen derivation in the source whose grade the citation caches; the
-theorem then says the max-min value is stable under this choice. Formalizing
-"what consolidation preserves" without trivializing it is the entire
-difficulty. If you cannot find the middle, SAY SO in the note — a scoped
-negative ("here are two natural definitions and each fails, here is why")
-is publishable content for this kind of paper.
-
-### Connection to the preserved disagreement
-
-Note §6 / previous handover: does the directed-container framing yield
-theorems or only language? Burden of proof: **a theorem that USES
-`duplicate` non-trivially**. Theorem 3 is the candidate. In
-`ProofSearchN.lean` (containers repo), duplicate = full sub-search at every
-node = exactly what a resumed session reads. If the position-pullback story
-needs duplicate (positions of positions = provenance of provenance = the
-citation chain through multiple consolidation layers), the framing earns its
-keep. If Theorem 3 goes through with plain trees and path lookup, be honest:
-the containers add nothing and the paper should say so.
+1. **Composition**: `Consolidation` composes (check it — should be easy:
+   ρ's compose contravariantly, caches compose by transitivity of ≤).
+   Then the pipeline scratch → … → proof is one consolidation iff each
+   layer is; the four-layer degradation is the failure of one factor.
+   This is where the duplicate question gets decided.
+2. **Generic validator** parametrized over (T, φ): checks node-local
+   soundness (Lemma 2.2), acyclicity (Remark 2.3 — load-bearing!), and now
+   the Consolidation conditions per layer. Reference implementation =
+   strongest evidence the abstraction is right.
+3. **The paper**: definitions + Lemmas 2.2/3.2 + Theorem 4.2, the three
+   deployments as experiments, field report as data, prior art §7
+   (deep-read level, corrections already folded in).
 
 ## Traps and known facts (save yourself the time)
 
 - **`Deriv` in Trust.lean uses membership-indexed premise functions**
   (`sub : ∀ y, y ∈ S.prems f → Deriv S y`), so derivation *extensionality*
-  is not developed. Theorem 3 compares derivations across systems — you
-  will likely need a proper equality/isomorphism on Deriv, or to work with
-  derivGrade values only (recommended: values only, avoid Deriv equality).
+  is not developed. Theorem 3 avoided the issue by working with τ values
+  only (this worked; keep doing it). If the composition theorem forces
+  Deriv-to-Deriv maps, that is the moment extensionality bites.
+- Another instance is active in the containers repo: it added
+  `TrustBoundary.lean` (Phase 4, cross-registry shared nodes, commits
+  `64ac9d1`/`111b264` — Lean duplicate-stability + a DCont ≅ Cof plan).
+  **Read those before doing the composition work** — the duplicate
+  question may already be half-answered there. Coordinate, don't collide.
 - `derivGrade` and `tau` are `noncomputable` (Deriv.rec + Classical.dite).
   Fine for proofs; do not try to #eval them.
 - Lean core only, no Mathlib. `Chain` is a hand-rolled class in Trust.lean
@@ -142,17 +142,17 @@ the containers add nothing and the paper should say so.
 
 ## Where to start
 
-1. Read note §3–§4 (`~/git/containers/notes/TRUST_SYSTEMS_THEORY.md`) and
-   the `Mor`/`tau_transport` section of Trust.lean — Theorem 3 must
-   compose with these, not replace them.
-2. Try the opaque-restriction factoring on paper FIRST (an afternoon).
-   Test it against the concrete pipeline in this repo: pick one claim in
+1. Read note §4 + §6 (`~/git/containers/notes/TRUST_SYSTEMS_THEORY.md`) and
+   the `Consolidation` section of Trust.lean — the composition theorem must
+   build on these, not replace them.
+2. Read the other instance's `TrustBoundary.lean` + the M4 plan (`111b264`)
+   — its duplicate-stability work is adjacent to the composition question.
+3. Prove `Consolidation.comp` in Lean (expected easy), then ask whether
+   iterated composition is duplicate-shaped (expected hard, and the paper's
+   §6 verdict hangs on it).
+4. Test against the concrete pipeline in this repo: pick one claim in
    `synthesis-layer4.md`, trace it back through the layers by hand, and ask
-   whether the trace is a position map in your candidate definition.
-3. Only then formalize. Extend Trust.lean with a `Consolidation` structure
-   (shape map on claims + position data) and aim at `tau_consolidate`.
-   The formalization has already caught three real errors in the prose —
-   expect it to catch more; that is the point.
-4. When done (or scoped-negative), update the note + PDF, push to
-   ghani-containers, and update the bulletin note
+   which layer fails Definition 4.1.
+5. When done, update the note + PDF, push to ghani-containers, and update
+   the bulletin note
    (`~/.claude/tmp/notes/trust-system-third-deployment-loop-experiment.md`).
