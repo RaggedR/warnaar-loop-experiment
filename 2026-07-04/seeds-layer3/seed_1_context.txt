@@ -1,0 +1,722 @@
+--- 1/20 (sim=0.724) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_024.tex ---
+Summary: Main results (3k+2): states Conjecture CDU-Q on positivity of the cylindric partition polynomials Q_{n,c}(q) for gcd(r,d)=1.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+[Summary: Main results (3k+2): states Conjecture CDU-Q on positivity of the cylindric partition polynomials Q_{n,c}(q) for gcd(r,d)=1.]
+
+\begin{conjecture}\label{Con_CDU-Q}
+Let $c=(c_0,c_1,c_2)$ and $d:=c_0+c_1+c_2$ such that 
+$d\not\equiv 0 \pmod{3}$.
+Then $Q_{n,(c_0,c_1,c_2)}(q)$ is a polynomial in $q$ with 
+nonnegative coefficients.
+Moreover,
+\begin{equation}\label{Eq_CDU-Q}
+Q_{n,(c_0,c_1,c_2)}(1)=\Big(\tfrac{1}{6}(d+1)(d+2)-1\Big)^n.
+\end{equation}
+\end{conjecture}
+
+
+--- 2/20 (sim=0.709) li_uncu_macmahon_analysis_cylindric_partitions/chunk_095.tex ---
+Summary: States the positivity conjecture for both companion Andrews-Gordon and companion Bressoud hierarchies for k>=5.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: The Conjectural Infinite Hierarchies
+
+[Summary: States the positivity conjecture for both companion Andrews-Gordon and companion Bressoud hierarchies for k>=5.]
+\begin{conjecture}
+    Let $k\geq 5$ and $k\geq i\geq 1$, then
+    \[ \sum_{r=-\infty}^{\infty} (-1)^r q^{\frac{r( (2k+1)r + 2k-2i +1)}{2}} {2n\brack n - \frac{(2k+1)r}{2} + (2k-2i+1)\frac{(-1)^r-1}{4}}_q \succeq 0,\]
+\[    \sum_{r=-\infty}^{\infty} (-1)^r q^{r( kr + k-i)} {2n\brack n -kr +(k-i) \frac{(-1)^r-1}{2}}_q\succeq 0,
+    \]
+    where $\cdot \succeq 0$ means that the object $\cdot$ has non-negative $q$-series coefficients.
+\end{conjecture}
+
+
+--- 3/20 (sim=0.704) warnaar_affine_jacobi-trudi_identities/chunk_037.tex ---
+Summary: States Lemma: expands (x1...xn)*e_{n-k}(x^pm) as a Hall-Littlewood series with q-binomial coefficients — the key tool connecting bounded Littlewood identities to the k=1 conjecture proofs.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Symmetric functions > (Cylindric) Schur functions
+[Summary: States Lemma: expands (x1...xn)*e_{n-k}(x^pm) as a Hall-Littlewood series with q-binomial coefficients — the key tool connecting bounded Littlewood identities to the k=1 conjecture proofs.]
+
+\begin{Lemma}\label{Lem_eP}
+Let $x=(x_1,\dots,x_n)$ and $k$ an integer such that $-n\leqslant k\leqslant n$.
+Then
+\begin{equation*}%\label{Eq_eP}
+(x_1\cdots x_n) \dot{e}_{n-k}(x)=
+\sum_{\substack{r,s\geqslant 0\\[1pt] s-k \text{ even}}}
+\genfrac{[}{]}{0pt}{}{s}{\frac{1}{2}(s-k)}_t P_{(2^r,1^s)}(x;t).
+\end{equation*}
+\end{Lemma}
+
+
+--- 4/20 (sim=0.703) foda_zhu_fermionic_macdonald_index/chunk_075.tex ---
+Summary: Presents the Andrews-Schilling-Warnaar (ASW) alternative fermionic sum expressions for the 𝒲₃ (3,7) characters using q-Gaussian polynomials in two variables (n₁,n₂); these are simpler and provide an independent check on the T-refinement proposed in the previous subsection.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: A proposal for a closed-form expression for the Macdonald index > The ASW sum expressions of \texorpdfstring{$\mathcal{W
+
+[Summary: Presents the Andrews-Schilling-Warnaar (ASW) alternative fermionic sum expressions for the 𝒲₃ (3,7) characters using q-Gaussian polynomials in two variables (n₁,n₂); these are simpler and provide an independent check on the T-refinement proposed in the previous subsection.]
+
+Another version of the sum expressions of the $\mathcal{W}_3$, $(p,p')=(3,7)$, characters 
+is proposed in \cite{andrews.schilling.warnaar},     
+
+\begin{subequations}
+\begin{equation}
+\label{ASW-1}
+\chi^{(3,7)}_{(s_1,s_2)=(1,1)}(q)=\sum_{n_1, n_2 \geqslant 0}
+\frac{q^{n_1^2 - n_1 n_2 + n_2^2 + n_1 + n_2}}{(q)_{n_1}}
+{\genfrac{[}{]}{0pt}{}{2n_1}{n_2}}_q ,
+\end{equation}
+
+\begin{equation}
+\label{ConjASW}
+\chi^{(3,7)}_{(s_1,s_2)=(1,3)}(q)=\sum_{n_1, n_2 \geqslant 0}
+\frac{q^{n_1^2 - n_1 n_2 +n_2^2 + n_2}}{(q)_{n_1}}
+{\genfrac{[}{]}{0pt}{}{2 n_1 + 1}{n_2}}_q ,
+\end{equation}
+
+\begin{equation}
+\label{ASW-2}
+\chi^{(3,7)}_{(s_1,s_2)=(2,2)}(q)=\sum_{n_1, n_2 \geqslant 0}
+\frac{q^{n_1^2 -n_1 n_2 + n_2^2}}{(q)_{n_1}}
+{\genfrac{[}{]}{0pt}{}{2n_1}{n_2}}_q ,
+\end{equation}
+
+\begin{equation}
+\label{ASW-3}
+\chi^{(3,7)}_{(s_1,s_2)=(1,2)}(q)=\sum_{n_1,n_2\geqslant 0}
+\frac{q^{n_1^2-n_1 n_2+n_2^2+n_1}}{(q)_{n_1}}{\genfrac{[}{]}{0pt}{}{2n_1+1}{n_2}}_q
+=
+\sum_{n_1,n_2\geqslant 0}
+\frac{q^{n_1^2-n_1 n_2+n_2^2+n_2}}{(q)_{n_1}}{\genfrac{[}{]}{0pt}{}{2n_1}{n_2}}_q,
+\end{equation}
+\end{subequations}
+where 
+\begin{equation}
+    {\genfrac{[}{]}{0pt}{}{P}{N}}_q=\left \{\begin{array}{cc}
+    \frac{(q)_P}{(q)_N(q)_{P-N}} & 0\leqslant N\leqslant P,\\
+    0 & {\rm otherwise},\\
+    \end{array} \right.
+\end{equation}
+is the $q$-Gaussian polynomial
+\footnote{\,
+Equation (\ref{ConjASW}) has long time been a conjectured 
+expression but was proved in \cite{corteel.welsh} recently.
+}.
+
+
+--- 5/20 (sim=0.694) warnaar_affine_jacobi-trudi_identities/chunk_023.tex ---
+Summary: States Theorem 4: q,t-Rogers-Ramanujan identity for D_{k+1}^(2) (p=tq^{2k}), with a Hall-Littlewood sum weighted by q-Pochhammer symbols at odd parts.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Introduction > Main results and conjectures
+[Summary: States Theorem 4: q,t-Rogers-Ramanujan identity for D_{k+1}^(2) (p=tq^{2k}), with a Hall-Littlewood sum weighted by q-Pochhammer symbols at odd parts.]
+
+\begin{Theorem}[$q,t$-Rogers--Ramanujan identity for
+\smash{$\mathrm{D}_{k+1}^{(2)}$}]\label{Thm_qtRR3}
+For $k$ a positive integer, let $p=tq^{2k}$. Then
+\begin{align*}
+&\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k}} q^{(\sigma+1)\vert\lambda\vert/2}
+\Biggl( \prod_{i=1}^{2k-1}\bigl({-}t^{1/2};t^{1/2}\bigr)_{m_i(\lambda)}\Biggr)
+P_{\lambda}\bigl(1,q,q^2,\dots;t\bigr) \\
+&\qquad =\frac{\bigl(p^{1/2};p^{1/2}\bigr)_{\infty}
+(p;p)_{\infty}^{k-1}}{(\sigma+1)(q;q)_{\infty}^k}
+\prod_{i=1}^k \theta\bigl({-}q^{i-(\sigma+1)/2};p^{1/2}\bigr)
+\prod_{1\leqslant i<j\leqslant k}\theta\bigl(q^{j-i},q^{i+j-\sigma-1};p\bigr),
+\end{align*}
+where $\sigma\in\{0,1\}$.
+\end{Theorem}
+
+
+--- 6/20 (sim=0.693) foda_zhu_fermionic_macdonald_index/chunk_067.tex ---
+Summary: Writes down the general T-refined Andrews-Gordon formula χ^{(2,2k+3)}_a(q,T) with weight factor T^{N₁+⋯+N_k}, then lists explicit q,T-series expansions for k=1 vacuum and next-to-vacuum (𝒧^{2,5}) to order q^{10}.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: A proposal for a closed-form expression for the Macdonald index > Main proposal > Conjecture 3: A path interpretation of aspects of the Schur index
+
+[Summary: Writes down the general T-refined Andrews-Gordon formula χ^{(2,2k+3)}_a(q,T) with weight factor T^{N₁+⋯+N_k}, then lists explicit q,T-series expansions for k=1 vacuum and next-to-vacuum (𝒧^{2,5}) to order q^{10}.]
+
+Let us list the $t$-refined characters of the vacuum module and the next-to-vacuum 
+module for $k=1,2,3$ as a series expansion in $q$. 
+\begin{multline}
+\chi^{(2,5)}_{a=1}(q,T)=\sum_{N_1\geqslant0} \frac{q^{N_1^2+N_1}}{(q)_{N_1}}T^{N_1}
+=1 + T q^2 + T q^3 + T q^4 + 
+ T q^5 + \left\lgroup T + T^2 \right\rgroup \, q^6\\
+ + \left\lgroup T + T^2 \right\rgroup \, q^7 + \left\lgroup T + 2 T^2 \right\rgroup \, q^8 + \left\lgroup T + 
+    2 T^2 \right\rgroup \, q^9 + \left\lgroup T + 3 T^2 \right\rgroup \, q^{10}+\mathcal{O}\left\lgroup \,q^{11}\, \right\rgroup ,\label{ref-ch-25-1}
+\end{multline}
+
+\begin{multline}
+    \chi^{(2,5)}_{a=2}(q,T)=\sum_{N_1\geqslant0} \frac{q^{N_1^2}}{(q)_{N_1}}T^{N_1}=1 + T q + T q^2 + 
+ T q^3 + \left\lgroup T + T^2 \right\rgroup \, q^4 + \left\lgroup T + T^2 \right\rgroup \, q^5 + \left\lgroup T + 2 T^2 \right\rgroup \, q^6\\
+ + \left\lgroup T + 2 T^2 \right\rgroup \, q^7 + \left\lgroup T + 3 T^2 \right\rgroup \, q^8 + \left\lgroup T + 3 T^2 + T^3 \right\rgroup \, q^9 + \left\lgroup T + 
+    4 T^2 + T^3 \right\rgroup \, q^{10}+\mathcal{O}\left\lgroup \,q^{11}\, \right\rgroup ,\label{ref-ch-25-2}
+\end{multline}
+
+
+--- 7/20 (sim=0.691) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_101.tex ---
+Summary: Proofs (Thm k12): states Proposition RRcase giving the bounded rank-3 Rogers-Ramanujan identity needed for k=1.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Proofs of the main results > Proof of Theorem~\ref{Thm_k12
+[Summary: Proofs (Thm k12): states Proposition RRcase giving the bounded rank-3 Rogers-Ramanujan identity needed for k=1.]
+
+\begin{proposition}\label{Prop_RRcase}
+For $L$ a nonnegative integer and $a\in\{0,1\}$,
+\begin{equation}\label{Eq_RR-rank3-bounded}
+\operatorname{GK}_{(L+1,L,L)/(1-a,0,0)/2}(z,q)= 
+\frac{1}{(zq)_{3L+a}}\,\sum_{n=0}^{\infty} z^n q^{n(n+a)} 
+\genfrac{[}{]}{0pt}{}{3L-n}{n}.
+\end{equation}
+\end{proposition}
+
+
+--- 8/20 (sim=0.688) warnaar_affine_jacobi-trudi_identities/chunk_017.tex ---
+Summary: States Theorem 2: the first q,t-Rogers-Ramanujan identity (for C_k^(1)), expressing a Hall-Littlewood generating series as a product of theta functions with nome p=tq^{2k+2}.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Introduction > Main results and conjectures
+[Summary: States Theorem 2: the first q,t-Rogers-Ramanujan identity (for C_k^(1)), expressing a Hall-Littlewood generating series as a product of theta functions with nome p=tq^{2k+2}.]
+
+\begin{Theorem}[$q,t$-Rogers--Ramanujan-type identity
+for \smash{$\mathrm{C}_k^{(1)}$}]\label{Thm_qtRR}
+For $k$ a positive integer, let $p=tq^{2k+2}$.
+Then
+\begin{equation}\label{Eq_qt-one}
+\sum_{\substack{\lambda\textup{ even} \\[1pt] \lambda_1\leqslant 2k}}
+q^{(\sigma+1)\vert\lambda\vert/2} P_{\lambda}\bigl(1,q,q^2,\dots;t\bigr)
+=\frac{(p;p)_{\infty}^k}
+{(q;q)_{\infty}^k}
+\prod_{i=1}^k \theta\bigl(q^{(2-\sigma)i};p\bigr)
+\prod_{1\leqslant i<j\leqslant k}
+\theta\bigl(q^{j-i},q^{i+j};p\bigr),
+\end{equation}
+where $\sigma\in\{0,1\}$.
+\end{Theorem}
+
+
+--- 9/20 (sim=0.687) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_023.tex ---
+Summary: Main results (3k+2): connects Conjecture Cyl to the Corteel-Dousse-Uncu conjecture on positivity of Q_{n,c}(q) polynomials.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+[Summary: Main results (3k+2): connects Conjecture Cyl to the Corteel-Dousse-Uncu conjecture on positivity of Q_{n,c}(q) polynomials.]
+
+Conjecture~\ref{Con_cylindric} is consistent with the following
+conjecture of Corteel et al., see \cite[Conjecture 4.2]{CDU20}.
+For a nonnegative integer $n$ and $c=(c_0,\dots,c_{r-1})$, define
+\begin{equation}\label{Eq_Qnc}
+Q_{n,c}(q):=
+(q^{\ell};q^{\ell})_n\,[z^n] \Big((zq)_{\infty}\operatorname{GK}_c(z,q)\Big)
+\in\mathbb{Z}[[q]],
+\end{equation}
+where, for $d:=c_0+\dots+c_{r-1}$, $\ell:=\gcd(d,r)$.
+
+
+--- 10/20 (sim=0.685) kanade_russell_tsuchioka_warnaar_capparelli_conjectures/chunk_006.tex ---
+Summary: Gives the generating function form of Gordon's theorem as a q-series–product identity (the Gordon identity), specialising at k=1 to the Rogers–Ramanujan identities, establishing the template that CMPP conjectures will generalise.
+
+% Paper: kanade_russell_tsuchioka_warnaar_capparelli_conjectures
+% Section: Introduction
+
+[Summary: Gives the generating function form of Gordon's theorem as a q-series–product identity (the Gordon identity), specialising at k=1 to the Rogers–Ramanujan identities, establishing the template that CMPP conjectures will generalise.]
+
+For $k=1$ these are the famous Rogers--Ramanujan identities in their
+combinatorial incarnation, as first stated by MacMahon \cite{MacMahon04}
+and Schur~\cite{Schur17}.
+Let
+\[
+B_{k,a}:=\bigcup_{N\geqslant 0} B_{k,a}(N)
+\]
+be the set of all Gordon partitions.
+Since the generating function of partitions in $A_{k,a}(N)$ admits
+a simple product form, an equivalent form of Gordon's theorem is
+\begin{align}\label{Eq_Gordon}
+\sum_{\lambda\in B_{k,a}} q^{\vert\lambda\vert} &= 
+\sum_{N=0}^{\infty} \vertB_{k,a}(N)\vert q^N \\
+&=\prod_{\substack{m=0\\[1pt]m\not\equiv 0,\pm(a+1)\,(\operatorname{mod} 2k+3)}}^{\infty} 
+\frac{1}{1-q^m}=
+\frac{(q^{a+1},q^{2k-a+2},q^{2k+3};q^{2k+3})_{\infty}}{(q;q)_{\infty}},
+\notag
+\end{align}
+where 
+$(a_1,\dots,a_r;q)_{\infty}:=\prod_{i=1}^r \prod_{j\geqslant 0} (1-a_i q^j)$.
+For a more detailed introduction to Gordon's partition theorem the reader
+is referred to \cite[Chapter 7]{Andrews76} and \cite[Chapter 3]{Sills18}.
+
+
+--- 11/20 (sim=0.684) kursungoz_decomposition_cylindric/chunk_064.tex ---
+Summary: Opens Section 4: proof of the CDU conjecture (positivity of P_{n,c}) and introduces the modified slice framework used there.
+
+% Paper: kursungoz_decomposition_cylindric
+% Section: Proof of part of a conjecture by Corteel, Dousse, and Uncu, and more
+
+[Summary: Opens Section 4: proof of the CDU conjecture (positivity of P_{n,c}) and introduces the modified slice framework used there.]
+\label{secCDU}
+
+We revisit and relabel \eqref{PO_slices} for conformity with 
+Corteel, Dousse, and Uncu~\cite{CDU}.  
+\begin{align}
+\label{PO_slices_again}
+  {}_{1}\Sigma \geq {}_{2}\Sigma \geq \cdots \geq {}_{n}\Sigma > E 
+\end{align}
+These are the slices of a cylindric partition $\Lambda$ 
+with profile $c = (c_1, c_2, \ldots, c_r)$
+and $\mathrm{max}(\Lambda) = n$.  
+
+Now, for each $j = 1, 2, \ldots, n$, in this order,
+calculate 
+\begin{align}
+\nonumber 
+  f_j := \mathrm{min}_{1 \leq i \leq r}
+   \left\{ \ell({}_{j}\sigma^{(i)}) - \ell({}_{j+1}\sigma^{(i)}) \right\}.  
+\end{align}
+We take $E = {}_{n+1}\Sigma$ here.  
+Then, in ${}_{1}\Sigma$, ${}_{2}\Sigma$, \ldots, ${}_{j}\Sigma$, 
+delete $f_j$ 1's from the right ends of each ${}_{\cdots}\sigma^{(i)}$, 
+$i = 1, 2, \ldots, r$.
+We update $\Lambda$ accordingly, as 
+$\Lambda = {}_{1}\Sigma + {}_{2}\Sigma + \cdots + {}_{n}\Sigma$.  
+This transformation reduces $\vert \Lambda \vert$ 
+(and hence $\vert {}_{1}\Sigma \vert+$ $\vert {}_{2}\Sigma \vert+$ $\cdots$ 
+$+\vert {}_{n}\Sigma \vert$) by $r (j f_j)$.
+
+
+--- 12/20 (sim=0.683) kanade_russell_tsuchioka_warnaar_capparelli_conjectures/chunk_068.tex ---
+Summary: Opens the final main section on completing the Hall–Littlewood conjecture to arbitrary weights, recalling a GOW16 lemma giving HL_{k,n}(z,q) as a Gelfand–Tsetlin-type sum over chains of partitions, and reformulating Con_A2n2-qseries and Con_Cn1Dn2-qseries in this language.
+
+% Paper: kanade_russell_tsuchioka_warnaar_capparelli_conjectures
+% Section: Towards completing Conjectures~\ref{Con_A2n2-qseries
+
+[Summary: Opens the final main section on completing the Hall–Littlewood conjecture to arbitrary weights, recalling a GOW16 lemma giving HL_{k,n}(z,q) as a Gelfand–Tsetlin-type sum over chains of partitions, and reformulating Con_A2n2-qseries and Con_Cn1Dn2-qseries in this language.]
+
+Recall the definition of the bivariate generating function for coloured
+partitions of type $\mathrm{A}^{(2)}_{2n}$, $\mathrm{C}^{(1)}_n$ and
+$\mathrm{D}^{(2)}_{n+1}$:
+\[
+\mathcal{G}^{(n)}_{\Lambda}(z,q):=
+\sum_{\lambda\in\mathscr{G}_{k_0,\dots,k_n}} z^{l(\lambda)} q^{\vert\lambda\vert},
+\]
+where $\Lambda=k_0\Uplambda_0+\dots+k_n\Uplambda_n$ and $(\mathcal{G},\mathscr{G})$ is one of
+$(\mathcal{A},\mathscr{A})$, $(\mathcal{C},\mathscr{C})$ or $(\mathcal{D},\mathscr{D})$.
+For the weights $\Lambda=k\Uplambda_0$ and $\Lambda=k\Uplambda_n$ explicit formulas for these
+generating functions in terms of Hall--Littlewood symmetric functions are 
+proposed in Conjectures~\eqref{Con_A2n2-qseries} and
+\eqref{Con_Cn1Dn2-qseries}.
+No such expressions in terms of Hall--Littlewood functions seem to exist
+for other weights.
+By \cite[Lemma 2.1]{GOW16}, for $k\geqslant 0$, $n\geqslant 1$ and $t:=q^n$,
+\begin{align*}
+&\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant k}} 
+(zq)^{\vert\lambda\vert} P_{2\lambda}(1,q,q^2,\dots;t)\\
+&\quad=\sum \prod_{i=1}^{2k}\Bigg\{
+\frac{(zq)^{\frac{1}{2}\mu^{(0)}_i}}
+{(t;t)_{\mu^{(0)}_i-\mu^{(0)}_{i+1}}}
+\prod_{a=1}^n
+q^{\mu_i^{(a)}} t^{\Big(\!\genfrac{}{}{0pt}{}{\mu^{(a-1)}_i-\mu^{(a)}_i}{2}\!\Big)}
+\Bigg[\genfrac{}{}{0pt}{}{\mu^{(a-1)}_i-\mu^{(a)}_{i+1}}{\mu^{(a-1)}_i-\mu^{(a)}_i}\Bigg]_t
+\Bigg\} \\[1mm]
+&\quad=:\operatorname{HL}_{k,n}(z,q),
+\end{align*}
+where the sum on the right is over sequences of partitions
+$0=\mu^{(n)}\subseteq\cdots\subseteq\mu^{(1)}\subseteq\mu^{(0)}$
+such that all parts of $(\mu^{(0)})'$ are even and $l(\mu^{(0)})\leqslant 2k$.
+Here $\mu\subseteq\lambda$ is shorthand for partition-inclusion, that is,
+$\mu_i\leqslant\lambda_i$ for all $i\geqslant 1$, and, by abuse of notation, $0$ denotes
+the unique partition of $0$.
+The condition on the partition $\mu^{(0)}$ implies that 
+$\mu^{(0)}_{2i-1}=\mu^{(0)}_{2i}$ for all $1\leqslant i\leqslant k$,
+so that
+\[
+\prod_{i=1}^{2k} \frac{(zq)^{\frac{1}{2}\mu^{(0)}_i}}
+{(t;t)_{\mu^{(0)}_i-\mu^{(0)}_{i+1}}}
+=\prod_{i=1}^k \frac{(zq)^{\mu^{(0)}_{2i-1}}}
+{(t;t)_{\mu^{(0)}_{2i-1}-\mu^{(0)}_{2i+1}}}.
+\]
+Conjectures~\ref{Con_A2n2-qseries} and \ref{Con_Cn1Dn2-qseries} can
+thus be written in the following alternative form.
+
+
+--- 13/20 (sim=0.682) warnaar_A2_andrews_gordon/chunk_004.tex ---
+Summary: Identifies the Andrews--Gordon series AG_{k,s}(q) as principally specialized characters of A1^(1) standard modules, and outlines the Lie-theoretic proofs by Lepowsky--Wilson and Meurman--Primc, motivating the search for higher-rank character formulas.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Introduction
+
+[Summary: Identifies the Andrews--Gordon series AG_{k,s}(q) as principally specialized characters of A1^(1) standard modules, and outlines the Lie-theoretic proofs by Lepowsky--Wilson and Meurman--Primc, motivating the search for higher-rank character formulas.]
+
+
+Let $\operatorname{AG}_{k,s}(q)$ denote the $q$-series in \eqref{Eq_AG}, so that
+$\operatorname{AG}_{k,s}(q)$ may denote either the left- or the right-hand side of
+the identity.
+Apart from Gordon's two partition theoretic interpretations, the series
+$\operatorname{AG}_{k,s}(q)$ for $0\leqslant s\leqslant k$ have also been identified as characters 
+(or specialised characters) of affine Lie algebras.
+Here we mention two such identifications. (For further examples, see e.g.,
+\cite{Misra89,Misra90}.)
+Let $\mathfrak{g}$ be an affine Lie algebra of rank $\ell$ with
+simple roots $\alpha_0,\dots,\alpha_{\ell}$, simple coroots 
+$\alpha_0^{\vee},\dots,\alpha_{\ell}^{\vee}$ and fundamental
+weights $\Lambda_0,\dots,\Lambda_{\ell}$ (so that
+$\langle\alpha_i^{\vee},\Lambda_j\rangle=\delta_{ij}$),
+where we adopt the labelling of the Dynkin diagrams as in
+Tables 1 and 2 of \cite[Chapter 4]{Kac90}.
+Let $P_{+}^d$ denote the set of level-$d$ dominant integral weights
+of $\mathfrak{g}$ and let $\operatorname{ch} L(\lambda)$ be the character of the standard
+(or integrable highest weight) module $L(\lambda)$ of highest weight $\lambda$.
+Then, up to a simple infinite product 
+$F:=(-q;q)_{\infty}=1/(q;q^2)_{\infty}$ corresponding
+to the principally specialised character of the fundamental representation
+$L(\Lambda_a)$ ($a=0,1$),
+$\operatorname{AG}_{k,s}(q)$ is equal to the principally specialised characters of
+the affine Lie algebra $\mathrm{A}_1^{(1)}$ \cite[Theorem 5.16]{LM78b}:
+\[
+\operatorname{e}^{-\lambda} \operatorname{ch} L(\lambda)\big|_
+{(\operatorname{e}^{-\alpha_0},\operatorname{e}^{-\alpha_1})\mapsto (q,q)}=
+F \cdot
+\operatorname{AG}_{k,s}(q),
+\] 
+where $\lambda=(2k-s)\Lambda_0+(s-1)\Lambda_1\in P_{+}^{2k-1}$.
+For $k=2$ this led Lepowsky and Wilson to the discovery of the principal
+Heisenberg subalgebra $\mathfrak{s}$ of $\mathrm{A}_1^{(1)}$, culminating 
+in the first purely Lie theoretic proof of the Rogers--Ramanujan identities 
+\cite{LW81a,LW82}. 
+In particular, Lepowsky and Wilson showed that $\operatorname{AG}_{2,s}(q)$ is exactly 
+the character of the vacuum space of highest-weight vectors 
+of $L((4-s)\Lambda_0+(s-1)\Lambda_1)$ with respect to $\mathfrak{s}$.
+This was subsequently extended to higher-level standard modules of 
+$\mathrm{A}_1^{(1)}$ by Meurman and Primc \cite{MP87} to yield a 
+Lie theoretic proof of all of the Andrews--Gordon identities 
+(as well as their even moduli analogues).\footnote{A distinction
+between the results of \cite{LW81a,LW82} and \cite{MP87} is that
+in the latter work, the combinatorial instead of the analytic
+form of the identities is obtained.}
+
+
+--- 14/20 (sim=0.682) foda_zhu_fermionic_macdonald_index/chunk_031.tex ---
+Summary: States the Andrews-Gordon identities equating the fermionic sum expressions to infinite products mod 2k+3, with k=1 giving the Rogers-Ramanujan identities; these product formulas confirm the fermionic sums are genuine character expressions.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Definitions. The statistical mechanics/combinatorics side > Product expressions of the Virasoro characters
+
+[Summary: States the Andrews-Gordon identities equating the fermionic sum expressions to infinite products mod 2k+3, with k=1 giving the Rogers-Ramanujan identities; these product formulas confirm the fermionic sums are genuine character expressions.]
+
+The above fermionic character expressions (\ref{AG-1}) satisfy the Andrews-Gordon 
+identities \cite{andrews.01,gordon} 
+
+\begin{equation}
+\label{AG}
+\sum_{N_1 \ge \cdots \ge N_{k} \ge 0}
+\frac{ 
+q^{ N_{1}^2 + \cdots + N_{k}^2 + N_{a} + \cdots + N_{k} }
+}{
+(q)_{N_{1}-N_{2}} \cdots (q)_{N_{k-1}-N_{k}} (q)_{N_{k}}
+}
+=
+\prod_{\begin{subarray}{c}
+  n=1
+  \\
+  n \not \equiv0, \pm i \, (\textup{mod}\, 2 k + 3) 
+  \end{subarray}}^{\infty}
+\frac{1}{1-q^n}
+\end{equation}
+
+The $k=1$ cases are the Rogers-Ramanujan identities
+\cite{rogers,rogers-ramanujan}.
+
+
+--- 15/20 (sim=0.682) bounded_littlewood/chunk_105.tex ---
+Summary: Records the q=0 specialisation of Theorem 3 (a Hall--Littlewood D_n bounded identity).
+
+% Paper: bounded_littlewood
+% Section: Bounded Littlewood identities > Statement of results > $q,t$-Identities
+[Summary: Records the q=0 specialisation of Theorem 3 (a Hall--Littlewood D_n bounded identity).]
+
+Taking $q=0$ in \eqref{Eq_bounded3-1} yields
+\begin{equation}\label{Eq_JZ}
+\sum_{\substack{\lambda' \textup{ even} \\[1pt] \lambda_1\leqslant m}} 
+P_{\lambda}(x;t) \prod_{i=1}^{m-1} (t;t^2)_{m_i(\lambda)/2} 
+=(x_1\cdots x_n)^{\frac{m}{2}} P^{(\mathrm{D}_n)}_{(\hspace{-0.7pt}\frac{m}{2}\hspace{-0.7pt})^{n}}(x;t).
+\end{equation}
+By Lemma~\ref{Lem_littlelemma2} this is equivalent to 
+\cite[Theorem 1; Eq.~(7)]{JZ05} of Jouhet and Zeng,
+which itself is a $t$-analogue of 
+Okada's determinant \cite[Theorem 2.3 (3)]{Okada98}
+\[
+\sum_{\substack{\lambda' \textup{ even} \\[1pt] \lambda_1\leqslant m}} 
+s_{\lambda}(x) =\frac{\sum_{\varepsilon\in\{\pm 1\}}
+\det_{1\leqslant i,j\leqslant n}\big(x_i^{j-1}+\varepsilon \, x_i^{m+2n-j-1}\big)}
+{2\prod_{i<j} (x_i-x_j)(x_ix_j-1)}.
+\]
+
+\medskip
+
+For $m$ a nonnegative integer and $\lambda$ a partition, let
+\begin{equation}\label{Eq_blamel}
+b_{\lambda;m}^{\textup{el}}(q,t):=
+b_{\lambda}^{\textup{el}}(q,t)
+\prod_{\substack{s\in\lambda \\[1pt] l'(s) \textup{ even}}} 
+\frac{1-q^{m-a'(s)}t^{l'(s)}}{1-q^{m-a'(s)-1}t^{l'(s)+1}}.
+\end{equation}
+We note that $b_{\lambda;m}^{\textup{el}}(q,t)$ vanishes unless $\lambda_1\leqslant m$.
+The next result is \eqref{Eq_qt_Littlewood} from the introduction, 
+which bounds \eqref{Eq_Pc} for $a=1$.
+
+
+--- 16/20 (sim=0.682) warnaar_affine_jacobi-trudi_identities/chunk_083.tex ---
+Summary: Conditional proofs of Theorems 3-5: derives each from the corresponding Conjecture via bounded Littlewood identity, determinant identity, principal specialization, n→∞ limit, and Macdonald identity for A_{2k}^(2), D_{k+1}^(2), A_{2k-1}^(2).
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proofs of special cases of Conjectures~\ref{Con_JTB
+[Summary: Conditional proofs of Theorems 3-5: derives each from the corresponding Conjecture via bounded Littlewood identity, determinant identity, principal specialization, n→∞ limit, and Macdonald identity for A_{2k}^(2), D_{k+1}^(2), A_{2k-1}^(2).]
+
+\begin{proof}[Conditional proofs of the remaining $\boldsymbol{q,t}$-Rogers--Ramanujan
+identities]
+{\it From identi- \linebreak ties~\eqref{Eq_PBn}  and~\eqref{Eq_PBCn} to Theorem~$\ref{Thm_qtRR2}$.}
+We rewrite the left-hand side of \eqref{Eq_PBn} (\eqref{Eq_PBCn})
+using the bounded Littlewood identity \eqref{Eq_Macdonald}
+(\eqref{Eq_RW3}), while for the right-hand side we obtain a second
+determinantal expression using \eqref{Eq_doteddote} (\eqref{Eq_doteddote2})
+for $u=-1$.
+Next we specialise $x_i=q^{i-1/2}$ using the first determinantal
+expression on the right or $x_i=q^i$ using the second determinantal
+expression, and take the $n\to\infty$ limit.
+This leads to
+\begin{align*}
+\begin{split}
+&\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k}}
+q^{\frac{1}{2}(\sigma+1)\vert\lambda\vert}P_{\lambda}\bigl(1,q,q^2,\dots;t\bigr) \\
+&\qquad = \frac{1}{(\sigma+1)(q;q)_{\infty}^k} \sum_{y\in\mathbb{Z}^k}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{Ky_i+i-j} p^{\frac{1}{2}Ky_i^2-(j-\frac{1}{2})y_i}-
+x_i^{Ky_i+i+j-1} p^{\frac{1}{2}Ky_i^2+(j-\frac{1}{2})y_i}\bigr)
+\end{split}
+\end{align*}
+and
+\begin{align*}
+&\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k}}
+q^{\frac{1}{2}(\sigma+1)\vert\lambda\vert}t^{\frac{1}{2}l(\lambda^{\textup{o}})}
+P_{\lambda}\bigl(1,q,q^2,\dots;t\bigr) \\
+&\qquad = \frac{1}{(q;q)_{\infty}^k} \sum_{y\in\mathbb{Z}^k}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{Ky_i+i-j} p^{\frac{1}{2}Ky_i^2-jy_i}-
+x_i^{Ky_i+i+j} p^{\frac{1}{2}Ky_i^2+jy_i}\bigr),
+\end{align*}
+where $\sigma\in\{0,1\}$, $p=tq^K$, $K=2k+1$ and
+$x_i=-q^{i-(\sigma+1)/2}$, $x_i=-q^{i-\sigma/2}$, in the first
+(second) identity.
+By the \smash{$\mathrm{A}_{2k}^{(2)}$} Macdonald identity \cite{Macdonald72}
+in the `$\mathrm{B}_k$ form'
+\begin{align}
+&\sum_{y\in\mathbb{Z}^k}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{(2k+1)y_i+i-j} p^{\frac{1}{2}(2k+1)y_i^2-(j-\frac{1}{2})y_i}
+-x_i^{(2k+1)y_i+i+j-1} p^{\frac{1}{2}(2k+1)y_i^2+(j-\frac{1}{2})y_i}\bigr)
+\notag \\
+&\qquad=(p;p)_{\infty}^k\prod_{i=1}^k \theta(x_i;p)\theta\bigl(px_i^2;p^2\bigr)
+\prod_{1\leqslant i<j\leqslant k} \theta(x_j/x_i,x_ix_j;p) \label{Eq_MacA2k2}
+\end{align}
+or in the `$\mathrm{C}_k$ form'
+\begin{align*}
+\begin{split}
+&\sum_{y\in\mathbb{Z}^k}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{(2k+1)y_i+i-j} p^{\frac{1}{2}(2k+1)y_i^2-jy_i}
+-x_i^{(2k+1)y_i+i+j} p^{\frac{1}{2}(2k+1)y_i^2+jy_i}\bigr) \\
+&\qquad=(p;p)_{\infty}^k\prod_{i=1}^k
+\theta\bigl(p^{1/2}x_i;p\bigr)\theta\bigl(x_i^2;p^2\bigr)
+\prod_{1\leqslant i<j\leqslant k} \theta(x_j/x_i,x_ix_j;p),
+\end{split}
+\end{align*}
+Theorem~\ref{Thm_qtRR2} results.
+
+\textit{From \eqref{Eq_PBn2} to Theorem~$\ref{Thm_qtRR3}$.}
+We rewrite the left-hand side of \eqref{Eq_PBn2} using the bounded
+Littlewood identity \eqref{Eq_RW1} and obtain a
+second determinantal expression on the right using~\eqref{Eq_doteddote} for $u=1$.
+Then specialising as in the previous two cases and taking the
+$n\to\infty$ limit yields
+\begin{align*}
+&\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k}}
+q^{\frac{1}{2}(\sigma+1)\vert\lambda\vert}
+\Biggl(\prod_{i=1}^{2k-1}\bigl({-}t^{1/2};t^{1/2}\bigr)_{m_i(\lambda)}\Biggr)
+P_{\lambda}\bigl(1,q,q^2,\dots;t\bigr) \\
+&\qquad = \frac{1}{(\sigma+1)(q;q)_{\infty}^k} \sum_{y\in\mathbb{Z}^k}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{Ky_i+i-j} p^{\frac{1}{2}Ky_i^2-(j-\frac{1}{2})y_i}-
+x_i^{Ky_i+i+j-1} p^{\frac{1}{2}Ky_i^2+(j-\frac{1}{2})y_i}\bigr),
+\end{align*}
+where $\sigma\in\{0,1\}$, $x_i=q^{i-(\sigma+1)/2}$, $p=tq^K$ and
+$K=2k$.
+By the \smash{$\mathrm{D}_{k+1}^{(2)}$} Macdonald identity \cite{Macdonald72}
+\begin{align*}
+&\sum_{y\in\mathbb{Z}^k}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{2ky_i+i-j} p^{ky_i^2-(j-\frac{1}{2})y_i}
+-x_i^{2ky_i+i+j-1} p^{ky_i^2+(j-\frac{1}{2})y_i}\bigr) \\
+&\qquad=\bigl(p^{1/2};p^{1/2}\bigr)_{\infty}(p;p)_{\infty}^{k-1}
+\prod_{i=1}^k \theta\bigl(x_i;p^{1/2}\bigr)
+\prod_{1\leqslant i<j\leqslant k} \theta(x_j/x_i,x_ix_j;p),
+\end{align*}
+this gives Theorem~\ref{Thm_qtRR3}.
+
+\textit{From \eqref{Eq_PCn2} to Theorem~$\ref{Thm_qtRR4}$.}
+We rewrite the left-hand side of \eqref{Eq_PCn2} using the bounded
+Littlewood identity \eqref{Eq_Stembridge2} and obtain a
+second determinantal form on the right using
+\eqref{Eq_doteddote2} for $u=1$.
+Then specialising the $x_i$ as before and taking the $n\to\infty$ limit
+results in
+\begin{align*}
+&\sideset{}{'}\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k}}
+q^{\frac{1}{2}(\sigma+1)}t^{\frac{1}{2}l(\lambda^{\textup{o}})}
+\Biggl(\prod_{i=1}^{2k-1}\bigl(t;t^2\bigr)_{\lceilm_i(\lambda)/2\rceil}\Biggr)
+P_{\lambda}\bigl(1,q,q^2,\dots;t\bigr) \\
+&\qquad = \frac{1}{(q;q)_{\infty}^k}
+\sum_{\substack{y\in\mathbb{Z}^k\\[1pt] \verty\vert \text{ even}}}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{Ky_i+i-j} p^{\frac{1}{2}Ky_i^2-jy_i}-
+x_i^{Ky_i+i+j} p^{\frac{1}{2}Ky_i^2+jy_i}\bigr),
+\end{align*}
+where $\sigma\in\{0,1\}$, $x_i=q^{i-\sigma/2}$, $p=tq^K$ and
+$K=2k$.
+By the \smash{$\mathrm{A}_{2k-1}^{(2)}$} Macdonald identity \cite{Macdonald72}
+\begin{align*}
+&\sum_{\substack{y\in\mathbb{Z}^k\\[1pt] \verty\vert \text{ even}}}
+\det_{1\leqslant i,j\leqslant k}\bigl(
+x_i^{2ky_i+i-j} p^{ky_i^2-jy_i}-
+x_i^{2ky_i+i+j} p^{ky_i^2+jy_i}\bigr) \\
+&\qquad=\bigl(p^2;p^2\bigr)_{\infty}(p;p)_{\infty}^{k-1}
+\prod_{i=1}^k \theta\bigl(x_i^2;p^2\bigr)
+\prod_{1\leqslant i<j\leqslant k} \theta(x_j/x_i,x_ix_j;p),
+\end{align*}
+we obtain Theorem~\ref{Thm_qtRR4}.
+\end{proof}
+
+
+--- 17/20 (sim=0.682) warnaar_affine_jacobi-trudi_identities/chunk_012.tex ---
+Summary: Introduces C_n Hall-Littlewood polynomials and announces two conjectural affine Jacobi-Trudi identities for P_{(k^n)}^{C_n}, corresponding to C_k^(1) and A_{2k-1}^(2).
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Introduction > Main results and conjectures
+[Summary: Introduces C_n Hall-Littlewood polynomials and announces two conjectural affine Jacobi-Trudi identities for P_{(k^n)}^{C_n}, corresponding to C_k^(1) and A_{2k-1}^(2).]
+
+For $\lambda\subseteq (k^n)$ and $x$ as above, let
+\smash{$P_{\lambda}^{\mathrm{C}_n}(x;t,s)$} denote the $\mathrm{C}_n$ Hall--Littlewood
+polynomial indexed by $\lambda$.
+Then \smash{$P_{\lambda}^{\mathrm{C}_n}(x;0,0)=\operatorname{sp}_{2n,\lambda}(x)$}.
+This time we have two conjectural analogues of~\eqref{Eq_JTC},
+corresponding to the affine root systems
+\smash{$\mathrm{C}_k^{(1)}$} and \smash{$\mathrm{A}_{2k-1}^{(2)}$}, respectively.
+
+
+--- 18/20 (sim=0.681) bounded_littlewood/chunk_213.tex ---
+Summary: Problem 1: find q-analogues of two Hall--Littlewood bounded identities arising from special parameter choices in Theorem 6.
+
+% Paper: bounded_littlewood
+% Section: Open problems > Missing $q$-analogues
+[Summary: Problem 1: find q-analogues of two Hall--Littlewood bounded identities arising from special parameter choices in Theorem 6.]
+
+\begin{problem}
+Find $q$-analogues of 
+\[
+\sum t^{\operatorname{odd}(\lambda)/2} 
+\bigg( \prod_{i=1}^{2m-1} (t;t^2)_{\lceilm_i(\lambda)/2\rceil}\bigg)
+P_{\lambda}(x;t) 
+=(x_1\cdots x_n)^m P^{(\mathrm{C}_n)}_{m^n}(x;t,t)
+\]
+and
+\begin{multline*}
+\sum t^{\operatorname{odd}(\lambda)/4} 
+\bigg(\prod_{\substack{i=1 \\[0.5pt] i \textup{ even}}}^{2m-1}
+(t^{1/2};t)_{\lceilm_i(\lambda)/2\rceil}
+(-t;t)_{\lfloorm_i(\lambda)/2\rfloor}\bigg) \\ \times
+\bigg(\prod_{\substack{i=1 \\[0.5pt] i \textup{ odd}}}^{2m-1}
+(t;t^2)_{m_i(\lambda)/2} \bigg) P_{\lambda}(x;t) 
+=(x_1\cdots x_n)^m P^{(\mathrm{C}_n)}_{m^n}\big(x;t,t^{1/2}\big).
+\end{multline*}
+In both cases the sum is over partitions $\lambda$ such that 
+$\lambda_1\leqslant 2m$ and such that parts of odd size have even multiplicity.
+\end{problem}
+
+
+--- 19/20 (sim=0.680) warnaar_affine_jacobi-trudi_identities/chunk_043.tex ---
+Summary: Corollary: two Hall-Littlewood identities (a=1, b=0 and a=b=1 specializations) that bridge between the B_n/C_n bounded Littlewood identities and the q,t-Rogers-Ramanujan derivations.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Symmetric functions > (Cylindric) Schur functions
+[Summary: Corollary: two Hall-Littlewood identities (a=1, b=0 and a=b=1 specializations) that bridge between the B_n/C_n bounded Littlewood identities and the q,t-Rogers-Ramanujan derivations.]
+
+\begin{Corollary}
+For $x=(x_1,\dots,x_n)$ and $k$ a nonnegative integer,
+\begin{subequations}
+\begin{align}\label{Eq_oddk1}
+&\Biggl(\prod_{i=1}^n (1+ax_i)\Biggr)
+\sum_{\substack{\mu \text{ even} \\[1pt] \mu_1\leqslant 2k}}
+P_{\mu}(x;t)=\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k+1}}
+a^{l(\lambda^{\textup{o}})} P_{\lambda}(x;t), \\
+&\Biggl(\prod_{i=1}^n (1+x_i)\Biggr)
+\sum_{\substack{\mu \\[1pt] \mu_1\leqslant 2k}} t^{l(\mu^{\textup{o}})/2}P_{\mu}(x;t)
+=\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant 2k+1}}
+\Biggl(\prod_{i=1}^{2k}\bigl(-t^{1/2};t^{1/2}\bigr)_{m_i(\lambda)}\Biggr)
+P_{\lambda}(x;t).
+\label{Eq_oddk2}
+\end{align}
+\end{subequations}
+\end{Corollary}
+
+
+--- 20/20 (sim=0.680) warnaar_affine_jacobi-trudi_identities/chunk_147.tex ---
+Summary: Appendix Lemma: a finite q-hypergeometric identity for Rogers-Szego-type sums, a key ingredient in the inductive proof of Theorem MR.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proof of (\ref{Eq_strange
+
+[Summary: Appendix Lemma: a finite q-hypergeometric identity for Rogers-Szego-type sums, a key ingredient in the inductive proof of Theorem MR.]
+
+\begin{Lemma}
+For $n$ a nonnegative integer,
+\begin{equation}\label{Eq_RS-sum}
+\sum_{r=0}^n w^r q^{\binom{r+1}{2}} H_{n-r}(z;q)\genfrac{[}{]}{0pt}{}{n}{r}_q=
+\fourIdx{}{2}{}{0}\phi
+\bigg[\genfrac{}{}{0pt}{}{-wq/z,q^{-n}}{\text{--}};q,zq^n\bigg],
+\end{equation}
+where $H_m$ is a Rogers--Szeg\H{o} polynomial, see \eqref{Eq_RS}.
+\end{Lemma}
+
+\begin{proof}
+Denote the expression on the left of \eqref{Eq_RS-sum} by $f_n(w,z;q)$.
+Then
+\[
+f_n(w,z;q)
+=\sum_{r=0}^n \sum_{k=0}^{n-r}
+w^r z^k q^{\binom{r+1}{2}} \genfrac{[}{]}{0pt}{}{n-r}{k}_q\genfrac{[}{]}{0pt}{}{n}{r}_q
+=\sum_{k=0}^n z^k \genfrac{[}{]}{0pt}{}{n}{k}_q
+\sum_{r=0}^{n-k} w^r q^{\binom{r+1}{2}} \genfrac{[}{]}{0pt}{}{n-k}{r}_q.
+\]
+The sum over $r$ evaluates to $(-wq;q)_{n-k}$ by
+the $q$-binomial theorem \cite[equation~(II.4)]{GR04}
+\[
+\sum_{k=0}^n (-z)^k q^{\binom{k}{2}}\genfrac{[}{]}{0pt}{}{n}{k}_q=(z;q)_n.
+\]
+Thus
+\[
+f_n(w,z;q)=\sum_{k=0}^n z^k (-wq;q)_{n-k} \genfrac{[}{]}{0pt}{}{n}{k}_q
+=(-wq;q)_n\;\fourIdx{}{2}{}{1}\phi
+\bigg[\genfrac{}{}{0pt}{}{0,q^{-n}}{-q^{-n}/w};q,-\frac{z}{w}\bigg].
+\]
+Taking the $b\to 0$ limit in the transformation formula
+\cite[equation~(III.8)]{GR04} yields
+\[
+\fourIdx{}{2}{}{1}\phi
+\bigg[\genfrac{}{}{0pt}{}{0,q^{-n}}{c};q,z\bigg]=\frac{1}{\bigl(q^{1-n}/c;q\bigr)_n}\;
+\fourIdx{}{2}{}{0}\phi
+\bigg[\genfrac{}{}{0pt}{}{q/z,q^{-n}}{\text{--}};q,\frac{z}{c}\bigg].
+\]
+Applying this to the above expression for $f_n(w,z;q)$, we obtain
+the right-hand side of \eqref{Eq_RS-sum}.
+\end{proof}
+
+

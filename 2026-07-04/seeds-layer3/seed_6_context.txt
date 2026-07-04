@@ -1,0 +1,504 @@
+--- 1/20 (sim=0.846) li_uncu_macmahon_analysis_cylindric_partitions/chunk_025.tex ---
+Summary: Explains how Corteel-Welsh's recurrence for refined generating functions motivated recent cylindric partition study, then introduces the Omega operator.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: Background
+
+[Summary: Explains how Corteel-Welsh's recurrence for refined generating functions motivated recent cylindric partition study, then introduces the Omega operator.]
+Corteel--Welsh's recurrence relations \cite{CW} for the refined generating functions for cylindric partitions, where a new parameter keeps track of the largest part among the cylindric partitions, led to many studies of these objects and some groundbreaking discoveries in the recent years. Here, continuing this trend, we study these combinatorial objects with small profiles using partition analysis.
+
+The partition analysis is a method to study the generating functions introduced by MacMahon in his Combinatorial Analysis \cite{MacMahon}. It relies on the Omega operator which was defined as follows.
+
+
+--- 2/20 (sim=0.805) kursungoz_cylindric_partitions_decomposition/chunk_061.tex ---
+Summary: Distinct parts: discusses the connection between the generating function form and the Corteel-Welsh functional equations.
+
+% Paper: kursungoz_cylindric_partitions_decomposition
+% Section: Generating functions for cylindric partitions into distinct parts
+[Summary: Distinct parts: discusses the connection between the generating function form and the Corteel-Welsh functional equations.]
+
+% \begin{claim}\label{claim: a_n's solutions}
+% The system of equations \eqref{eq:homogeneous eq.s} has the solution:
+% \begin{align}
+% a_{2n}=&A_1r_1^n+ \ldots + A_kr_k^n \label{solution of a_2n}\\
+% a_{2n+1}=& B_1s_1^n+ \ldots + B_ls_l^n \label{solution of a_2n+1}
+% \end{align}
+%
+% where, $A_1$, \ldots $A_k$, $B_1$, \ldots, $B_l$ are constant, $r_i$'s and $s_j$'s are the roots of the characteristic polynomials.
+% \end{claim}
+
+
+--- 3/20 (sim=0.805) kursungoz_seyrek_decomposition_cylindric_partitions/chunk_061.tex ---
+Summary: Distinct parts: discusses the connection between the generating function form and the Corteel-Welsh functional equations.
+
+% Paper: kursungoz_seyrek_decomposition_cylindric_partitions
+% Section: Generating functions for cylindric partitions into distinct parts
+[Summary: Distinct parts: discusses the connection between the generating function form and the Corteel-Welsh functional equations.]
+
+% \begin{claim}\label{claim: a_n's solutions}
+% The system of equations \eqref{eq:homogeneous eq.s} has the solution:
+% \begin{align}
+% a_{2n}=&A_1r_1^n+ \ldots + A_kr_k^n \label{solution of a_2n}\\
+% a_{2n+1}=& B_1s_1^n+ \ldots + B_ls_l^n \label{solution of a_2n+1}
+% \end{align}
+%
+% where, $A_1$, \ldots $A_k$, $B_1$, \ldots, $B_l$ are constant, $r_i$'s and $s_j$'s are the roots of the characteristic polynomials.
+% \end{claim}
+
+
+--- 4/20 (sim=0.795) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_014.tex ---
+Summary: Explains the two key challenges (guessing sum sides via cylindric partition generating functions, then proving them via Corteel-Welsh with computer algebra), and gives the paper's section outline.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and statement of results
+
+[Summary: Explains the two key challenges (guessing sum sides via cylindric partition generating functions, then proving them via Corteel-Welsh with computer algebra), and gives the paper's section outline.]
+
+The first equation of our theorem gives an expression of the product in Theorem \ref{th:ASW500} as a sum with obviously positive coefficients, and we give a combinatorial interpretation in terms of cylindric partitions. More generally, our full main result, Theorem \ref{th:main}, gives a positive sum expression for all the products in the case $k=3$ in Theorem 5.3 of Andrews, Schilling, and Warnaar's paper \cite{AndrewsSchillingWarnaar}.
+
+
+The two challenges in proving Theorem \ref{th:main} were the following: first, we ``guessed" the sum-side by guessing the generating
+functions for certain cylindric partitions with bounded entries. Second, we proved these identities simultaneously by using a result of Corteel and Welsh (see Theorem \ref{th:CW}). As it is quite intricate to handle quadruple sums,
+we used a recent computer algebra implementation of Ablinger and Uncu \cite{qFunctions} and we give an automated proof of the main result.
+
+
+
+\medskip
+
+This paper is organized as follows. In Section \ref{sec:next} we introduce cylindric partitions and the methodology.
+To give a simple example on how to use cylindric partitions to prove partitions identities, we prove the classical Rogers--Ramanujan identities. In Section \ref{sec:proof}, we prove Theorem \ref{th:main}.
+
+
+--- 5/20 (sim=0.781) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_061.tex ---
+Summary: States the most ambitious future direction — extending the sum representation results to cylindric partition profiles with more than 3 parts — noting that while Borodin's formula and the Corteel–Welsh functional equations apply generally, sum representations beyond 3-part profiles remain entirely open.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Future Directions
+
+[Summary: States the most ambitious future direction — extending the sum representation results to cylindric partition profiles with more than 3 parts — noting that while Borodin's formula and the Corteel–Welsh functional equations apply generally, sum representations beyond 3-part profiles remain entirely open.]
+
+Finally, we plan to pursue sum representations of any generating functions for cylindric partitions with profiles of more than 3 parts. The product representation \eqref{BorodinProd} and the functional equations \eqref{CorteelRec} apply regardless of the size and length of the profiles. So far, we are only able to prove and conjecture sum representations for the profiles with up to 3 parts.
+
+
+--- 6/20 (sim=0.776) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_025.tex ---
+Summary: Introduces the Corteel–Welsh q-difference functional equation for F_c(z,q), defining the profile-shifting operation c(J) and setting up the coupled recurrence system whose solutions are identified with the conjectured sum expressions.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Necessary definitions
+
+[Summary: Introduces the Corteel–Welsh q-difference functional equation for F_c(z,q), defining the profile-shifting operation c(J) and setting up the coupled recurrence system whose solutions are identified with the conjectured sum expressions.]
+
+Focusing on replacing the largest part in a given cylindric partition, Corteel--Welsh \cite{CW19} defined a $q$-difference equation for $F_c(z,q)$. This functional equation relates $F_c(z,q)$ with other generating functions $F_{c^*}(z,q)$ where $\#(c)=\#(c^*)$ and $|c|=|c^*|$. Let $c=(c_1, \dots , c_r)$ (with the convention that $c_0=c_r$) be a given composition and define $I_c$ to be the set of indices for the non-zero entries in $c$. Given a non-empty subset $J\subseteq I_c$, the composition $c(J) = (c_1(J), \dots , c_r(J))$ is defined by:
+\begin{equation}
+\label{eq:c(J)}
+c_i(J):= \begin{cases}
+c_i-1 &\text{if $i \in J$ and $i-1 \notin J$},\\
+c_i+1 &\text{if $i \notin J$ and $i-1 \in J$},\\
+c_i &\text{otherwise}.
+\end{cases}
+\end{equation}
+Then the explicit $q$-difference equation $F_c(z,q)$ satisfies is as follows.
+
+
+--- 7/20 (sim=0.776) bridges_uncu_weighted_cylindric/chunk_043.tex ---
+Summary: Motivates the cylindric partition recurrence method with the simpler toy example of P(z;q) for ordinary partitions, deriving P(z;q) = P(zq;q)/(1-zq) by removing the largest part, and recovering Euler's identity — this illustrates the logic behind the Corteel–Welsh approach.
+
+% Paper: bridges_uncu_weighted_cylindric
+% Section: Systems of recurrences for cylindric partitions and DSPPs
+
+[Summary: Motivates the cylindric partition recurrence method with the simpler toy example of P(z;q) for ordinary partitions, deriving P(z;q) = P(zq;q)/(1-zq) by removing the largest part, and recovering Euler's identity — this illustrates the logic behind the Corteel–Welsh approach.]
+
+To demonstrate Corteel--Welsh's recurrence and our generalizations, consider the following toy example: If $\mathrm{lg}(\lambda)$ denotes the largest part of the integer partition $\lambda$, then one can prove the following recurrence for $P(z;q):=\sum_{\lambda \in \mathcal{P}}z^{\mathrm{lg}(\lambda)}q^{|\lambda|}$,
+\begin{equation}\label{E:Partitionrecurrence}
+P(z;q)=\sum_{\substack{\mu \in \mathcal{P} \\ m \geq 0}} z^{\mathrm{\lg}(\mu)+m}q^{m + |\mu|}=\frac{P(zq;q)}{1-zq}.
+\end{equation}
+The proof consists taking a partition $\lambda$ on the left-hand side and removing $\mathrm{lg}(\lambda)$ to create a new partition $\mu$; one then has $\mathrm{lg}(\lambda)=\mathrm{lg}(\mu)+m$ for some $m \geq 0$.  From \eqref{E:Partitionrecurrence}, it is easy to derive Euler's product-sum identity (\cite{A}, Corollary 2.2)
+$$
+P(z;q)=\sum_{n \geq 0} \frac{z^nq^n}{(q;q)_n}=\frac{1}{(zq;q)_{\infty}}.
+$$
+
+If we begin instead with a cylindric partition generated by $\mathrm{CP}_{\delta}(z;q)$ and remove some largest parts in the ``corners'' where they occur, then the resulting cylindric partition has a new profile.  Since subsets of largest parts can be removed in multiple ways, an inclusion-exclusion process leads to the following analogue of \eqref{E:Partitionrecurrence}.
+
+
+--- 8/20 (sim=0.772) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_026.tex ---
+Summary: States the Corteel–Welsh functional equation (the central recurrence for F_c(z,q)) whose solutions at z=1 give the sum sides, and which drives the entire coupled q-difference equation system that the paper's proof reduces to linear algebra.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Necessary definitions
+
+[Summary: States the Corteel–Welsh functional equation (the central recurrence for F_c(z,q)) whose solutions at z=1 give the sum sides, and which drives the entire coupled q-difference equation system that the paper's proof reduces to linear algebra.]
+
+\begin{theorem}[Corteel--Welsh, 2019] 
+\label{th:CW}
+For any profile $c$, 
+\begin{equation}
+\label{CorteelRec}
+F_c(z,q) = \sum_{\emptyset\subset J\subseteq I_c} (-1)^{|J|-1} \frac{F_{c(J)}(z q^{|J|},q)}{(1-z q^{|J|})},
+\end{equation}
+ with the initial conditions $F_c(0,q)=F_c(z,0)=1$.
+\end{theorem}
+
+
+--- 9/20 (sim=0.762) bridges_uncu_weighted_cylindric/chunk_001.tex ---
+Summary: The abstract states the paper's central thesis: extending Corteel–Welsh's cylindric partition machinery (via Han–Xiong's weighted generalizations) to prove new sum-product identities, including Göllnitz–Gordon, Little Göllnitz, and Schmidt-type identities of Andrews–Paule.
+
+% Paper: bridges_uncu_weighted_cylindric
+
+[Summary: The abstract states the paper's central thesis: extending Corteel–Welsh's cylindric partition machinery (via Han–Xiong's weighted generalizations) to prove new sum-product identities, including Göllnitz–Gordon, Little Göllnitz, and Schmidt-type identities of Andrews–Paule.]
+
+\begin{abstract}
+    Recently Corteel and Welsh outlined a technique for finding new sum-product identities by using functional relations between generating functions for cylindric partitions and a theorem of Borodin. Here, we extend this framework to include very general product-sides coming from work of Han and Xiong. In doing so, we are led to consider structures such as weighted cylindric partitions, symmetric cylindric partitions and weighted skew double shifted plane partitions. We prove some new identities and obtain new proofs of known identities, including the G\"{o}llnitz--Gordon and Little G\"{o}llnitz identities as well as some beautiful Schmidt-type identities of Andrews and Paule.
+\end{abstract}
+
+
+--- 10/20 (sim=0.760) russell_companions_andrews_gordon/chunk_032.tex ---
+Summary: Notes that the functional equations for T_i match Warnaar's observation that they are normalized Corteel--Welsh equations for odd-profile cylindric partitions, then introduces the "method of atomic relations" (using S_v notation) as the self-contained proof strategy for verifying them.
+
+% Paper: russell_companions_andrews_gordon
+% Section: Completing the proof: Andrews--Gordon case
+
+[Summary: Notes that the functional equations for T_i match Warnaar's observation that they are normalized Corteel--Welsh equations for odd-profile cylindric partitions, then introduces the "method of atomic relations" (using S_v notation) as the self-contained proof strategy for verifying them.]
+
+As observed by Ole Warnaar,\footnote{Personal communication.} this set of functional equations exactly matches the (normalized) Corteel--Welsh~\cite{CW} functional equations for two-rowed cylindric partitions with profile $(c_1,c_2)$, where $c_1+c_2$ is odd (see their equation (3.5)). As such, we can complete the proof of Theorem~\ref{thm:mainresult1} by simply observing that we can recover~\eqref{eq:Tdef} by taking the limit as $L\to\infty$ in equations (7.24) and (7.25) of Warnaar's work~\cite{WarnCyl}. For the sake of making our paper self-contained (and because the proofs of Warnaar's formulas were omitted from~\cite{WarnCyl}), we will provide our own proof that $T_i(z,q)$ satisfies~\eqref{eq:newTrec1},~\eqref{eq:newTrec2}, and~\eqref{eq:newTrec3}.
+
+Our proof involves what we will call the method of {\it atomic relations}, using computations similar to those of~\cite{BKRS,KanRus-cylindric}. The difference is that we will prove everything for general $\ell$ and $0\le i \le \ell$ without relying on computers to prove special cases. We note that the computations in this section were aided by Frank Garvan's {\tt qseries} Maple package~\cite{Gar}, along with the survey on Rogers--Ramanujan--Slater-type identities by James Mc Laughlin, Andrew V. Sills, and Peter Zimmer~\cite{MSZ}. To explain the concept of atomic relations, we first introduce some notation.
+
+
+--- 11/20 (sim=0.759) bridges_uncu_weighted_cylindric_partitions/chunk_003.tex ---
+Summary: Intro describes Corteel-Welsh's cylindric partition approach and Borodin's product theorem as the key tool underpinning their technique.
+
+% Paper: bridges_uncu_weighted_cylindric_partitions
+% Section: Introduction
+[Summary: Intro describes Corteel-Welsh's cylindric partition approach and Borodin's product theorem as the key tool underpinning their technique.]
+
+Corteel and Welsh \cite{CW} recently showed how cylindric partitions can be used in the discovery of new sum-product identities.  (We give precise definitions of these objects and some generalizations in Section 2.)  Cylindric partition generating functions for any profile were shown by Borodin \cite{B} to equal infinite products, and ``sum-sides'' were then found by Corteel and Welsh to satisfy $q$-difference equations, which they showed occur naturally for cylindric partitions.  This led to alternative proofs of all four of Andrews--Schilling--Warnnar's $A_2$~Rogers--Ramanujan identities \cite{ACW}, as well as a proof of a new fifth identity which was conjectured in \cite{FW}. One such identity Corteel--Welsh proved in \cite[Theorem 1.1]{CW} is as follows: 
+
+\begin{equation}\label{E:CorteelWelshwidth7rank3}
+    \sum_{n_1, n_2 \geq 0} \frac{q^{n_1^2+n_2^2-n_1n_2+n_1+n_2}}{(q;q)_{n_1}}\begin{bmatrix} 2n_1 \\ n_2 \end{bmatrix}_q= \frac{1}{(q^2,q^3,q^3,q^4,q^4,q^5;q^7)_{\infty}}.
+\end{equation}
+Here the Gaussian polynomials are defined as \[\begin{bmatrix} n \\ m \end{bmatrix}_q=\left\{\begin{array}{cl}\displaystyle\frac{(q;q)_n}{(q;q)_m(q;q)_{n-m}}, &\text{if }n\geq m\geq 0, \\[-1.5ex]\\ 0, & \text{otherwise.}\end{array}\right.\] Recent work of Corteel, Dousse and the second author \cite{CDU}, as well as Warnaar \cite{W}, uses Corteel--Welsh's machinery to prove and conjecture many other sum-product identities.
+
+
+--- 12/20 (sim=0.759) bridges_uncu_weighted_cylindric_partitions/chunk_004.tex ---
+Summary: Intro states the paper's main contribution: extending Corteel-Welsh to Han-Xiong weighted cylindric partitions to reach more general products.
+
+% Paper: bridges_uncu_weighted_cylindric_partitions
+% Section: Introduction
+[Summary: Intro states the paper's main contribution: extending Corteel-Welsh to Han-Xiong weighted cylindric partitions to reach more general products.]
+
+In the present article, we extend the search for sum-product identities to certain generalizations of cylindric partitions, recently proved to also have infinite product generating functions by Han and Xiong \cite{HX}.  Essentially, one can write {\it any} product $(q^{b_1},\dots, q^{b_{r}};q^{b_r})^{-1}_{\infty}$ as a generating function for some weighted cylindric partitions (see Remark \ref{R:differentproducts}).  By then extending Corteel and Welsh's machinery to this more general setting, we were able to prove the following identities.
+
+
+--- 13/20 (sim=0.758) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_016.tex ---
+Summary: States the Corteel–Dousse–Uncu modulo 10 identity as a manifestly positive sum-product formula from the cylindric partitions paradigm, demonstrating the success of the approach that this paper extends to moduli 11 and 13.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Introduction
+
+[Summary: States the Corteel–Dousse–Uncu modulo 10 identity as a manifestly positive sum-product formula from the cylindric partitions paradigm, demonstrating the success of the approach that this paper extends to moduli 11 and 13.]
+
+\begin{theorem}[Corteel--Dousse--U., 2021]
+\label{th:CDU500}
+\begin{equation}\label{eq:CDU500}\sum_{\substack{r_1\geq s_1\geq r_2\geq 0\\r_1\geq s_2\geq 0}} \frac{q^{r_1^2 -r_1 s_1 + s_1^2 + r_2^2 + s_2^2  +s_1 s_2 + r_1 + r_2 + s_1 + s_2}}{(q;q)_{r_1}}{r_1\brack s_1}_q{r_1\brack s_2}_q{s_1\brack r_2}_q =\frac{1}{\theta(q^2,q^3,q^3,q^4,q^4,q^5;q^{10})}\end{equation}
+\end{theorem}
+
+
+--- 14/20 (sim=0.758) kanade_russell_completing_a2_andrews_schilling_warnaar/chunk_037.tex ---
+Summary: Opens the section on cylindric partitions and Corteel--Welsh recursion, recalling the connection between principal characters of A_r^{(1)} modules and cylindric partition generating functions, and defining compositions of ell.
+
+% Paper: kanade_russell_completing_a2_andrews_schilling_warnaar
+% Section: Cylindric partitions and Corteel--Welsh recursion
+
+
+[Summary: Opens the section on cylindric partitions and Corteel--Welsh recursion, recalling the connection between principal characters of A_r^{(1)} modules and cylindric partition generating functions, and defining compositions of ell.]
+\label{sec:CWrec}
+The principal characters of standard $\operatorname{A}_r^{(1)}$ modules are known to be closely related 
+to generating functions of cylindric partitions, see \cite{Tin-crystal}, \cite{FodWel}. 
+Here, we only review the necessary background.
+For more details, see \cite{GesKra}, \cite{FodWel}, \cite{CorDouUnc}, etc.
+
+
+By a composition of $\ell$, we mean an (ordered) sequence of non-negative integers $(c_0,\dots,c_r)$ such that $\ell=c_0+c_1+\cdots+c_r$.
+
+
+--- 15/20 (sim=0.754) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_031.tex ---
+Summary: Main results (3k+1): discusses lifting the modulus-3k+1 results to two-variable cylindric partition generating functions.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+1)$ case
+[Summary: Main results (3k+1): discusses lifting the modulus-3k+1 results to two-variable cylindric partition generating functions.]
+
+The lifting of \eqref{Eq_A2-vac-b} and \eqref{Eq_A2-two-b} to the 
+two-variable generating function for cylindric partitions results 
+in our final conjecture.
+
+
+--- 16/20 (sim=0.748) bridges_uncu_weighted_cylindric/chunk_003.tex ---
+Summary: Describes Corteel–Welsh's method of finding sum-product identities via cylindric partitions and Borodin's product formula, and contextualises the paper within subsequent work by Corteel–Dousse–Uncu and Warnaar.
+
+% Paper: bridges_uncu_weighted_cylindric
+% Section: Introduction
+
+[Summary: Describes Corteel–Welsh's method of finding sum-product identities via cylindric partitions and Borodin's product formula, and contextualises the paper within subsequent work by Corteel–Dousse–Uncu and Warnaar.]
+
+Corteel and Welsh \cite{CW} recently showed how cylindric partitions can be used in the discovery of new sum-product identities.  (We give precise definitions of these objects and some generalizations in Section 2.)  Cylindric partition generating functions for any profile were shown by Borodin \cite{B} to equal infinite products, and ``sum-sides'' were then found by Corteel and Welsh to satisfy $q$-difference equations, which they showed occur naturally for cylindric partitions.  This led to alternative proofs of all four of Andrews--Schilling--Warnnar's $A_2$~Rogers--Ramanujan identities \cite{ACW}, as well as a proof of a new fifth identity which was conjectured in \cite{FW}. One such identity Corteel--Welsh proved in \cite[Theorem 1.1]{CW} is as follows: 
+
+\begin{equation}\label{E:CorteelWelshwidth7rank3}
+    \sum_{n_1, n_2 \geq 0} \frac{q^{n_1^2+n_2^2-n_1n_2+n_1+n_2}}{(q;q)_{n_1}}\begin{bmatrix} 2n_1 \\ n_2 \end{bmatrix}_q= \frac{1}{(q^2,q^3,q^3,q^4,q^4,q^5;q^7)_{\infty}}.
+\end{equation}
+Here the Gaussian polynomials are defined as \[\begin{bmatrix} n \\ m \end{bmatrix}_q=\left\{\begin{array}{cl}\displaystyle\frac{(q;q)_n}{(q;q)_m(q;q)_{n-m}}, &\text{if }n\geq m\geq 0, \\[-1.5ex]\\ 0, & \text{otherwise.}\end{array}\right.\] Recent work of Corteel, Dousse and the second author \cite{CDU}, as well as Warnaar \cite{W}, uses Corteel--Welsh's machinery to prove and conjecture many other sum-product identities.
+
+
+--- 17/20 (sim=0.747) corteel_welsh_A2_RR/chunk_003.tex ---
+Summary: Surveys the cylindric partition approach to RR-type identities (Corteel's RSK bijection, Foda-Welsh Andrews-Gordon work), establishing the lineage and motivation for the A2 extension in this paper.
+
+% Paper: corteel_welsh_A2_RR
+% Section: Introduction
+
+[Summary: Surveys the cylindric partition approach to RR-type identities (Corteel's RSK bijection, Foda-Welsh Andrews-Gordon work), establishing the lineage and motivation for the A2 extension in this paper.]
+
+There have been
+many attempts to give combinatorial proofs of these identities
+and the first one is due to Garsia and Milne \cite{GM}.
+Unfortunately, it is not simple, and
+no simple combinatorial proof is known.
+Recently in \cite{C}, the first
+author presented a new bijective approach to the proofs
+of the Rogers-Ramanujan identities via the
+Robinson-Schensted-Knuth correspondence as presented in \cite{Pak}. 
+The bijection does not give the Rogers-Ramanujan identities but
+the Rogers-Ramanujan identities divided by $(q;q)_\infty$; namely
+\begin{equation}
+\label{RR2}
+\frac{1}{(q;q)_\infty}\sum_{n\ge 0} \frac{q^{n(n+1)}}{(q;q)_n}=\frac{1}{(q,q^2,q^2,q^3,q^3,q^4,q^5;q^5)_\infty}
+\end{equation}
+where $(a_1,\ldots , a_k;q)_\infty=\prod_{i=1}^k (a_i;q)_\infty$.
+This proof uses the combinatorics of cylindric partitions \cite{GK}. We interpret both sides as the generating function of cylindric partitions of profile $(3,0)$ and the bijection is a polynomial algorithm in the size of the cylindric partition.
+The idea to use cylindric partitions is due to Foda and  Welsh \cite{FW} in a more general setting:
+the Andrews-Gordon identities  \cite{And}. For $k>0$ and  $0\le i\le k$,
+these identities divided by $(q;q)_\infty$ are
+$$
+\frac{1}{(q;q)_\infty}\sum_{n_1,\ldots, n_k} \frac{q^{\sum_{j=1}^k n_j^2+\sum_{j=i}^k n_j}}
+{(q)_{n_1-n_2}\ldots (q)_{n_{k-1}-n_k}(q)_{n_k}}=
+\frac{(q^i,q^{2k+3-i},q^{2k+3};q^{2k+3})_\infty}{(q;q)_\infty^2}.
+$$
+Foda and Welsh  interpret the sum side as a generating function for
+(what they call) decorated Bressoud paths and the product side is
+interpreted as the generating function of cylindric partitions
+of profile $(2k+1-i,i)$,and they provide a bijection between the two objects.
+See \cite{FW} for more details.
+
+
+--- 18/20 (sim=0.747) warnaar_A2_andrews_gordon/chunk_082.tex ---
+Summary: Proves Proposition 2 using the Corteel--Dousse--Uncu functional equations to express gk_{(4,0,1)}, gk_{(3,0,2)} and gk_{(3,2,0)} in terms of already-proved generating functions.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: The modulus-$8$ case
+
+[Summary: Proves Proposition 2 using the Corteel--Dousse--Uncu functional equations to express gk_{(4,0,1)}, gk_{(3,0,2)} and gk_{(3,2,0)} in terms of already-proved generating functions.]
+
+
+\begin{proof}[Proof of Proposition~\ref{Prop_remainingcases}]
+We can either proceed as in the proof of Theorem~\ref{Thm_GK-mod8}
+or, more simply, use
+the three functional equations \cite[Equations (3.17)--(3.19)]{CDU20}
+\begin{subequations}\label{Eq_functional-eqn}
+\begin{align}
+\operatorname{\operatorname{gk}}_{(4,0,1)}(z,q)&=\operatorname{\operatorname{gk}}_{(3,1,1)}(zq;q)+zq\operatorname{\operatorname{gk}}_{(4,1,0)}(zq^2;q) \\
+\operatorname{\operatorname{gk}}_{(3,0,2)}(z,q)&=\operatorname{\operatorname{gk}}_{(2,2,1)}(zq;q)+zq\operatorname{\operatorname{gk}}_{(3,1,1)}(zq^2;q)
++zq^2 \operatorname{\operatorname{gk}}_{(4,1,0)}(zq^3;q) \\
+\operatorname{\operatorname{gk}}_{(3,2,0)}(z,q)&=\operatorname{\operatorname{gk}}_{(3,1,1)}(zq;q)+zq\operatorname{\operatorname{gk}}_{(2,2,1)}(zq^2;q) \\
+&\quad +zq^2\operatorname{\operatorname{gk}}_{(3,1,1)}(zq^3;q)+zq^3\operatorname{\operatorname{gk}}_{(4,1,0)}(zq^4;q). \notag
+\end{align}
+\end{subequations}
+Given $\operatorname{\operatorname{gk}}_{(4,1,0)}(z,q)$, $\operatorname{\operatorname{gk}}_{(3,2,0)}(z,q)$ and
+$\operatorname{\operatorname{gk}}_{(2,2,1)}(z,q)$, these three equations uniquely determine
+$\operatorname{\operatorname{gk}}_{(4,0,1)}(z,q)$, $\operatorname{\operatorname{gk}}_{(3,0,2)}(z,q)$ and
+$\operatorname{\operatorname{gk}}_{(3,1,1)}(z,q)$.
+Substituting the expressions for the six generating functions in question,
+as given by Theorem~\ref{Thm_GK-mod8} and (the as yet to be proven) 
+Proposition~\ref{Prop_remainingcases}, it immediately follows that
+\eqref{Eq_functional-eqn} holds, thus proving the proposition.
+\end{proof}
+
+
+--- 19/20 (sim=0.739) kanade_russell_tight_cylindric_partitions/chunk_020.tex ---
+Summary: States and proves Theorem 3.1 (the tight Corteel–Welsh functional equation), showing via an inclusion–exclusion argument on corner-max parts that extraneous terms cancel, giving T_c(z,q) in terms of T_{c(J)} at shifted arguments.
+
+% Paper: kanade_russell_tight_cylindric_partitions
+% Section: Functional Equations > Correcting the Corteel--Welsh recurrences
+
+[Summary: States and proves Theorem 3.1 (the tight Corteel–Welsh functional equation), showing via an inclusion–exclusion argument on corner-max parts that extraneous terms cancel, giving T_c(z,q) in terms of T_{c(J)} at shifted arguments.]
+
+\begin{thm}
+\label{thm:CWrec}
+Let $c=(c_1,\cdots,c_r)$ with $r\geq 2$ and $\ell=c_1+\cdots+c_r\geq 1$.
+Let $I_c \subseteq \{1,2,\cdots,r\}$, where $i\in I_c$ if and only if $c_i>0$. 
+For a subset $J\subseteq I_c$, define the composition $c(J)$ as in \cite[Sec.\ 3]{CorWel}:
+\begin{align}
+c_i(J)=\begin{cases}
+c_i-1 & i\in J, (i-1)\not\in J\\
+c_i+1 & i\not\in J, (i-1)\in J\\
+c_i & \mathrm{otherwise}
+\end{cases}
+\end{align}
+where $c_0=c_r$.
+Then,
+\begin{align}
+T_{c}(z,q) + \dfrac{zq^{r}}{1-zq^r}T_c(zq^r,q)= \sum_{\emptyset \neq J\subseteq I_c} (-1)^{|J|-1}\dfrac{T_{c(J)}{(zq^{|J|},q)}}{1-zq^{|J|}}
+\label{eqn:tightCWrec}
+\end{align}
+\end{thm}
+
+\begin{proof}
+
+We follow the general process of \cite[Prop.\ 3.1]{CorWel} adapting it to the situation of tight cylindric partitions as needed; however, some subtleties emerge.
+
+Fix a profile $\widetilde{c}$ with $r$ rows. Let $\mathscr{P}_{\widetilde{c}}\subseteq \mathscr{C}_{\widetilde{c}}$ be \emph{some} subset  of cylindric partitions of this profile (for instance, the tight cylindric partitions), and let $P_{\widetilde{c}}(z,q)$ be its generating function.
+Now, for fixed $t\geq 0, j\geq 1$, we interpret $(zq^j)^t P_{\widetilde{c}}(zq^j;q)$.
+Given a cylindric partition $\widetilde{\pi}\in \mathscr{P}_{\widetilde{c}}$ consider a new cylindric partition, say $\pi$, of a possibly different profile $c$ constructed as follows. Set $m=\mathrm{max}(\widetilde{\pi})$, and create $j$ new parts of weight $m+t$ and attach them \emph{somewhere} (to be determined precisely later) to $\widetilde{\pi}$, thus obtaining $\pi$. Now, $\mathrm{max}(\pi)=m+t$ and $\mathrm{wt}(\pi)=\mathrm{wt}(\widetilde{\pi}) + jm+jt$. Doing this 
+to all $\widetilde{\pi}$, and then calculating the generating function of $\pi$ thus obtained, we have:
+\begin{align}
+\sum_{\widetilde{\pi}\in \mathscr{P}_{\widetilde{c}}} z^{\mathrm{max}(\widetilde{\pi})+t}q^{\mathrm{wt}(\widetilde{\pi})+j\mathrm{max}(\widetilde{\pi})+jt}
+ =(zq^j)^t P_{\widetilde{c}}(zq^j,q).
+ \label{eqn:addboxes}
+\end{align}
+
+
+
+The left side of \eqref{eqn:tightCWrec} corresponds to the cylindric partitions $\pi$ of profile $c$ such that either:
+\begin{enumerate}
+\item $\pi$ is tight, or
+\item With $\pi=(\pi^{(1)}, \pi^{(2)},\cdots, \pi^{(r)})$, we have:
+\begin{enumerate}
+\item $\mathrm{max}(\pi)=\pi^{(1)}_1=\pi^{(2)}_1=\cdots = \pi^{(r)}_1$ (thus, these partitions are \emph{not} tight), 
+\item these are the only places where $\mathrm{max}(\pi)$ appears (i.e, $\pi^{(i)}_1 > \pi^{(i)}_2$ for all $i$), and finally, 
+\item removing all parts equal to $\max(\pi)$ gets us a tight cylindric partition (say, $\widetilde{\pi}$) of profile $c$.
+\end{enumerate}
+\end{enumerate}
+We let the set of cylindric partitions satisfying the second condition be denoted by $\mathscr{P}_c$. Its generating function is 
+$\frac{zq^r}{1-zq^r}T_c(zq^r;q)$
+by following the process of \eqref{eqn:addboxes} for all $t\geq 1$, while adding the newly created parts at the beginning of each partition of $\widetilde{\pi}$ of profile $c$. 
+
+Now, exactly as in \cite[Prop.\ 3.1]{CorWel}, for each $\emptyset \neq J \subseteq I_c$, we perform the procedure encapsulated in \eqref{eqn:addboxes} on \emph{tight} cylindric partitions $\pi=(\pi^{(1)},\cdots,\pi^{(r)})$ of profile $c(J)$ by attaching the newly created parts at the beginning of $\pi^{(j)}$ with $j\in J$. The resulting partitions are cylindric (but not necessarily tight) of profile $c$, and have the generating function $(zq^{|J|})^t\,T_{c(J)}(zq^{|J|};q)$. Summing over $t\geq 0$, we get $T_{c(J)}(zq^{|J|};q)/(1-zq^{|J|}).$
+
+Our hope would have been that this process yields exactly the cylindric partitions appearing in $\mathscr{T}_c\sqcup \mathscr{P}_c$ (which are counted by the left side of \eqref{eqn:tightCWrec}), and that in the signed sum, each of these partitions gets counted exactly once. However, a priori, the right side of \eqref{eqn:tightCWrec} generates a larger class of partitions, and the extraneous partitions disappear when the signed sum is considered. We now substantiate these claims.
+
+Exactly as in \cite{CorWel}, for $\pi\in \mathscr{C}_c$, since $\pi^{(i-1)}_1 \geq  \pi^{(i)}_1$
+whenever $i \not\in I_c$ (we let $\pi^{(0)}=\pi^{(r)}$),
+it must be the case that $\max(\pi)$ appears as $\pi^{(i)}_1$ for some $i\in I_c$. Let $I_\pi\subseteq I_{c}$ be the collection of all such $i$. (Note that if $\pi\in \mathscr{P}_c$ then $I_{\pi} = I_c$.) 
+We refer to $\pi^{(i)}_1$ for $i\in I_\pi$ as the corner-max parts of $\pi$.
+
+
+
+Now, let $\pi\in \mathscr{T}_c\sqcup \mathscr{P}_c$.
+Now, it can be seen that $\pi$ appears in the summand corresponding to a $J$ on the right side of \eqref{eqn:tightCWrec} if and only if $\emptyset \neq J \subseteq I_\pi$.
+Thus, the total contribution to $\pi$ in the signed sum on the right side is:
+\begin{align*}
+\sum_{\emptyset \neq J \subseteq I_\pi} (-1)^{|J|-1} = 1.
+\end{align*}
+
+Now suppose $\pi \not\in (\mathscr{T}_c \sqcup \mathscr{P}_c)$, yet appears in at least one summand on the right side of \eqref{eqn:tightCWrec}, say by adding some of the corner parts (corresponding to locations $\emptyset\neq J\subseteq I_c$) of $\pi$ to a certain tight partition $\widetilde{\pi}$ of profile $c(J)$.
+Then, $\pi$ has the following properties:
+\begin{enumerate}
+
+\item Since $\widetilde{\pi}$ is tight but $\pi$ is not, it cannot be that we are adding strictly larger parts  than $\max(\widetilde{\pi})$ to obtain $\pi$. This means that new parts added to $\widetilde{\pi}$ must be equal to the $\max(\widetilde{\pi})=\max(\pi)$, and since this breaks tightness, it must also be that $\max(\pi)$ appears in each row of $\pi$. In particular, $\max(\pi)=\pi^{(i)}_1$ for all $i\in\{1,2,\cdots,r\}$.
+
+\item Further, since $\pi \not\in \mathscr{P}_c$, it must be that $\max(\pi)=\pi^{(i)}_2$ for some $i$ as well. 
+Now, removing all of the first parts $\pi^{(i)}_1$ for $i=1,2,\cdots,r$, we obtain another cylindric partition, say $\pi'$, of the same profile. Thus, again, we have the set of corner-max parts $\emptyset \neq I_{\pi'} \subseteq I_c$.
+
+\end{enumerate}
+At this point, we have a sequence of cylindric partitions $\pi' \subset \widetilde{\pi} \subset \pi$ (where $\subset$ corresponds to adding parts), with $\max(\pi')=\max(\widetilde{\pi})=\max(\pi)$.  It is helpful to keep Figure \ref{fig:tightCWproof} in mind as an example, where $m$ denotes the maximum part.
+
+\begin{figure}
+\begin{tikzpicture}[x=2.1em, y=2.1em]
+\node[anchor=center,circle,draw, inner sep=0.1em] at (3,7) {$m$}; \node[anchor=center] at (4,7) {$m$}; \node[anchor=center] at (5,7) {$\cdots$};
+
+\node[anchor=center] at (3,6) {$m$}; \node[anchor=center] at (4,6) {$\cdots$};
+
+
+\node[anchor=center,inner sep=0.1em,circle,draw] at (1,5) {$m$};  \node[anchor=center] at (2,5) 
+{$<$}; \node[anchor=center] at (3,5) {$<$}; \node[anchor=center] at (4,5) {$<$};
+
+
+\node[anchor=center] at (1,4) {$m$};  \node[anchor=center] at (2,4) {$<$};
+
+\node[anchor=center] at (1,3) {$m$};  \node[anchor=center] at (2,3) {$<$};
+\node[anchor=center] at (0,2) {$m$}; \node[anchor=center] at (1,2) {$m$};  \node[anchor=center] at (2,2) {$<$}; 
+\node[anchor=center] at (0,1) {$m$}; 
+\node[anchor=center] at (1,1) {$\cdots$}; 
+% \node[anchor=center] at (0,0) {$m$}; 
+% \node[anchor=center] at (1,0) {$\cdots$}; 
+\draw[dotted] (-0.6,0.5) -- (-0.6,2.6) -- (0.4,2.6)--(0.4,4.6)-- (1.4,4.6) -- (1.4,5.6) --(2.4,5.6) --
+(2.4,6.6) -- (3.4,6.6) --
+(3.4,7.6)--(4.4,7.6);
+\draw (0.5,0.5) -- (0.5,2.5) -- (1.5,2.5)--(1.5,5.5)--(3.5,5.5) -- (3.5,7.5)--(4.5,7.5);
+\node at (-4,2) {$I_{\pi}$};
+\node at (-4,5) {$I_{\pi}$};
+\node at (-4,7) {$I_{\pi}$};
+\node at (-3,5) {$J$};
+\node at (-3,7) {$J$};
+\node at (-2,2) {$I_{\pi'}$};
+\node at (-2,7) {$I_{\pi'}$};
+%\node at (6.5,0) {$\leftarrow \pi^{(8)}$};
+\node at (6.5,1) {$\leftarrow \pi^{(7)}$};
+\node at (6.5,2) {$\leftarrow \pi^{(6)}$};
+\node at (6.5,3) {$\leftarrow \pi^{(5)}$};
+\node at (6.5,4) {$\leftarrow \pi^{(4)}$};
+\node at (6.5,5) {$\leftarrow \pi^{(3)}$};
+\node at (6.5,6) {$\leftarrow \pi^{(2)}$};
+\node at (6.5,7) {$\leftarrow \pi^{(1)}$};
+\end{tikzpicture}
+\caption{An example of a cylindric partition $\pi$ is depicted. The partition to the right of dotted line is $\widetilde{\pi}$. The circled parts in rows marked $J$ are added to $\widetilde{\pi}$ to get $\pi$. The partition to the right of solid line, i.e., removing all first parts from $\pi$, is $\pi'$. The subset of $I_\pi$ of rows where $\pi'$ has the part $m$ is marked $I_{\pi'}$.  Parts marked $<$ are strictly less than $m$. One can now modify this picture and check that if $J\subseteq I_{\pi'}$, then $\widetilde{\pi}$ is not tight. All other choices of $\emptyset\neq J\subseteq I_\pi$ are allowed.}
+\label{fig:tightCWproof}
+\end{figure}
+
+We now claim that $J\not\subseteq I_{\pi'}$. 
+If $J\subseteq I_{\pi'}$, then, we have that:
+\begin{enumerate}
+\item $\widetilde{\pi}^{(i)}_1 = \pi_1^{(i)}=\max(\pi)$ for all $i\in \{1,2,\cdots,r\} \backslash J$ (this was already the case), 
+\item For $i\in J$, $\widetilde{\pi}^{(i)}_1 = \pi^{(i)}_2$, but also, $\pi^{(i)}_2=(\pi')^{(i)}_1=\max(\pi)$ for all $i\in J\subseteq I_{\pi'}$,
+\end{enumerate}
+thus breaking the tightness of $\widetilde{\pi}$.
+
+Thus, such a $\pi$ appears in the right side of \eqref{eqn:tightCWrec} for all $J$ such that $\emptyset\neq J\subseteq I_c$ with $J\not\subseteq I_{\pi'}$.
+So, the number of times $\pi$ is counted in the alternating sum is:
+\begin{align*}
+\sum_{\substack{\emptyset\neq J\subseteq I_c \\ J\not\subseteq I_{\pi'}}} (-1)^{|J|-1}
+=\left( \sum_{J\subseteq I_c} 
+-\sum_{J\subseteq I_{\pi'}}
+\right)(-1)^{|J|-1}=0-0=0.
+\end{align*}
+\end{proof}
+
+
+--- 20/20 (sim=0.737) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_002.tex ---
+Summary: Intro: states the Rogers-Ramanujan identities as the starting point and surveys their role across partition theory and Lie algebras.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Introduction
+[Summary: Intro: states the Rogers-Ramanujan identities as the starting point and surveys their role across partition theory and Lie algebras.]
+
+The Rogers--Ramanujan identities \cite{Rogers94,Rogers17,RR19}
+\begin{subequations}\label{Eq_RR}
+\begin{align}\label{Eq_RR1}
+\sum_{n=0}^{\infty} \frac{q^{n^2}}{(1-q)\cdots(1-q^n)}&=
+\prod_{n=0}^{\infty}\frac{1}{(1-q^{5n+1})(1-q^{5n+4})}
+\intertext{and}
+\sum_{n=0}^{\infty} \frac{q^{n^2+n}}{(1-q)\cdots(1-q^n)}&=
+\prod_{n=0}^{\infty}\frac{1}{(1-q^{5n+2})(1-q^{5n+3})}
+\label{Eq_RR2}
+\end{align}
+\end{subequations}
+are widely regarded as two of the deepest and most beautiful $q$-series 
+identities in all of mathematics.
+They play an important role in the theory of partitions 
+\cite{Andrews76,Schur17,MacMahon04}, arise as characters in the
+representation theory of infinite dimensional Lie algebras and vertex 
+operator algebras
+\cite{FF93,LM78a,LM78b,LW81b,LW82,LW84,MP87},
+and have appeared in numerous other branches of mathematics.
+The reader is referred to the recent book by Sills \cite{Sills18} 
+for a comprehensive account of the Rogers--Ramanujan identities.
+
+

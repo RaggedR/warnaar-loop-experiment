@@ -1,0 +1,492 @@
+--- 1/20 (sim=0.635) jimenez_pastor_factorial_basis/chunk_004.tex ---
+Summary: Opens the introduction by motivating the paper through partition identities, stating the combinatorial Rogers-Ramanujan theorem as the primary example driving the development of the method.
+
+% Paper: jimenez_pastor_factorial_basis
+% Section: Introduction
+
+[Summary: Opens the introduction by motivating the paper through partition identities, stating the combinatorial Rogers-Ramanujan theorem as the primary example driving the development of the method.]
+
+Many combinatorics questions trickle down to finding a particular solution of a recurrence relation. This is no different in $q$-combinatorics. One of the most common appearances of sequences defined by a recurrence relation appears in the partition identities. A \textit{partition} $\pi$ is a non-increasing finite sequence $\pi = (\lambda_1,\lambda_2,\dots)$ of positive integers, called \textit{parts}. The \textit{size} of a partition is the sum of all its parts. Conventionally, the empty sequence is the unique partition of 0. A \textit{partition identity} is a statement that equates the number of partitions of size $n$ from two different sets of partitions. Maybe the best known and most recited partition identities are the Rogers--Ramanujan identities \cite{andrews1998theory}:\begin{theorem}[Rogers-Ramanujan identities, combinatorial version]\label{thm:RR_comb} Let $i=1$ or $i=2$. For every positive integer $n$, the number of partitions of size $n$ such that differences between consecutive parts are $\geq 2$ and the smallest part of the partition is $\geq i$ equals the number of partitions of size $n$ into parts congruent to $\pm i$ modulo 5.
+\end{theorem}
+
+There is an equivalent statement of the Rogers--Ramanujan identities in the $q$-series world:
+
+
+--- 2/20 (sim=0.626) cruz_simbron_inverse_mobius/chunk_003.tex ---
+Summary: Defines weighted partition identities and surveys the lineage of prior work (Uchimura, Bressoud–Subbarao, Alladi, Andrews, etc.) that this paper extends to unrestricted partitions.
+
+% Paper: cruz_simbron_inverse_mobius
+% Section: Introduction
+
+[Summary: Defines weighted partition identities and surveys the lineage of prior work (Uchimura, Bressoud–Subbarao, Alladi, Andrews, etc.) that this paper extends to unrestricted partitions.]
+
+A weighted partition identity is defined as a relation involving the sum $\sum_{\pi \in P(n)}f(\pi)$, where the function $f(\pi)$ incorporates functions of $k(\pi)$, $Q(\pi)$, $s(\pi)$, $l(\pi)$ or related variables. The investigation of weighted partition identities represents a relatively contemporary pursuit, laden with substantial implications yet to be fully elucidated \cite{berkovich2016new}. Beginning with the early studies of Uchimura \cite{uchimura1981identity} and Bressoud - Subbarao \cite{bressoud1984uchimura} on weighted partition identities concerning the sum of partitions into distinct parts, research has progressed systematically, notably under the direction of Alladi \cite{alladi1997partition, alladi1998partition, alladi2016partitions, alladi2023schmidt}, exploring weighted partition identities of unrestricted partitions. Subsequently, numerous results have emerged from the contributions of Andrews \cite{andrews2008number, andrews2013self}, Chen \cite{chen2007weighted}, Uncu \cite{berkovich2016new, berkovich2017variation,uncu2018weighted,bridges2022weighted}, Garvan \cite{garvan2017weighted}, Lovejoy \cite{choi2009partitions}, Merca \cite{merca2023additive,andrews2020number}, R. Fokkink - W. Fokkink - Wang \cite{bing1995relation}, and Dixi - Agarwal - Bhoria - Eyyunni - Maji \cite{agarwal2023bressoud,dixit2020partition,bhoria2022generalization,gupta2021sum}.\\
+
+
+--- 3/20 (sim=0.624) kilic_kursungoz_functional_equations_andrews_gordon/chunk_004.tex ---
+Summary: States the secondary aim of proving partition identities discovered algorithmically, and introduces the integer partition terminology (length, multiplicity, notation) used throughout.
+
+% Paper: kilic_kursungoz_functional_equations_andrews_gordon
+% Section: Introduction and statement of results
+
+[Summary: States the secondary aim of proving partition identities discovered algorithmically, and introduces the integer partition terminology (length, multiplicity, notation) used throughout.]
+
+The secondary aim of the paper is to give examples 
+of the findings of the search algorithm along with their proofs.  
+The applications are interpretations of instances of \eqref{srMainDouble} 
+as partition generating functions, 
+as well as sum-product identities that can be interpreted as partition identities.  
+
+An integer partition of a non-negative integer $n$ 
+is an unordered sum of positive integers that add up to $n$.  
+For instance, 4 has the five partitions 
+\begin{align}
+\nonumber 
+  1+1+1+1, \quad 1+1+2, \quad 2+2, \quad 1+3, \quad 4.  
+\end{align}
+We agree that zero has one partition, namely empty partition~\cite{A_thebluebook}.  
+Depending on the context, which will be made clear, 
+we will allow a limited number of zeros to appear as summands, such as $0+0+1+1+2$.  
+This is to fix the number of parts (also called the \emph{length}).  
+$1+1+2$ has length three, where $0+0+1+1+2$ has length five.  
+It may also be convenient to 
+write partitions as a list, 
+or drop the plus signs in between and 
+represent the repeated parts stacked 
+on top of each other, such as $(1,1,2)$ or 
+$\begin{array}{cc} 1 & \\ 1 & 2  \end{array}$
+instead of $1+1+2$.  
+
+The result samples are as follows.
+
+
+--- 4/20 (sim=0.617) bringmann_distributions_hilbert_hook/chunk_003.tex ---
+Summary: Opens the introduction by defining partitions and citing Hardy–Ramanujan, establishing the analytic number theory framework underpinning all the distribution results.
+
+% Paper: bringmann_distributions_hilbert_hook
+% Section: Introduction and statement of results
+[Summary: Opens the introduction by defining partitions and citing Hardy–Ramanujan, establishing the analytic number theory framework underpinning all the distribution results.]
+
+A {\it partition} of a non-negative integer $n$, denoted $\lambda \vdash n,$ is any nonincreasing sequence of positive integers, say 
+ $\lambda=(\lambda_1, \lambda_2, \dots, \lambda_m)$, that satisfies $|\lambda|:=\lambda_1+\dots+\lambda_m= n$. As usual, we let $p(n)$ denote the number of such partitions. One hundred years ago,
+Hardy and Ramanujan \cite{HardyRamanujan} proved their striking asymptotic formula 
+\begin{equation}\label{HR}
+p(n)\sim \frac{1}{4\sqrt{3}n} \cdot e^{\pi \sqrt{\frac{2n}{3}}},
+\end{equation}
+as $n\rightarrow \infty.$ This work marked the birth of the so-called Circle Method.
+
+
+--- 5/20 (sim=0.614) bridges_uncu_weighted_cylindric/chunk_016.tex ---
+Summary: States the second corollary linking distinct-part partitions (by even-indexed sum and largest part) to unrestricted partitions with parts > 1 via hook lengths, completing the combinatorial interpretation of the refined Schmidt-type identities.
+
+% Paper: bridges_uncu_weighted_cylindric
+% Section: Introduction
+
+[Summary: States the second corollary linking distinct-part partitions (by even-indexed sum and largest part) to unrestricted partitions with parts > 1 via hook lengths, completing the combinatorial interpretation of the refined Schmidt-type identities.]
+
+\begin{corollary}
+For $n \geq 1$, the number of partitions into distinct parts with largest part $m$ and $n=\lambda_1+(\lambda_2+\lambda_4+\lambda_6+\dots)$ equals the number of partitions of $n+1$ into unrestricted parts greater than 1 with largest hook length $m+1$.
+\end{corollary}
+
+
+--- 6/20 (sim=0.611) bridges_uncu_weighted_cylindric/chunk_061.tex ---
+Summary: Elaborates the combinatorial proof of Corollary C:weightedPartitionSumGF by dissecting each factor — the base Young diagram, the column-insertion terms (-q²;q²)_n and (q;q²)_{n+1}, and the 1/(q²;q²)_{2n+1} — to show the summand counts distinct-part partitions weighted by parity of odd parts, matching the product side.
+
+% Paper: bridges_uncu_weighted_cylindric
+% Section: Proofs of Theorems~\ref{T:scpwidth2 > Proof of Theorem~\ref{T:scpwidth2
+
+[Summary: Elaborates the combinatorial proof of Corollary C:weightedPartitionSumGF by dissecting each factor — the base Young diagram, the column-insertion terms (-q²;q²)_n and (q;q²)_{n+1}, and the 1/(q²;q²)_{2n+1} — to show the summand counts distinct-part partitions weighted by parity of odd parts, matching the product side.]
+
+One can interpret the left-hand side summand as the generating function of partitions into $2n$ or $2n+1$ distinct parts, where the partitions are counted with the extra weight $-1$ to the number of odd parts. This interpretation can be seen starting from the front factor $(-1)^{n} q^{2n^2+n}$. The term \[2n^2+n = 1+2+3+\dots+(2n-1)+2n\] is the generating function for partitions into exactly $2n$ consecutive parts. Furthermore, half of these $2n$ parts are odd and the $(-1)^n$ reflects the weight on the number of odd parts.  We interpret the $(-q^2;q^2)_n$ as the generating function of Young diagrams with columns even length $\leq 2n$ where each column length only appears once. Similarly $(q;q^2)_{n+1}$ is the generating function of Young diagrams with columns odd length $\leq 2n+1$ where each column length only appears once, where in this case we also have the extra weight $-1$ to the number of columns. Putting together these three terms, we can see that \[(-1)^{n} q^{2n^2+n}(q;q^2)_{n+1}(-q^2;q^2)_n\] is the generating function of partitions into $2n$ or $2n+1$ parts, where the smallest part is at most 2 if there are $2n$ parts, it is exactly 1 if there are $2n+1$ parts, and the difference between consecutive parts is at most 2. Moreover, each insertion of an odd length column in the original Young diagram of the partition with size $2n^2+n$ changes the number of odd parts by one, and each of these column also comes with a $-1$ weight itself that accounts for this change. Hence, combining the $-1$ weights we see that the exponent of $-1$ the number of odd parts in the outcome partition. Finally, the term $1/(q^2;q^2)_{2n+1}$ is the generating function of Young diagrams with even length $\leq 2n+1$ columns where each column appears even number of times. With this final observation, we can now interpret the summand \[(-1)^{n} q^{2n^2+n} \frac{(q;q^2)_{n+1}(-q^2;q^2)_{n}}{(q^2;q^2)_{2n+1}}\] as the generating function for partitions into $2n$ or $2n+1$ distinct parts with an extra alternating weight on the number of odd parts in the partitions. Summing over all possible $n$ we see that the left-hand side sum counts the same partitions as the right-hand side product.
+
+
+--- 7/20 (sim=0.605) cruz_simbron_inverse_mobius/chunk_011.tex ---
+Summary: Interpretive remark explaining that Corollary 2 is the paper's conceptual payoff: the Möbius inverse of any sequence is always interpretable as a weighted partition sum.
+
+% Paper: cruz_simbron_inverse_mobius
+% Section: Arithmetical interpretation of weighted partitions identities related to the largest and smallest part
+
+[Summary: Interpretive remark explaining that Corollary 2 is the paper's conceptual payoff: the Möbius inverse of any sequence is always interpretable as a weighted partition sum.]
+
+We should consider that $a_0=0$ can be defined for any sequence $a_1, a_2, \cdots$, simply by appending zero to it: $0, a_1, a_2, \cdots$. This Corollary show that the Mobius inverse transformation of any sequence $a_n$ with $a_0=0$ could be interpreted as weighted partition. We should notice that the left therm depend in $t$ and the right term not.
+
+
+--- 8/20 (sim=0.603) bridges_uncu_weighted_cylindric/chunk_058.tex ---
+Summary: Derives Corollary C:weightedPartitionSumGF by specialising Theorem T:scpwidth2 at z=q then q²↦q, yielding a weighted partition identity with product side (q,-q²;q²)_∞ that will be given a combinatorial proof.
+
+% Paper: bridges_uncu_weighted_cylindric
+% Section: Proofs of Theorems~\ref{T:scpwidth2 > Proof of Theorem~\ref{T:scpwidth2
+
+[Summary: Derives Corollary C:weightedPartitionSumGF by specialising Theorem T:scpwidth2 at z=q then q²↦q, yielding a weighted partition identity with product side (q,-q²;q²)_∞ that will be given a combinatorial proof.]
+
+%Partition Theory interpretation pf the SCP width 2 theorem.
+Setting $z=q$ followed by $q^2\mapsto q$ in Theorem~\ref{T:scpwidth2} gives the following corollary.
+
+
+--- 9/20 (sim=0.600) bridges_uncu_weighted_cylindric/chunk_060.tex ---
+Summary: Provides a combinatorial proof of Corollary C:weightedPartitionSumGF by interpreting each summand as a generating function for partitions into 2n or 2n+1 distinct parts with alternating weight ±1 on the number of odd parts.
+
+% Paper: bridges_uncu_weighted_cylindric
+% Section: Proofs of Theorems~\ref{T:scpwidth2 > Proof of Theorem~\ref{T:scpwidth2
+
+[Summary: Provides a combinatorial proof of Corollary C:weightedPartitionSumGF by interpreting each summand as a generating function for partitions into 2n or 2n+1 distinct parts with alternating weight ±1 on the number of odd parts.]
+
+The identity \eqref{E:scpwidth2_zq} can also be proven through combinatorial arguments. The right-side product is the generating function for the number of partitions into distinct parts with the extra weight $-1$ to the number of odd parts in the partition.
+
+
+--- 10/20 (sim=0.596) warnaar_affine_jacobi-trudi_identities/chunk_151.tex ---
+Summary: Proof of the rs-sum Corollary: derived by manipulating basic hypergeometric series, completing the preparatory results for Theorem MR's proof.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proof of (\ref{Eq_strange
+
+[Summary: Proof of the rs-sum Corollary: derived by manipulating basic hypergeometric series, completing the preparatory results for Theorem MR's proof.]
+
+\begin{proof}
+We begin by noting that
+\[
+\frac{1}{\bigl(q^2;q^2\bigr)_{\lfloorm/2\rfloor}}=\frac{\bigl(q;q^2\bigr)_{\lceilm/2\rceil}}{(q;q)_m}
+=\frac{H_m(-q;q)}{(q;q)_m},
+\]
+where the final equality follows from \cite[equation~(1.10c)]{W06a}.
+Using the above identity and replacing the summation index
+$s\mapsto r-2s$, it follows that
+\begin{align*}
+g_n(q)&=\sum_{r=0}^n \sum_{s=0}^{\lfloorr/2\rfloor}
+\frac{q^{r^2-2rs+s(2s+1)} (q;q)_n H_{n-r}(-q;q)}
+{(q;q)_{n-r}\bigl(q^2;q^2\bigr)_s(q;q)_{r-2s}} \\
+&=\sum_{r=0}^n q^{r^2} H_{n-r}(-q;q) \genfrac{[}{]}{0pt}{}{n}{r}_q\,
+\fourIdx{}{2}{}{1}\phi
+\bigg[\genfrac{}{}{0pt}{}{q^{-r},q^{1-r}}{0};q^2,q^2\bigg].
+\end{align*}
+According to the $c\to 0$ limit of the $q$-Chu--Vandermonde summation
+\cite[equation~(II.6)]{GR04}
+\[
+\fourIdx{}{2}{}{1}\phi
+\bigg[\genfrac{}{}{0pt}{}{a,q^{-n}}{0};q,q\bigg]=a^n.
+\]
+Applying this for $(q,a,n)\mapsto \bigl(q^2,q^{1-2\lceilr/2\rceil},\lfloorr/2\rfloor\bigr)$,
+we find
+\[
+g_n(q)=\sum_{r=0}^n q^{\binom{r+1}{2}} H_{n-r}(-q;q) \genfrac{[}{]}{0pt}{}{n}{r}_q.
+\]
+By Corollary~\ref{Cor_sumtoone} for $w=1$, we are done.
+\end{proof}
+
+
+--- 11/20 (sim=0.595) waldron_overpartition_companion/chunk_017.tex ---
+Summary: Explains the paper's proof strategy: the main q-series identity is proven analytically in Section 3, but it was originally discovered via a combinatorial partition identity, which is stated next as a proposition.
+
+% Paper: waldron_overpartition_companion
+% Section: New Results
+
+[Summary: Explains the paper's proof strategy: the main q-series identity is proven analytically in Section 3, but it was originally discovered via a combinatorial partition identity, which is stated next as a proposition.]
+
+We ultimately prove Theorem \ref{overpartition_identity} using $q$-series techniques below in Section 3, but the identity was first conjectured only by establishing
+an appropriate partition identity, which is most usefully written as the following equality of generating functions.
+
+
+--- 12/20 (sim=0.590) kilic_kursungoz_functional_equations_andrews_gordon/chunk_047.tex ---
+Summary: Proves Theorem 3 (thmAltRRG3) by an inclusion-exclusion argument: odd parts shared between the two component partitions cancel in sign-pairs, leaving only pairs where all odd parts appear with even total multiplicity, which after rescaling equals a known series.
+
+% Paper: kilic_kursungoz_functional_equations_andrews_gordon
+% Section: Alternating series and inclusion-exclusion
+
+[Summary: Proves Theorem 3 (thmAltRRG3) by an inclusion-exclusion argument: odd parts shared between the two component partitions cancel in sign-pairs, leaving only pairs where all odd parts appear with even total multiplicity, which after rescaling equals a known series.]
+
+\begin{proof}[proof of Theorem \ref{thmAltRRG3}]
+ We prove the third identity.  
+ Proofs of others are similar.  
+ We rewrite the series as 
+ \begin{align}
+ \nonumber 
+  \sum_{m, n \geq 0} q^{ 2 \binom{m+n+1}{2} } \; 
+   \frac{ q^m }{ (q; q)_m } \; \frac{ (-1)^n q^n }{ (q^2; q^2)_n }
+ \end{align}
+ The only fact we need concerning the first factor $q^{ 2 \binom{m+n+1}{2} }$ 
+ in the general term at the moment is that it is a function of $m+n$.  
+ The second factor $\frac{ q^m }{ (q; q)_m }$ in the general term 
+ generates partitions into $m$ parts, 
+ and the third one $\frac{ (-1)^n q^n }{ (q^2; q^2)_n }$ 
+ generates partitions into $n$ odd parts, each with weight $(-1)$.  
+ Call instances of those partitions $\mu$ and $\nu$, respectively.  
+ 
+ Choose and fix a pair $(\mu, \nu)$ of partitions described above.  
+ Also, choose and fix an odd positive integer $(2j-1)$.  
+ Let $\mu$ and $\nu$ share a total of $f_{(2j-1)}$ $(2j-1)$'s between them.  
+ Then, we can take a $(2j-1)$ from $\mu$, append it to $\nu$ with weight $(-1)$.  
+ Or, we can take a $(2j-1)$ from $\nu$, take off its sign, and append it to $\mu$.  
+ This creates $f_{(2j-1)}+1$ sister pairs of partitions $(\mu, \nu)$.  
+ The sum of their number of parts $m+n$ are the same, 
+ and they are counted 
+ \begin{align}
+ \nonumber 
+  \epsilon \left( 1 - 1 + 1 - \cdots + (-1)^{f_{(2j-1)}} \right) 
+  = \begin{cases} \epsilon & \textrm{ if } f_{(2j-1)} \textrm{ is even, } \\ 
+   0 & \textrm{ if } f_{(2j-1)} \textrm{ is odd } \end{cases}
+ \end{align} 
+ times.  
+ Here, $\epsilon$ is the product of $(-1)$'s 
+ coming from parts of $\nu$ other than $(2j-1)$.  
+ 
+ We deduce that the survivors in this inclusion-exclusion 
+ are those $(\mu, \nu)$ in which the total count of each odd part is even.  
+ Once we agree that $\nu$ can have all of those odd parts, 
+ then the survivors are pairs of partitions $(\mu, \nu)$ 
+ such that $\mu$ is a partition into $m$ even parts, 
+ and $\nu$ is a partition into odd parts appearing evenly~\cite{A_parity}.  
+ Each such pair is weighted by $(+1)$ now.  
+ We can update the number of parts in $\nu$ as $2n$, and arrive at 
+ \begin{align}
+ \nonumber 
+  \sum_{m, n \geq 0} q^{ 2 \binom{m+n+1}{2} } \; 
+   \frac{ q^m }{ (q; q)_m } \; \frac{ (-1)^n q^n }{ (q^2; q^2)_n }
+  & = \sum_{m, n \geq 0} q^{ 2 \binom{m+2n+1}{2} } \; 
+   \frac{ q^{2m} }{ (q^2; q^2)_m } \; \frac{ q^{2n} }{ (q^4; q^4)_n } \\ 
+ \nonumber 
+  & = \sum_{m, n \geq 0} 
+   \frac{ q^{ 8 \binom{m+1}{2} + 2 \binom{n+1}{2} + 4mn + 2n } }{ (q^4; q^4)_m (q^2; q^2)_n }.  
+ \end{align}
+ In the last series, we swapped $m \leftrightarrow n$.  
+ The last series is the $q \leftarrow q^2$ dilation of 
+ the first formula in~\cite[Theorem 1.6]{Yalcin}.  
+ This concludes the proof.  
+\end{proof}
+
+
+--- 13/20 (sim=0.589) cruz_simbron_inverse_mobius/chunk_014.tex ---
+Summary: Example 3 — applies Corollary 2 with the indicator sequence of odd indices and t = -1, showing the weighted partition sum equals τ_odd(n), the count of odd divisors.
+
+% Paper: cruz_simbron_inverse_mobius
+% Section: Arithmetical interpretation of weighted partitions identities related to the largest and smallest part
+
+[Summary: Example 3 — applies Corollary 2 with the indicator sequence of odd indices and t = -1, showing the weighted partition sum equals τ_odd(n), the count of odd divisors.]
+
+\begin{example}
+If in the Corollary \ref{corollary2} $a_{2k}=0, a_{2k+1}=1 $ (for $k \geq 0$) and $t=-1$, Then
+\begin{align}
+\begin{split}
+&\sum_{\pi \in P(n)}  (-1)^{k(\pi)-1}2^{Q(\pi)-1} \sum_{j=1}^{s(\pi)} 1 = \sum_{d \vert n} \frac{1 -(-1)^d}{2}  \\
+&\sum_{\pi \in P(n)}  (-1)^{k(\pi)-1}2^{Q(\pi)-1} s(\pi)= \tau_{odd}(n) \\
+\end{split}
+\end{align}
+\end{example}
+
+where $t_{odd}$ count the odd divisor of n.
+
+
+--- 14/20 (sim=0.589) li_uncu_macmahon_analysis_cylindric_partitions/chunk_048.tex ---
+Summary: Shows the bilateral sum equals the companion hierarchy formula of Theorem 1 and takes the limit to recover Rogers-Ramanujan.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: Cylindric Partitions with profile $(c_1,c_2)$ such that $c_1+c_2=3$ > Profile $(2,1)$
+
+[Summary: Shows the bilateral sum equals the companion hierarchy formula of Theorem 1 and takes the limit to recover Rogers-Ramanujan.]
+Instead of first guessing the expression \eqref{eq:P21formula} and then proving it. It is also possible to reverse engineer (which requires guessing the right factorial basis), find and prove the expression simultaneously using the q-Factorial Basis method of Jimenez-Pastor and the second author \cite{qFact}. 
+
+Note that one can combine the two sums of \eqref{eq:P21formula} into an alternating bilateral sum. This is the bilateral sum given in \eqref{eq:CP21n}: \[P_{(2,1)}(n)=\sum_{r=-\infty}^\infty (-1)^r q^{r(5r+1)/2} {2n \brack n-\frac{5r}{2} +  \frac{(-1)^r-1}{4}}_q,\] which is now proven. In the limit, using Jacobi Triple Product Identity \cite[Theorem 2.8]{A}, we get
+
+\begin{align*}
+   \nonumber\lim_{n\to \infty} P_{(2,1)}(n)
+   %=   &  \frac{1}{(q;q)_\infty} \left(\sum_{j=-\infty}^\infty q^{10j^2 +j} - q^2 \sum_{j=-\infty}^\infty q^{10j^2 +9j} \right)\\
+   =&\frac{1}{(q;q)_\infty} \sum_{j=-\infty}^{\infty}(-1)^{j}q^{\frac{5j^{2}+j}{2}}
+   =\frac{(q^2;q^5)_{\infty}(q^3;q^5)_{\infty}(q^5;q^5)_{\infty}}{(q;q)_{\infty}}
+   =\frac{1}{(q;q^5)_{\infty}(q^4;q^5)_{\infty}}.
+\end{align*}
+Hence,
+$$\lim_{n\to\infty}CP_{(2,1)}(n)=\lim_{n\to\infty}\frac{P_{(2,1)}(n)}{(q;q)_{2n}}=\frac{1}{(q;q)_{\infty}(q;q^5)_{\infty}(q^4;q^5)_{\infty}},$$
+which, as expected, matches Borodin's product formula \cite{Borodin} for cylindric partitions with profile $(2,1)$.
+
+
+--- 15/20 (sim=0.588) xin_zhou_selberg_baker-forrester/chunk_017.tex ---
+Summary: The basic notation section introduces partitions, Young diagrams, conjugate partitions, skew diagrams, horizontal strips, dominance order, and size notation used throughout the paper.
+
+% Paper: xin_zhou_selberg_baker-forrester
+% Section: Basic notation
+
+
+[Summary: The basic notation section introduces partitions, Young diagrams, conjugate partitions, skew diagrams, horizontal strips, dominance order, and size notation used throughout the paper.]
+A partition is a sequence $\lambda=({\lambda_1,\lambda_2,\dots)}$ of nonnegative integers such that
+${\lambda_1\geq \lambda_2\geq \cdots}$ and
+only finitely-many $\lambda_i$ are positive.
+The length of a partition $\lambda$, denoted
+$\ell(\lambda)$ is defined to be the number of non-zero $\lambda_i$ (such $\lambda_i$ are known as the parts of $\lambda$).
+We adopt the convention of not displaying the
+tails of zeros of a partition.
+Sometimes, it is convenient to denote a partition by
+\[
+\lambda=(1^{m_1}2^{m_2}\cdots r^{m_r}\cdots),
+\]
+which means that exactly $m_i$ of the parts of $\lambda$ are equal to $i$.
+As usual, we identify a partition with its Young diagram --- a collection of left-aligned rows of squares such that the $i$th row contains $\lambda_i$ squares. For example, the partition $(6,4,3,1)$ corresponds to
+\begin{center}
+\includegraphics[height=0.15\textwidth]{yang1.pdf}
+\end{center}
+The conjugate of a partition $\lambda$ is the partition $\lambda'$ whose diagram is the transpose of the diagram $\lambda$. For example, the conjugate of $(6,4,3,1)$
+is $(4,3,3,2,1,1)$.
+If $\lambda,\mu$ are partitions, we shall write $\mu \subset \lambda$ if $\mu_i\leq \lambda_i$
+for all $i\geq 1$. We can construct a skew diagram $\lambda/\mu$ whenever $\mu \subset \lambda$
+by removing the squares of $\mu$ from those of $\lambda$.
+For example, if $\lambda=(6,4,3,1)$ and $\mu=(5,3,1)$, then
+$\mu \subset \lambda$ and the skew diagram $\lambda/\mu$ is the following:
+\begin{center}
+\includegraphics[height=0.15\textwidth]{yang2.pdf}
+\end{center}
+A skew diagram $\theta$ is said to be a horizontal $r$-strip if $|\theta|=r$ and it contains at most one square in every column.
+For example, the above diagram for $(6,4,3,1)/(5,3,1)$ is a horizontal 5-strip.
+We say that $|\lambda|=\lambda_1+\lambda_2+\cdots$ is the size of the partition $\lambda$.
+We adopt the standard dominance order on
+the set of partitions of the same size.
+If $\lambda,\mu$ are partitions such that $|\lambda|=|\mu|$ then $\mu\leq \lambda$ if
+$\mu_1+\cdots+\mu_i\leq \lambda_1+\cdots+\lambda_i$ for all $i\geq 1$.
+As usual, we write $\mu<\lambda$ if $\mu\leq \lambda$ but $\mu\neq \lambda$.
+
+
+--- 16/20 (sim=0.586) huh_bounded_littlewood_cylindric/chunk_168.tex ---
+Summary: Opens Appendix B (growth diagrams / Fomin's bijections): provides bijective proofs of the marginal cases using Fomin's growth diagram technique.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: The discovery of the bounded Littlewood identities for cylindric Schur functions
+[Summary: Opens Appendix B (growth diagrams / Fomin's bijections): provides bijective proofs of the marginal cases using Fomin's growth diagram technique.]
+
+\medskip
+In conclusion, while we still had (and have) no bijective proof of Mortimer and
+Prellberg's identity~\eqref{eq:MP} (as mentioned earlier,
+such a bijection was in fact found
+by Courtiel, Elvey~Price and Marcovici~\cite{Courtiel2021}), nor of
+the generalization~\eqref{eq:MP_gen},
+instead we found new conceptual symmetric
+function identities that in particular {\it implied\/}~\eqref{eq:MP_gen}
+(and thus also~\eqref{eq:MP}),
+namely the affine bounded Littlewood identities in
+Theorem~\ref{thm:affine_BK_intro}. These led us to many more
+combinatorial and algebraic results; see Sections~\ref{sec:comb-ident}
+and~\ref{sec:h=1}, and a forthcoming sequel to this article.
+
+\section{Bijections between standard Young tableaux,
+  matchings, and vacillating tableaux using growth diagrams}
+\label{sec:growth}
+
+The purpose of this appendix is to review and clarify the relations between
+standard Young tableaux, matchings, and vacillating tableaux that
+one finds in the literature. We do this by using Fomin's growth
+diagrams, which allow us to give a uniform presentation.
+
+More precisely, with $h=\lfloor m/2\rfloor$, by means of explicit bijections,
+we are going to relate:
+
+
+--- 17/20 (sim=0.585) kursungoz_decomposition_cylindric/chunk_060.tex ---
+Summary: Commented-out earlier draft of the rank-2 distinct-parts analysis using connected-path counting; superseded by the current proof.
+
+% Paper: kursungoz_decomposition_cylindric
+% Section: Generating functions for cylindric partitions into distinct parts
+
+% In this section, we study the cylindric partitions of profile $c=(a,b)$ such that all parts are distinct. By using their path representations, we will present their generating functions.
+%
+% Let $\Lambda$ be a cylindric partition of profile $c=(a,b)$ such that all parts are distinct. If we construct the underlying partition $\pi$ corresponding to $\Lambda$, then it has a form as the following:
+%
+% \begin{align*}
+% \pi= \underbrace{\pi_1, \ldots,  \pi_1 }_{\substack{\text{$i_1$ times}}}, \ldots, \underbrace{ \pi_s, \ldots, \pi_s }_{\substack{\text{$i_s$ times}}}
+% \end{align*}
+%
+% where the $\pi_j$'s are consecutive parts, for $j=1, \ldots, s$. We note that the values $\pi_j$'s and their number of occurrences are determined by $\Lambda$. Because of the form of the underlying partition $\pi$, if we draw the path corresponding to $\Lambda$, then we get a connected path. Therefore, each cylindric partition of profile $c=(a,b)$ in which all parts are distinct corresponds to a unique connected path in Figure \ref{distinctparts - pathforc=(a,b)}. Conversely, if we take a connected path in Figure \ref{distinctparts - pathforc=(a,b)}, then we find a unique cylindric partition $\Lambda$ in which all parts are distinct.
+%
+% Let $D_{(a,b)}(q)$ denote the generating function of cylindric partitions of profile $c=(a,b)$ in which all parts are distinct. By using the 1-1 correspondence between $\Lambda$'s and the connected paths in Figure \ref{distinctparts - pathforc=(a,b)}, we will give a formula for $D_{(a,b)}(q)$. Let $n \geq 1$ be an integer and $a_n$ denote the number of connected paths passing through $1, \ldots, n$. Then, we have
+%
+% \begin{align*}
+% D_{(a,b)}(q)=\sum_{n\geq 0} \frac{a_nq^{n+1 \choose 2}}{(q;q)_n}
+% \end{align*}
+% We can write homogeneous equations with constant coefficients and certain degrees concerning $a_{2n}$'s and $a_{2n+1}$'s:
+% \begin{equation}
+% 	\label{eq:homogeneous eq.s}
+% 	\begin{gathered}
+% a_{2n}=c_1a_{2n-2}+c_2a_{2n-4}+ \ldots + c_ka_{2n-2k}\\
+% a_{2n+1}= d_1a_{2n-1}+d_2a_{2n-3}+ \ldots + d_la_{2n+1-2l}
+% 	\end{gathered}
+% \end{equation}
+% where, the $c_i$'s and $d_j$'s are constant.
+%
+
+[Summary: Commented-out earlier draft of the rank-2 distinct-parts analysis using connected-path counting; superseded by the current proof.]
+
+--- 18/20 (sim=0.584) phd/chunk_187.tex ---
+Summary: States the inverse local rule reformulation of the growth diagram condition, and the key base-case lemma D_{γ,γ}(γ)=(0,γ) used to initialize the bijection at the constant partition γ.
+
+% Paper: phd
+% Section: Cylindric Plane Partitions > Bijective proof of Borodin's identity > The bijection > Cylindric growth diagrams > Cylindric growth diagram
+[Summary: States the inverse local rule reformulation of the growth diagram condition, and the key base-case lemma D_{γ,γ}(γ)=(0,γ) used to initialize the bijection at the constant partition γ.]
+
+\begin{lemma}
+If $( u; v1, v2; w)$ is a face of a cylindric diagram $\mathfrak{G}(\pi)$ with label $m$, and if the labels of $u$, $v1$, $v2$ and $w$ are $\mu$, $\alpha$, $\beta$ and $\lambda$ respectively then:
+\[ \mathfrak{D}_{\alpha,\beta}(\lambda) = (m,\mu) \]
+\end{lemma}
+
+Observe that the weight condition of the local rule \ref{sec:local-weight} we have:
+
+\begin{lemma}\label{local-help2}
+$\mathfrak{D}_{\gamma,\gamma}(\gamma) = (0,\gamma)$
+\end{lemma}
+
+
+--- 19/20 (sim=0.583) cruz_simbron_inverse_mobius/chunk_020.tex ---
+Summary: Proof of Corollary 2 — introduces two auxiliary sequences to cancel all t-dependence from both sides, yielding ∑_{d|n} a_d (the Möbius-inverse sum) as a t-free weighted partition expression.
+
+% Paper: cruz_simbron_inverse_mobius
+% Section: Proof of the Theorems and Corollaries > Proof of Corollary 2
+
+[Summary: Proof of Corollary 2 — introduces two auxiliary sequences to cancel all t-dependence from both sides, yielding ∑_{d|n} a_d (the Möbius-inverse sum) as a t-free weighted partition expression.]
+
+\begin{proof}
+If we define the auxiliary sequence $b_n$ defined as 
+\begin{equation}
+b_n = a_1 + a_2 + \cdots + a_n
+\end{equation}
+with $b_0=0$, then
+\begin{equation}
+a_n = b_n-b_{n-1}
+\end{equation}
+for $n\geq 1$
+
+In the Corollary \ref{corollary1}, we conclude then, 
+\begin{align}
+\begin{split}
+&\sum_{\pi \in P(n)}  (t)^{k(\pi)-1}\left(\frac{t-1}{t}\right)^{Q(\pi)-1} \sum_{j=1}^{s(\pi)} (t)^{l(\pi)-s(\pi)+j} \left[ b_{l(\pi)-s(\pi)+j} - b_{l(\pi)-s(\pi)+j-1} \right] \\
+&= \sum_{d \vert n}  (t)^{d} b_d
+\end{split}
+\end{align}
+If we then define an auxiliary sequence $c_n$ as 
+\begin{align*}
+b_n = (t)^{-n}c_n
+\end{align*}
+Then, the interior sum is 
+\begin{align}
+\begin{split}
+&\sum_{j=1}^{s(\pi)} (t)^{l(\pi)-s(\pi)+j} \left[ (t)^{-(l(\pi)-s(\pi)+j)}c_{l(\pi)-s(\pi)+j}  - (t)^{-(l(\pi)-s(\pi)+j-1)}c_{l(\pi)-s(\pi)+j-1} \right] \\
+&\sum_{j=1}^{s(\pi)} \left[ c_{l(\pi)-s(\pi)+j} - t c_{l(\pi)-s(\pi)+j-1} \right] \\
+\end{split}
+\end{align}
+Finally, 
+\begin{equation}
+\begin{split}
+&\sum_{\pi \in P(n)}  (t)^{k(\pi)-1}\left(\frac{t-1}{t} \right)^{Q(\pi)-1} \sum_{j=1}^{s(\pi)} \left[ c_{l(\pi)-s(\pi)+j} - t c_{l(\pi)-s(\pi)+j-1} \right] \\
+&= \sum_{d \vert n}  c_d
+ \end{split}
+\end{equation}
+which conclude the proof. 
+\end{proof}
+
+
+--- 20/20 (sim=0.582) warnaar_A2_andrews_gordon/chunk_088.tex ---
+Summary: Notes a subtlety in Lemma 2: if u_{ell+1} is negative, the sum vanishes unless the pair (m_ell,m_{ell+1}) compensates, which is controlled by the monotonicity conditions.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Proofs of the main results > Proofs of Theorems~\ref{Thm_A2-vac-bothmoduli > Proof of Theorem~\ref{Thm_A2-vac-bothmoduli
+
+[Summary: Notes a subtlety in Lemma 2: if u_{ell+1} is negative, the sum vanishes unless the pair (m_ell,m_{ell+1}) compensates, which is controlled by the monotonicity conditions.]
+
+
+Note that if $u_{\ell+1}$ is a negative integer then the summand of
+\eqref{Eq_F-ell} vanishes unless $m_{\ell}+m_{\ell+1}\geqslant -u_{\ell+1}$.
+
+

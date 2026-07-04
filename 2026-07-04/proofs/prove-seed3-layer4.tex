@@ -1,0 +1,268 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\G}[1]{G_{#1}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\title{A manifestly positive functional system for the cylindric-partition
+generating functions at $d=7$ (modulus $10$)\\
+\large Seed 3, Layer 4, Round 2 --- Template B at the first unproved level}
+\author{Loop experiment, 2026-07-04}
+\date{}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We construct a Corteel--Welsh-style manifestly positive $y$-functional system
+(the \texttt{Eq:Fun} analogue) for all twelve $C_3$-orbits of profiles at $d=7$
+(modulus $10$), the smallest level at which no positivity result of any kind was
+previously known in the literature (internal Layer-2 propagation covered the
+zero-containing orbits; see \S1). The system (i) has all coefficients in $\NN[y,q]$ and all argument
+shifts $yq^{s}$ with $s\ge1$, (ii) determines all $G_c(y,q)$ uniquely from
+$G_c(0,q)=1$ by a $q$-adic contraction, and (iii) reproduces the raw
+inclusion--exclusion (Corteel--Welsh) solution exactly. Every row is \emph{derived}
+--- an explicit finite chain of substitutions of proved identities into proved
+identities --- not fitted. Consequence: $G_c(y,q)\in\NN[[y,q]]$ for every profile
+$c$ at $d=7$, closing the all-positive core left open by the Layer-2 Propagation
+Theorem at this level. Extraction of $Q_{n,c}\ge0$ (bounded forms and absorption
+lemmas) is not attempted here.
+\end{abstract}
+
+\section{Setup and conventions}
+
+Fix $d=7$, so $\ell=\gcd(d,3)=1$ and the modulus is $d+3=10$. Profiles are
+compositions $c=(c_0,c_1,c_2)$ with $c_0+c_1+c_2=7$; there are $36$ of them in
+$K=(8\cdot9)/6=12$ orbits under the cyclic rotation
+$\sigma(c_0,c_1,c_2)=(c_1,c_2,c_0)$. All labels are the \emph{true}
+\texttt{conjecture.tex} labels (synthesis-layer3 \S4(iv)); at $d=7$ the identity
+label map between the CW-note convention and the raw interlacing definition was
+pinned exactly by the Phase-1 engine (scratch log, Phase 1).
+
+Let $F_c(y,q)=\sum_m F_{c,m}(q)\,y^m$ be the cylindric-partition generating
+function graded by largest part, and
+\[
+G_c(y,q)=(yq;q)_\infty F_c(y,q)=\sum_{n\ge0}g_c(n)\,y^n .
+\]
+$F_c$, hence $G_c$, is invariant under rotation of the profile
+($F_{\sigma c}=F_c$; the relabeling bijection of cylindric partitions, proved in
+prove-seed2-layer2.tex, Lemma~1). We may therefore normalise every profile to the
+lexicographically smallest rotation of its orbit; the twelve orbit representatives
+are
+\[
+\begin{array}{llll}
+Z_1=(0,0,7), & Z_2=(0,6,1), & Z_3=(0,1,6), & Z_4=(0,5,2),\\
+Z_5=(0,2,5), & Z_6=(0,4,3), & Z_7=(0,3,4), &\\
+C_1=(1,1,5), & C_2=(1,4,2), & C_3=(1,2,4), & C_4=(1,3,3),\quad C_5=(2,2,3),
+\end{array}
+\]
+the $Z$'s zero-containing, the $C$'s the all-positive \emph{core}.
+
+\paragraph{The raw system.} By Corteel--Welsh (Proposition \texttt{incex}, form
+\texttt{Gb}, of the companion note, applied at $k=3$, $\ell=10$),
+\begin{equation}\label{raw}
+G_c(y)=\sum_{\emptyset\ne J\subseteq I_c}(-1)^{|J|-1}(yq;q)_{|J|-1}\,
+G_{c(J)}(yq^{|J|}),\qquad G_c(0,q)=G_c(y,0)=1,
+\end{equation}
+where $I_c=\{i:c_i>0\}$ and $c(J)$ subtracts $1$ at each $i\in J$ with
+$i-1\notin J$ and adds $1$ at each $i\notin J$ with $i-1\in J$ (indices mod $3$).
+Each instance of \eqref{raw} is a proved identity in $\ZZ[[y,q]]$.
+
+\paragraph{Rows and exact substitution.} A \emph{row} for a target orbit $t$ is an
+identity
+\[
+G_t(y)=\sum_{(r,s)} m_{r,s}(y,q)\,G_r(yq^{s}),\qquad m_{r,s}\in\ZZ[y,q],
+\]
+with $r$ ranging over orbit representatives. Given a proved row for $r$, one may
+substitute it for the factor $G_r(yq^{s})$ of any term (evaluating the row at
+$y\mapsto yq^{s}$) and collect; the result is again a proved row. All derivations
+below are finite chains of such substitutions starting from instances of
+\eqref{raw}; \emph{no step is a fit}.
+
+A row is \emph{positive} if every $m_{r,s}\in\NN[y,q]$ and every shift satisfies
+$s\ge1$. Setting $y=0$ in a positive row forces exactly one term with unit
+$y^0q^0$-coefficient (the \emph{head}).
+
+\section{The zero-containing rows}
+
+\begin{lemma}[R-rows at $d=7$]\label{zero}
+The following positive rows hold; the Family A/B constructions of the Layer-2
+Substitution Lemma (prove-seed6-layer2, \S2), run mechanically at $d=7$ for every
+composition in each orbit, produce exactly these rows (Families A and B coincide
+orbit-level):
+\begin{align*}
+\G{Z_1}(y)&=\G{Z_2}(yq),\\
+\G{Z_2}(y)&=\G{Z_3}(yq)+yq\,\G{C_1}(yq^{2})+yq^{2}\G{C_2}(yq^{3})
+ +yq^{3}\G{C_4}(yq^{4})+yq^{4}\G{C_3}(yq^{5})\\&\quad
+ +yq^{5}\G{C_1}(yq^{6})+yq^{6}\G{Z_2}(yq^{7}),\\
+\G{Z_3}(y)&=\G{C_1}(yq)+yq\,\G{Z_2}(yq^{2}),\\
+\G{Z_4}(y)&=\G{C_1}(yq)+yq\,\G{C_2}(yq^{2})+yq^{2}\G{C_4}(yq^{3})
+ +yq^{3}\G{C_3}(yq^{4})+yq^{4}\G{C_1}(yq^{5})+yq^{5}\G{Z_2}(yq^{6}),\\
+\G{Z_5}(y)&=\G{C_3}(yq)+yq\,\G{C_1}(yq^{2})+yq^{2}\G{Z_2}(yq^{3}),\\
+\G{Z_6}(y)&=\G{C_2}(yq)+yq\,\G{C_4}(yq^{2})+yq^{2}\G{C_3}(yq^{3})
+ +yq^{3}\G{C_1}(yq^{4})+yq^{4}\G{Z_2}(yq^{5}),\\
+\G{Z_7}(y)&=\G{C_4}(yq)+yq\,\G{C_3}(yq^{2})+yq^{2}\G{C_1}(yq^{3})
+ +yq^{3}\G{Z_2}(yq^{4}).
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+Family A: for $c=(a,0,b)$ with $b\ge1$, substitute the (already derived) row of
+$(a{+}1,0,b{-}1)$ into the single term $G_{(a+1,0,b-1)}(yq)$ of \eqref{raw}; its
+head $G_{(a,1,b-1)}(yq^{2})$ cancels the pair term $-(1-yq)G_{(a,1,b-1)}(yq^{2})$
+up to $+yq\,G_{(a,1,b-1)}(yq^{2})$; induction terminates at $(7,0,0)$, whose raw
+row is the single positive term $G_{(6,1,0)}(yq)$. Family B: for $c=(a,b,0)$,
+substitute the Family-A row of $(b{+}1,0,a{-}1)\sim(a{-}1,b{+}1,0)$ (for $a=1$,
+the raw $|I|=1$ row of $(0,b{+}1,0)$). Every step is the Substitution Lemma
+verbatim; the mechanical replay and orbit-normalisation are in
+\texttt{seed3\_R2L4\_construct.py} (\texttt{derive\_zero\_rows}), each output row
+verified against the raw-system solution for $n\le8$ to $q^{200}$.
+\end{proof}
+
+\section{The core rows}
+
+\begin{lemma}[core rows at $d=7$]\label{core}
+The following positive rows hold:
+\begin{align*}
+\G{C_1}(y)&=\G{C_2}(yq)+yq\,\G{Z_4}(yq^{2})+yq\,\G{C_3}(yq^{2})
+ +(yq^{2}{+}y^{2}q^{3})\G{C_1}(yq^{3})+(yq^{3}{+}y^{2}q^{4})\G{Z_2}(yq^{4}),\\[2pt]
+\G{C_3}(y)&=\G{C_5}(yq)+yq\,\G{C_4}(yq^{2})+yq\,\G{C_2}(yq^{2})
+ +yq^{2}\G{Z_4}(yq^{3})+(yq^{2}{+}y^{2}q^{3})\G{C_3}(yq^{3})\\&\quad
+ +(yq^{3}{+}y^{2}q^{4}{+}y^{2}q^{5})\G{C_1}(yq^{4})
+ +(yq^{4}{+}y^{2}q^{5}{+}y^{2}q^{6})\G{Z_2}(yq^{5}),\\[2pt]
+\G{C_4}(y)&=\G{C_5}(yq)+yq\,\G{C_2}(yq^{2})+yq\,\G{C_5}(yq^{2})
+ +(yq^{2}{+}y^{2}q^{3})\G{C_4}(yq^{3})+yq^{2}\G{C_2}(yq^{3})
+ +yq^{3}\G{Z_4}(yq^{4})\\&\quad
+ +(yq^{3}{+}y^{2}q^{4}{+}y^{2}q^{5})\G{C_3}(yq^{4})
+ +(yq^{4}{+}y^{2}q^{5}{+}y^{2}q^{6}{+}y^{2}q^{7})\G{C_1}(yq^{5})\\&\quad
+ +(yq^{5}{+}y^{2}q^{6}{+}y^{2}q^{7}{+}y^{2}q^{8})\G{Z_2}(yq^{6}),\\[2pt]
+\G{C_2}(y)&=\G{C_4}(yq)+yq\,\G{Z_6}(yq^{2})+yq\,\G{C_5}(yq^{2})
+ +yq^{2}\G{C_4}(yq^{3})+(yq^{2}{+}y^{2}q^{3})\G{C_2}(yq^{3})\\&\quad
+ +(yq^{3}{+}y^{2}q^{4})\G{Z_4}(yq^{4})
+ +(yq^{3}{+}y^{2}q^{4}{+}y^{2}q^{5})\G{C_3}(yq^{4})\\&\quad
+ +(yq^{4}{+}y^{2}q^{5}{+}y^{2}q^{6}{+}y^{2}q^{7}{+}y^{3}q^{8})\G{C_1}(yq^{5})
+ +(yq^{5}{+}y^{2}q^{6}{+}y^{2}q^{7}{+}y^{2}q^{8}{+}y^{3}q^{9})\G{Z_2}(yq^{6}),\\[2pt]
+\G{C_5}(y)&=\G{C_5}(yq)+yq\,\G{C_4}(yq^{2})+yq\,\G{C_5}(yq^{2})
+ +yq^{2}\G{Z_6}(yq^{3})+yq^{2}\G{C_2}(yq^{3})
+ +(yq^{2}{+}y^{2}q^{3})\G{C_5}(yq^{3})\\&\quad
+ +(yq^{3}{+}y^{2}q^{4}{+}y^{2}q^{5})\G{C_4}(yq^{4})
+ +(yq^{3}{+}y^{2}q^{4}{+}y^{2}q^{5})\G{C_2}(yq^{4})
+ +(yq^{4}{+}y^{2}q^{5}{+}y^{2}q^{6})\G{Z_4}(yq^{5})\\&\quad
+ +(yq^{4}{+}y^{2}q^{5}{+}2y^{2}q^{6}{+}y^{2}q^{7}{+}y^{3}q^{8})\G{C_3}(yq^{5})\\&\quad
+ +(yq^{5}{+}y^{2}q^{6}{+}2y^{2}q^{7}{+}y^{2}q^{8}{+}y^{2}q^{9}
+   {+}y^{3}q^{9}{+}y^{3}q^{10}{+}y^{3}q^{11})\G{C_1}(yq^{6})\\&\quad
+ +(yq^{6}{+}y^{2}q^{7}{+}2y^{2}q^{8}{+}y^{2}q^{9}{+}y^{2}q^{10}
+   {+}y^{3}q^{10}{+}y^{3}q^{11}{+}y^{3}q^{12})\G{Z_2}(yq^{7}).
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+Each row is obtained from the raw row \eqref{raw} of its target by the following
+explicit substitution chains (``$X@ (r,s)$'' means: substitute the row $X$ into
+the term at $(r,s)$; $\mathrm{raw}[r]$ is \eqref{raw} for $r$, $R[Z_i]$ the row of
+Lemma~\ref{zero}, $C[\,\cdot\,]$ a previously proved row of this lemma):
+\begin{itemize}
+\item $C_1$: $\mathrm{raw}[Z_2]@ (Z_2,1)$;\; $R[Z_5]@ (Z_5,1)$;\;
+      $R[Z_3]@ (Z_3,2)$.
+\item $C_3$: $\mathrm{raw}[C_1]@ (C_1,1)$;\; $\mathrm{raw}[Z_2]@ (Z_2,2)$;\;
+      $R[Z_7]@ (Z_7,1)$;\; $R[Z_5]@ (Z_5,2)$;\; $R[Z_3]@ (Z_3,3)$.
+\item $C_4$: $\mathrm{raw}[C_3]@ (C_3,1)$;\; $\mathrm{raw}[C_1]@ (C_1,2)$;\;
+      $\mathrm{raw}[Z_2]@ (Z_2,3)$;\; $R[Z_6]@ (Z_6,1)$;\; $R[Z_7]@ (Z_7,2)$;\;
+      $R[Z_5]@ (Z_5,3)$;\; $R[Z_3]@ (Z_3,4)$.
+\item $C_2$: $\mathrm{raw}[Z_4]@ (Z_4,1)$;\; $\mathrm{raw}[C_3]@ (C_3,1)$;\;
+      $\mathrm{raw}[C_1]@ (C_1,2)$;\; $\mathrm{raw}[Z_2]@ (Z_2,3)$;\;
+      $R[Z_7]@ (Z_7,2)$;\; $R[Z_5]@ (Z_5,3)$;\; $R[Z_3]@ (Z_3,4)$.
+\item $C_5$: $C[C_4]@ (C_4,1)$;\; $C[C_3]@ (C_3,2)$;\; $C[C_2]@ (C_2,1)$.
+\end{itemize}
+Every step is exact polynomial algebra on proved identities, so each endpoint is a
+proved identity; that the endpoints equal the displayed rows (and are positive) is
+a finite computation, replayed deterministically by
+\texttt{seed3\_R2L4\_system.py} (\texttt{PATHS}); in addition every row was
+verified against the raw-system solution for all $n\le 8$ to $q^{200}$.
+The derivation order $C_1,C_3,C_4,C_2,C_5$ is acyclic: the first four use only raw
+rows and Lemma~\ref{zero}; $C_5$ uses $C_2,C_3,C_4$.
+\end{proof}
+
+\begin{remark}
+The mechanism differs from the depth-$2$ manipulation of the CW note at $d=4$:
+raw rows are substituted down a chain of singles (core $\to\cdots\to$
+zero-containing), the negativity telescopes down the chain, and the accumulated
+zero-orbit terms are closed off with the R-rows, which absorb all residual
+negative monomials. The head graph is $C_1\to C_2\to C_4\to C_5\to C_5$ and
+$C_3\to C_5$; the self-head of $C_5$ at shift $1$ is exactly the shape of the CW
+$(2,1,1)$ row, giving the $(1-q^{n})$-division step there.
+\end{remark}
+
+\section{The theorem}
+
+\begin{theorem}[positive system at $d=7$]\label{system}
+The twelve rows of Lemmas \ref{zero} and \ref{core} form a system with:
+(i) all coefficients in $\NN[y,q]$ and all shifts $\ge1$;
+(ii) together with $g_c(0)=1$, a unique solution
+$(G_c)_{c}$ in $\ZZ[[y,q]]^{12}$; and
+(iii) that solution is the cylindric-partition family: it coincides with the
+solution of the raw system \eqref{raw}.
+\end{theorem}
+
+\begin{proof}
+(i) is manifest from the displays. (iii) holds because each row was derived from
+\eqref{raw} by exact substitutions, so the raw solution satisfies the system;
+uniqueness (ii) then gives coincidence. For (ii), extract $[y^{n}]$ of the row of
+$t$:
+\[
+g_t(n)=\sum_{(r,s)}\sum_{(j,a)} m_{r,s}[j,a]\;q^{a+s(n-j)}\,g_r(n-j),
+\]
+where $m_{r,s}=\sum_{j,a}m_{r,s}[j,a]\,y^{j}q^{a}$. Terms with $j\ge1$ refer to
+levels $n-j<n$. The level-$n$ subsystem is $g(n)=M_n\,g(n)+b_n$ with
+$b_n$ determined by levels $<n$ and $(M_n)_{t,r}=\sum_{s,a}m_{r,s}[0,a]\,q^{a+sn}$,
+every entry of $q$-adic valuation $\ge n\ge1$. Hence
+$(I-M_n)^{-1}=\sum_{k\ge0}M_n^{k}$ converges $q$-adically and
+$g(n)=(I-M_n)^{-1}b_n$ is unique. Induction on $n$ from $g(0)=\mathbf 1$.
+\end{proof}
+
+\begin{corollary}[bivariate positivity at $d=7$]\label{pos}
+For every profile $c$ with $c_0+c_1+c_2=7$, all coefficients of $G_c(y,q)$
+(equivalently, all $g_c(n)\in\NN[[q]]$) are nonnegative. In particular the
+all-positive core $\{C_1,\dots,C_5\}$, unreachable by the Layer-2 Propagation
+Theorem, is settled at the $G$-level.
+\end{corollary}
+
+\begin{proof}
+In the proof of Theorem~\ref{system}, $M_n$ and $b_n$ have nonnegative
+coefficients whenever the lower levels do, and
+$(I-M_n)^{-1}=\sum_k M_n^{k}$ preserves nonnegativity; induction on $n$ with
+$g(0)=\mathbf 1\ge0$.
+\end{proof}
+
+\begin{remark}[what this does and does not give]
+The corollary is the $d=7$ analogue of the positivity that Warnaar and
+Corteel--Dousse--Uncu establish en route at $d=5$, and fulfils requirements
+(i)--(iii) of the Layer-3 Mission 3 brief (Template B, construction step). It does
+\emph{not} by itself yield Warnaar's conjecture $Q_{n,c}=(q;q)_n g_c(n)\ge0$ at
+$d=7$: that requires solving the system in closed form (Thm.\ G-style bounded
+multisums) and absorption lemmas for the resulting $(1-q^{n})$ wall terms, which
+we leave to the next layer. The system here is the prerequisite for that step, and
+its uniqueness induction (Theorem~\ref{system}(ii)) is exactly the induction that
+such closed forms must be checked against.
+\end{remark}
+
+\section*{Verification appendix}
+
+All computations are exact integer arithmetic
+(\texttt{2026-07-04/scratch/scripts/}):
+\texttt{seed3\_R2L4\_engine.py} (raw-system solver, validated in Phase 1 against
+brute-force cylindric enumeration, the seed8 target-first $H$-recursion port with
+identity label map, and $Q_n(1)=11^{n}$);
+\texttt{seed3\_R2L4\_construct.py} (exact row algebra, R-row derivations);
+\texttt{seed3\_R2L4\_search.py} (substitution-chain search; log
+\texttt{seed3\_R2L4\_search.log});
+\texttt{seed3\_R2L4\_system.py} (deterministic replay of the five chains,
+assembly, and the standalone fixed-point solve of the positive system, which
+reproduces the raw solution for all $12$ orbits, $n\le8$, to $q^{200}$; log
+\texttt{seed3\_R2L4\_system.log}; system pickled in
+\texttt{seed3\_R2L4\_system\_d7.pkl}).
+\end{document}

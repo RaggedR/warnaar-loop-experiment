@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\qbin}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\title{Seed 1, Layer 3 (Round 2): a Pascal ladder for $\mathrm{A}_2$ fermionic
+forms and the $q$-binomial transform reformulation of the Monotonicity
+Conjecture}
+\author{proof-search agent, seed 1}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\paragraph{Setting.} Fix rank $3$, level $d$ with $\gcd(d,3)=1$, and for a
+profile $c=(c_0,c_1,c_2)$, $c_0+c_1+c_2=d$, let $F_{c,m}(q)$ be the
+generating function of cylindric partitions of profile $c$ with largest part
+at most $m$, and $H_{c,m}:=(q;q)_m F_{c,m}$. The $H_{c,m}$ are polynomials
+with nonnegative coefficients, constant on $\rho$-orbits of profiles, and
+satisfy the level tower
+$(1+q^m+q^{2m})\,H_{c,m}=\sum_{c'} q^{\,m\cdot\mathrm{EMD}(c,c')}H_{c',m-1}$
+(target-first orientation, validated against brute-force enumeration in the
+session engine). The \emph{Monotonicity Conjecture} (the layer-3 bottleneck)
+states $H_{c,m}\geq H_{c,m-1}$ coefficientwise. All inequalities between
+polynomials below are coefficientwise. $\qbin{m}{n}$ denotes the Gaussian
+binomial, $\qbin{m}{n}=0$ unless $0\le n\le m$.
+
+\section{The one-binomial lemma}
+
+\begin{lemma}[one-binomial monotonicity lemma]\label{lem:onebinom}
+Let $(F_m)_{m\ge 0}$ be given by
+$F_m=\sum_{n\ge 0}\varphi_n(q)\,\qbin{m}{n}$
+where the $\varphi_n\in\mathbb{Z}[q]$ (or Laurent) do not depend on $m$ and
+have nonnegative coefficients. Then
+\[
+F_m-F_{m-1}\;=\;\sum_{n\ge 1}\varphi_n(q)\,q^{\,m-n}\qbin{m-1}{n-1}\;\ge\;0 .
+\]
+\end{lemma}
+\begin{proof}
+$q$-Pascal: $\qbin{m}{n}-\qbin{m-1}{n}=q^{\,m-n}\qbin{m-1}{n-1}$.
+\end{proof}
+
+Every sequence of polynomials admits exactly one such expansion:
+
+\begin{lemma}[inverse $q$-binomial transform]\label{lem:invqbt}
+For any sequence $(H_m)_{m\ge0}$ in $\mathbb{Z}[q]$ there are unique
+$g_n\in\mathbb{Z}[q]$ with $H_m=\sum_{n=0}^m g_n\qbin{m}{n}$ for all $m$;
+namely $g_m=H_m-\sum_{n<m}g_n\qbin{m}{n}$, equivalently
+$g_n=\sum_{k=0}^n(-1)^{n-k}q^{\binom{n-k}{2}}\qbin{n}{k}H_k$
+($g_n$ is an $n$-th $q$-difference of the sequence).
+\end{lemma}
+
+\begin{conjecture}[$g$-positivity]\label{con:g}
+For every level $d$ with $\gcd(d,3)=1$ and every profile orbit $c$, the
+inverse $q$-binomial transform $g_{c,n}$ of $(H_{c,m})_m$ has nonnegative
+coefficients.
+\end{conjecture}
+
+By Lemma~\ref{lem:onebinom}, \textbf{Conjecture~\ref{con:g} implies the
+Monotonicity Conjecture}, with the exact surplus
+$H_{c,m}-H_{c,m-1}=\sum_{n\ge1}g_{c,n}\,q^{m-n}\qbin{m-1}{n-1}$.
+The statement of Conjecture~\ref{con:g} contains \emph{no} bound variable
+$m$: one fixed polynomial sequence per orbit. Verified exactly (integer
+arithmetic) for all orbits at $d=2,4,5$ for $n\le 8$ and $d=7$ for $n\le6$
+(script \texttt{seed1\_R2L3\_qbt.py}). At $d=2$ it is a theorem:
+$g_n=q^{n^2}$ (balanced), $q^{n^2+n}$ (corner). The valuation data
+$\operatorname{val} g_{c,n}$ stabilizes in $d$ for corresponding profile
+shapes (e.g.\ $(0,0,d)$: $0,2,6,11,18,26,36,\dots$ for all of $d=4,5,7$),
+suggesting a uniform fermionic description of $g_{c,n}$.
+
+\section{The $\mathrm{A}_2$ Pascal ladder}
+
+For $a,b,c\in\mathbb{Z}$ define the Warnaar-type bounded fermionic form
+\[
+\Phi_m(a,b,c)\;:=\;\sum_{n,j\ge 0}
+q^{\,n^2-nj+j^2+an+bj}\,\qbin{m}{n}\qbin{2n+c}{j}.
+\]
+$\Phi_m(a,b,c)$ has nonnegative coefficients for all $a,b,c$ (each summand is
+a monomial times Gaussian binomials).
+
+\begin{theorem}[$\mathrm{A}_2$ ladder identity]\label{thm:ladder}
+For all $a,b,c\in\mathbb{Z}$ and $m\ge 1$,
+\[
+\Phi_m(a,b,c)-\Phi_{m-1}(a,b,c)\;=\;q^{\,m+a}\,\Phi_{m-1}(a+1,\,b-1,\,c+2).
+\]
+In particular $\Phi_m(a,b,c)$ is coefficientwise monotone in $m$, as are all
+its iterated surpluses, which move along the lattice ray
+$(a,b,c)\mapsto(a+1,b-1,c+2)$.
+\end{theorem}
+\begin{proof}
+Only the first binomial depends on $m$. By $q$-Pascal,
+$\qbin{m}{n}-\qbin{m-1}{n}=q^{m-n}\qbin{m-1}{n-1}$, so the difference equals
+$\sum_{n\ge1,\,j\ge0}q^{\,n^2-nj+j^2+an+bj+m-n}\qbin{m-1}{n-1}\qbin{2n+c}{j}$.
+Substituting $n\mapsto n+1$, the exponent becomes
+$n^2-nj+j^2+(a+1)n+(b-1)j+m+a$ and the binomials become
+$\qbin{m-1}{n}\qbin{2n+(c+2)}{j}$.
+\end{proof}
+
+Theorem~\ref{thm:ladder} is the exact $\mathrm{A}_2$ analogue of the $d=2$
+ladder $E_{a,m}-E_{a,m-1}=q^{m+a}E_{a+1,m-1}$ for
+$E_{a,m}=\sum_j q^{j^2+aj}\qbin{m}{j}$: the same one-line $q$-Pascal
+argument, with the $j$-binomial $\qbin{2n+c}{j}$ inert. It was verified
+exactly on the grid $a\in[-2,3]$, $b\in[-4,3]$, $c\in[-1,3]$, $m\le 7$
+(zero failures), and discovered from data: the empirical surplus chain of
+the $d=4$ tower matches
+$(1,1,0)\to(2,0,2)\to(3,-1,4)$ and $(0,1,0)\to(1,0,2)\to(2,-1,4)$ with
+prefactor $q^{m+a}$ throughout.
+
+\begin{corollary}\label{cor:d4}
+The following identities were verified exactly for $m\le 8$
+(previously $m\le5$, Layer 2 seed 4):
+$H_{(1,1,2),m}=\Phi_m(0,0,0)$, $H_{(0,0,4),m}=\Phi_m(1,1,0)$,
+$H_{(0,3,1),m}=\Phi_m(0,1,0)$ at $d=4$. Conditional on these (the bounded
+$\mathrm{A}_2$ Andrews--Gordon forms), Theorem~\ref{thm:ladder} \emph{proves}
+monotonicity for these three orbits, with explicit surplus
+$H_m-H_{m-1}=q^{m+a}\Phi_{m-1}(a+1,b-1,c+2)$. The valuations $m+a$ match the
+tower census (corner orbit $(0,0,4)$: $a=1$, extra factor $q$).
+Equivalently, in the language of Conjecture~\ref{con:g}, these orbits have
+$g_{c,n}=q^{\,n^2+an}\sum_j q^{\,j^2-nj+bj}\qbin{2n+c}{j}$, manifestly
+nonnegative.
+\end{corollary}
+
+\section{Negative results (search exclusions)}
+
+Exact searches at $m\le 7$ (scripts \texttt{seed1\_R2L3\_ansatz.py},
+\texttt{seed1\_R2L3\_twoterm.py}) exclude, for the two remaining $d=4$
+orbits $(0,1,3)$, $(0,2,2)$ and for \emph{all seven} $d=5$ orbits:
+\begin{itemize}
+\item any form $\sum_{n,j}q^{An^2+Bnj+Cj^2+an+bj}\qbin{m}{n}\qbin{\alpha
+n+\beta m+c}{j}$ with $A\in\{1,2\}$, $B\in[-2,1]$, $C\in[1,3]$,
+$a,b\in[-2,4]$, $\alpha\in[0,3]$, $\beta\in\{0,1\}$, $c\in[-2,4]$;
+\item any two-term decomposition $H=\Phi(p_1)+q^t\Phi(p_2)$ with
+$p_i$ in the grid $a\in[-1,4]$, $b\in[-2,4]$, $c\in[-2,5]$.
+\end{itemize}
+The shift patterns of their iterated surpluses (increments
+$0,1,1,0,\dots$ rather than the ladder's $+1$ per step in $a$) show their
+$m$-dependence cannot sit in a single $\qbin{m}{n}$ \emph{of these shapes};
+a three-variable form (cf.\ Warnaar's modulus-8 conjecture, variables
+$n_1,n_2,m_1$ with $m_2=2n_2$) is the natural next ansatz. Note that
+Conjecture~\ref{con:g} sidesteps this entirely: the $g_{c,n}$ of the missing
+orbits are nonnegative in all computed cases even though no closed form is
+known.
+
+\end{document}

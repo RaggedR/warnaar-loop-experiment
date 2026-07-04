@@ -1,0 +1,845 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\qbin}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\poch}[1]{(q;q)_{#1}}
+\newcommand{\GK}{\mathrm{GK}}
+\newcommand{\FERM}{\mathrm{FERM}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\title{Two cases of the $\mathrm{A}_2$ Andrews--Gordon conjectures for
+cylindric partitions ($k=3$ at modulus $11$, $k=4$ at modulus $13$),
+and a bounded refinement of positivity at $d=4$}
+\author{Robin Langer}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Building on results of Corteel--Welsh, Kanade--Russell and Uncu, we prove
+the first two cases beyond $k=2$ of Warnaar's fermionic-form conjectures
+for cylindric partitions \cite[Conjectures~2.5 and~2.11]{W23}: the
+balanced profiles $c=(3,3,2)$ at $d=8$ (modulus $11$, $k=3$) and
+$c=(4,3,3)$ at $d=10$ (modulus $13$, $k=4$). Both proofs chain Warnaar's
+own finite form \cite[Proposition~7.1]{W23}, in a coefficientwise limit,
+with an exact Pochhammer split and one of Uncu's theorems. At modulus
+$11$ one Kanade--Russell contiguous relation \cite[Lemma~9.2]{KR22} is
+also needed to reach Uncu's modulus-$11$ theorem
+\cite[Theorem~4.3]{Uncu23}; at modulus $13$ the chain is \emph{shorter}
+--- the split lands verbatim on Uncu's modulus-$13$ theorem
+\cite[Theorem~5.3]{Uncu23}, and no contiguous relation is required. As a
+corollary, the positivity conjecture \cite[Conjecture~2.7]{W23} holds for
+the orbits of $(3,3,2)$ and $(4,3,3)$. We also record a bounded refinement at $d=4$: for every profile
+$c$ with $c_0+c_1+c_2=4$ one has
+$H_{c,m}=\sum_{n\le m}\qbin{m}{n}Q_{n,c}$ with the $Q_{n,c}$ given by
+explicit manifestly nonnegative polynomials built on the Corteel--Welsh
+bounded forms; monotonicity of $(H_{c,m})_m$ follows. The positivity of
+$Q_{n,c}$ at $d=4$ is Warnaar's result; the bounded expansion, and two
+absorption identities that make the two ``wall'' orbits manifestly
+positive, appear to be new. The elementary $q$-binomial infrastructure and
+the $d=4$ argument have been formally verified in Lean~4/Mathlib.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Let $\GK_c(z,q)$ denote the generating function of cylindric partitions of
+rank $3$ and profile $c=(c_0,c_1,c_2)$, in the notation of \cite{W23}, with
+$z$ tracking the largest part; set $d:=c_0+c_1+c_2$ (the level), so the
+associated modulus is $d+3$. Since $\GK_c$ is invariant under cyclic
+rotation of the profile, every statement below about a profile applies
+verbatim to its rotation orbit; we fix once and for all the profile
+representatives used by Corteel--Welsh \cite{CW19} at $d=4$, namely
+$(2,1,1)$, $(4,0,0)$, $(3,1,0)$, $(3,0,1)$, $(2,2,0)$, which lie in the
+five distinct orbits.
+
+Following \cite{W23}, for $\ell:=\gcd(d,3)$ define
+\begin{equation}\label{eq:Qdef}
+Q_{n,c}(q):=(q^{\ell};q^{\ell})_n\,[z^n]\Bigl((zq;q)_\infty\,
+\GK_c(z,q)\Bigr).
+\end{equation}
+The positivity conjecture, stated by Corteel--Dousse--Uncu
+\cite[Conjecture~4.2]{CDU22} and reproduced as
+\cite[Conjecture~2.7]{W23}, reads:
+
+\begin{conjecture}[{\cite[Conjecture~2.7]{W23}}]\label{con:pos}
+Let $c=(c_0,c_1,c_2)$ and $d:=c_0+c_1+c_2$ such that
+$d\not\equiv 0\pmod 3$. Then $Q_{n,(c_0,c_1,c_2)}(q)$ is a polynomial in
+$q$ with nonnegative coefficients. Moreover,
+$Q_{n,(c_0,c_1,c_2)}(1)=\bigl(\tfrac16(d+1)(d+2)-1\bigr)^n$.
+\end{conjecture}
+
+Polynomiality and the evaluation at $q=1$ were proved by Welsh
+\cite{Welsh21}; Warnaar proved positivity for $k=1$ and $k=2$, i.e.\ for
+all profiles with $d\in\{2,4,5\}$ \cite{W23}; positivity for general $d$
+remains open. For the balanced profile $(k,k,k-1)$, $d=3k-1$, Warnaar
+conjectured an explicit fermionic form:
+
+\begin{conjecture}[{\cite[Conjecture~2.5]{W23}, first identity}]
+\label{con:ferm}
+For a positive integer $k$,
+\[
+\GK_{(k,k,k-1)}(z,q)
+=\frac{1}{(zq;q)_\infty}
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1}q^{n_k^2}}{\poch{n_1}}
+\prod_{i=1}^{k-1}q^{n_i^2-n_im_i+m_i^2}
+\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i},
+\]
+where $m_k:=2n_k$.
+\end{conjecture}
+
+The modulus-$(3k+1)$ companion concerns the balanced profile
+$(k,k-1,k-1)$ at level $d=3k-2$:
+
+\begin{conjecture}[{\cite[Conjecture~2.11]{W23}, first identity}]
+\label{con:fermb}
+For a positive integer $k$,
+\begin{multline*}
+\GK_{(k,k-1,k-1)}(z,q)
+=\frac{1}{(zq;q)_\infty}
+\sum_{\substack{n_1,\dots,n_{k-1}\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1}q^{\sum_{i=1}^{k-1}(n_i^2-n_im_i+m_i^2)}}{\poch{n_1}}\\
+\times\qbin{2n_{k-1}}{m_{k-1}}
+\prod_{i=1}^{k-2}\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i}.
+\end{multline*}
+\end{conjecture}
+
+Warnaar proved Conjecture~\ref{con:ferm} for $k=1$ and $k=2$
+\cite[Theorem~2.6]{W23}; the $k=1$ case of Conjecture~\ref{con:fermb} is
+trivial and $k=2$ is due to Corteel--Welsh \cite[Theorem~3.2]{CW19}. As
+Warnaar observes, either conjecture at general $k$ immediately implies
+manifestly positive representations for the $Q_{n,c}$ of its balanced
+profile, hence Conjecture~\ref{con:pos} there.
+
+The purpose of this note is threefold.
+
+\emph{First} (Section~\ref{sec:equiv}), we record a simple but, we
+believe, clarifying observation: for $\gcd(d,3)=1$, writing
+$F_{c,m}(q)$ for the generating function of
+cylindric partitions of profile $c$ with largest part at most $m$, and
+$H_{c,m}:=\poch{m}F_{c,m}$, the family $(H_{c,m})_m$ has a
+\emph{unique} expansion $H_{c,m}=\sum_{n\le m}\qbin{m}{n}a_n$ with
+$a_n$ independent of $m$, and necessarily $a_n=Q_{n,c}$. Consequently
+Conjecture~\ref{con:pos} at $c$ is \emph{equivalent} to the existence of a
+coefficientwise-nonnegative $q$-binomial expansion of $(H_{c,m})_m$. This
+is a precise sense in which the problem of bounded $\mathrm{A}_2$
+Andrews--Gordon identities and the positivity conjecture are two faces of
+one problem.
+
+\emph{Second} (Section~\ref{sec:d8}), we prove
+Conjecture~\ref{con:ferm} for $k=3$ ($d=8$, modulus $11$) and
+Conjecture~\ref{con:fermb} for $k=4$ ($d=10$, modulus $13$). Each proof
+is a short chain of results from the literature: Warnaar's finite form
+\cite[Proposition~7.1]{W23} in a coefficientwise limit, an exact
+single-step Pochhammer split, and one of Uncu's theorems
+\cite[Theorems~4.3 and~5.3]{Uncu23}; the modulus-$11$ chain additionally
+needs one contiguous relation of Kanade--Russell \cite[Lemma~9.2]{KR22},
+while the modulus-$13$ chain --- although it concerns the larger $k$ ---
+is strictly shorter and needs none. We make no claim of depth here ---
+all the hard analysis is in \cite{W23,KR22,Uncu23} --- but the resulting
+statements appear to be new, and they settle the first cases of
+Conjecture~\ref{con:pos} at $d=8$ and $d=10$.
+
+\emph{Third} (Section~\ref{sec:d4}), we revisit $d=4$, where positivity is
+Warnaar's result. Starting from the bounded generating functions of
+Corteel--Welsh \cite[Theorem~1.2]{CW19} we obtain, for all five orbits
+including the two ``wall'' orbits $(3,0,1)$ and $(2,2,0)$, the bounded
+fermionic-form expansion $H_{c,m}=\sum_{n\le m}\qbin{m}{n}Q_{n,c}$
+together with explicit manifestly nonnegative formulas for the $Q_{n,c}$.
+The wall orbits require two absorption identities
+(Lemmas~\ref{lem:A} and~\ref{lem:B}), proved by elementary $q$-Pascal
+manipulations; Lemma~\ref{lem:B} is an exact identity, not merely an
+inequality. Monotonicity $H_{c,m}\ge H_{c,m-1}$ follows for all orbits.
+
+Section~\ref{sec:lean} describes a formal verification: the $q$-binomial
+infrastructure of Section~\ref{sec:equiv}, both absorption lemmas, the
+positivity of all five $d=4$ forms, and the assembly logic of
+Section~\ref{sec:d8} have been proved in Lean~4 over Mathlib, with the
+literature inputs entering as explicitly named hypotheses. We also report
+exact $\ZZ[q]$ verification of Conjecture~\ref{con:pos} across fourteen
+levels up to $d=31$.
+
+Finally, Appendix~\ref{app:method} describes how this note was produced:
+the mathematics was generated and checked by an orchestrated system of AI
+agents, with the author acting as guarantor of the results.
+
+\section{The $q$-binomial expansion of the bounded family}
+\label{sec:equiv}
+
+Throughout this section fix a profile $c$ with $\ell=\gcd(d,3)=1$, and
+work in $\ZZ[[q]]$. Let $g_m$ be the generating function of cylindric
+partitions of profile $c$ whose largest part is exactly $m$ (so $g_0=1$),
+let $F_{c,m}=\sum_{j\le m}g_j$, and set
+\[
+H_m:=\poch{m}F_{c,m},\qquad
+Q_n:=Q_{n,c}(q)=\poch{n}\,[z^n]\Bigl((zq;q)_\infty
+\textstyle\sum_{m\ge0}g_mz^m\Bigr).
+\]
+
+\begin{lemma}[truncated Euler telescoping]\label{lem:E}
+For every integer $K\ge 0$,
+\[
+\sum_{k=0}^{K}\frac{(-1)^k q^{\binom{k}{2}}}{\poch{k}}
+=\frac{(-1)^K q^{\binom{K+1}{2}}}{\poch{K}} .
+\]
+\end{lemma}
+
+\begin{proof}
+Induction on $K$: both sides are $1$ at $K=0$, and adding the
+$(K{+}1)$-st term to the right side gives
+$(-1)^{K+1}q^{\binom{K+1}{2}}\bigl(1-(1-q^{K+1})\bigr)/\poch{K+1}
+=(-1)^{K+1}q^{\binom{K+2}{2}}/\poch{K+1}$.
+\end{proof}
+
+\begin{theorem}[the $Q$-transform]\label{thm:Q}
+For every $n\ge 0$,
+$\displaystyle
+Q_n=\sum_{m=0}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}H_m$.
+\end{theorem}
+
+\begin{proof}
+By Euler's expansion $(x;q)_\infty=\sum_{k\ge0}(-1)^kq^{\binom{k}{2}}
+x^k/\poch{k}$ at $x=zq$, extracting the coefficient of $z^n$,
+\begin{equation}\label{eq:Qeuler}
+Q_n=\poch{n}\sum_{m=0}^{n}
+\frac{(-1)^{n-m}q^{\binom{n-m+1}{2}}}{\poch{n-m}}\,g_m .
+\end{equation}
+Substituting $H_m=\poch{m}\sum_{j\le m}g_j$ into the claimed sum, using
+$\qbin{n}{m}\poch{m}=\poch{n}/\poch{n-m}$, interchanging the (finite)
+sums, and applying Lemma~\ref{lem:E} to the inner sum over $k=n-m$
+reproduces \eqref{eq:Qeuler}.
+\end{proof}
+
+\begin{theorem}[Gauss inversion; classical]\label{thm:G}
+For sequences $(a_n),(b_n)$ in $\ZZ[[q]]$ the statements
+\textup{(i)} $b_n=\sum_{j\le n}\qbin{n}{j}a_j$ for all $n$ and
+\textup{(ii)} $a_n=\sum_{m\le n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}b_m$
+for all $n$ are equivalent; moreover for given $(b_n)$ the sequence
+$(a_n)$ in \textup{(i)} is unique.
+\end{theorem}
+
+\begin{proof}
+Both transforms are lower-unitriangular, so it suffices to check the
+orthogonality
+\[
+\sum_{m=k}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}\qbin{m}{k}
+=\delta_{n,k} .
+\]
+Using $\qbin{n}{m}\qbin{m}{k}=\qbin{n}{k}\qbin{n-k}{m-k}$ and
+substituting $i=n-m$, $J=n-k$, the left side equals
+\[
+\qbin{n}{k}\sum_{i=0}^{J}(-1)^iq^{\binom{i}{2}}\qbin{J}{i}
+=\qbin{n}{k}\,(x;q)_J\Big|_{x=1}=\qbin{n}{k}\,\delta_{J,0}
+\]
+by Gauss's finite $q$-binomial theorem.
+\end{proof}
+
+\begin{corollary}[inverse $Q$-transform; unconditional]\label{cor:inv}
+For every $m\ge0$,
+$\displaystyle H_m=\sum_{n=0}^{m}\qbin{m}{n}Q_n$.
+\end{corollary}
+
+At $q=1$ this reconciles Welsh's evaluation with the orbit count:
+$H_m(1)=\sum_n\binom{m}{n}(K-1)^n=K^m$, $K=\tfrac16(d+1)(d+2)$.
+
+\begin{proposition}[equivalence]\label{prop:equiv}
+Fix $c$ with $d\not\equiv0\pmod3$.
+\begin{enumerate}
+\item[\textup{(1)}] If $H_m=\sum_{j\le m}\qbin{m}{j}a_j$ for all $m$ with
+$a_j\in\ZZ[[q]]$ independent of $m$, then $a_j=Q_j$ for all $j$. In
+particular, any bounded fermionic form for $(H_m)_m$ --- an expansion of
+this shape with manifestly nonnegative $a_j$ --- proves
+Conjecture~\ref{con:pos} at $c$, with the explicit formula $Q_n=a_n$.
+\item[\textup{(2)}] The family $(H_m)_m$ admits a
+coefficientwise-nonnegative $q$-binomial expansion \emph{if and only if}
+Conjecture~\ref{con:pos} holds at $c$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(1) is the uniqueness in Theorem~\ref{thm:G} combined with
+Corollary~\ref{cor:inv}. (2): the unique expansion coefficients are the
+$Q_n$, so a nonnegative expansion exists iff they are all nonnegative.
+\end{proof}
+
+Thus, for $\gcd(d,3)=1$, there is no shortcut criterion certifying the
+existence of a nonnegative expansion without exhibiting its coefficients:
+for the family $(H_m)_m$, existence \emph{is} the conjecture.
+
+\section{Conjectures~\ref{con:ferm} and~\ref{con:fermb} beyond $k=2$:
+the profiles $(3,3,2)$ and $(4,3,3)$}\label{sec:d8}
+
+Write $\FERM_k(z,q)$ for the multisum in Conjecture~\ref{con:ferm}
+(without the $1/(zq;q)_\infty$ prefactor), and
+$G_c(z,q):=(zq;q)_\infty\GK_c(z,q)$,
+$\mathcal{H}_c(z,q):=G_c(z,q)/\poch{\infty}$. For $\rho,\sigma\in\ZZ^3$
+let, following Uncu \cite[Eq.~(2.8)]{Uncu23} (the case of modulus $11$),
+abbreviating
+\[
+P_{r,s}:=\poch{r_1-r_2}\poch{r_2-r_3}\poch{r_3}\,
+\poch{s_1-s_2}\poch{s_2-s_3}\poch{s_3},
+\]
+\begin{equation}\label{eq:S11}
+S_{11}(z;\rho\,|\,\sigma):=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2+\rho_ir_i+\sigma_is_i)+2r_3s_3}}
+{P_{r,s}\,\poch{r_3+s_3+1}} ,
+\end{equation}
+and abbreviate $e_3=(0,0,0)$, $e_2=(0,0,1)$, $e_1=(0,1,1)$, with
+$\delta_i$ the $i$-th unit vector. We suppress $z$ and write
+$S(\rho\,|\,\sigma)$.
+
+\begin{theorem}\label{thm:d8}
+$G_{(3,3,2)}(z,q)=\FERM_3(z,q)$; that is, Conjecture~\ref{con:ferm} holds
+for $k=3$.
+\end{theorem}
+
+\begin{corollary}\label{cor:d8pos}
+For all $n\ge 0$,
+\[
+Q_{n,(3,3,2)}(q)=
+\sum_{\substack{n\ge n_2\ge n_3\ge 0\\ m_1,m_2\ge 0}}
+q^{\,n^2+n_2^2+n_3^2-nm_1-n_2m_2+m_1^2+m_2^2}
+\qbin{n}{n_2}\qbin{n-n_2+m_2}{m_1}\qbin{n_2}{n_3}\qbin{n_2+n_3}{m_2},
+\]
+a manifestly nonnegative polynomial. In particular
+Conjecture~\ref{con:pos} holds for the orbit of $(3,3,2)$ at $d=8$.
+\end{corollary}
+
+\begin{proof}[Proof of the corollary]
+$Q_{n,(3,3,2)}=\poch{n}[z^n]\FERM_3$; the summand at $n_1=n$ carries the
+denominator $\poch{n}$, which cancels. (Here
+$n_2-n_3+m_3=n_2+n_3$ since $m_3=2n_3$, and the exponent $n_3^2$ has been
+absorbed into the displayed quadratic form.)
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:d8}]
+The proof chains four proved statements.
+
+\emph{Step 1: Warnaar's finite form in the limit.}
+For $\sigma=(1,\dots,1,a)$, $a\in\{-1,1\}$, Warnaar defines
+\cite[Eqs.~(7.1),(7.2)]{W23}
+\[
+F^{(a)}_{n_0,m_0;k}(z,q)=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_k\ge 0}}
+\frac{z^{n_1}}{\poch{n_k+m_k}}
+\prod_{i=1}^{k}q^{n_i^2-\sigma_in_im_i+m_i^2}
+\qbin{n_{i-1}}{n_i}\qbin{m_{i-1}}{m_i},
+\]
+and proves \cite[Proposition~7.1, case $a=-1$]{W23} the polynomial
+identity
+\begin{equation}\label{eq:ff}
+F^{(-1)}_{n_0,m_0;k}(z,q)=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1}q^{n_k^2}}{\poch{m_0-n_1+m_1}}\qbin{n_0}{n_1}
+\prod_{i=1}^{k-1}q^{n_i^2-n_im_i+m_i^2}
+\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i},
+\end{equation}
+where $m_k:=2n_k$. Fix $k=3$ and let $n_0,m_0\to\infty$. Each coefficient
+of $z^nq^N$ on both sides stabilizes; the right side of \eqref{eq:ff}
+becomes $\FERM_3(z,q)/\poch{\infty}$, while on the left the two binomial
+chains telescope,
+$\qbin{n_0}{n_1}\qbin{n_1}{n_2}\qbin{n_2}{n_3}\to
+1/(\poch{n_1-n_2}\poch{n_2-n_3}\poch{n_3})$ and likewise for the
+$m$-chain. Renaming $(n,m)\to(r,s)$ and using $\sigma=(1,1,-1)$, so that
+the $i=3$ exponent is $r_3^2+r_3s_3+s_3^2=(r_3^2-r_3s_3+s_3^2)+2r_3s_3$,
+we obtain
+\begin{equation}\label{eq:T}
+\frac{\FERM_3(z,q)}{\poch{\infty}}=T(z,q):=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2)+2r_3s_3}}
+{P_{r,s}\,\poch{r_3+s_3}} .
+\end{equation}
+
+\emph{Step 2: Pochhammer split.}
+Using $1/\poch{r_3+s_3}=(1-q^{r_3+s_3+1})/\poch{r_3+s_3+1}$ termwise,
+together with $q^{r_3+s_3+1}=q\cdot q^{r_3}\cdot q^{s_3}$ --- which
+realizes the subtracted term as the shift
+$(\rho_3,\sigma_3)\mapsto(\rho_3+1,\sigma_3+1)$ in \eqref{eq:S11} with a
+global factor $q$ --- we get
+\begin{equation}\label{eq:split}
+T(z,q)=S(e_3\,|\,e_3)-q\,S(e_2\,|\,e_2).
+\end{equation}
+
+\emph{Step 3: one Kanade--Russell contiguous relation.}
+Kanade--Russell \cite[Lemma~9.2]{KR22} prove, for modulus
+$\equiv-1\pmod 3$ and $\sigma_{k-1}=0$ (in the notation
+\eqref{eq:S11}, $\sigma_2=0$), the relation
+\[
+S(\rho\,|\,\sigma)-S(\rho\,|\,\sigma+\delta_3)
+-q\,S(\rho+\delta_3\,|\,\sigma+\delta_3)
++q\,S(\rho+\delta_3\,|\,\sigma+\delta_2+\delta_3)=0 .
+\]
+At $\rho=\sigma=(0,0,0)$ this reads
+$S(e_3|e_3)-S(e_3|e_2)-qS(e_2|e_2)+qS(e_2|e_1)=0$, i.e.
+\begin{equation}\label{eq:bridge}
+S(e_3\,|\,e_3)-q\,S(e_2\,|\,e_2)=S(e_3\,|\,e_2)-q\,S(e_2\,|\,e_1).
+\end{equation}
+
+\emph{Step 4: Uncu's modulus-$11$ theorem.}
+Uncu \cite[Eq.~(4.1) and Theorem~4.3]{Uncu23} proves
+\begin{equation}\label{eq:uncu}
+\mathcal{H}_{(3,3,2)}(z,q)=S(e_3\,|\,e_2)-q\,S(e_2\,|\,e_1).
+\end{equation}
+
+Combining \eqref{eq:T}--\eqref{eq:uncu},
+$\FERM_3(z,q)=\poch{\infty}\,\mathcal{H}_{(3,3,2)}(z,q)
+=G_{(3,3,2)}(z,q)$.
+\end{proof}
+
+\subsection*{The profile $(4,3,3)$ at modulus $13$}
+
+Write $\FERM^{+}_{k-1}(z,q)$ for the multisum in
+Conjecture~\ref{con:fermb} (without the $1/(zq;q)_\infty$ prefactor).
+Following Uncu \cite[Eq.~(2.10)]{Uncu23} (the case of modulus $13$),
+define
+\begin{equation}\label{eq:S13}
+S_{13}(z;\rho\,|\,\sigma):=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2+\rho_ir_i+\sigma_is_i)}}
+{P_{r,s}\,\poch{r_3+s_3+1}} ;
+\end{equation}
+note that, in contrast to \eqref{eq:S11}, there is \emph{no} cross term
+$q^{2r_3s_3}$ in the modulus-$13$ family. We again suppress $z$.
+
+\begin{theorem}\label{thm:d10}
+$G_{(4,3,3)}(z,q)=\FERM^{+}_3(z,q)$; that is, Conjecture~\ref{con:fermb}
+holds for $k=4$.
+\end{theorem}
+
+\begin{corollary}\label{cor:d10pos}
+For all $n\ge 0$,
+\begin{multline*}
+Q_{n,(4,3,3)}(q)=
+\sum_{\substack{n_2,n_3\ge 0\\ m_1,m_2,m_3\ge 0}}
+q^{\,n^2+n_2^2+n_3^2-nm_1-n_2m_2-n_3m_3+m_1^2+m_2^2+m_3^2}\\
+\times\qbin{n}{n_2}\qbin{n-n_2+m_2}{m_1}
+\qbin{n_2}{n_3}\qbin{n_2-n_3+m_3}{m_2}\qbin{2n_3}{m_3},
+\end{multline*}
+a manifestly nonnegative polynomial. In particular
+Conjecture~\ref{con:pos} holds for the orbit of $(4,3,3)$ at $d=10$.
+\end{corollary}
+
+\begin{proof}[Proof of Theorem~\ref{thm:d10} (sketch)]
+The chain has three links --- Steps 1, 2 and 4 above have exact
+analogues, and there is no analogue of Step 3. A detailed writeup is in
+the companion note \cite{Comp26}.
+
+\emph{Step $1'$.} The $a=+1$ case of \cite[Proposition~7.1]{W23} at
+$k=3$ (all $\sigma_i=1$), in the same coefficientwise limit
+$n_0,m_0\to\infty$ as in Step~1, gives
+\[
+\frac{\FERM^{+}_3(z,q)}{\poch{\infty}}
+=\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2)}}{P_{r,s}\,\poch{r_3+s_3}}
+=:T'(z,q),
+\]
+with no cross term, since $\sigma_3=+1$ leaves the quadratic form
+$r_3^2-r_3s_3+s_3^2$ intact.
+
+\emph{Step $2'$.} The identical Pochhammer split
+$1/\poch{r_3+s_3}=(1-q^{r_3+s_3+1})/\poch{r_3+s_3+1}$ gives, termwise,
+$T'=S_{13}(e_3\,|\,e_3)-q\,S_{13}(e_2\,|\,e_2)$.
+
+\emph{Step $4'$.} Uncu \cite[Eq.~(5.1), last entry, and
+Theorem~5.3]{Uncu23} proves
+$\mathcal{H}_{(4,3,3)}(z,q)=S_{13}(e_3\,|\,e_3)-q\,S_{13}(e_2\,|\,e_2)$
+--- \emph{verbatim} the right side of Step $2'$. Hence
+$\FERM^{+}_3=\poch{\infty}\mathcal{H}_{(4,3,3)}=G_{(4,3,3)}$.
+\end{proof}
+
+\begin{remark}[why the $d=10$ chain is shorter]\label{rem:scale}
+At modulus $3k-1$ the finite form produces the pair
+$(e_3|e_3),(e_2|e_2)$ while the proved Kanade--Russell expression lists
+$(e_3|e_2),(e_2|e_1)$, so one contiguous relation is needed to bridge
+them (Step~3). At modulus $3k+1$ the Kanade--Russell pattern
+$\mathcal{H}_{(c_1,c_2,c_3)}=S(e_{c_2}|e_{c_3})-qS(e_{c_2-1}|e_{c_3-1})$,
+evaluated at the balanced profile $c_2=c_3=k-1$, is exactly the split
+pair, and no bridge is needed. Thus the template --- finite form,
+coefficientwise limit, Pochhammer split, Uncu --- scales directly to
+whichever moduli have proved Kanade--Russell expressions, with the
+contiguous-relation step required only at moduli $\equiv-1\pmod 3$.
+\end{remark}
+
+\begin{remark}[provenance of Uncu's theorems]\label{rem:prov}
+Uncu's Theorems~4.3 and~5.3 \cite{Uncu23} are computer-assisted proofs:
+they rest on ideal-membership computations (Gaussian elimination over
+$q$-difference operators) whose certificates are provided in the
+ancillary files of arXiv:2301.01359. Theorems~\ref{thm:d8}
+and~\ref{thm:d10} inherit that dependency.
+\end{remark}
+
+\section{$d=4$: bounded fermionic forms and the absorption identities}
+\label{sec:d4}
+
+Fix $d=4$ (modulus $7$), and recall the five orbit representatives
+$(2,1,1)$, $(4,0,0)$, $(3,1,0)$, $(3,0,1)$, $(2,2,0)$ of
+Section~\ref{sec:intro}. Write $T(n,j):=q^{n^2+j^2-nj}$. Corteel--Welsh
+\cite[Theorem~1.2]{CW19} give the bounded generating functions
+\[
+F_{c,m}=\sum_{n\le m}\frac{\widetilde A_{n,c}}{\poch{m-n}},
+\]
+with $m$-independent numerators $\widetilde A_{n,c}$; explicitly, reading
+off from their theorem (equivalently from the $G_c$ forms of
+\cite[Theorem~3.2]{CW19}),
+\begin{align*}
+\widetilde A_n^{(2,1,1)}&=\sum_{j=0}^{2n}\frac{T(n,j)}{\poch{n}}
+\qbin{2n}{j},\qquad
+\widetilde A_n^{(4,0,0)}=\sum_{j}\frac{T(n,j)\,q^{n+j}}{\poch{n}}
+\qbin{2n}{j},\\
+\widetilde A_n^{(3,1,0)}&=\sum_{j}\frac{T(n,j)\,q^{j}}{\poch{n}}
+\qbin{2n}{j},\\
+\widetilde A_n^{(3,0,1)}&=\sum_{j}T(n,j)\Bigl(
+\frac{q^{n}}{\poch{n}}\qbin{2n}{j}
++\frac{q^{2j}}{\poch{n-1}}\qbin{2n-2}{j}\Bigr),\\
+\widetilde A_n^{(2,2,0)}&=\sum_{j}T(n,j)\Bigl(
+\frac{q^{n}}{\poch{n}}\qbin{2n}{j}
++\frac{q^{j}(1+q^{n+j})}{\poch{n-1}}\qbin{2n-2}{j}\Bigr),
+\end{align*}
+with the convention $1/\poch{-1}=0$.
+
+Since the $\widetilde A_{n,c}$ are independent of $m$, letting
+$m\to\infty$ gives $Q_{n,c}=\poch{n}\widetilde A_{n,c}$, and
+Proposition~\ref{prop:equiv}(1) (or a one-line direct computation with
+$\qbin{m}{n}=\poch{m}/(\poch{m-n}\poch{n})$) yields
+\begin{equation}\label{eq:bffd4}
+H_{c,m}=\sum_{n=0}^{m}\qbin{m}{n}\,Q_{n,c}
+\qquad\text{for all five orbits.}
+\end{equation}
+Using $\poch{n}/\poch{n-1}=1-q^n$, the coefficients are
+\begin{align}
+Q_n^{(2,1,1)}&=\sum_{j}T(n,j)\qbin{2n}{j},\qquad
+Q_n^{(4,0,0)}=\sum_{j}T(n,j)\,q^{n+j}\qbin{2n}{j},\qquad
+Q_n^{(3,1,0)}=\sum_{j}T(n,j)\,q^{j}\qbin{2n}{j},
+\notag\\
+Q_n^{(3,0,1)}&=X_n+(1-q^n)X'_n,\qquad
+Q_n^{(2,2,0)}=X_n+(1-q^n)Y'_n,
+\label{eq:wallforms}
+\end{align}
+where
+\begin{gather*}
+X_n=\sum_jT(n,j)\,q^n\qbin{2n}{j},\qquad
+X'_n=\sum_jT(n,j)\,q^{2j}\qbin{2n-2}{j},\\
+Y'_n=\sum_jT(n,j)\,q^{j}(1+q^{n+j})\qbin{2n-2}{j}.
+\end{gather*}
+The first three forms are manifestly nonnegative. The two wall orbits
+\eqref{eq:wallforms} are not, because of the factor $1-q^n$; positivity
+follows from the absorption inequalities $X_n\ge q^nX'_n$ and
+$X_n\ge q^nY'_n$, which we now prove.
+
+\begin{lemma}[Absorption A]\label{lem:A}
+For all $n\ge1$,
+\[
+X_n-q^nX'_n=\sum_jT(n,j)\,q^n\Bigl((q^{j-1}+q^{j})\qbin{2n-2}{j-1}
++\qbin{2n-2}{j-2}\Bigr)\;\ge\;0 .
+\]
+\end{lemma}
+
+\begin{proof}
+Two applications of the $q$-Pascal rule
+$\qbin{N}{j}=\qbin{N-1}{j-1}+q^j\qbin{N-1}{j}$ give
+\[
+\qbin{2n}{j}=q^{2j}\qbin{2n-2}{j}
++(q^{j-1}+q^{j})\qbin{2n-2}{j-1}+\qbin{2n-2}{j-2}.
+\]
+The first term contributes exactly $q^n$ times the $j$-th summand of
+$X'_n$; the remainder is nonnegative.
+\end{proof}
+
+\begin{lemma}[Absorption B; exact]\label{lem:B}
+For all $n\ge1$,
+\[
+X_n-q^nY'_n
+=\sum_{j=0}^{2n-1}q^{\,n^2+j^2-nj+2j+1}\qbin{2n-1}{j}\;\ge\;0 .
+\]
+\end{lemma}
+
+\begin{proof}
+Divide by the global factor $q^{n^2+n}$ and set
+\[
+D_n=\sum_jq^{j^2-nj}\qbin{2n}{j}
+-\sum_jq^{j^2-nj}\bigl(q^{j}+q^{n+2j}\bigr)\qbin{2n-2}{j}.
+\]
+\emph{Step 1.} The two $q$-Pascal rules
+$\qbin{2n}{j}=\qbin{2n-1}{j-1}+q^j\qbin{2n-1}{j}$ and
+$\qbin{2n-1}{j}=\qbin{2n-2}{j}+q^{2n-1-j}\qbin{2n-2}{j-1}$ combine to
+\begin{equation}\label{eq:star}
+\qbin{2n}{j}-q^{j}\qbin{2n-2}{j}
+=\qbin{2n-1}{j-1}+q^{2n-1}\qbin{2n-2}{j-1},
+\end{equation}
+valid for all $0\le j\le 2n$ with $\qbin{N}{k}:=0$ for $k<0$ or $k>N$.
+
+\emph{Step 2.} Substituting \eqref{eq:star},
+\[
+D_n=\sum_jq^{j^2-nj}\qbin{2n-1}{j-1}
++\sum_jq^{j^2-nj+2n-1}\qbin{2n-2}{j-1}
+-\sum_{j=0}^{2n-2}q^{j^2-nj+n+2j}\qbin{2n-2}{j}.
+\]
+In the last sum replace $j\mapsto j-1$: the exponent becomes
+$(j-1)^2-n(j-1)+n+2(j-1)=j^2-nj+2n-1$, so it cancels the middle sum
+\emph{exactly}. Hence $D_n=\sum_{j\ge1}q^{j^2-nj}\qbin{2n-1}{j-1}$;
+re-indexing $j\mapsto j+1$ and restoring $q^{n^2+n}$ gives the claim.
+\end{proof}
+
+\begin{theorem}\label{thm:d4}
+For every profile $c$ with $c_0+c_1+c_2=4$:
+\begin{enumerate}
+\item[\textup{(i)}] $Q_{n,c}(q)\ge0$ coefficientwise for all $n$, with
+the manifestly positive formulas above (walls via
+Lemmas~\ref{lem:A},~\ref{lem:B}); $Q_{n,c}(1)=4^n$.
+\item[\textup{(ii)}] \textup{(bounded fermionic form at $d=4$)}
+$H_{c,m}=\sum_{n\le m}\qbin{m}{n}Q_{n,c}$ with $Q_{n,c}\ge0$, for all
+five orbits including the walls.
+\item[\textup{(iii)}] \textup{(monotonicity)}
+$H_{c,m}-H_{c,m-1}
+=\sum_{n\ge1}q^{m-n}\qbin{m-1}{n-1}Q_{n,c}\;\ge\;0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i): the forms \eqref{eq:wallforms} plus Lemmas~\ref{lem:A}
+and~\ref{lem:B}. (ii): equation \eqref{eq:bffd4}. (iii): the $q$-Pascal
+rule $\qbin{m}{n}-\qbin{m-1}{n}=q^{m-n}\qbin{m-1}{n-1}$ applied termwise
+to (ii).
+\end{proof}
+
+We emphasize that part~(i) is not new: positivity of $Q_{n,c}$ for all
+profiles with $d\in\{2,4,5\}$ is Warnaar's result \cite{W23}. What we
+believe to be worth recording is the bounded refinement (ii)--(iii) ---
+by Proposition~\ref{prop:equiv} the expansion \eqref{eq:bffd4} is the
+\emph{unique} bounded fermionic form at the first level --- and the
+absorption mechanism itself: the wall orbits satisfy
+$Q_n=P_n+(1-q^n)P'_n$ with $P_n,P'_n\ge0$, and positivity reduces to an
+inequality $P_n\ge q^nP'_n$ provable purely by $q$-Pascal manipulation
+(a double-Pascal split for one wall, an exact shift-cancellation for the
+other). It seems plausible that this pattern persists for the
+non-balanced orbits at higher $d$, where positive systems of
+Corteel--Welsh type are not yet available.
+
+\section{Machine verification}\label{sec:lean}
+
+The elementary layers of Sections~\ref{sec:equiv}--\ref{sec:d4} have been
+formalized in Lean~4 over Mathlib; the development (library
+\texttt{WarnaarGlue}, five modules, no \texttt{sorry}) is available at
+\begin{center}
+\url{https://github.com/RaggedR/warnaar-glue}
+\end{center}
+$q$-binomial coefficients are defined by the Pascal recursion over an
+arbitrary commutative ring (specialized to
+$\ZZ[q]=\texttt{Polynomial}\;\ZZ$ where positivity is involved), and
+nonnegativity is the predicate ``every coefficient of the polynomial is
+$\ge0$''. Table~\ref{tab:lean} maps the statements of this note to the
+formal theorems.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+Statement in this note & Lean theorem(s) \\
+\midrule
+$q$-Pascal rules & \texttt{pascal}$_1$, \texttt{pascal}$_2$ \\
+Gauss's finite $q$-binomial theorem at $x=1$ & \texttt{alt\_sum} \\
+orthogonality in Theorem~\ref{thm:G} & \texttt{orth\_ML},
+\texttt{orth\_LM} \\
+Theorem~\ref{thm:G} (Gauss inversion, both directions) &
+\texttt{qbinom\_inversion} \\
+Theorem~\ref{thm:Q} $\leftrightarrow$ Corollary~\ref{cor:inv}
+(abstract form) & \texttt{Q\_transform\_of\_H},
+\texttt{H\_of\_Q\_transform} \\
+monotonicity kernel (Theorem~\ref{thm:d4}(iii)) &
+\texttt{pascal\_ladder} \\
+Pochhammer split kernel of Step 2, Section~\ref{sec:d8} &
+\texttt{qpoch\_split}, \texttt{qpoch\_split\_shift} \\
+assembly of Steps 1--4 ($d=8$ chain) &
+\texttt{seed2\_assembly}, \texttt{seed2\_chain} \\
+$d=10$ chain (Theorem~\ref{thm:d10}) & not formalized
+(cf.\ \texttt{seed2\_chain}) \\
+Lemma~\ref{lem:A} & \texttt{absorption\_A} \\
+Lemma~\ref{lem:B} & \texttt{absorption\_B} \\
+positivity of all five $d=4$ forms & \texttt{Qcw\_nonneg} \\
+identification $Q_{n,c}=\poch{n}\widetilde A_{n,c}$ via inversion &
+\texttt{d4\_Q\_eq\_Qcw} \\
+Theorem~\ref{thm:d4}(i) & \texttt{d4\_positive} \\
+Theorem~\ref{thm:d4}(ii) & \texttt{d4\_BFF} \\
+Theorem~\ref{thm:d4}(iii) & \texttt{d4\_monotone} \\
+\bottomrule
+\end{tabular}
+\caption{Paper-to-Lean dictionary.}
+\label{tab:lean}
+\end{table}
+
+The division of labour is made explicit in the formalization: results
+proved here from scratch (the $q$-binomial identities, both absorption
+lemmas, positivity of the five forms, the inversion) are unconditional
+Lean theorems, while the literature inputs enter as \emph{named
+hypotheses} of the main theorems --- \texttt{hCW} (the Corteel--Welsh
+bounded forms \cite[Theorem~1.2]{CW19}, with denominators cleared),
+\texttt{hQ} (the $Q$-transform relation of Theorem~\ref{thm:Q}, whose
+Euler-series proof is not formalized), and, for the $d=8$ chain,
+\texttt{hWarnaar} (Step~1), \texttt{hSplit} (the series form of Step~2,
+whose polynomial kernel \emph{is} formalized as \texttt{qpoch\_split}),
+\texttt{hBridge} (Step~3, \cite[Lemma~9.2]{KR22}) and \texttt{hUncu}
+(Step~4, \cite[Theorem~4.3]{Uncu23}). The $d=10$ chain of
+Theorem~\ref{thm:d10} has \emph{not} been formalized; its hypotheses
+would be the exact analogues of the $d=8$ ones (with no bridge). A
+machine-checked non-vacuity
+witness shows that the hypotheses of the $d=4$ theorems are satisfiable.
+Every theorem in the library depends only on the standard axioms
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}.
+
+Separately from the formal proofs, Conjecture~\ref{con:pos} was verified
+in exact $\ZZ[q]$ arithmetic (no series truncation), for \emph{every}
+profile at each level, at
+\[
+d\in\{2,4,5,7,8,13,16,17,19,20,22,23,25,31\},
+\]
+in the ranges $n\le16$ for $d=13$; $n\le12$ for $d=16,17,19,20$;
+$n\le10$ for $d=22,23$; $n\le9$ for $d=25$; $n\le7$ for $d=31$; and in
+extended ranges at small level ($n\le25$ at $d=4$, $n\le22$ at $d=5$,
+$n\le18$ at $d=7$, $n\le16$ at $d=8$, $n\le12$ at $d=13$, wall orbits
+included). The minimal coefficients show no shrinking-margin trend as
+$d$ grows.
+
+\subsection*{Acknowledgements}
+Everything here is built on the work of Corteel--Welsh,
+Corteel--Dousse--Uncu, Kanade--Russell, Uncu, Welsh and Warnaar; the
+contribution of this note is only to observe that their results, chained
+together, prove a little more than has so far been recorded.
+
+\appendix
+
+\section{Methodology}\label{app:method}
+
+The results of this note were produced by an orchestrated system of AI
+agents (Claude, Anthropic), and the author believes it is right to say so
+plainly. This appendix records how the system worked and what was done to
+keep it honest. The author has read the mathematics of this note in full
+and vouches for it; the division of labour was that the AI system
+generated and checked the proofs, while the human role was that of
+guarantor.
+
+\subsection*{Corpus and seeding}
+The system worked over a retrieval corpus of $82$ papers on
+Rogers--Ramanujan-type identities, cylindric partitions and
+neighbouring topics, split into roughly $7{,}000$ chunks and embedded with a fine-tuned SPECTER2
+model. Eight initial research directions were selected by $k$-medoids
+clustering of the embedded corpus, so that the starting points were
+spread across genuinely different regions of the literature (bounded
+forms, contiguous relations, vertex operators, bijective methods, and so
+on) rather than chosen by hand.
+
+\subsection*{The loop}
+Each round (``layer'') ran eight agents in parallel, one per research
+direction, each attempting proof strategies and recording partial
+progress, failures and computations in a working file. A ninth agent then
+synthesized the eight working files into a single document, and the next
+layer was re-seeded from that synthesis. Later rounds allowed the agents
+to generate their own retrieval queries against the corpus as their
+attempts developed. The chain of results in this note --- the
+$Q$-transform equivalence, the four-step $d=8$ assembly, and the $d=4$
+absorption lemmas --- emerged over several such layers.
+
+\subsection*{Discipline}
+Since language models can produce confident errors, the system was built
+around redundancy and adversarial checking rather than trust:
+\begin{itemize}
+\item One seed was a dedicated \emph{adversary}, tasked not with proving
+anything but with independently recomputing others' claims and hunting
+for counterexamples.
+\item Any claim of a completed proof triggered independent verifier
+agents, which re-derived the argument from the primary sources without
+access to the claimant's reasoning.
+\item The load-bearing elementary identities were formalized in
+Lean~4/Mathlib (Section~\ref{sec:lean}; the repository
+\url{https://github.com/RaggedR/warnaar-glue} is public), with the
+literature inputs isolated as named hypotheses so that the boundary
+between what is machine-checked and what is cited is explicit.
+\item All positivity claims were tested by exact $\ZZ[q]$ computation
+against an engine that had itself been validated against the raw
+combinatorial definition of cylindric partitions, in the ranges reported
+in Section~\ref{sec:lean}.
+\end{itemize}
+This redundancy earned its keep: two convention errors (a mislabelling of
+profile orbits and an orientation error in a contiguous relation) were
+caught precisely because multiple agents re-derived the same objects
+independently and their answers disagreed; both were traced and fixed
+against the primary sources. The standing rule that any bridging
+contiguous relation be re-derived directly from \cite[Lemma~9.2]{KR22},
+rather than taken from a restatement, is a lesson from one of these
+episodes.
+
+\subsection*{What this does and does not claim}
+No claim is made that the system displayed insight beyond assembling,
+checking and slightly extending results already in the literature; as
+stated in the acknowledgements, the hard analysis is due to the cited
+authors. The point of recording the methodology is transparency: the
+reader should know that the proofs were found and verified this way, and
+should weigh the machine-checked and exactly-computed components
+(Section~\ref{sec:lean}) accordingly.
+
+\begin{thebibliography}{99}
+
+\bibitem{ASW99}
+G.~E. Andrews, A.~Schilling and S.~O. Warnaar,
+\textit{An $A_2$ Bailey lemma and Rogers--Ramanujan-type identities},
+J. Amer. Math. Soc. \textbf{12} (1999), 677--702.
+
+\bibitem{CDU22}
+S.~Corteel, J.~Dousse and A.~K. Uncu,
+\textit{Cylindric partitions and some new $A_2$ Rogers--Ramanujan
+identities},
+Proc. Amer. Math. Soc. \textbf{150} (2022), 481--497.
+
+\bibitem{CW19}
+S.~Corteel and T.~A. Welsh,
+\textit{The $A_2$ Rogers--Ramanujan identities revisited},
+Ann. Comb. \textbf{23} (2019), 683--694.
+
+\bibitem{KR22}
+S.~Kanade and M.~C. Russell,
+\textit{Completing the $A_2$ Andrews--Schilling--Warnaar identities},
+Int. Math. Res. Not. IMRN \textbf{2023}, no.~20, 17100--17155;
+arXiv:2203.05690.
+
+\bibitem{Comp26}
+R.~Langer,
+\textit{Warnaar's cylindric conjecture for the balanced profile
+$(4,3,3)$ at modulus $13$: a complete proof via Warnaar's finite form
+($a=+1$) and Uncu's modulo-$13$ theorem},
+companion note to the present one, July 2026.
+
+\bibitem{Uncu23}
+A.~K. Uncu,
+\textit{Proofs of modulo 11 and 13 cylindric Kanade--Russell conjectures
+for $A_2$ Rogers--Ramanujan type identities},
+arXiv:2301.01359.
+
+\bibitem{W23}
+S.~O. Warnaar,
+\textit{The $\mathrm{A}_2$ Andrews--Gordon identities and cylindric
+partitions},
+Trans. Amer. Math. Soc. Ser. B \textbf{10} (2023), 715--765;
+arXiv:2111.07550.
+
+\bibitem{Welsh21}
+T.~A. Welsh, unpublished.
+
+\end{thebibliography}
+
+\end{document}

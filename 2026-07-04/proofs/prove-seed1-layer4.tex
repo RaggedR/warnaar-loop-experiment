@@ -1,0 +1,269 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\qbin}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\poch}[1]{(q;q)_{#1}}
+\title{Warnaar's cylindric conjecture for the balanced profile $(4,3,3)$
+at modulus $13$:\\ a complete proof via Warnaar's finite form ($a=+1$)
+and Uncu's modulo-13 theorem}
+\author{Seed 1, Layer 4, Round 2 (loop experiment 2026-07-04)}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove the case $k=4$ of Warnaar's Conjecture
+\texttt{Con\_cylindric-b} (the $\mathrm{A}_2$ Andrews--Gordon
+fermionic-form conjecture for cylindric partitions of balanced profile
+$(k,k-1,k-1)$ at modulus $3k+1$): the profile $c=(4,3,3)$ at level
+$d=10$ (modulus $13$). The proof chains two proved results:
+Warnaar's finite-form Proposition ($a=+1$, $k=3$) in a coefficientwise
+limit, and Uncu's 2024 modulo-13 theorem expressing $H_{(4,3,3)}$ in the
+series $S_{13}(\rho|\sigma)$. Unlike the $d=8$ balanced case, \emph{no}
+Kanade--Russell contiguous relation is needed: after the Pochhammer
+split, the limit of the finite form coincides verbatim with Uncu's proved
+expression. As a corollary the coefficients $Q_{n,(4,3,3)}(q)$ are
+manifestly nonnegative: the second proved balanced case of the
+fermionic-form conjecture, the first proved case of
+\texttt{Con\_cylindric-b} beyond $k=2$, and the first proved-positive
+core orbit at $d=10$.
+\end{abstract}
+
+\section{Setup and statement}
+
+Throughout, $\poch{n}=\prod_{i=1}^n(1-q^i)$, and $\qbin{n}{m}$ is the
+$q$-binomial coefficient (zero unless $0\le m\le n$). For a profile
+$c=(c_1,c_2,c_3)$ with $c_1+c_2+c_3=d$, let $F_c(z,q)$ be the
+Corteel--Welsh cylindric-partition generating function
+(raw interlacing definition; $z$ tracks the largest part, $q$ the size),
+and set
+\[
+G_c(z,q)=(zq;q)_\infty F_c(z,q),\qquad
+H_c(z,q)=\frac{(zq;q)_\infty}{(q;q)_\infty}F_c(z,q)=\frac{G_c(z,q)}{(q;q)_\infty},
+\]
+\[
+Q_{n,c}(q)=\poch{n}\,[z^n]\,G_c(z,q).
+\]
+Warnaar's positivity conjecture (Corteel--Dousse--Uncu) asserts
+$Q_{n,c}(q)\ge 0$ coefficientwise for all $n,c$ with
+$d\not\equiv0\pmod 3$. For the balanced profile $(k,k-1,k-1)$ of
+modulus $3k+1$, Warnaar's Conjecture \texttt{Con\_cylindric-b}
+(first identity) predicts the fermionic form
+\begin{equation}\label{eq:ferm}
+G_{(k,k-1,k-1)}(z,q)\;\overset{?}{=}\;
+\mathrm{FERM}^{+}_{k-1}(z,q):=
+\sum_{\substack{n_1,\dots,n_{k-1}\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1}q^{\sum_{i=1}^{k-1}(n_i^2-n_im_i+m_i^2)}}{\poch{n_1}}\,
+\qbin{2n_{k-1}}{m_{k-1}}
+\prod_{i=1}^{k-2}
+\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i}.
+\end{equation}
+The case $k=1$ is trivial and $k=2$ is Corteel--Welsh
+\cite[Theorem~3.2]{CW19}; all $k\ge3$ were open. We prove the case
+$k=4$, profile $(4,3,3)$, $d=10$, modulus $13$.
+
+For $m=13$ ($k=4$ in Uncu's indexing $m=3k+1$), $\rho,\sigma\in\mathbb{Z}^3$,
+define (Uncu 2024, eq.\ (\texttt{eq:Sp1}); note there is \emph{no}
+$q^{2r_3s_3}$ cross term, in contrast to $S_{3k-1}$)
+\begin{equation}\label{eq:S13}
+S_{13}(z;\rho|\sigma)=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2+\rho_ir_i+\sigma_is_i)}}
+{\poch{r_1-r_2}\poch{r_2-r_3}\poch{r_3}\,
+ \poch{s_1-s_2}\poch{s_2-s_3}\poch{s_3}\,\poch{r_3+s_3+1}},
+\end{equation}
+and $e_3=(0,0,0)$, $e_2=(0,0,1)$. We suppress $z$ and write
+$S(\rho|\sigma)$.
+
+\begin{theorem}\label{thm:main}
+$G_{(4,3,3)}(z,q)=\mathrm{FERM}^{+}_{3}(z,q)$, i.e.\ Warnaar's
+Conjecture \emph{\texttt{Con\_cylindric-b}} (first identity) holds for
+$k=4$.
+\end{theorem}
+
+\begin{corollary}\label{cor:pos}
+For all $n\ge 0$,
+\[
+Q_{n,(4,3,3)}(q)=
+\sum_{\substack{n_2,n_3\ge 0\\ m_1,m_2,m_3\ge 0}}
+q^{\,n^2+n_2^2+n_3^2-nm_1-n_2m_2-n_3m_3+m_1^2+m_2^2+m_3^2}\,
+\qbin{n}{n_2}\qbin{n-n_2+m_2}{m_1}
+\qbin{n_2}{n_3}\qbin{n_2-n_3+m_3}{m_2}\qbin{2n_3}{m_3},
+\]
+a manifestly nonnegative polynomial (each $n_i^2-n_im_i+m_i^2\ge0$, all
+$q$-binomials nonnegative). In particular Warnaar's positivity
+conjecture holds for the profile $(4,3,3)$ at $d=10$.
+\end{corollary}
+
+\begin{proof}[Proof of the corollary]
+$Q_{n,(4,3,3)}=\poch{n}[z^n]\mathrm{FERM}^{+}_3$; the summand of
+\eqref{eq:ferm} at $n_1=n$ has denominator $\poch{n_1}=\poch{n}$, which
+cancels.
+\end{proof}
+
+\begin{remark}
+The profile $(4,3,3)$ is chirality-safe: its reversal $(3,3,4)$ is a
+cyclic shift of $(4,3,3)$, and $F_c$ is invariant under cyclic shifts of
+the profile. No orbit-labelling subtleties (synthesis-layer3 \S4(iv))
+arise.
+\end{remark}
+
+\section{Proof of Theorem \ref{thm:main}}
+
+The proof chains three proved statements. In contrast to the $d=8$
+balanced case (Seed 2, Layer 3), no bridging contiguous relation is
+required: the modulus-$13$ family has no $q^{2r_3s_3}$ cross term, and
+the Pochhammer split lands directly on Uncu's proved expression.
+
+\subsection*{Step 1: Warnaar's finite form ($a=+1$) in the limit}
+Warnaar ($\mathrm{A}_2$ Andrews--Gordon paper, Section~7) defines, for
+$\sigma=(\sigma_1,\dots,\sigma_k)=(1,\dots,1,a)$, $a\in\{-1,1\}$,
+\[
+F^{(a)}_{n_0,m_0;k}(z,q)=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_k\ge 0}}
+\frac{z^{n_1}}{\poch{n_k+m_k}}
+\prod_{i=1}^{k}q^{n_i^2-\sigma_in_im_i+m_i^2}
+\qbin{n_{i-1}}{n_i}\qbin{m_{i-1}}{m_i},
+\]
+and proves (his Proposition \texttt{Prop\_finiteform}, case $a=+1$, in
+which $\sigma_i=1$ for all $i$) the identity
+\begin{equation}\label{eq:ff}
+F^{(1)}_{n_0,m_0;k}(z,q)=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_k\ge 0}}
+\frac{z^{n_1}q^{\sum_{i=1}^{k}(n_i^2-n_im_i+m_i^2)}}{\poch{m_0-n_1+m_1}}\,
+\qbin{n_0}{n_1}\qbin{2n_k}{m_k}
+\prod_{i=1}^{k-1}
+\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i}.
+\end{equation}
+Fix $k=3$ and let $n_0,m_0\to\infty$. Each coefficient of $z^{n}q^{N}$ on
+both sides stabilizes: on the right, $\qbin{n_0}{n_1}\to 1/\poch{n_1}$
+and $1/\poch{m_0-n_1+m_1}\to 1/\poch{\infty}$ coefficientwise; on the
+left the binomial chains telescope,
+$\qbin{n_0}{n_1}\qbin{n_1}{n_2}\qbin{n_2}{n_3}\to
+1/(\poch{n_1-n_2}\poch{n_2-n_3}\poch{n_3})$ and likewise for the
+$m$-chain. (Stabilization: for a fixed monomial $z^nq^N$, all summands
+with any index exceeding $N+n$ contribute only above $q^N$, so both
+sides are finite sums of eventually constant coefficients.)
+Writing $(r,s)=(n,m)$, the left side becomes
+\begin{equation}\label{eq:T}
+\frac{\mathrm{FERM}^{+}_3(z,q)}{(q;q)_\infty}=T(z,q):=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2)}}
+{\poch{r_1-r_2}\poch{r_2-r_3}\poch{r_3}\,
+ \poch{s_1-s_2}\poch{s_2-s_3}\poch{s_3}\,\poch{r_3+s_3}},
+\end{equation}
+where the right side of \eqref{eq:ff} has become
+$\mathrm{FERM}^{+}_3(z,q)/(q;q)_\infty$.
+
+\subsection*{Step 2: Pochhammer split}
+Using $\dfrac{1}{\poch{r_3+s_3}}=\dfrac{1-q^{r_3+s_3+1}}{\poch{r_3+s_3+1}}$
+and $q^{r_3+s_3+1}=q\cdot q^{r_3}\cdot q^{s_3}$ (a shift
+$(\rho_3,\sigma_3)\mapsto(\rho_3+1,\sigma_3+1)$ in \eqref{eq:S13}),
+term by term,
+\begin{equation}\label{eq:split}
+T(z,q)=S(e_3|e_3)-q\,S(e_2|e_2)
+     =S_{13}\bigl((0,0,0)|(0,0,0)\bigr)-q\,S_{13}\bigl((0,0,1)|(0,0,1)\bigr).
+\end{equation}
+
+\subsection*{Step 3: Uncu's modulo-13 theorem}
+Uncu (2024, Theorem \texttt{thm:m13}, first proved via Theorem
+\texttt{thm:n6m13}) proves the Kanade--Russell expression
+(\texttt{eq:mod13list}, last row) for the profile $(4,3,3)$:
+\begin{equation}\label{eq:uncu}
+H_{(4,3,3)}(z,q)=
+S_{13}\bigl((0,0,0)|(0,0,0)\bigr)-q\,S_{13}\bigl((0,0,1)|(0,0,1)\bigr).
+\end{equation}
+Uncu's normalization $H_c=(zq;q)_\infty F_c/(q;q)_\infty$
+(his eq.\ (\texttt{eq:HtoF})) agrees with ours, and his $F_c$ is the raw
+interlacing generating function.
+
+\subsection*{Conclusion}
+Combining \eqref{eq:T}--\eqref{eq:uncu},
+\[
+\frac{\mathrm{FERM}^{+}_3(z,q)}{(q;q)_\infty}=T(z,q)=H_{(4,3,3)}(z,q)
+=\frac{G_{(4,3,3)}(z,q)}{(q;q)_\infty},
+\]
+hence $G_{(4,3,3)}=\mathrm{FERM}^{+}_3$. \qed
+
+\section{Numerical verification and remarks}
+
+\begin{remark}[Verification artifacts]
+All steps were verified in exact arithmetic
+(\texttt{scratch/scripts/seed1\_R2L4\_d10\_chain.sage}, SageMath 10.9;
+log \texttt{scratch/tmp/seed1\_L4\_d10\_chain\_n12.log}):
+\begin{itemize}
+\item[{[FF]}] Warnaar's finite form \eqref{eq:ff} ($a=+1$, $k=3$) as an
+exact power-series identity (to $q^{150}$, computed at $q^{300}$) for all
+$0\le n_0,m_0\le 3$ --- a transcription guard on the quoted proposition.
+\item[{[A]}] The split \eqref{eq:split} at $z$-orders $n=0,\dots,4$ to
+$q^{150}$.
+\item[{[B]}] $\poch{n}(q;q)_\infty[z^n]\bigl(S(e_3|e_3)-qS(e_2|e_2)\bigr)
+=Q_{n,(4,3,3)}$ against the reference engine
+(\texttt{seed8\_R2L3\_engine.sage} recursion: target-first kernel, exact
+$\mathbb{Z}[q]$, exact $\Phi_3(q^m)$ division, $Q_n$ by Gauss inversion,
+Theorem~Q/Corollary~I of Seed 7 Layer 3) for $n=0,\dots,4$ to $q^{150}$.
+\item[{[C]}] The finite fermionic sum of Corollary~\ref{cor:pos} equals
+the engine $Q_{n,(4,3,3)}$ \emph{exactly in} $\mathbb{Z}[q]$ for
+$n=0,\dots,12$ ($\deg Q_{12}=1296$), with all coefficients nonnegative;
+also $Q_n(1)=21^n$ ($K-1=21$ at $d=10$), as required.
+\item[{[D]}] The coefficientwise limit: $\poch{n}(q;q)_\infty[z^n]T$
+equals the fermionic sum for $n=0,\dots,4$ to $q^{150}$.
+\end{itemize}
+\end{remark}
+
+\begin{remark}[On the Kanade--Russell relation and Uncu's $R_3$ typo]
+The Layer-3 brief cautioned that Uncu's displayed $R_3$ relation for
+$m\equiv1\pmod 3$ contains a typo (two identical terms of opposite sign;
+his eq.\ (\texttt{R31})). This is confirmed --- the displayed relation is
+vacuous as printed --- but it is \emph{irrelevant to this proof}: at
+modulus $13$ the Pochhammer split \eqref{eq:split} produces exactly the
+pair $(e_3|e_3)$, $(e_2|e_2)$ appearing in Uncu's proved formula
+\eqref{eq:uncu}, so no contiguous relation is needed. Structurally: at
+$m=3k-1$ (the $d=8$ case) the $a=-1$ finite form produces the
+$(e_3|e_3),(e_2|e_2)$ pair while the Kanade--Russell table lists
+$(e_3|e_2),(e_2|e_1)$, requiring one $R_3$; at $m=3k+1$ the
+Kanade--Russell pattern $H_{(c_1,c_2,c_3)}=S(e_{c_2}|e_{c_3})
+-qS(e_{c_2-1}|e_{c_3-1})$ evaluated at $c_2=c_3=k-1$ gives exactly the
+split pair.
+\end{remark}
+
+\begin{remark}[Extensions]
+(i) For general $k$, the identical chain reduces
+\texttt{Con\_cylindric-b} (first identity) at modulus $3k+1$ to the
+Kanade--Russell/Uncu expression for $H_{(k,k-1,k-1)}$, proved to date
+only for $m=13$. The $k=3$ case ($d=7$, modulus $10$) remains the
+smallest balanced case not proved anywhere.
+(ii) With Seed 2's $d=8$ result, both balanced-orbit templates
+($a=\pm1$) are now realized; the remaining $d=10$ core orbits require
+the $R_1/R_2$ word search plus new finite-form seeds, exactly as at
+$d=8$ (synthesis-layer3 \S4(v)).
+\end{remark}
+
+\begin{thebibliography}{9}
+\bibitem{CW19} S.~Corteel, T.~Welsh,
+\emph{The $\mathrm{A}_2$ Rogers--Ramanujan identities revisited},
+Ann. Comb. 23 (2019).
+\bibitem{W23} S.~O.~Warnaar,
+\emph{The $\mathrm{A}_2$ Andrews--Gordon identities and cylindric
+partitions}, Trans. Amer. Math. Soc. Ser. B (2023).
+(Local: \texttt{literature/tex/warnaar\_A2\_andrews\_gordon/source.tex};
+Proposition \texttt{Prop\_finiteform} lines 2672--2687, proof lines
+2784--2819; Conjecture \texttt{Con\_cylindric-b} lines 767--785.)
+\bibitem{U24} A.~K.~Uncu,
+\emph{Proofs of modulo 11 and 13 cylindric Kanade--Russell conjectures
+for $\mathrm{A}_2$ Rogers--Ramanujan type identities}, 2024.
+(Local: \texttt{literature/corteel-citations/tex/uncu\_proofs\_modulo11\_13\_cylindric\_kanade\_russell/main.tex};
+$S_{13}$ eq.\ (\texttt{eq:Sp1}) line 235; \texttt{eq:mod13list} lines
+452--483; Theorem \texttt{thm:m13} line 573.)
+\bibitem{KR22} S.~Kanade, M.~C.~Russell,
+\emph{Completing the $\mathrm{A}_2$ Andrews--Schilling--Warnaar
+identities}, 2022. (Contiguous relations; not needed in this proof.)
+\end{thebibliography}
+
+\end{document}

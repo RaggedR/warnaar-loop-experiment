@@ -1,0 +1,501 @@
+--- 1/20 (sim=0.697) kanade_russell_completing_a2_andrews_schilling_warnaar/chunk_019.tex ---
+Summary: Analyzes the k=infinity limit of Andrews--Gordon: the combinatorial version becomes trivially a partition bijection, but the q-series limit yields a nontrivial infinite-sum identity equaling (1-q^t)/(q)_infty, which admits a two-variable generalization.
+
+% Paper: kanade_russell_completing_a2_andrews_schilling_warnaar
+% Section: Infinite level \texorpdfstring{$\operatorname{A > Infinite modulus
+
+
+[Summary: Analyzes the k=infinity limit of Andrews--Gordon: the combinatorial version becomes trivially a partition bijection, but the q-series limit yields a nontrivial infinite-sum identity equaling (1-q^t)/(q)_infty, which admits a two-variable generalization.]
+Let $k=\infty$ in Theorem \ref{thm:AGcomb}. Clearly, the restriction 
+of having difference at least $2$ at distance $k-1$ now becomes vacuous, and on the LHS
+we are counting partitions of $n$ where $1$ appears at most $t-1$ times.
+On the RHS, the modulus $2k+1$ is now infinite and thus vacuous.
+Thus, we are left with counting partitions where $t$ does not appear as a part.
+These two classes of partitions are obviously equinumerous. Indeed, looking at their complements, 
+partitions of $n$ in which we \emph{do} have at least $t$ ones is in bijection
+with partitions in which $t$ \emph{does} appear as a part.
+
+Thus, the combinatorial versions of the Andrews--Gordon identities with $k=\infty$ are trivial.
+
+
+However, looking at the $q$--series versions, the identities take the shape ($t\in\mathbb{Z}_{>0}\cup\{\infty\}$):
+\begin{align}
+\sum_{n_1,n_2,\cdots}
+\dfrac{q^{n_1^2+n_2^2+\cdots\,\,\,+n_t+n_{t+1}+\cdots}}{(q)_{n_1-n_2}(q)_{n_2-n_3}\cdots }
+=
+\sum_{n_1,n_2,\cdots}
+\dfrac{1}{(q)_{n_1}}
+\left(
+\prod_{1\leq i < t} q^{n_i^2}
+\begin{bmatrix} n_i \\ n_{i+1} \end{bmatrix}
+\prod_{j \geq t}q^{n_j^2+n_j}
+\begin{bmatrix} n_j \\ n_{j+1} \end{bmatrix}
+\right)
+=\dfrac{1-q^t}{(q)_\infty}.
+\label{eqn:InfiniteAG}
+\end{align}
+Note that for $t=\infty$ we take $q^\infty=0$.
+This actually admits a two variable generalization which we shall prove below.
+
+
+--- 2/20 (sim=0.646) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_023.tex ---
+Summary: Main results (3k+2): connects Conjecture Cyl to the Corteel-Dousse-Uncu conjecture on positivity of Q_{n,c}(q) polynomials.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+[Summary: Main results (3k+2): connects Conjecture Cyl to the Corteel-Dousse-Uncu conjecture on positivity of Q_{n,c}(q) polynomials.]
+
+Conjecture~\ref{Con_cylindric} is consistent with the following
+conjecture of Corteel et al., see \cite[Conjecture 4.2]{CDU20}.
+For a nonnegative integer $n$ and $c=(c_0,\dots,c_{r-1})$, define
+\begin{equation}\label{Eq_Qnc}
+Q_{n,c}(q):=
+(q^{\ell};q^{\ell})_n\,[z^n] \Big((zq)_{\infty}\operatorname{GK}_c(z,q)\Big)
+\in\mathbb{Z}[[q]],
+\end{equation}
+where, for $d:=c_0+\dots+c_{r-1}$, $\ell:=\gcd(d,r)$.
+
+
+--- 3/20 (sim=0.643) warnaar_A2_andrews_gordon/chunk_024.tex ---
+Summary: States Conjecture 3 (Corteel--Dousse--Uncu Q-positivity): for rank 3 and d not divisible by 3, Q_{n,c}(q) is a polynomial with nonneg coefficients and Q_{n,c}(1) equals a specific closed-form expression.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+
+[Summary: States Conjecture 3 (Corteel--Dousse--Uncu Q-positivity): for rank 3 and d not divisible by 3, Q_{n,c}(q) is a polynomial with nonneg coefficients and Q_{n,c}(1) equals a specific closed-form expression.]
+
+
+\begin{conjecture}\label{Con_CDU-Q}
+Let $c=(c_0,c_1,c_2)$ and $d:=c_0+c_1+c_2$ such that 
+$d\not\equiv 0 \pmod{3}$.
+Then $Q_{n,(c_0,c_1,c_2)}(q)$ is a polynomial in $q$ with 
+nonnegative coefficients.
+Moreover,
+\begin{equation}\label{Eq_CDU-Q}
+Q_{n,(c_0,c_1,c_2)}(1)=\Big(\tfrac{1}{6}(d+1)(d+2)-1\Big)^n.
+\end{equation}
+\end{conjecture}
+
+
+--- 4/20 (sim=0.642) kanade_russell_completing_a2_andrews_schilling_warnaar/chunk_018.tex ---
+Summary: States the q-series (generating function) form of the Andrews--Gordon identities as Theorem AGq, expressing the multi-sum over n_1,...,n_{k-1} in terms of a product of theta functions mod 2k+1.
+
+% Paper: kanade_russell_completing_a2_andrews_schilling_warnaar
+% Section: Infinite level \texorpdfstring{$\operatorname{A > Andrews--Gordon identities
+
+
+[Summary: States the q-series (generating function) form of the Andrews--Gordon identities as Theorem AGq, expressing the multi-sum over n_1,...,n_{k-1} in terms of a product of theta functions mod 2k+1.]
+\begin{thm}
+\label{thm:AGq}
+Let $k\geq 2$ and $1\leq t \leq k$.
+We have:
+\begin{align}
+\sum_{n_1,n_2,\cdots,n_{k-1}}
+\dfrac{q^{n_1^2+n_2^2+\cdots+n_{k-1}^2+n_t+n_{t+1}+\cdots+n_{k-1}}}{(q)_{n_1-n_2}(q)_{n_2-n_3}\cdots (q)_{n_{k-2}-n_{k-1}}(q)_{n_{k-1}}}
+=\dfrac{(q^t,q^{2k+1-t},q^{2k+1};\,\,q^{2k+1})}{(q)_\infty}.
+\end{align}
+\end{thm}
+
+
+--- 5/20 (sim=0.638) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_001.tex ---
+Summary: Title/author/abstract: paper obtains A2 analogues of Andrews-Gordon identities and conjectures manifestly positive formulas for cylindric partition GFs.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+[Summary: Title/author/abstract: paper obtains A2 analogues of Andrews-Gordon identities and conjectures manifestly positive formulas for cylindric partition GFs.]
+
+\title{The $\mathrm{A}_2$ Andrews--Gordon identities and cylindric partitions}
+
+\author{S.\ Ole Warnaar}
+\address{School of Mathematics and Physics,
+The University of Queensland, Brisbane, QLD 4072, Australia}
+\email{o.warnaar@maths.uq.edu.au}
+
+\thanks{Work supported by the Australian Research Council.}
+
+\subjclass[2020]{05A15, 05A19, 11P84, 17B65, 33D15, 81R10}
+
+\begin{abstract}
+Inspired by a number of recent papers by Corteel, Dousse, Foda, Uncu and 
+Welsh on cylindric partitions and Rogers--Ramanujan-type identities, 
+we obtain the $\mathrm{A}_2$ (or $\mathrm{A}_2^{(1)}$) 
+analogues of the celebrated Andrews--Gordon identities.
+We further prove $q$-series identities that correspond to the
+infinite-level limit of the Andrews--Gordon identities
+for $\mathrm{A}_{r-1}$ (or $\mathrm{A}_{r-1}^{(1)}$) for arbitrary rank $r$.
+Our results for $\mathrm{A}_2$ also lead to conjectural, manifestly 
+positive, combinatorial formulas for the $2$-variable generating function 
+of cylindric partitions of rank $3$ and level $d$, such that $d$ is not a
+multiple of $3$.
+
+\smallskip
+
+\noindent\textbf{Keywords:} $\mathrm{A}_{r-1}^{(1)}$ branching functions, 
+character formulas, cylindric partitions, Rogers--Ramanujan identities. 
+\end{abstract}
+
+
+--- 6/20 (sim=0.636) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_060.tex ---
+Summary: Discusses the open problem of finding manifestly positive sum representations for the identities proved here, critiques the Andrews–Schilling–Warnaar hypergeometric approach as insufficient for under-the-line cases, and raises questions about symmetric cylindric partitions and affine Lie algebra connections.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Future Directions
+
+[Summary: Discusses the open problem of finding manifestly positive sum representations for the identities proved here, critiques the Andrews–Schilling–Warnaar hypergeometric approach as insufficient for under-the-line cases, and raises questions about symmetric cylindric partitions and affine Lie algebra connections.]
+
+It is still highly relevant to find manifestly positive sum representations for any one of the identities mentioned here. We are looking for ways to see the positivity of the series coefficients. In \cite{ASW99}, Andrews--Schilling--Warnaar suggests applying hypergeometric transformations to eliminate the $(q;q)_\infty$ factor that appear in the identities (such as \eqref{eq:ASW500}) to get a manifestly positive representation. That suggestion is limited and might not be widely applicable, especially for the under-the-line identities. 
+
+In the study of symmetric cylindric partitions \cite{BU} another two fundamental modulo 8 partition theoretic identity families, namely G\"ollnitz--Gordon and little G\"ollnitz identities, showed up. The G\"ollnitz--Gordon identities are known to be related to the level 2 modules of affine Lie algebra $A_5^{(2)}$ \cite{KGG}. This raises new questions of whether,  similar to the symmetric partitions paradigm, we can also relate symmetric cylindric partitions to character formulas of some affine Lie algebras. The product formula analogous to \eqref{BorodinProd} for the count of symmetric cylindric partitions' is present in \cite{BU}. At the moment, the relation of these products' to affine Lie algebra character formulas are fuzzy, and there are no general conjectural series representations for symmetric cylindric partitions either. We plan to study these objects further.
+
+
+--- 7/20 (sim=0.635) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_024.tex ---
+Summary: Main results (3k+2): states Conjecture CDU-Q on positivity of the cylindric partition polynomials Q_{n,c}(q) for gcd(r,d)=1.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+[Summary: Main results (3k+2): states Conjecture CDU-Q on positivity of the cylindric partition polynomials Q_{n,c}(q) for gcd(r,d)=1.]
+
+\begin{conjecture}\label{Con_CDU-Q}
+Let $c=(c_0,c_1,c_2)$ and $d:=c_0+c_1+c_2$ such that 
+$d\not\equiv 0 \pmod{3}$.
+Then $Q_{n,(c_0,c_1,c_2)}(q)$ is a polynomial in $q$ with 
+nonnegative coefficients.
+Moreover,
+\begin{equation}\label{Eq_CDU-Q}
+Q_{n,(c_0,c_1,c_2)}(1)=\Big(\tfrac{1}{6}(d+1)(d+2)-1\Big)^n.
+\end{equation}
+\end{conjecture}
+
+
+--- 8/20 (sim=0.634) foda_zhu_fermionic_macdonald_index/chunk_008.tex ---
+Summary: Explains that the constant-sign (fermionic) representation of the q-series enumerates states by quasi-particle content with manifestly non-negative coefficients, motivating the terminology "fermionic characters" central to the paper's approach.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Introduction > Virasoro characters as generating functions of weighted paths
+
+[Summary: Explains that the constant-sign (fermionic) representation of the q-series enumerates states by quasi-particle content with manifestly non-negative coefficients, motivating the terminology "fermionic characters" central to the paper's approach.]
+
+The generating functions of these weighted paths admit more than one $q$-series 
+representation. One of these representations is a constant-sign sum with manifestly 
+non-negative coefficients. The coefficient $a_n$ of $q^{\, n}$ in this representation
+is the multiplicity of the states of conformal dimension $n$ (up a possible 
+shift common to all states) in the corresponding irreducible highest-weight module. 
+In \cite{berkovich,berkovich.mccoy.01,berkovich.mccoy.schilling,foda.warnaar, 
+kedem.klassen.mccoy.melzer, warnaar.01, warnaar.02, warnaar.03}
+ these states were interpreted 
+in terms of (quasi-)particles and their weights (the corresponding power of $q$) 
+were interpreted in terms of their (quasi-)momenta. These manifestly non-negative
+sum expressions were called \textit{\lq fermionic characters\rq}
+\footnote{\, 
+The papers \cite{warnaar.01, warnaar.02} focus on the unitary minimal models, 
+using the combinatorics of the paths that are appropriate to the unitary models,
+while \cite{foda.warnaar} completes the proof in this case.}
+\footnote{\,
+There is another approach to the fermionic characters using path algebras of 
+fusion graphs 
+\cite{kellendonk.recknagel,kellendonk.rosgen.varnhagen,kaufmann}
+}
+
+
+--- 9/20 (sim=0.629) kanade_remarks_capparelli_primc/chunk_013.tex ---
+Summary: Clarifies the CMPP conjecture's formulation via "congruence triangles" versus the explicit product form used here, and notes that a level-rank duality interchanging k and n motivates the choice of parameter ranges.
+
+% Paper: kanade_remarks_capparelli_primc
+% Section: Introduction
+
+[Summary: Clarifies the CMPP conjecture's formulation via "congruence triangles" versus the explicit product form used here, and notes that a level-rank duality interchanging k and n motivates the choice of parameter ranges.]
+
+It should be remarked that CMPP do not state the product on the right
+in the explicit form as shown above, but instead provide a prescription
+for obtaining the product for fixed $k_0,\dots,k_n$ using what they 
+refer to as `congruence triangles'.
+The rationale for including the trivial $n=0$ case is that from a
+representation-theoretic perspective it is natural to include $k=0$
+(for which the product trivialises to $1$) in the conjecture.
+Since Conjecture~\ref{Con_A2n2} exhibits a partial `level-rank duality'
+which interchanges the roles of $k$ and $n$, it is natural to let
+$k$ and $n$ have the same range.
+
+
+--- 10/20 (sim=0.629) li_uncu_macmahon_analysis_cylindric_partitions/chunk_094.tex ---
+Summary: Notes the conjectured non-negativity of the alternating sums for k>=5, connecting to Conjecture 2 about positivity.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: The Conjectural Infinite Hierarchies
+
+[Summary: Notes the conjectured non-negativity of the alternating sums for k>=5, connecting to Conjecture 2 about positivity.]
+Following up, we also believe the nature of the sums will remain the same and the sums that appear above will always have non-negative coefficients:
+
+
+--- 11/20 (sim=0.626) pascadi_product_identities_two_variable_rr/chunk_191.tex ---
+Summary: Remark: places the mock theta sum identities in the broader context of Watson's work and harmonic Maass forms.
+
+% Paper: pascadi_product_identities_two_variable_rr
+% Section: Rogers--Ramanujan type identities and mock theta functions > Applications to mock theta functions
+[Summary: Remark: places the mock theta sum identities in the broader context of Watson's work and harmonic Maass forms.]
+
+\begin{remark}
+There are a few things to notice about \cref{prop:mock-theta-sums}:
+\begin{itemize}
+    \item[(i).] The first two identities might lead to formulae for $\phi(q) \pm 2\psi(q)$, as in \cite[(1.4) and (1.5)]{chen2012partition}. 
+    \item[(ii).] The next two identities are just a convenient reformulation of \cref{eq:watson}, which can be derived from equations $(1_0)$ to $(3_1)$ from Watson's paper \cite{watson1937mock}.
+    \item[(iii).] Taking $q \mapsto q^2$, the left-hand sides of the last two identities can be given similar but not trivially equivalent formulae, using the same equations $(1_0)$ to $(3_1)$ of Watson \cite{watson1937mock}.
+    \item[(iv).] One can regard the left-hand sides as ``completions'' of mock theta functions (not in the sense of harmonic Maass forms), since they correspond to sums over $n \in \mathbb{Z}$ rather than $n \ge 0$ or $n \ge 1$; thus the fifth-order mock theta functions ``complete'' each other in this sense.
+    \item[(v).] \cref{prop:mock-theta-sums} contains three pairs of (almost) twin identities, where each pair interchanges $\textnormal E_1 \leftrightarrow \textnormal E_2$. This supports the parallelism between the two classes of fifth-order mock theta functions defined by Ramanujan (i.e., those indexed by $0$ and those indexed by $1$).
+\end{itemize}
+\end{remark}
+
+\begin{proof}
+The first equality in each of the identities from \cref{prop:mock-theta-sums} follows immediately from \cref{not:mock-theta} and  \cref{eq:finite-product-negative}, so we focus on the second equalities. We also leave the trivial conversion from the notations $\left(q^N; q^N\right)$ and $\left\langle q^g; q^N \right\rangle$ to (generalized) eta functions to the reader.
+
+The third-order identities follow by taking $x \in \{iq^{-1/2}, q^{-1/2}\}$ in \cref{thm:twisted-rog-ram-var}, or from the obvious substitutions in \cref{cor:d=1}. The first two fifth-order identities are equivalent to \cref{eq:watson} (which, as we have seen, follows by taking $x = 1$ and $x = -1$ in \cref{thm:twisted-rog-ram}). For the last two fifth-order identities, take $q \mapsto q^2$ and $x = q^{-1}$ in \cref{thm:twisted-rog-ram}, and use the facts that
+\[
+\begin{aligned}
+    A(q) = 
+    \frac{1}{\left\langle -q; q^2\right\rangle}
+    \left(\frac{(q; q)}{\left(q^2; q^2\right)\left\langle q; q^5 \right\rangle} 
+    - 
+    2\frac{\left(q^4; q^4\right)^2}{\left(q^2; q^2\right)^2} B(q)
+    \right),&
+    \qquad\qquad
+    B(q) = \frac{-q\left(q^2; q^2\right)}{(q; q)\left\langle q^8; q^{20} \right\rangle },
+    \\
+    C(q) = 
+    \frac{1}{\left\langle -q; q^2\right\rangle}
+    \left(\frac{(q; q)}{\left(q^2; q^2\right)\left\langle q^2; q^5 \right\rangle} 
+    - 
+    2\frac{\left(q^4; q^4\right)^2}{\left(q^2; q^2\right)^2} D(q)
+    \right),&
+    \qquad\qquad 
+    D(q) = \frac{\left(q^2; q^2\right)}{(q; q)\left\langle q^4; q^{20} \right\rangle},
+\end{aligned}
+\]
+which follow from \cref{eq:5-and-10} and \cref{eq:explicit-matrix}.
+\end{proof}
+
+
+--- 12/20 (sim=0.625) pascadi_product_identities_two_variable_rr/chunk_147.tex ---
+Summary: Remark: discusses the role of Watson's mock theta identities in the proof and possible generalizations.
+
+% Paper: pascadi_product_identities_two_variable_rr
+% Section: Rogers--Ramanujan type identities and mock theta functions > Two-variable generalizations of Rogers--Ramanujan-type identities
+[Summary: Remark: discusses the role of Watson's mock theta identities in the proof and possible generalizations.]
+
+\begin{remark}
+Watson \cite{watson1937mock} deduced his relations $(1_0), (1_1), (3_0)$ and $(3_1)$ using $q$-series manipulations based on the Rogers--Ramanujan identities from \cref{eq:rog-ram}, the formulae in \cref{cor:basic-identities} (Watson's $(E_1)$ and $(E_2)$), and specializations of the triple product identity (Watson's $(J_1)$ and $(J_2)$). The proof above also shows that \cref{thm:twisted-rog-ram} \emph{implies} the mock theta identities in \cref{eq:watson} by taking $x = \pm 1$, which is relevant since we will give a self-contained proof of \cref{thm:twisted-rog-ram} in \cref{subsec:w-coeffs}.
+\end{remark}
+
+
+--- 13/20 (sim=0.623) warnaar_A2_andrews_gordon/chunk_015.tex ---
+Summary: States Conjecture 1 (A2 Andrews--Gordon identities, II): a family of multisum-to-product identities for modulus 3k+2, parametrized by 1<=s<=k+1, whose product side involves theta(q,q^s,q^{s+1};q^{3k+2}).
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+
+[Summary: States Conjecture 1 (A2 Andrews--Gordon identities, II): a family of multisum-to-product identities for modulus 3k+2, parametrized by 1<=s<=k+1, whose product side involves theta(q,q^s,q^{s+1};q^{3k+2}).]
+
+
+\begin{conjecture}[$\mathrm{A}_2$ Andrews--Gordon identities, II]
+\label{Con_A2-two}
+For integers $k,s$ such that $1\leqslant s\leqslant k+1$,
+\begin{align}\label{Eq_ks-con}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+& \frac{q^{n_k^2+\sum_{i=s}^k n_i}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2+m_i} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} \\
+&=\frac{(q^{3k+2};q^{3k+2})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q,q^s,q^{s+1};q^{3k+2}), \notag
+\end{align}
+where $m_k:=2n_k$.
+\end{conjecture}
+
+
+--- 14/20 (sim=0.620) li_uncu_macmahon_analysis_cylindric_partitions/chunk_056.tex ---
+Summary: Applies Andrews' identity to recover a manifestly positive formula for P_{(2,1)}(n), demonstrating positivity of the alternating sum.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: Cylindric Partitions with profile $(c_1,c_2)$ such that $c_1+c_2=3$ > A polynomial identity due to George Andrews
+
+[Summary: Applies Andrews' identity to recover a manifestly positive formula for P_{(2,1)}(n), demonstrating positivity of the alternating sum.]
+If $n$ is odd (replace $n$ by $2n-1$) and $\alpha=0$, we have
+\begin{align}
+\label{eq:P21Andrews}\sum_{j=0}^{\infty}q^{j^2}{2n-j \brack j}_{q}=&\sum_{j=-\infty}^{\infty}(-1)^{j}q^{\frac{j(5j+1)}{2}}{2n \brack \lfloor n-\frac{5j}{2}\rfloor}_{q}
+\intertext{by splitting the right-hand sum with $j\mapsto 2j$ and $j\mapsto 2j+1$ we directly get}
+%\\=&\sum_{j=-\infty}^{\infty}q^{j(10j+1)}{2n \brack n-5j}_{q}-\sum_{j=-\infty}^{\infty}q^{(2j+1)(5j+3)}{2n \brack n-5j-3}_{q}\\
+\nonumber=&\sum_{j=-\infty}^{\infty}q^{10j^2+j}{2n \brack n-5j}_{q}-\sum_{j=-\infty}^{\infty}q^{10j^2+11j+3}{2n \brack n-5j-3}_{q}
+%\\=&\sum_{j=-\infty}^{\infty}q^{10j^2+j}{2n \brack n+5j}_{q}-\sum_{j=-\infty}^{\infty}q^{10j^2+9j+2}{2n \brack n+5j+2}_{q},
+\end{align}
+which is equal to $P_{(2,1)}(n)$ (see \eqref{eq:P21formula}). 
+
+The left-hand side of \eqref{eq:P21Andrews} is {\it manifestly positive} (i.e. these polynomials have only non-negative coefficients). We do not know this a priori for $P_{(2,1)}(n)$. We know that $CP_{(2,1)}(n)$ has positive coefficients through that being the generating function of cylindric partitions with profile $(2,1)$, where there are at most $n$ non-zero parts in each row. However, the formula of $P_{(2,1)}(n)$, \eqref{eq:P21formula}, has differences of polynomials and we do not have a clear combinatorial description of $P_{(2,1)}(n)$ either. Therefore, we can only tell that $P_{(2,1)}(n)$ has positive coefficients through the identity \eqref{eq:P21Andrews}.
+
+
+--- 15/20 (sim=0.619) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_013.tex ---
+Summary: Main results section: summarizes all A2 Andrews-Gordon identities and associated cylindric partition GF conjectures.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures
+[Summary: Main results section: summarizes all A2 Andrews-Gordon identities and associated cylindric partition GF conjectures.]
+
+In this section we give a summary of the $\mathrm{A}_2$ Andrews--Gordon 
+identities for $\operatorname{AG}_{\lambda;3}(q)$ as well as some closely related, manifestly 
+positive multisum expressions for the two-variable generating function of 
+cylindric partitions $\operatorname{GK}_{(c_0,c_1,c_2)}(z,q)$ for
+$c_0+c_1+c_2\not\equiv 0\pmod{3}$.
+
+
+--- 16/20 (sim=0.619) kanade_russell_completing_a2_andrews_schilling_warnaar/chunk_003.tex ---
+Summary: Introduces Rogers--Ramanujan identities as prototypes and defines the key notation (q-Pochhammer symbols, theta functions) used throughout the paper, situating the work in the landscape of partition theory and q-series.
+
+% Paper: kanade_russell_completing_a2_andrews_schilling_warnaar
+% Section: Introduction
+
+
+[Summary: Introduces Rogers--Ramanujan identities as prototypes and defines the key notation (q-Pochhammer symbols, theta functions) used throughout the paper, situating the work in the landscape of partition theory and q-series.]
+Characters of various structures related to the modules of affine Lie algebras, and more generally, vertex operator algebras, are a tremendously rich 
+source of various kinds of combinatorial, number-theoretic and $q$-series-theoretic identities. 
+The landscape of this subject is truly vast, and we shall restrict ourselves to the scenarios that lead to the identities of the Rogers--Ramanujan-type:
+\begin{align}
+\sum_{n\geq 0}\dfrac{q^{n^2}}{(q)_n} &= \prod_{m\geq 0}\dfrac{1}{(1-q^{5m+1})(1-q^{5m+4})}\label{eqn:RR1}\\
+\sum_{n\geq 0}\dfrac{q^{n^2+n}}{(q)_n} &= \prod_{m\geq 0}\dfrac{1}{(1-q^{5m+2})(1-q^{5m+3})}\label{eqn:RR2}.
+\end{align}
+
+Here and below, we use the standard notation for $n\in\mathbb{Z}_{\geq 0}\cup\{\infty\}$:
+\begin{align}
+(a;q)_n=\prod_{0\leq t < n} (1-aq^t),
+\end{align}
+and simply writing $(a)_n$ when the base $q$ is understood.
+We will also use the following notation:
+\begin{align}
+\theta(a;q)&=(a; q)_\infty(q/a; q)_\infty\\
+\theta(a_1,a_2,\cdots,a_k;q)&=\theta(a_1;q)\theta(a_2;q)\cdots \theta(a_k;q).
+\end{align}
+
+Throughout this paper, we will be viewing identities such as \eqref{eqn:RR1} and \eqref{eqn:RR2} as purely formal power series 
+identities. We shall refer to the periodicity in the product-side as the ``modulus'' of the identity, for instance, we will say
+that the Rogers-Ramanujan identities above \eqref{eqn:RR1} and \eqref{eqn:RR2} are mod $5$ identities.
+
+
+--- 17/20 (sim=0.618) waldron_overpartition_companion/chunk_012.tex ---
+Summary: Motivates the paper's q-series goals by explaining how Andrews-Keith used their partition identity to discover new sum-product identities; introduces the trivariate 2-colored generating function 1/((t₁q;q)_∞(t₂q;q)_∞) whose analog this paper targets.
+
+% Paper: waldron_overpartition_companion
+% Section: Schmidt Type and Colored Partitions
+
+[Summary: Motivates the paper's q-series goals by explaining how Andrews-Keith used their partition identity to discover new sum-product identities; introduces the trivariate 2-colored generating function 1/((t₁q;q)_∞(t₂q;q)_∞) whose analog this paper targets.]
+
+Results like Theorems \ref{uncus_theorem_generalization} and
+\ref{AndrewsKeith_main} are examples of what are often called partition identities in the literature of partitions.
+Although partition identities are interesting in their own right, they are often applied to find combinatorial proofs of $q$-series identities,
+or even to derive new ones.
+In \cite{AndrewsKeith}, Andrews and Keith did the latter, using some special cases of Theorem \ref{AndrewsKeith_main} to find
+new $q$-series sum-product identities with the sum and product side corresponding to the Schmidt type and colored partitions, respectively.
+Among their results is a trivariate identitiy that has a product side well-known to
+be the generating function for 2-colored partitions
+\begin{equation*}
+\smashoperator{\sum_{\lambda \in \mathcal{P}_2}} t_1^{\ell_1(\lambda)} t_2^{\ell_2(\lambda)} q^{\displaystyle \lvert \lambda \rvert}
+= \frac{1}{(t_1q; q)_\infty (t_2q; q)_\infty}
+\end{equation*}
+where $\ell_1(\lambda)$ and $\ell_2(\lambda)$ count the number of parts appearing in the respective colors.
+
+
+--- 18/20 (sim=0.618) kilic_kursungoz_functional_equations_andrews_gordon/chunk_049.tex ---
+Summary: Opens Section 6 with three concrete future directions: extending the search to larger parameter ranges and k-fold sums, using complex characters instead of ±1 signs, and applying the algorithm to cylindric partition generating functions.
+
+% Paper: kilic_kursungoz_functional_equations_andrews_gordon
+% Section: Future work
+
+[Summary: Opens Section 6 with three concrete future directions: extending the search to larger parameter ranges and k-fold sums, using complex characters instead of ±1 signs, and applying the algorithm to cylindric partition generating functions.]
+
+\label{secFutureWork}
+
+More extensive search even for double series is needed, 
+in which larger bounds for the parameters, 
+or larger auxiliary linear systems are taken into account.  
+A shortcut for parameters that will likely work is 
+trying the Euler Algorithm after substituting $x = q$, $q^2$, $q^3$, \ldots.  
+This is twisting the parameters $C_1$ and $C_2$ without running the algorithm all over again.  
+An immediate continuation is to rewrite the code to treat $k$-fold sums in general.  
+This is ongoing work.  
+
+Another possibility is to use real or even complex characters~\cite{Apostol} instead of 
+powers of $(-1)$ like in Section \ref{secAltSeries}.  
+Such series previously appeared in~\cite{ABM15, Capp_th, Sills04}.  
+This requires adaptation of the primary $q$-contiguous equations 
+\eqref{fneqPrimary} or \eqref{fneqPrimaryAlt}.  
+
+Cylindric partition generating functions such as in~\cite{CDU22, CW19} can be considered.  
+However; not only the primary $q$-contiguous equations 
+\eqref{fneqPrimary} need to be updated, 
+but also further optimization is needed.  
+This is because the number of series is larger in each such system.  
+
+Checking unique determination of series in functional equations 
+by hand takes time.  
+The consistency of the systems and the series therein 
+with the initial values $S_{\cdot, \cdot}(0) = 1$ 
+takes even longer to verify by hand.  
+If it is possible to automate these, 
+it will save precious time spent by checking redundant systems.
+
+
+--- 19/20 (sim=0.617) griffin_ono_rogers-ramanujan_arithmetic/chunk_047.tex ---
+Summary: Discusses the rectangular partition specialization formula for P_{(2^r)}, showing how it converts the A_{n-1}^{(1)} limiting identity (Theorem 4) into AG and Bressoud identities for δ=0,1, and notes the open problem of generalizing to arbitrary rectangular shapes.
+
+% Paper: griffin_ono_rogers-ramanujan_arithmetic
+% Section: The Hall--Littlewood polynomials
+
+[Summary: Discusses the rectangular partition specialization formula for P_{(2^r)}, showing how it converts the A_{n-1}^{(1)} limiting identity (Theorem 4) into AG and Bressoud identities for δ=0,1, and notes the open problem of generalizing to arbitrary rectangular shapes.]
+
+We conclude this section with a remark about Theorem~\ref{Thm_Main4}.
+Due to the occurrence of the limit, the left-hand side does not take the
+form of the usual sum-side of a Rogers--Ramanujan-type identity.
+For special cases it is, however, possible to eliminate the limit.
+For example, for partitions of the form $(2^r)$ we found that
+\begin{equation}\label{Eq_Q2r}
+P_{(2^r)}(1,q,q^2,\dots;q^{2n+\delta}) 
+=\sum_{r\geq r_1\geq\dots\geq r_n\geq 0}
+\frac{q^{r^2-r+r_1^2+\cdots+r_n^2+r_1+\cdots+r_n}}
+{(q)_{r-r_1}(q)_{r_1-r_2}
+\cdots(q)_{r_{n-1}-r_n}(q^{2-\delta};q^{2-\delta})_{r_n}}
+\end{equation}
+for $\delta=0,1$.
+This turns the $m=2$ case of Theorem~\ref{Thm_Main4} into
+\[
+\sum_{r_1\geq\dots\geq r_n\geq 0}
+\frac{q^{r_1^2+\cdots+r_n^2+r_1+\cdots+r_n}}
+{(q)_{r_1-r_2}\cdots(q)_{r_{n-1}-r_n}(q^{2-\delta};q^{2-\delta})_{r_n}} 
+=\frac{(q^{2n+2+\delta};q^{2n+2+\delta})_{\infty}}
+{(q)_{\infty}}\, \cdot \theta(q;q^{2n+2+\delta}).
+\]
+For $\delta=1$ this is the $i=1$ case of the
+Andrews--Gordon identity \eqref{Eq_AG} (with $m$ replaced by $n$). 
+For $\delta=0$ it corresponds to the $i=1$ case of 
+\eqref{Eq_Bressoud}.
+We do not know how to generalize \eqref{Eq_Q2r}
+to arbitrary rectangular shapes.
+
+
+--- 20/20 (sim=0.615) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_027.tex ---
+Summary: Main results (3k+1): states Conjecture II' giving the A2 AG identity family for modulus 3k+1 with parameter s.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+1)$ case
+[Summary: Main results (3k+1): states Conjecture II' giving the A2 AG identity family for modulus 3k+1 with parameter s.]
+
+\begin{conjecture}
+[$\mathrm{A}_2$ Andrews--Gordon identities, II$'$]
+\label{Con_A2-two-b}
+For integers $k,s$ such that $k\geqslant 2$ and $1\leqslant s\leqslant k$,
+\begin{align}\label{Eq_A2-two-b}
+\sum_{\substack{n_1,\dots,n_{k-1}\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+& \frac{q^{\sum_{i=1}^{k-1} (n_i^2-n_im_i+m_i^2+m_i)+
+\sum_{i=s}^{k-1} n_i}}{(q)_{n_1}} \, \genfrac{[}{]}{0pt}{}{2n_{k-1}}{m_{k-1}}
+\prod_{i=1}^{k-2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} \genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} \\
+&=\frac{(q^{3k+1};q^{3k+1})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q,q^s,q^{s+1};q^{3k+1}). \notag
+\end{align}
+\end{conjecture}
+
+Again we have a proof for three (or two when $k=2$) values of $s$.
+
+

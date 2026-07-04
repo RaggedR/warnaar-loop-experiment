@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+
+\title{Problem Description:\\Positivity of Bounded Cylindric Partition Polynomials}
+\author{Prepared for Loop Experiment}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Cylindric Partitions}
+
+\begin{definition}
+Given a composition $c=(c_1,\ldots,c_k)$ with $c_i \geq 0$, a \emph{cylindric partition of profile $c$} is a sequence of $k$ partitions
+$\Lambda=(\lambda^{(1)},\ldots,\lambda^{(k)})$ such that:
+\begin{itemize}
+\item $\lambda^{(i)}_j \geq \lambda^{(i+1)}_{j+c_{i+1}}$ for all $1 \leq i \leq k-1$ and all $j \geq 1$,
+\item $\lambda^{(k)}_j \geq \lambda^{(1)}_{j+c_1}$ for all $j \geq 1$.
+\end{itemize}
+The \emph{size} of $\Lambda$ is $|\Lambda| = \sum_{i=1}^k |\lambda^{(i)}|$ and its \emph{maximum} is $\max(\Lambda) = \max_i \lambda^{(i)}_1$.
+\end{definition}
+
+The cyclic interlacing conditions can be visualised by arranging the partitions around a cylinder. A cylindric partition of profile $(c_1,\ldots,c_k)$ with $\ell = c_1+\cdots+c_k$ and $t=k+\ell$ is equivalently a periodic skew plane partition on a cylinder of circumference $t$.
+
+\section{Generating Functions}
+
+Let $\mathcal{C}_c$ denote the set of all cylindric partitions of profile $c$, and $\mathcal{C}_{c,n}$ those with maximum entry at most $n$. Define:
+\begin{align}
+F_c(q) &= \sum_{\Lambda \in \mathcal{C}_c} q^{|\Lambda|}, \\
+F_c(y,q) &= \sum_{\Lambda \in \mathcal{C}_c} q^{|\Lambda|} y^{\max(\Lambda)}, \\
+F_{c,n}(q) &= \sum_{\Lambda \in \mathcal{C}_{c,n}} q^{|\Lambda|}.
+\end{align}
+
+\section{Borodin's Product Formula}
+
+\begin{theorem}[Borodin 2007]
+With $t = k + \ell$ where $\ell = c_1+\cdots+c_k$,
+\[
+F_c(q) = \frac{1}{(q^t;q^t)_\infty} \cdot
+\prod_{i=1}^k \prod_{j=i+1}^k \prod_{m=1}^{c_i} \frac{1}{(q^{m+d_{i+1,j}+j-i};q^t)_\infty}
+\cdot
+\prod_{i=2}^k \prod_{j=2}^{i-1} \prod_{m=1}^{c_i} \frac{1}{(q^{t-(m+d_{j,i-1}+i-j)};q^t)_\infty},
+\]
+where $d_{i,j} = c_i + c_{i+1} + \cdots + c_j$.
+\end{theorem}
+
+This expresses the unrestricted generating function as an explicit infinite product.
+
+\section{The Corteel--Welsh Functional Equation}
+
+Let $I_c = \{i : c_i > 0\}$. For $J \subseteq I_c$ nonempty, define the shifted profile $c(J) = (c_1(J),\ldots,c_k(J))$ by
+\[
+c_i(J) = \begin{cases}
+c_i - 1 & \text{if } i \in J \text{ and } (i-1) \notin J, \\
+c_i + 1 & \text{if } i \notin J \text{ and } (i-1) \in J, \\
+c_i & \text{otherwise,}
+\end{cases}
+\]
+where indices are cyclic ($c_0 = c_k$).
+
+\begin{proposition}[Corteel--Welsh 2019]
+For any composition $c = (c_1,\ldots,c_k)$,
+\[
+F_c(y,q) = \sum_{\emptyset \subset J \subseteq I_c} (-1)^{|J|-1} \frac{F_{c(J)}(yq^{|J|},q)}{1-yq^{|J|}},
+\]
+with initial conditions $F_c(0,q) = 1$ and $F_c(y,0) = 1$.
+\end{proposition}
+
+This inclusion-exclusion identity, combined with Borodin's product formula, is the main tool for computing sum-side formulas.
+
+\section{Notation}
+
+Throughout, we use standard $q$-series notation:
+\begin{align}
+(a;q)_n &= \prod_{i=0}^{n-1}(1-aq^i), \qquad
+(a;q)_\infty = \prod_{i=0}^{\infty}(1-aq^i), \\
+\genfrac{[}{]}{0pt}{}{n}{m} &= \frac{(q;q)_n}{(q;q)_m(q;q)_{n-m}} \qquad \text{($q$-binomial coefficient)}.
+\end{align}
+
+We also write $(a_1,a_2,\ldots,a_r;q)_\infty = \prod_{i=1}^r (a_i;q)_\infty$.
+
+\section{The Bounded Polynomials $Q_{n,c}(q)$}
+
+\begin{definition}
+For a nonneg integer $n$ and a composition $c = (c_0,\ldots,c_{r-1})$ with $d = c_0+\cdots+c_{r-1}$ and $\ell = \gcd(d,r)$, define
+\[
+Q_{n,c}(q) := (q^\ell;q^\ell)_n \cdot [z^n]\Big((zq)_\infty \cdot \operatorname{GK}_c(z,q)\Big) \in \mathbb{Z}[[q]],
+\]
+where $\operatorname{GK}_c(z,q) := F_c(z,q)$ is the bivariate cylindric partition generating function.
+\end{definition}
+
+Welsh (2021) proved that $Q_{n,c}(q)$ is indeed a polynomial in $q$ (not merely a power series), and established the evaluation
+\[
+Q_{n,c}(1) = \left(\tfrac{1}{6}(d+1)(d+2) - 1\right)^n
+\]
+for $r=3$ and $d \not\equiv 0 \pmod{3}$.
+
+\section{The Conjecture}
+
+\begin{conjecture}[Corteel--Dousse--Uncu 2020 / Warnaar 2023]\label{conj:positivity}
+Let $c = (c_0,c_1,c_2)$ with $d = c_0+c_1+c_2$ such that $d \not\equiv 0 \pmod{3}$. Then:
+\begin{enumerate}
+\item $Q_{n,c}(q)$ is a polynomial in $q$ with \textbf{nonnegative coefficients}.
+\item $Q_{n,c}(1) = \left(\tfrac{1}{6}(d+1)(d+2)-1\right)^n$.
+\end{enumerate}
+\end{conjecture}
+
+Part (2) is proved. The positivity statement (Part 1) remains \textbf{wide open}.
+
+\section{What is Known}
+
+\begin{itemize}
+\item Warnaar (2023) proved the conjecture for $k=1$ and $k=2$ (i.e., $d \in \{2,4,5\}$) by providing explicit manifestly positive multisum formulas for $Q_{n,c}(q)$.
+\item The $(q;q)_\infty$ factor in the Andrews--Schilling--Warnaar identities prevents manifest positivity of their sum sides. Cylindric partitions remove this obstruction.
+\item Corteel--Dousse--Uncu (2020) verified positivity computationally for $d \leq 5$.
+\item Uncu (2024) proved new identities for moduli 11 and 13 using Gaussian elimination on the Corteel--Welsh recurrences.
+\item No combinatorial or bijective proof of positivity is known for general $d$.
+\end{itemize}
+
+\section{Why Positivity is Hard}
+
+The polynomial $Q_{n,c}(q)$ is defined by extracting the $z^n$ coefficient of a product of two objects with mixed signs:
+\[
+(zq)_\infty = \sum_{m=0}^\infty \frac{(-1)^m q^{\binom{m+1}{2}}}{(q;q)_m} z^m
+\]
+times the manifestly positive $F_c(z,q)$. The alternating signs in $(zq)_\infty$ create massive cancellation, and the miracle is that everything cancels to leave nonneg coefficients.
+
+The known proofs for small $d$ work by finding a manifestly positive \emph{multisum} representation of $Q_{n,c}(q)$, bypassing the cancellation. But no pattern for these multisums has been found for general $d$.
+
+\section{Possible Approaches}
+
+This section is intentionally brief — the agent should explore freely.
+
+\begin{enumerate}
+\item \textbf{Bijective/combinatorial:} Find a set of combinatorial objects counted by $Q_{n,c}(q)$ whose $q$-weight is manifestly non-negative.
+\item \textbf{Crystal base / representation theory:} Interpret $Q_{n,c}(q)$ as a graded character of some module with positive grading.
+\item \textbf{Analytic:} Prove coefficient-positivity of the multisum via $q$-series manipulations (Bailey pairs, constant term identities, etc.).
+\item \textbf{Inductive:} Use the Corteel--Welsh recurrence to establish positivity by induction on $n$ or on $d$.
+\item \textbf{Algebraic:} Find a positive basis expansion (e.g., in $q$-binomials, Schur functions, etc.) that makes positivity manifest.
+\end{enumerate}
+
+\end{document}

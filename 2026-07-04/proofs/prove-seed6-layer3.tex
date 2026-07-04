@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\qbin}[2]{\begin{bmatrix}#1\\#2\end{bmatrix}_q}
+\newcommand{\poch}[1]{(q;q)_{#1}}
+\title{Warnaar's positivity conjecture at $d=4$ (modulus $7$): a complete proof\\
+\large Seed 6, Layer 3, Round 2}
+\author{Loop experiment, 2026-07-04}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Setup}
+
+Fix $d=4$, so $\ell=\gcd(d,3)=1$ and the modulus is $d+3=7$. For a profile
+$c=(c_0,c_1,c_2)$ with $c_0+c_1+c_2=4$, let $F_c(z,q)=\sum_m F_{c,m}(q)z^m$ be the
+cylindric-partition generating function graded by largest part, and set
+\[
+G_c(z,q)=(zq;q)_\infty F_c(z,q)=\sum_{n\ge0}A_{n,c}(q)\,z^n,\qquad
+Q_{n,c}(q)=\poch{n}A_{n,c}(q),
+\]
+\[
+H_{c,m}(q)=\poch{m}F_{c,m}(q).
+\]
+Warnaar's Conjecture 2.7 at $d=4$ asserts $Q_{n,c}\ge0$ coefficientwise. We prove it for
+all $15$ profiles, together with the Bounded Fermionic Form (BFF) statement and the
+monotonicity $H_{c,m}\ge H_{c,m-1}$.
+
+\paragraph{Input from the literature.}
+Corteel--Welsh (companion note to [CW19]; the note is fully proved by a uniqueness
+induction on a manifestly positive functional system) establish, in their profile labels,
+with $T(n,j):=q^{n^2+j^2-nj}$:
+\begin{align*}
+A_{n}^{(2,1,1)}&=\sum_{j=0}^{2n}\frac{T(n,j)}{\poch{n}}\qbin{2n}{j}, \qquad
+A_{n}^{(4,0,0)}=\sum_{j}\frac{T(n,j)\,q^{n+j}}{\poch{n}}\qbin{2n}{j}, \qquad
+A_{n}^{(3,1,0)}=\sum_{j}\frac{T(n,j)\,q^{j}}{\poch{n}}\qbin{2n}{j},\\
+A_{n}^{(3,0,1)}&=\sum_{j}T(n,j)\Bigl(\frac{q^{n}}{\poch{n}}\qbin{2n}{j}
++\frac{q^{2j}}{\poch{n-1}}\qbin{2n-2}{j}\Bigr),\\
+A_{n}^{(2,2,0)}&=\sum_{j}T(n,j)\Bigl(\frac{q^{n}}{\poch{n}}\qbin{2n}{j}
++\frac{q^{j}(1+q^{n+j})}{\poch{n-1}}\qbin{2n-2}{j}\Bigr),
+\end{align*}
+together with the bounded (Euler-expanded) forms
+$F_{c,m}=\sum_{n\le m}\widetilde A_{n,c}/\poch{m-n}$, where $\widetilde A_{n,c}$ denotes
+the inner sums above (i.e.\ $A_{n,c}$ with the prefactors $1/\poch{n}$, $1/\poch{n-1}$
+retained inside).
+
+\paragraph{Orbit dictionary (corrected; computationally pinned, exact $\mathbb{Z}[q]$, $n\le28$).}
+In the target-first convention of the problem statement (conjecture.tex) the
+$C_3$-orbits match the CW labels as
+\[
+\begin{array}{ll}
+\mathrm{CW}(2,1,1)=\{(1,1,2),(1,2,1),(2,1,1)\}, &
+\mathrm{CW}(4,0,0)=\{(0,0,4),(0,4,0),(4,0,0)\},\\
+\mathrm{CW}(3,1,0)=\{(0,3,1),(1,0,3),(3,1,0)\}, &
+\mathrm{CW}(3,0,1)=\{(0,1,3),(1,3,0),(3,0,1)\},\\
+\mathrm{CW}(2,2,0)=\{(0,2,2),(2,0,2),(2,2,0)\}. &
+\end{array}
+\]
+The last two are the ``wall'' orbits (no single positive double-sum form).
+
+\paragraph{Convention note (erratum).}
+An earlier version of this dictionary swapped the two chirality-sensitive rows
+$\mathrm{CW}(3,1,0)$ and $\mathrm{CW}(3,0,1)$: it was stated in the source-first
+(reversed) kernel convention used internally by the project's chain model, rather
+than the target-first kernel of conjecture.tex. In the corrected dictionary each
+CW label $c$ maps to the orbit containing $c$ itself (the identity map).
+Validation: independent adversarial recomputation
+(\texttt{seed8\_R2L3\_swapcheck.sage}, exact $\mathbb{Z}[q]$, $n\le28$), reconfirmed
+by a separate verification agent; with the corrected dictionary all five orbits
+pass match/positivity/$Q_n(1)=4^n$ checks. No mathematics in this note changes:
+the $Q_n$ formulas, Absorption Lemmas A and B, and the main theorem are label-independent.
+
+\section*{The Inversion Lemma}
+
+\begin{lemma}[Inversion]\label{lem:inv}
+If $F_{c,m}=\sum_{n\le m}\widetilde A_n/\poch{m-n}$ for polynomials $\widetilde A_n$
+independent of $m$, then $Q_{n,c}=\poch{n}\widetilde A_n$ and
+\[
+H_{c,m}=\sum_{n=0}^{m}\qbin{m}{n}Q_{n,c}.
+\]
+\end{lemma}
+
+\begin{proof}
+Letting $m\to\infty$ coefficientwise and using Euler's theorem
+$\sum_{k}z^k/\poch{k}=1/(zq;q)_\infty$ (with $z\mapsto zq$ normalisation as in the
+grading), $(zq;q)_\infty F_c(z,q)=\sum_n\widetilde A_nz^n$, so $A_{n,c}=\widetilde A_n$
+and $Q_{n,c}=\poch{n}\widetilde A_n$. Then
+$H_{c,m}=\poch{m}F_{c,m}=\sum_{n\le m}\frac{\poch{m}}{\poch{m-n}\poch{n}}\poch{n}
+\widetilde A_n=\sum_{n\le m}\qbin{m}{n}Q_{n,c}$.
+\end{proof}
+
+\begin{remark}
+This is the inverse of the (verified) $Q$-transform
+$Q_n=\sum_m(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}H_{c,m}$ by Gauss $q$-binomial
+inversion, but the proof above is direct and needs no inversion theorem.
+\end{remark}
+
+\section*{Explicit $Q_n$ and the wall absorption lemmas}
+
+By Lemma~\ref{lem:inv} applied to the CW forms (note
+$\poch{n}/\poch{n-1}=1-q^n$):
+\begin{align*}
+Q_n^{(2,1,1)}&=\sum_{j}T(n,j)\qbin{2n}{j},\qquad
+Q_n^{(4,0,0)}=\sum_{j}T(n,j)q^{n+j}\qbin{2n}{j},\qquad
+Q_n^{(3,1,0)}=\sum_{j}T(n,j)q^{j}\qbin{2n}{j},\\
+Q_n^{(3,0,1)}&=X_n+(1-q^n)X'_n,\qquad
+Q_n^{(2,2,0)}=X_n+(1-q^n)Y'_n,
+\end{align*}
+where
+\[
+X_n=\sum_jT(n,j)q^n\qbin{2n}{j},\quad
+X'_n=\sum_jT(n,j)q^{2j}\qbin{2n-2}{j},\quad
+Y'_n=\sum_jT(n,j)q^{j}(1+q^{n+j})\qbin{2n-2}{j}.
+\]
+The first three are manifestly nonnegative, with $Q_n(1)=\sum_j\binom{2n}{j}=4^n$ as
+required. The walls need:
+
+\begin{lemma}[Absorption A]\label{lem:A}
+$X_n-q^nX'_n=\sum_jT(n,j)q^n\Bigl((q^{j-1}+q^{j})\qbin{2n-2}{j-1}+\qbin{2n-2}{j-2}\Bigr)\ge0.$
+\end{lemma}
+
+\begin{proof}
+Two applications of the $q$-Pascal rule $\qbin{N}{j}=\qbin{N-1}{j-1}+q^j\qbin{N-1}{j}$ give
+\[
+\qbin{2n}{j}=q^{2j}\qbin{2n-2}{j}+(q^{j-1}+q^{j})\qbin{2n-2}{j-1}+\qbin{2n-2}{j-2}.
+\]
+The first term contributes exactly $q^n\cdot$(the $j$-th summand of $X'_n$); the rest is
+nonnegative.
+\end{proof}
+
+\begin{lemma}[Absorption B]\label{lem:B}
+$\displaystyle X_n-q^nY'_n=\sum_{j=0}^{2n-1}q^{\,n^2+j^2-nj+2j+1}\qbin{2n-1}{j}\ \ge0.$
+\end{lemma}
+
+\begin{proof}
+Divide by the global factor $q^{n^2+n}$ and set
+$D_n=\sum_jq^{j^2-nj}\qbin{2n}{j}-\sum_jq^{j^2-nj}(q^{j}+q^{n+2j})\qbin{2n-2}{j}$.
+
+\emph{Step 1.} The two $q$-Pascal rules
+$\qbin{2n}{j}=\qbin{2n-1}{j-1}+q^j\qbin{2n-1}{j}$ and
+$\qbin{2n-1}{j}=\qbin{2n-2}{j}+q^{2n-1-j}\qbin{2n-2}{j-1}$ combine to
+\[
+\qbin{2n}{j}-q^{j}\qbin{2n-2}{j}=\qbin{2n-1}{j-1}+q^{2n-1}\qbin{2n-2}{j-1},
+\tag{$*$}
+\]
+valid for all $0\le j\le2n$ with the convention $\qbin{N}{k}=0$ for $k<0$ or $k>N$.
+
+\emph{Step 2.} Substituting $(*)$,
+\[
+D_n=\sum_jq^{j^2-nj}\qbin{2n-1}{j-1}
++\sum_jq^{j^2-nj+2n-1}\qbin{2n-2}{j-1}
+-\sum_{j=0}^{2n-2}q^{j^2-nj+n+2j}\qbin{2n-2}{j}.
+\]
+In the last sum put $j\mapsto j-1$: the exponent becomes
+$(j-1)^2-n(j-1)+n+2(j-1)=j^2-nj+2n-1$, so it cancels the middle sum \emph{exactly}.
+Hence $D_n=\sum_{j\ge1}q^{j^2-nj}\qbin{2n-1}{j-1}$; re-indexing $j\mapsto j+1$ and
+restoring $q^{n^2+n}$ gives the claim.
+\end{proof}
+
+\section*{Main theorem}
+
+\begin{theorem}[$d=4$ complete]
+For every profile $c$ with $c_0+c_1+c_2=4$:
+\begin{enumerate}
+\item[(i)] $Q_{n,c}(q)\ge0$ coefficientwise for all $n$, with the manifestly positive
+formulas above (walls via Lemmas~\ref{lem:A},~\ref{lem:B}); $Q_{n,c}(1)=4^n$.
+\item[(ii)] (BFF at $d=4$) $H_{c,m}=\sum_{n\le m}\qbin{m}{n}Q_{n,c}$ with $Q_{n,c}\ge0$,
+i.e.\ the bounded fermionic-form coefficients are $a_n=Q_{n,c}$ for \emph{all} orbits,
+including the walls.
+\item[(iii)] (Monotonicity) $H_{c,m}-H_{c,m-1}
+=\sum_{n\ge1}q^{m-n}\qbin{m-1}{n-1}Q_{n,c}\ \ge0$, and hence
+$h_m=(H_m-H_{m-1})+q^mH_{m-1}\ge0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i): the CW forms plus Lemmas~\ref{lem:A} and~\ref{lem:B}.
+(ii): Lemma~\ref{lem:inv} applied to the CW bounded forms.
+(iii): the $q$-Pascal rule $\qbin{m}{n}-\qbin{m-1}{n}=q^{m-n}\qbin{m-1}{n-1}$ applied
+termwise to (ii).
+\end{proof}
+
+\begin{remark}[Verification]
+All ingredients were checked in exact $\mathbb{Z}[q]$ arithmetic
+(\texttt{scripts/seed6\_R2L3\_verify.py}): the $H$-recursion tower ($m\le8$, all $15$
+profiles), $Q_n\ge0$ and $Q_n(1)=4^n$ ($n\le8$), the orbit dictionary ($n\le7$), the
+Inversion Lemma ($m\le8$), the monotonicity identity, and both absorption identities
+($n\le13$). A brute-force enumeration check also revealed that the chain-model profile
+convention equals the \emph{reversal} of the $H$-recursion convention:
+$F^{\mathrm{chain}}_{c}=F_{\mathrm{rev}(c)}$, $\mathrm{rev}(c_0,c_1,c_2)=(c_2,c_1,c_0)$.
+\end{remark}
+
+\begin{remark}[Beyond $d=4$]
+Lemma~\ref{lem:inv} is generic: whenever a CW-type bounded form (Euler expansion in
+$1/\poch{m-n}$) exists, BFF and Monotonicity reduce to $Q$-positivity. The wall
+phenomenon is structural: walls satisfy $Q_n=P_n+(1-q^n)P'_n$ with $P_n,P'_n\ge0$, and
+positivity follows from an absorption inequality $P_n\ge q^nP'_n$ provable by $q$-Pascal
+manipulations (double-Pascal for one wall, shift-cancellation for the other).
+\end{remark}
+
+\end{document}

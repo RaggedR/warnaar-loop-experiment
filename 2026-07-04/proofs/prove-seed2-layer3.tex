@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\qbin}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\poch}[1]{(q;q)_{#1}}
+\title{Warnaar's Conjecture 2 at $k=3$ for the balanced profile $(3,3,2)$:\\
+a complete proof via Warnaar's finite form, a Kanade--Russell contiguous
+relation, and Uncu's modulo-11 theorem}
+\author{Seed 2, Layer 3, Round 2 (loop experiment 2026-07-04)}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove the balanced case $c=(3,3,2)$ of Warnaar's Conjecture~2 (the
+$\mathrm{A}_2$ Andrews--Gordon fermionic-form conjecture for cylindric
+partitions) at level $d=8$ (modulus $11$), by chaining three proved results:
+Warnaar's finite-form Proposition ($a=-1$, $k=3$), a single instance of the
+Kanade--Russell contiguous relation $R_3$, and Uncu's 2024 theorem expressing
+$H_{(3,3,2)}$ in the series $S_{11}(\rho|\sigma)$. As a corollary the
+coefficients $Q_{n,(3,3,2)}(q)$ are manifestly nonnegative: the first proved
+member of the positivity core at $d=8$, and the first proved case of
+Conjecture~2 at $k=3$.
+\end{abstract}
+
+\section{Setup and statement}
+
+Throughout, $\poch{n}=\prod_{i=1}^n(1-q^i)$, and $\qbin{n}{m}$ is the
+$q$-binomial coefficient (zero unless $0\le m\le n$). For a profile
+$c=(c_1,c_2,c_3)$ with $c_1+c_2+c_3=d$, let $F_c(z,q)$ be the
+Corteel--Welsh cylindric-partition generating function, and set
+\[
+G_c(z,q)=(zq;q)_\infty F_c(z,q),\qquad
+H_c(z,q)=\frac{(zq;q)_\infty}{(q;q)_\infty}F_c(z,q)=\frac{G_c(z,q)}{(q;q)_\infty},
+\]
+\[
+Q_{n,c}(q)=\poch{n}\,[z^n]\,G_c(z,q).
+\]
+Warnaar's conjecture asserts $Q_{n,c}(q)\ge 0$ coefficientwise for all
+$n,c$. For the balanced profile $c=(k,k,k-1)$, $d=3k-1$, Warnaar's
+Conjecture~2 predicts the explicit fermionic form (no linear terms): with
+$m_k:=2n_k$,
+\begin{equation}\label{eq:ferm}
+G_{(k,k,k-1)}(z,q)\;\overset{?}{=}\;
+\mathrm{FERM}_k(z,q):=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1}q^{n_k^2}}{\poch{n_1}}
+\prod_{i=1}^{k-1}q^{n_i^2-n_im_i+m_i^2}
+\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i}.
+\end{equation}
+This is proved for $k=1,2$ (Warnaar); $k=3$ ($d=8$, modulus $11$) was open.
+
+For $m=11$ ($k=4$ in Uncu's indexing), $\rho,\sigma\in\mathbb{Z}^3$, define
+(Uncu 2024, eq.\ (Sm1))
+\begin{equation}\label{eq:S11}
+S_{11}(z;\rho|\sigma)=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2+\rho_ir_i+\sigma_is_i)+2r_3s_3}}
+{\poch{r_1-r_2}\poch{r_2-r_3}\poch{r_3}\,
+ \poch{s_1-s_2}\poch{s_2-s_3}\poch{s_3}\,\poch{r_3+s_3+1}},
+\end{equation}
+and $e_3=(0,0,0)$, $e_2=(0,0,1)$, $e_1=(0,1,1)$, $e_0=(1,1,1)$,
+$\delta_i$ the $i$th unit vector. We suppress $z$ and write
+$S(\rho|\sigma)$.
+
+\begin{theorem}\label{thm:main}
+$G_{(3,3,2)}(z,q)=\mathrm{FERM}_3(z,q)$, i.e.\ Warnaar's Conjecture~2 holds
+for $k=3$.
+\end{theorem}
+
+\begin{corollary}\label{cor:pos}
+For all $n\ge 0$,
+\[
+Q_{n,(3,3,2)}(q)=
+\sum_{\substack{n\ge n_2\ge n_3\ge 0\\ m_1,m_2\ge 0}}
+q^{\,n^2+n_2^2+n_3^2-nm_1-n_2m_2+m_1^2+m_2^2}
+\qbin{n}{n_2}\qbin{n-n_2+m_2}{m_1}\qbin{n_2}{n_3}\qbin{n_2+n_3}{m_2},
+\]
+a manifestly nonnegative polynomial. In particular Warnaar's positivity
+conjecture holds for the profile $(3,3,2)$ at $d=8$.
+\end{corollary}
+
+\begin{proof}[Proof of the corollary]
+$Q_{n,(3,3,2)}=\poch{n}[z^n]\mathrm{FERM}_3$; the summand of \eqref{eq:ferm}
+at $n_1=n$ has denominator $\poch{n_1}=\poch{n}$, which cancels
+(here $n_2-n_3+m_3=n_2+n_3$ since $m_3=2n_3$, and the exponent
+$n_3^2$ is absorbed into the displayed quadratic form).
+\end{proof}
+
+\section{Proof of Theorem \ref{thm:main}}
+
+The proof chains four proved statements.
+
+\subsection*{Step 1: Warnaar's finite form in the limit}
+Warnaar (A2 Andrews--Gordon paper, Section~7) defines, for
+$\sigma=(1,\dots,1,a)$, $a\in\{-1,1\}$,
+\[
+F^{(a)}_{n_0,m_0;k}(z,q)=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_k\ge 0}}
+\frac{z^{n_1}}{\poch{n_k+m_k}}
+\prod_{i=1}^{k}q^{n_i^2-\sigma_in_im_i+m_i^2}
+\qbin{n_{i-1}}{n_i}\qbin{m_{i-1}}{m_i},
+\]
+and proves (his Proposition ``finite form'', case $a=-1$) the polynomial
+identity
+\begin{equation}\label{eq:ff}
+F^{(-1)}_{n_0,m_0;k}(z,q)=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1}q^{n_k^2}}{\poch{m_0-n_1+m_1}}\qbin{n_0}{n_1}
+\prod_{i=1}^{k-1}q^{n_i^2-n_im_i+m_i^2}
+\qbin{n_i}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i}.
+\end{equation}
+Fix $k=3$ and let $n_0,m_0\to\infty$. Each coefficient of $z^{n}q^{N}$ on
+both sides stabilizes ($\qbin{n_0}{n_1}\to 1/\poch{n_1}$ and
+$1/\poch{m_0-n_1+m_1}\to 1/\poch{\infty}$ coefficientwise). The right side
+of \eqref{eq:ff} becomes $\mathrm{FERM}_3(z,q)/(q;q)_\infty$. On the left
+side the binomial chains telescope:
+$\qbin{n_0}{n_1}\qbin{n_1}{n_2}\qbin{n_2}{n_3}\to
+1/(\poch{n_1-n_2}\poch{n_2-n_3}\poch{n_3})$, likewise for the $m$-chain.
+Writing $(r,s)=(n,m)$ and using $\sigma=(1,1,-1)$, so that the $i=3$
+exponent is $r_3^2+r_3s_3+s_3^2=(r_3^2-r_3s_3+s_3^2)+2r_3s_3$, we obtain
+\begin{equation}\label{eq:T}
+\frac{\mathrm{FERM}_3(z,q)}{(q;q)_\infty}=T(z,q):=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2)+2r_3s_3}}
+{\poch{r_1-r_2}\poch{r_2-r_3}\poch{r_3}\,
+ \poch{s_1-s_2}\poch{s_2-s_3}\poch{s_3}\,\poch{r_3+s_3}}.
+\end{equation}
+
+\subsection*{Step 2: Pochhammer split}
+Using $\dfrac{1}{\poch{r_3+s_3}}=\dfrac{1-q^{r_3+s_3+1}}{\poch{r_3+s_3+1}}$
+and $q^{r_3+s_3+1}=q\cdot q^{r_3}\cdot q^{s_3}$ (a shift
+$(\rho_3,\sigma_3)\mapsto(\rho_3+1,\sigma_3+1)$ in \eqref{eq:S11}),
+\begin{equation}\label{eq:split}
+T(z,q)=S(e_3|e_3)-q\,S(e_2|e_2).
+\end{equation}
+
+\subsection*{Step 3: the bridging identity is one Kanade--Russell relation}
+Kanade--Russell (proved; restated as Uncu's Lemma on recurrences) show that
+for $m\equiv-1\pmod 3$ and $\sigma_{k-1}=0$,
+\[
+R_3(\rho|\sigma):\quad
+S(\rho|\sigma)-S(\rho|\sigma+\delta_3)
+-q\,S(\rho+\delta_3|\sigma+\delta_3)
++q\,S(\rho+\delta_3|\sigma+\delta_2+\delta_3)=0.
+\]
+At $\rho=\sigma=(0,0,0)$ this reads
+$S(e_3|e_3)-S(e_3|e_2)-q\,S(e_2|e_2)+q\,S(e_2|e_1)=0$, i.e.
+\begin{equation}\label{eq:bridge}
+S(e_3|e_3)-q\,S(e_2|e_2)=S(e_3|e_2)-q\,S(e_2|e_1).
+\end{equation}
+
+\subsection*{Step 4: Uncu's modulo-11 theorem}
+Uncu (2024, Theorem for $m=11$) proves, for the canonical profile
+$(3,3,2)$,
+\begin{equation}\label{eq:uncu}
+H_{(3,3,2)}(z,q)=S(e_3|e_2)-q\,S(e_2|e_1).
+\end{equation}
+
+\subsection*{Conclusion}
+Combining \eqref{eq:T}--\eqref{eq:uncu},
+$\mathrm{FERM}_3(z,q)=(q;q)_\infty H_{(3,3,2)}(z,q)=G_{(3,3,2)}(z,q)$.
+\qed
+
+\section{Numerical verification and remarks}
+
+\begin{remark}
+All steps were verified in exact $\mathbb{Z}[q]$ arithmetic
+(\texttt{seed2\_R2L3\_s11\_chain.sage}, precision $q^{300}$, compared to
+$q^{150}$): identity \eqref{eq:bridge} at $z$-orders $n=0,\dots,4$, and
+$\poch{n}(q;q)_\infty[z^n]\bigl(S(e_3|e_3)-qS(e_2|e_2)\bigr)=Q_{n,(3,3,2)}$
+against the independently computed Corteel--Welsh ground truth
+(\texttt{seed5\_R2L2\_qn\_d8.json}) for $n=0,\dots,4$. Both pass.
+\end{remark}
+
+\begin{remark}[Extensions]
+(i) The $a=+1$ case of Warnaar's finite form should give, by the same
+chain, the balanced profile $(4,3,3)$ at modulus $13$ ($d=10$) via Uncu's
+$m=13$ theorem; the bridging relation is the $m\equiv1\pmod 3$ variant of
+$R_3/R_4$ (note: the displayed $R_3$ for $m\equiv1$ in Uncu's paper contains
+two identical terms of opposite sign, apparently a typo; it should be
+re-derived from Kanade--Russell Lemma 9.2 before use).
+(ii) For general $k$, Warnaar's finite form reduces the balanced case of
+Conjecture~2 at every level to the Kanade--Russell/Uncu expression for
+$H_{(k,k,k-1)}$, which is proved only for $m=11,13$.
+(iii) The Pochhammer merge of Step~2 requires an S-pair differing by
+$(+\delta_3|+\delta_3)$ with weight $q$; among the $d=8$ core orbits only
+$(3,3,2)$ acquires this shape after a single $R_3$. The remaining core
+orbits $(6,1,1),(5,1,2),(4,1,3),(4,3,1),(5,2,1),(4,2,2)$ need
+$R_1/R_2$-moves (each costing an extra $zq^{\ast}S$-term) before a merge is
+possible; this is the proposed template for the frontier.
+\end{remark}
+
+\end{document}

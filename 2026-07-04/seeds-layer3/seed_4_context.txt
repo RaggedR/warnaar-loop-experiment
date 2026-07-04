@@ -1,0 +1,917 @@
+--- 1/20 (sim=0.662) konan_systematic_schmidt_type/chunk_053.tex ---
+Summary: Proves Lemma 2.1 — the conjugation involution is weight-preserving and swaps \overline{𝒟} and \overline{ℱ} — by explicit computation using the counting formula for parts and over-lined parts, which is the key lemma enabling the proof of Theorem 1.5.
+
+% Paper: konan_systematic_schmidt_type
+% Section: Conjugate and $S$-weight > The setup
+
+[Summary: Proves Lemma 2.1 — the conjugation involution is weight-preserving and swaps \overline{𝒟} and \overline{ℱ} — by explicit computation using the counting formula for parts and over-lined parts, which is the key lemma enabling the proof of Theorem 1.5.]
+
+\begin{lem}\label{lem:conjugate}
+The map $\lambda \mapsto \tilde{\lambda}$ describes an weight-preserving involution on $\overline{\mathcal{P}}$ and on $\mathcal{P}$. Furthermore, it induces a bijection between $\overline{\mathcal{D}}$ and $\overline{\mathcal{F}}$.
+\end{lem}
+\begin{proof}
+We first remark that a part $i\in \mathbb{Z}_{\geq 0} \sqcup \overline{\mathbb{Z}_{\geq 1}}$ has size $\sharp\{0<\overline{j}\leq i\}$. Let $\lambda=(\lambda_i)_{i\geq 1}$ be a sequence of $\mathbb{P}$. We then have that 
+\begin{align*}
+|\lambda|&=\sum_{i\geq 1} \lambda_i \\
+&= \sharp\{i,j\in \mathbb{Z}_{\geq 1}: \lambda_{i}\geq \overline{j}\} \\
+&=\sum_{j\geq 1} \tilde{\lambda}_j\\
+&=|\tilde{\lambda}|.
+\end{align*}
+The map $\lambda\mapsto \tilde{\lambda}$ is then weight-preserving. Also, by definition, for all $i\in \mathbb{Z}_{\geq 1}$, 
+$$\sharp\{j\geq 1: \lambda_{j}=i,\overline{i}\} = \tilde{\lambda}_{i}-\tilde{\lambda}_{i+1}.$$ 
+Moreover, as there is at most one occurrence of $\overline{i}$ in $\lambda$, 
+$$\chi(\tilde{\lambda}_{i}\text{ is over-lined}) = \chi(\overline{i}\in \lambda) = \sharp\{j\geq 1: \lambda_{j}=\overline{i}\}.$$
+Hence,
+$$\sharp\{j\geq 1: \lambda_{j}=i\}= \tilde{\lambda}_{i}-\tilde{\lambda}_{i+1}-\chi(\tilde{\lambda}_{i}\text{ is over-lined}).$$
+The sequence $\tilde{\lambda}$ is non-increasing in terms of part size, and we have that $\tilde{\lambda}_i>\tilde{\lambda}_{i+1}$ as soon as $\tilde{\lambda}_i$ is over-lined. The over-lined parts are then distinct, and then non-over-lined occurrences of a positive integer appear before a possible over-lined occurrence. Therefore, $\tilde{\lambda}\in \overline{\mathcal{P}}$, and by considering the conjugate of $\tilde{\lambda}$, for all $i\geq 1$, we have that
+\begin{equation}\label{eq:conjugate1}
+\sharp\{j\geq 1: \tilde{\lambda}_{j}=i,\overline{i}\} = \tilde{\tilde{\lambda}}_{i}-\tilde{\tilde{\lambda}}_{i+1} \qquad\text{and}\qquad \chi(\overline{i}\in \tilde{\lambda})=\chi(\tilde{\tilde{\lambda}}_i\text{ is over-lined}).
+\end{equation}
+Suppose now that $\lambda$ is an over-partition, i.e. $(\lambda_j)_j$ is non-increasing. For all $i\geq 1$, and for all $\lambda_{i+1}<\overline{j}\leq \lambda_i$, the part $\tilde{\lambda}_j$ has size $i$. In addition, $\tilde{\lambda}_j$ is over-lined if and only if $\overline{j}\in \lambda$, which, since $\lambda$ is non-increasing and $\lambda_{i+1}<\overline{j}\leq \lambda_i$, is equivalent to saying that $\overline{j}= \lambda_i$. Moreover, for $\overline{j}>\lambda_{i}$, $\tilde{\lambda}_j$ has size less than $i$, and for $\overline{j}\leq\lambda_{i+1}$, $\tilde{\lambda}_j$ has size greater than $i$.
+Hence, 
+\begin{equation}\label{eq:conjugate2}
+\sharp\{j\geq 1: \tilde{\lambda}_{j}=i,\overline{i}\} = \lambda_i-\lambda_{i+1} \qquad\text{and}\qquad \chi(\overline{i}\in \tilde{\lambda})=\chi(\lambda_i\text{ is over-lined}).
+\end{equation}
+We note that $\tilde{\tilde{\lambda}}_j=0$ for all $\overline{j}>\tilde{\lambda}_1$. We thus conclude that, for all $0\leq \overline{i}\leq \tilde{\lambda}_1$, 
+\begin{align*}
+\tilde{\tilde{\lambda}}_i &= \sum_{j=i}^{\tilde{\lambda}_1+0} \tilde{\tilde{\lambda}}_{j}-\tilde{\tilde{\lambda}}_{j+1}\\
+&= \sum_{j=i}^{\tilde{\lambda}_1+0} \sharp\{k\geq 1: \tilde{\lambda}_{k}=j,\overline{j}\}&\text{(by \eqref{eq:conjugate1})}\\
+&= \sum_{j=i}^{\tilde{\lambda}_1+0} \lambda_{j}-\lambda_{j+1}&\text{(by \eqref{eq:conjugate2})}\\
+&= \lambda_i,
+\end{align*} 
+and $\tilde{\tilde{\lambda}}_i$ is over-lined if and only if $\lambda_i$. Then, $\tilde{\tilde{\lambda}}_i=\lambda_i$ for all $i\in\mathbb{Z}_{\geq 1}$, and  the conjugacy is an involution on $\overline{\mathcal{P}}$.
+ 
+To prove that $\lambda \mapsto \tilde{\lambda}$ induces involution on $\mathcal{P}$, it suffices to observe that 
+ there are as many over-lined parts in $\lambda$ as in $\Tilde{\lambda}$, so that $\tilde{\lambda}\in \mathcal{P}$ if and only if $\lambda \in \mathcal{P}$. 
+ 
+ It now remains to show that the sets $\overline{\mathcal{D}}$  and $\overline{\mathcal{F}}$ are in bijection through the conjugacy. If $\lambda\in \overline{\mathcal{D}}$, then $\tilde{\lambda}\in \overline{\mathcal{F}}$ by \eqref{eq:conjugate2}, as $\overline{i}\in \tilde{\lambda}$ for all $0<\overline{i}\leq \tilde{\lambda}_1$. If $\lambda\in \overline{\mathcal{F}}$, then $\tilde{\lambda}\in \overline{\mathcal{D}}$ by \eqref{eq:conjugate1} with $\lambda$ instead of $\tilde{\lambda}$, as $\tilde{\lambda}_i>\tilde{\lambda}_{i+1}$ and $\tilde{\lambda}_i$ is over-lined for all  $0<\overline{i}\leq \tilde{\lambda}_1$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+--- 2/20 (sim=0.640) corteel_savelief_vuletic/chunk_060.tex ---
+Summary: Completes the sign-reversing involution argument: choosing the rightmost part >n and toggling its overline changes the sign, canceling all terms with parts >n and leaving semistandard Young tableaux.
+
+% Paper: corteel_savelief_vuletic
+% Section: Nonintersecting paths > Plane overpartitions of a given shape
+
+[Summary: Completes the sign-reversing involution argument: choosing the rightmost part >n and toggling its overline changes the sign, canceling all terms with parts >n and leaving semistandard Young tableaux.]
+
+Now we define a sign reversing involution on these reverse plane overpartitions. Given such a  reverse plane overpartition, if there is at least one part greater than $n$, we choose the uppermost and rightmost part greater
+than $n$. If this part is overlined, then we take off the overline, otherwise we overline the part.
+Note that in this case the parity of the number of overlined parts is changed and therefore
+the weight of the reverse plane overpartition is multiplied by $-1$.
+If no such part exists, the given reverse plane partition  is a semistandard Young tableau of shape $\lambda$
+where the entries are less than or equal to $n$.\\
+
+
+%The equivalence is established using symmetric functions.  Alternatively,.......
+%A specialization is an algebra homomorphism between the algebra of
+%symmetric functions and $\mathbb{C}$.  Recall three standard bases for
+%the algebra of symmetric functions: Schur functions $s$, complete
+%homogeneous symmetric functions $h$, and power sums $p$ (see \cite{Mac}). If
+%$\rho$ is a specialization we denote their images by $s|_{\rho}$,
+%$h|_{\rho}$ and $p|_{\rho}$.
+
+%Let $\rho(a):\Lambda \to \mathbb{C} [a]$ be an algebra homomorphism
+%given by
+%$$
+%h_n|_{\rho(a)}=\frac{(-a)_{n}}{(q)_{n}}.
+%$$
+%Since, for
+%$\lambda={(\lambda_1,\lambda_2,\dots,\lambda_k)}$
+%$$
+%s_{\lambda}=\det(h_{\lambda_i-i+j})
+%$$
+%we have from Definition \ref{DefM} that
+%\begin{equation}\label{sym}
+%s_{\lambda}|_{\rho(a)}=\det M_\lambda(a;q).
+%\end{equation}
+
+
+--- 3/20 (sim=0.620) konan_systematic_schmidt_type/chunk_052.tex ---
+Summary: Announces Lemma 2.1 (conjugation is a weight-preserving involution on \overline{𝒫} and 𝒫, and a bijection between \overline{𝒟} and \overline{ℱ}), which is the foundational step before proving the main theorem's bijection Φ_S = Ψ_S ∘ conjugate.
+
+% Paper: konan_systematic_schmidt_type
+% Section: Conjugate and $S$-weight > The setup
+
+[Summary: Announces Lemma 2.1 (conjugation is a weight-preserving involution on \overline{𝒫} and 𝒫, and a bijection between \overline{𝒟} and \overline{ℱ}), which is the foundational step before proving the main theorem's bijection Φ_S = Ψ_S ∘ conjugate.]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We first establish that the conjugacy is an involution on $\overline{\mathcal{P}}$.
+
+
+--- 4/20 (sim=0.619) wheeler_zinn-justin_cauchy_littlewood_six-vertex/chunk_057.tex ---
+Summary: Corollary specializing the refined Littlewood identity at u=1 to recover Z_OS, the partition function of off-diagonally symmetric alternating-sign matrices, connecting identity (2) to a classical combinatorial object.
+
+% Paper: wheeler_zinn-justin_cauchy_littlewood_six-vertex
+% Section: Refined Littlewood identity > Specialization to off-diagonally symmetric alternating sign matrices
+
+[Summary: Corollary specializing the refined Littlewood identity at u=1 to recover Z_OS, the partition function of off-diagonally symmetric alternating-sign matrices, connecting identity (2) to a classical combinatorial object.]
+
+\begin{cor}
+Taking the $u=1$ ($\alpha = 0$) case of \eqref{ref-little}, we have
+%
+\begin{align*}
+\sum_{
+\lambda: m_i(\lambda) \in 2 \mathbb{N}
+}
+\
+\prod_{i=0}^{\infty}
+\prod_{j=1}^{m_i(\lambda)/2}
+(1-t^{2j-1})
+P_{\lambda}(x_1,\dots,x_{2n};t)
+=
+Z_{\rm OS}(x_1,\dots,x_{2n};t)
+\end{align*}
+%
+where $Z_{\rm OS}$ is the partition function of the six-vertex model corresponding with off-diagonally symmetric alternating-sign matrices \cite{kup2}.
+\end{cor}
+
+
+--- 5/20 (sim=0.617) kilic_kursungoz_functional_equations_andrews_gordon/chunk_047.tex ---
+Summary: Proves Theorem 3 (thmAltRRG3) by an inclusion-exclusion argument: odd parts shared between the two component partitions cancel in sign-pairs, leaving only pairs where all odd parts appear with even total multiplicity, which after rescaling equals a known series.
+
+% Paper: kilic_kursungoz_functional_equations_andrews_gordon
+% Section: Alternating series and inclusion-exclusion
+
+[Summary: Proves Theorem 3 (thmAltRRG3) by an inclusion-exclusion argument: odd parts shared between the two component partitions cancel in sign-pairs, leaving only pairs where all odd parts appear with even total multiplicity, which after rescaling equals a known series.]
+
+\begin{proof}[proof of Theorem \ref{thmAltRRG3}]
+ We prove the third identity.  
+ Proofs of others are similar.  
+ We rewrite the series as 
+ \begin{align}
+ \nonumber 
+  \sum_{m, n \geq 0} q^{ 2 \binom{m+n+1}{2} } \; 
+   \frac{ q^m }{ (q; q)_m } \; \frac{ (-1)^n q^n }{ (q^2; q^2)_n }
+ \end{align}
+ The only fact we need concerning the first factor $q^{ 2 \binom{m+n+1}{2} }$ 
+ in the general term at the moment is that it is a function of $m+n$.  
+ The second factor $\frac{ q^m }{ (q; q)_m }$ in the general term 
+ generates partitions into $m$ parts, 
+ and the third one $\frac{ (-1)^n q^n }{ (q^2; q^2)_n }$ 
+ generates partitions into $n$ odd parts, each with weight $(-1)$.  
+ Call instances of those partitions $\mu$ and $\nu$, respectively.  
+ 
+ Choose and fix a pair $(\mu, \nu)$ of partitions described above.  
+ Also, choose and fix an odd positive integer $(2j-1)$.  
+ Let $\mu$ and $\nu$ share a total of $f_{(2j-1)}$ $(2j-1)$'s between them.  
+ Then, we can take a $(2j-1)$ from $\mu$, append it to $\nu$ with weight $(-1)$.  
+ Or, we can take a $(2j-1)$ from $\nu$, take off its sign, and append it to $\mu$.  
+ This creates $f_{(2j-1)}+1$ sister pairs of partitions $(\mu, \nu)$.  
+ The sum of their number of parts $m+n$ are the same, 
+ and they are counted 
+ \begin{align}
+ \nonumber 
+  \epsilon \left( 1 - 1 + 1 - \cdots + (-1)^{f_{(2j-1)}} \right) 
+  = \begin{cases} \epsilon & \textrm{ if } f_{(2j-1)} \textrm{ is even, } \\ 
+   0 & \textrm{ if } f_{(2j-1)} \textrm{ is odd } \end{cases}
+ \end{align} 
+ times.  
+ Here, $\epsilon$ is the product of $(-1)$'s 
+ coming from parts of $\nu$ other than $(2j-1)$.  
+ 
+ We deduce that the survivors in this inclusion-exclusion 
+ are those $(\mu, \nu)$ in which the total count of each odd part is even.  
+ Once we agree that $\nu$ can have all of those odd parts, 
+ then the survivors are pairs of partitions $(\mu, \nu)$ 
+ such that $\mu$ is a partition into $m$ even parts, 
+ and $\nu$ is a partition into odd parts appearing evenly~\cite{A_parity}.  
+ Each such pair is weighted by $(+1)$ now.  
+ We can update the number of parts in $\nu$ as $2n$, and arrive at 
+ \begin{align}
+ \nonumber 
+  \sum_{m, n \geq 0} q^{ 2 \binom{m+n+1}{2} } \; 
+   \frac{ q^m }{ (q; q)_m } \; \frac{ (-1)^n q^n }{ (q^2; q^2)_n }
+  & = \sum_{m, n \geq 0} q^{ 2 \binom{m+2n+1}{2} } \; 
+   \frac{ q^{2m} }{ (q^2; q^2)_m } \; \frac{ q^{2n} }{ (q^4; q^4)_n } \\ 
+ \nonumber 
+  & = \sum_{m, n \geq 0} 
+   \frac{ q^{ 8 \binom{m+1}{2} + 2 \binom{n+1}{2} + 4mn + 2n } }{ (q^4; q^4)_m (q^2; q^2)_n }.  
+ \end{align}
+ In the last series, we swapped $m \leftrightarrow n$.  
+ The last series is the $q \leftarrow q^2$ dilation of 
+ the first formula in~\cite[Theorem 1.6]{Yalcin}.  
+ This concludes the proof.  
+\end{proof}
+
+
+--- 6/20 (sim=0.602) wheeler_zinn-justin_cauchy_littlewood_six-vertex/chunk_075.tex ---
+Summary: Proves identity (5) following the refined Littlewood proof strategy: constructs the BCₙ analog of the even-bra partition function with a z-insertion column, then applies the intertwining and reflection equations to relocate the auxiliary lattice to produce Z_UO.
+
+% Paper: wheeler_zinn-justin_cauchy_littlewood_six-vertex
+% Section: Reflecting Littlewood identity > Lattice formulation of reflecting Littlewood identity
+
+[Summary: Proves identity (5) following the refined Littlewood proof strategy: constructs the BCₙ analog of the even-bra partition function with a z-insertion column, then applies the intertwining and reflection equations to relocate the auxiliary lattice to produce Z_UO.]
+
+\begin{proof}
+The proof is closely related to the proof of Theorem \ref{thm:refined-little}. We start with the following partition function:
+%
+\begin{align}
+\mathcal{P}(x_1^{\pm1},\dots,x_{2n}^{\pm1};t;z)
+=
+%fig:little-refl-1
+\begin{tikzpicture}[scale=0.6,baseline=(mid.base)]
+%vertical alignment
+\node (mid) at (1,4) {};
+%bulk lattice
+\foreach\x in {1,...,5}{
+\foreach\y in {0,...,7}{
+\draw[fline,bggplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+}
+}
+%U-turns 
+\foreach\x in {-1,0,1,2}{
+\draw[smooth] (1,3.5+2*\x) arc (90:270:0.5);
+\node at (0.5,3+2*\x) {\footnotesize$\bullet$};
+}
+%column labels bottom
+\node at (3.5,-0.5) {$\scriptstyle \left\langle \rm e;0\right|$};
+%column labels top
+\node at (1.5,8.5) {$\scriptstyle 0$};
+\node at (2.5,8.5) {$\scriptstyle 0$};
+\node at (3.5,8.5) {$\scriptstyle 0$};
+\node at (4.5,8.5) {$\scriptstyle 0$};
+\node at (5.5,8.5) {$\scriptstyle \cdots$};
+%particles
+\foreach\x in {1,...,8}{
+\filldraw[fill=black!35!green, draw=black] (6,-0.5+\x) circle (0.09cm);;
+}
+%rapidities
+\node at (0,7.5) {$\scriptstyle \color{dred}  \sqrt{z} x_1$};
+\node at (0,6.5) {$\scriptstyle \color{dred}  \sqrt{z} \bar{x}_1$};
+\node at (0,4.2) {$\scriptstyle \color{dred} \vdots$};
+\node at (-0.2,1.5) {$\scriptstyle \color{dred}  \sqrt{z} x_{2n}$};
+\node at (-0.2,0.5) {$\scriptstyle \color{dred}  \sqrt{z} \bar{x}_{2n}$};
+\end{tikzpicture}
+\end{align}
+%
+where the state at the base of the lattice is given by \eqref{e-vec} with $\alpha = 0$ (since we do not have a refining parameter $u$). By inspection, we see that
+%
+\begin{align}
+\mathcal{P}(x_1^{\pm1},\dots,x_{2n}^{\pm1};t;z)
+=
+\prod_{j=1}^{2n} (x_j-t\bar{x}_j)
+\times
+\sum_{
+\lambda: m_i(\lambda) \in 2 \mathbb{N}
+}
+\
+z^{n+|\lambda|/2} 
+\prod_{i=0}^{\infty}
+\prod_{j=1}^{m_i(\lambda)/2}
+(1-t^{2j-1})
+K_{\lambda}(x^{\pm1}_1,\dots,x^{\pm1}_{2n};t).
+\end{align}
+
+To produce the right hand side of \eqref{thm-uosasm}, after a single application of \eqref{lem-even5}, \eqref{lem-even6} we find that
+%
+\begin{align}
+\mathcal{P}(x_1^{\pm1},\dots,x_{2n}^{\pm1};t;z)
+=
+\begin{tikzpicture}[scale=0.6,baseline=(mid.base)]
+%vertical alignment
+\node (mid) at (1,4) {};
+%bulk lattice
+\foreach\x in {1,...,5}{
+\foreach\y in {1,...,7}{
+\draw[fline,bggplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+}
+}
+\foreach\x in {1,...,5}{
+\draw[fline,bgplaq] (\x,0) -- (\x+1,0) -- (\x+1,0+1) -- (\x,0+1) -- (\x,0);;
+}
+%U-turns 
+\foreach\x in {-1,0,1,2}{
+\draw[smooth] (-1,3.5+2*\x) arc (90:270:0.5);
+\node at (-1.5,3+2*\x) {\footnotesize$\bullet$};
+}
+%left edges
+\foreach\x in {1,...,7}{
+\draw[fline] (-1,\x+0.5) -- (1,\x+0.5);
+}
+\draw[fline,cross=0.5] (-1,0.5) -- (1,0.5);
+%column labels bottom
+\node at (3.5,-0.5) {$\scriptstyle \left\langle \rm e;0\right|$};
+%column labels top
+\node at (1.5,8.5) {$\scriptstyle 0$};
+\node at (2.5,8.5) {$\scriptstyle 0$};
+\node at (3.5,8.5) {$\scriptstyle 0$};
+\node at (4.5,8.5) {$\scriptstyle 0$};
+\node at (5.5,8.5) {$\scriptstyle \cdots$};
+%rapidities
+\node at (0.3,7.8) {$\scriptstyle \color{dred}  \sqrt{z} x_1$};
+\node at (0.3,6.8) {$\scriptstyle \color{dred}  \sqrt{z} \bar{x}_1$};
+\node at (0,4.2) {$\scriptstyle \color{dred} \vdots$};
+\node at (0.3,1.8) {$\scriptstyle \color{dred}  \sqrt{z} x_{2n}$};
+\node at (0.3,0.8) {$\scriptstyle \color{dred} \sqrt{\bar{z}} x_{2n}$};
+%particles
+\foreach\x in {2,...,8}{
+\filldraw[fill=black!35!green, draw=black] (6,-0.5+\x) circle (0.09cm);;
+}
+\draw[fill=white,draw=black] (6,0.5) circle (0.09cm);;
+\end{tikzpicture}
+=
+\begin{tikzpicture}[scale=0.6,baseline=(mid.base)]
+%vertical alignment
+\node (mid) at (1,4) {};
+%bulk lattice
+\foreach\x in {1,...,5}{
+\foreach\y in {1,...,7}{
+\draw[fline,bggplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+}
+}
+\foreach\x in {1,...,5}{
+\draw[fline,bgplaq] (\x,0) -- (\x+1,0) -- (\x+1,0+1) -- (\x,0+1) -- (\x,0);;
+}
+%U-turns 
+\foreach\x in {-1,0,1,2}{
+\draw[smooth] (-1,3.5+2*\x) arc (90:270:0.5);
+\node at (-1.5,3+2*\x) {\footnotesize$\bullet$};
+}
+%left edges
+\foreach\x in {1,...,7}{
+\draw[fline] (-1,\x+0.5) -- (1,\x+0.5);
+}
+\draw[fline,cross=0.5] (-1,0.5) -- (1,0.5);
+%column labels bottom
+\node at (3.5,-0.5) {$\scriptstyle \left\langle \rm e;0\right|$};
+%column labels top
+\node at (1.5,8.5) {$\scriptstyle 0$};
+\node at (2.5,8.5) {$\scriptstyle 0$};
+\node at (3.5,8.5) {$\scriptstyle 0$};
+\node at (4.5,8.5) {$\scriptstyle 0$};
+\node at (5.5,8.5) {$\scriptstyle \cdots$};
+%R matrices
+\draw[fline] (7,7.5) -- (7,8.5);
+\draw[fline] (6,0.5) -- (7,0.5) -- (7,7.5);
+\draw[fill=white,draw=black] (7,8.5) circle (0.09cm);
+\foreach\x in {1,...,7}{
+\draw[fline] (8,\x+0.5) -- (6,\x+0.5);
+\filldraw[fill=black!35!green, draw=black] (8,\x+0.5) circle (0.09cm);
+}
+%rapidities
+\node at (0.3,7.8) {$\scriptstyle \color{dred}  \sqrt{z} x_1$};
+\node at (0.3,6.8) {$\scriptstyle \color{dred}  \sqrt{z} \bar{x}_1$};
+\node at (0,4.2) {$\scriptstyle \color{dred} \vdots$};
+\node at (0.3,1.8) {$\scriptstyle \color{dred}  \sqrt{z} x_{2n}$};
+\node at (0.3,0.8) {$\scriptstyle \color{dred} \sqrt{\bar{z}} x_{2n}$};
+\end{tikzpicture}
+\end{align}
+%
+where the final equality follows from the fact that we must have a particle at the right edge of each darkly shaded row, otherwise everything vanishes (assuming that $|z| < 1$). Hence the column of $R$ vertices that we have introduced at the right edge is in fact completely frozen. By repeated application of the intertwining equation \eqref{rll*}, we can transfer the single lightly shaded row to the top of the lattice:
+%
+\begin{align}
+\mathcal{P}(x_1^{\pm1},\dots,x_{2n}^{\pm1};t;z)
+=
+\begin{tikzpicture}[scale=0.6,baseline=(mid.base)]
+%vertical alignment
+\node (mid) at (1,4) {};
+%R matrices
+\foreach\x in {1,...,7}{
+\draw[fline] (-1,\x+0.5) -- (1,\x+0.5);
+}
+\draw[fline,cross=1] (-1,0.5) -- (0,0.5); 
+\draw[fline] (0,0.5) -- (0,8.5) -- (1,8.5);
+%U-turns 
+\foreach\x in {-1,0,1,2}{
+\draw[smooth] (-1,3.5+2*\x) arc (90:270:0.5);
+\node at (-1.5,3+2*\x) {\footnotesize$\bullet$};
+}
+%bulk lattice
+\foreach\x in {1,...,5}{
+\foreach\y in {1,...,7}{
+\draw[fline,bggplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+}
+}
+\foreach\x in {1,...,5}{
+\draw[fline,bgplaq] (\x,8) -- (\x+1,8) -- (\x+1,8+1) -- (\x,8+1) -- (\x,8);;
+}
+%column labels top
+\node at (1.5,9.5) {$\scriptstyle 0$};
+\node at (2.5,9.5) {$\scriptstyle 0$};
+\node at (3.5,9.5) {$\scriptstyle 0$};
+\node at (4.5,9.5) {$\scriptstyle 0$};
+\node at (5.5,9.5) {$\scriptstyle \cdots$};
+%column labels bottom
+\node at (3.5,0.5) {$\scriptstyle \left\langle \rm e;0\right|$};
+%particles
+\draw[fill=white,draw=black] (6,8.5) circle (0.09cm);
+\foreach\x in {1,...,7}{
+\filldraw[fill=black!35!green, draw=black] (6,0.5+\x) circle (0.09cm);
+}
+%rapidities
+\node at (-0.6,7.8) {$\scriptstyle \color{dred}  \sqrt{z} x_1$};
+\node at (-0.6,6.8) {$\scriptstyle \color{dred}  \sqrt{z} \bar{x}_1$};
+\node at (-1,4.2) {$\scriptstyle \color{dred} \vdots$};
+\node at (-0.7,1.8) {$\scriptstyle \color{dred}  \sqrt{z} x_{2n}$};
+\node at (0.3,0) {$\scriptstyle \color{dred}  \sqrt{\bar{z}} x_{2n}$};
+\end{tikzpicture}
+\end{align}
+%
+It is now only a matter of repeating these steps over the remaining darkly shaded rows. The final result is
+%
+\begin{align}
+%fig:little-refl-3
+\begin{tikzpicture}[scale=0.6,baseline=(mid.base)]
+%vertical alignment
+\node (mid) at (1,3) {};
+%R matrices
+\foreach\x in {1,...,8}{
+\draw[fline,cross=1] (1,0.5+\x) -- (1.5-\x,1);
+\draw[fline] (-3-0.5*\x,5.5-0.5*\x) -- (-2.5-0.5*\x,5-0.5*\x);
+}
+\foreach\x in {1,...,7}{
+\draw[fline] (-2.5-0.5*\x,5-0.5*\x) -- (1.5-\x,1);
+}
+%U-turns 
+\foreach\x in {0,...,3}{
+\draw[smooth] (-7+\x,1.5+\x) arc (225:45:0.353553);
+\node at (-7+\x,2+\x) {\footnotesize$\bullet$};
+}
+%bulk lattice
+\foreach\x in {1,...,5}{
+\foreach\y in {1,...,8}{
+\draw[fline,bgplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+}
+}
+%column labels top
+\node at (1.5,9.5) {$\scriptstyle 0$};
+\node at (2.5,9.5) {$\scriptstyle 0$};
+\node at (3.5,9.5) {$\scriptstyle 0$};
+\node at (4.5,9.5) {$\scriptstyle 0$};
+\node at (5.5,9.5) {$\scriptstyle \cdots$};
+%column labels bottom
+\node at (3.5,0.5) {$\scriptstyle \left\langle \rm e;0\right|$};
+%particles
+\foreach\x in {1,...,8}{
+\draw[fill=white,draw=black] (6,0.5+\x) circle (0.09cm);;
+}
+%rapidities
+\node at (-4.2,5.8) {$\scriptstyle \color{dred} \sqrt{z} x_1$};
+\node at (-5,5.3) {$\scriptstyle \color{dred} \sqrt{z} \bar{x}_1$};
+\node at (-6,4.2) {$\scriptstyle \color{dred} \mathbin{\rotatebox[origin=c]{45}{$\cdots$}}$};
+\node at (-7.4,2.8) {$\scriptstyle \color{dred} \sqrt{z} x_{2n}$};
+\node at (-8.2,2.3) {$\scriptstyle \color{dred} \sqrt{z} \bar{x}_{2n}$};
+%
+\node at (-7,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} x_{2n}$};
+\node at (-5.6,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} \bar{x}_{2n}$};
+\node at (-3.2,0.5) {$\scriptstyle \color{dred} \cdots$};
+\node at (-0.8,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} x_1$};
+\node at (0.4,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} \bar{x}_1$};
+\end{tikzpicture}
+\end{align}
+%
+and since no particles are incident either at the top or the right edge of the lattice, all tiles in the bulk of the lattice freeze to the same configuration with Boltzmann weight 1: 
+
+\begin{align}
+%fig:little-refl-4
+\begin{tikzpicture}[scale=0.6,baseline=(mid.base)]
+%vertical alignment
+\node (mid) at (1,3) {};
+%R matrices
+\foreach\x in {1,...,8}{
+\draw[fline,cross=1] (1,0.5+\x) -- (1.5-\x,1);
+\draw[fline] (-3-0.5*\x,5.5-0.5*\x) -- (-2.5-0.5*\x,5-0.5*\x);
+}
+\foreach\x in {1,...,7}{
+\draw[fline] (-2.5-0.5*\x,5-0.5*\x) -- (1.5-\x,1);
+}
+%U-turns 
+\foreach\x in {0,...,3}{
+\draw[smooth] (-7+\x,1.5+\x) arc (225:45:0.353553);
+\node at (-7+\x,2+\x) {\footnotesize$\bullet$};
+}
+%times
+\node at (1.5,5) {$\times$};
+%bulk lattice
+\foreach\x in {2,...,6}{
+\foreach\y in {1,...,8}{
+\draw[fline,bgplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+}
+}
+%column labels top
+\node at (2.5,9.5) {$\scriptstyle 0$};
+\node at (3.5,9.5) {$\scriptstyle 0$};
+\node at (4.5,9.5) {$\scriptstyle 0$};
+\node at (5.5,9.5) {$\scriptstyle 0$};
+\node at (6.5,9.5) {$\scriptstyle \cdots$};
+%column labels bottom
+\node at (2.5,0.5) {$\scriptstyle 0$};
+\node at (3.5,0.5) {$\scriptstyle 0$};
+\node at (4.5,0.5) {$\scriptstyle 0$};
+\node at (5.5,0.5) {$\scriptstyle 0$};
+\node at (6.5,0.5) {$\scriptstyle \cdots$};
+%particles
+\foreach\x in {1,...,8}{
+\draw[fill=white,draw=black] (1,0.5+\x) circle (0.09cm);;
+\draw[fill=white,draw=black] (2,0.5+\x) circle (0.09cm);;
+\draw[fill=white,draw=black] (7,0.5+\x) circle (0.09cm);;
+}
+%rapidities
+\node at (-4.2,5.8) {$\scriptstyle \color{dred} \sqrt{z} x_1$};
+\node at (-5,5.3) {$\scriptstyle \color{dred} \sqrt{z} \bar{x}_1$};
+\node at (-6,4.2) {$\scriptstyle \color{dred} \mathbin{\rotatebox[origin=c]{45}{$\cdots$}}$};
+\node at (-7.4,2.8) {$\scriptstyle \color{dred} \sqrt{z} x_{2n}$};
+\node at (-8.2,2.3) {$\scriptstyle \color{dred} \sqrt{z} \bar{x}_{2n}$};
+%
+\node at (-7,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} x_{2n}$};
+\node at (-5.6,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} \bar{x}_{2n}$};
+\node at (-3.2,0.5) {$\scriptstyle \color{dred} \cdots$};
+\node at (-0.8,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} x_1$};
+\node at (0.4,0.5) {$\scriptstyle \color{dred} \sqrt{\bar{z}} \bar{x}_1$};
+\end{tikzpicture}
+\end{align}
+%
+The residual partition function is precisely the right hand side of \eqref{thm-uosasm}.
+
+\end{proof}
+
+
+--- 7/20 (sim=0.597) foda_zhu_fermionic_macdonald_index/chunk_029.tex ---
+Summary: Gives the Feigin-Fuchs alternating-sign (bosonic) formula for Virasoro characters χ^{p,p'}_{r,s} and then states the fermionic sum expression (Andrews-Gordon form) for the 𝒲₂ non-unitary models 𝒧^{2,2k+3}, which is the starting point for the paper's t-refinement.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Definitions. The statistical mechanics/combinatorics side > Alternating-sign (bosonic) sum expressions of the Virasoro characters
+
+[Summary: Gives the Feigin-Fuchs alternating-sign (bosonic) formula for Virasoro characters χ^{p,p'}_{r,s} and then states the fermionic sum expression (Andrews-Gordon form) for the 𝒲₂ non-unitary models 𝒧^{2,2k+3}, which is the starting point for the paper's t-refinement.]
+
+For a minimal Virasoro model labelled by $p, p', r, s$, $p < p'$, $0 < r , p$, 
+$0 < s < p'$, the character can be written in 
+the alternating-sign (Feigin-Fuchs) form 
+
+\begin{equation}
+\label{bosonic-equation}
+\chi^{\, p,  p'}_{r, s}=
+{
+\frac{1}{(q)_\infty}
+}
+\sum_{\lambda = - \infty}^\infty
+(
+q^{\, \lambda^2 p p' + \lambda (p'r-ps)
+}
+-
+q^{\, (\lambda p + r) (\lambda p' + s)}
+),
+\end{equation}
+
+with $(q)_{\infty}=\prod_{i=1}^\infty (1-q^{i})$,
+and the {\em conformal dimension} $\Delta^{\, p,  p'}_{r, s}$ is 
+
+\begin{equation}\label{conformal-equation}
+\Delta^{\, p,  p'}_{r, s}=
+\frac{(p' r - p s)^2 - (p' - p)^2}{4 p p'}
+\end{equation}
+
+Expression \eqref{bosonic-equation} for $\chi^{\, p,  p'}_{r, s}$
+is related to the free-boson realization of the Virasoro 
+algebra, and is known as a {\em bosonic} expression.
+For later purposes, it will be useful to note that
+$\chi^{p,p'}_{r,s}=\chi^{p,p'}_{p-r,p'-s}$ and that
+$\chi^{p,p'}_{r,s}|_{q=0}=1$. 
+
+\subsection{Constant-sign (fermionic) sum expressions of the Virasoro 
+characters}
+
+For $\mathcal{L}^{\, 2, 2k+3}$, a constant-sign (fermionic) sum expression of 
+the Virasoro characters is 
+
+\begin{equation}
+\label{AG-1}
+\chi^{\, 2, 2 k + 3}_{r = 1,s = a}(q)=
+\sum_{N_1 \ge \cdots \ge N_{k} \ge 0}
+\frac{ 
+q^{ N_{1}^2 + \cdots + N_{k}^2 + N_{a} + \cdots + N_{k} }
+}{
+(q)_{N_{1}-N_{2}} \cdots (q)_{N_{k-1}-N_{k}} (q)_{N_{k}}
+},
+\end{equation}
+
+
+--- 8/20 (sim=0.589) he_free_boundary_processes/chunk_019.tex ---
+Summary: Provides a roadmap of the paper's four sections: preliminaries, additional symmetries reducing the main theorem to the a=b=c=d=0 case, contour integral formulas, and the Hall–Littlewood / six vertex model matching.
+
+% Paper: he_free_boundary_processes
+% Section: Introduction > Organization
+
+[Summary: Provides a roadmap of the paper's four sections: preliminaries, additional symmetries reducing the main theorem to the a=b=c=d=0 case, contour integral formulas, and the Hall–Littlewood / six vertex model matching.]
+
+The paper is organized as follows. In Section \ref{sec: prelim}, we review some background on Macdonald polynomials and formally define the free boundary $q$-Whittaker and Hall--Littlewood processes. In Section \ref{sec: extra sym}, we establish some non-trivial symmetries of $Z_n$, one of which reduces Theorem \ref{thm: qt symmetry} to the case $a=b=c=d=0$. In Section \ref{sec: main pf}, we state and prove contour integral formulas for $Z_n$ which imply Theorem \ref{thm: qt symmetry}. Finally, in Section \ref{sec: HL process}, we formally define the quasi-open six vertex model, and show a distributional matching to the free boundary Hall--Littlewood process, and give a related identity showing a bounded sum over skew Hall--Littlewood polynomials equals a rectangular Koornwinder polynomial.
+
+
+--- 9/20 (sim=0.587) tsuchioka_vertex_operator_kanade_russell_mod9/chunk_043.tex ---
+Summary: Provides the eight key Fourier-decomposition identities expressing products G₁^{±1}G_i ± their bar-involution as linear combinations of formal delta functions δ(ωʲx) and D·δ(-x) — the analytic ingredients inserted into the residue-theorem argument to derive each commutation relation.
+
+% Paper: tsuchioka_vertex_operator_kanade_russell_mod9
+% Section: The (partial) generalized (anti)commutation relations > Auxiliary Fourier expansions
+
+[Summary: Provides the eight key Fourier-decomposition identities expressing products G₁^{±1}G_i ± their bar-involution as linear combinations of formal delta functions δ(ωʲx) and D·δ(-x) — the analytic ingredients inserted into the residue-theorem argument to derive each commutation relation.]
+
+\begin{Prop}\label{compan2}
+\begin{align*}
+G_1^{2}G_2+\overline{G_1^{2}G_2} &= \operatorname{\mathsf{S}(\delta(\omega^4 x)+\delta(\omega^{-4}x))+\operatorname{\mathsf{T}(\delta(\omega^5 x)+\delta(\omega^{-5}x))+\operatorname{\mathsf{U}\delta(-x),\\
+G_1^{-1}G_2+\overline{G_1^{-1}G_2} &= 2\delta(x),\\
+G_1^{2}G_3+\overline{G_1^{2}G_3} &= \operatorname{\mathsf{M}(\delta(\omega^5 x)+\delta(\omega^{-5}x))+\operatorname{\mathsf{N}\delta(-x),\\
+G_1^{-1}G_3+\overline{G_1^{-1}G_3} &= 6\delta(x)-2(\delta(\omega^2 x)+\delta(\omega^{-2} x)),\\
+G_1^2G_4-\overline{G_1^2G_4} &= 4D\delta(-x),\\
+G_1^{-1}G_4-\overline{G_1^{-1}G_4} &= \operatorname{\mathsf{P}(\delta(\omega x)-\frac{1}{3}\delta(\omega^2 x)+\frac{1}{3}\delta(\omega^{-2}x)-\delta(\omega^{-1}x)),\\
+G_1^{2}G_5-\overline{G_1^{2}G_5} &= 12D\delta(-x)+\operatorname{\mathsf{Q}(\delta(\omega^4 x)-\delta(\omega^{-4}x)),\\
+G_1^{-1}G_5-\overline{G_1^{-1}G_5} &= \operatorname{\mathsf{Q}(\delta(\omega x)-\delta(\omega^{-1}x)).
+\end{align*}
+\end{Prop}
+
+
+--- 10/20 (sim=0.586) wheeler_zinn-justin_cauchy_littlewood_six-vertex/chunk_008.tex ---
+Summary: States the refined Littlewood identity (identity 2) with its Pfaffian right-hand side 𝒵_OS, noting the u=1 case connects to off-diagonally symmetric alternating-sign matrices and the prior proof in \cite{bwz-j}.
+
+% Paper: wheeler_zinn-justin_cauchy_littlewood_six-vertex
+% Section: Introduction
+
+[Summary: States the refined Littlewood identity (identity 2) with its Pfaffian right-hand side 𝒵_OS, noting the u=1 case connects to off-diagonally symmetric alternating-sign matrices and the prior proof in \cite{bwz-j}.]
+
+In Section \ref{sec:little} we prove the refined Littlewood identity
+%
+\begin{multline}
+\label{2}
+\sum_{\lambda' \ {\rm even}}
+\prod_{i=1}^{m_0(\lambda)/2}
+(1-u t^{2i-1})
+b^{\rm ev}_{\lambda}(t)
+P_{\lambda}(x_1,\dots,x_{2n};t)
+=
+\mathcal{Z}_{\rm OS}(x_1,\dots,x_{2n};t;u)
+\\
+=
+\prod_{1 \leqslant i<j \leqslant 2n}
+\frac{(1-t x_i x_j)}{(x_i - x_j)}
+\mathop{\rm Pf}_{1\leqslant i < j \leqslant 2n}
+\left[
+\frac{(x_i - x_j) (1-ut + (u-1)t x_i x_j)}
+{(1-x_i x_j) (1-t x_i x_j)}
+\right]
+\end{multline}
+%
+where the sum is over all partitions with $\ell(\lambda)=2n$, whose conjugate $\lambda'$ has even parts (equivalently all part-multiplicities $m_j(\lambda)$ are even), and 
+%
+\begin{align*}
+b^{\rm ev}_{\lambda}(t) = \prod_{j=1}^{\infty} \prod_{i=1}^{m_j(\lambda)/2} (1-t^{2i-1}),
+\end{align*}
+%
+by adapting our general method to Littlewood-type sums. The $u=1$ case of \eqref{2} was conjectured in \cite{bw}, before it was proved for general $u$ in \cite{bwz-j}, again by Izergin--Korepin techniques. A $q$ analogue of \eqref{2} was also conjectured in \cite{bwz-j}, and proved very shortly afterward by Rains in \cite{rai2}. Similarly to in Section \ref{sec:cauchy}, we are able to interpret the right hand side of \eqref{2} as a hybrid partition function $\mathcal{Z}_{\rm OS}$ in the six-vertex model. When we specialize $u=1$, this hybrid partition function reduces to a partition function of off-diagonally symmetric alternating sign matrices \cite{kup2}.
+
+
+--- 11/20 (sim=0.585) fischer_littlewood_identities_fully/chunk_047.tex ---
+Summary: Completes the weight-preserving bijection argument: configurations (1,1;0,0) and (1,1;1,1) correspond to right- and left-leaning entries respectively, while (1,0;0,1)/(0,1;1,0) pairs correspond to special entries, with the paired product of weights giving the correct DAMT monomial weight x(vx^{-1}+w+vx).
+
+% Paper: fischer_littlewood_identities_fully
+% Section: The combinatorics of the relation between fully inhomogeneous spin Hall-Littlewood symmetric rational functions and alternating sign matrices > Modified Robbins polynomials are special cases of fully inhomogeneous spin-Hall Littlewood symmetric rational functions combinatorially
+
+[Summary: Completes the weight-preserving bijection argument: configurations (1,1;0,0) and (1,1;1,1) correspond to right- and left-leaning entries respectively, while (1,0;0,1)/(0,1;1,0) pairs correspond to special entries, with the paired product of weights giving the correct DAMT monomial weight x(vx^{-1}+w+vx).]
+
+%Note that elements of $\mathcal{P}_\lambda$ do not have monomial weight. To resolve this issue, we use the same idea as the first author and F. Schreier-Aigner in \cite{nASMDPP}. 
+
+With these modified weights, we can argue that the bijection is weight-preserving between 
+the ensemble of paths and monotone triangles with bottom row $\lambda_n,\dots,\lambda_1$, if we equip this set with the polynomial weight introduced in \eqref{eq: polynomial weight of MTs}. 
+
+Indeed, the configurations of the form $(1,1;0,0)$ in row $i$ correspond to right-leaning entries in row $i-1$ and the configurations of the form $(1,1;1,1)$ in row $i$ correspond to left-leaning entries in row $i-1$, and it can be checked that the weights are chosen appropriately. Moreover, configurations of the form $(1,0;0,1)$ and $(0,1;1,0)$ always appear in pairs in each row, with the exception of the leftmost configuration of the form $(0,1;1,0)$. This is because for any path that enters a horizontal line via a configuration of the form $(1,0;0,1)$, there is another path (in some cases the same) that leaves the same horizontal line via $(0,1;1,0)$ to the right. Indeed, consider a configuration of the form $(1,0;0,1)$, the only configurations that can come after it when traversing the horizontal line from left to right before encountering a configuration of the form $(0,1;1,0)$ are those of the form $(0,0;1,1)$ and of form $(1,1;1,1)$, where in the latter case the path under consideration changes.
+
+
+--- 12/20 (sim=0.585) wheeler_zinn-justin_cauchy_littlewood_six-vertex/chunk_073.tex ---
+Summary: Opens the Reflecting Littlewood identity section (identity 5, second new result), explaining the parallel with the doubly-reflecting Cauchy section: z-regulated sum over BC_{2n} polynomials with even conjugate partitions equals Z_UO, which evaluates to a Pfaffian product only at z=t^{-1/2}.
+
+% Paper: wheeler_zinn-justin_cauchy_littlewood_six-vertex
+% Section: Reflecting Littlewood identity
+
+[Summary: Opens the Reflecting Littlewood identity section (identity 5, second new result), explaining the parallel with the doubly-reflecting Cauchy section: z-regulated sum over BC_{2n} polynomials with even conjugate partitions equals Z_UO, which evaluates to a Pfaffian product only at z=t^{-1/2}.]
+
+\label{sec:refl-little}
+
+In this section we present a second new identity, equation \eqref{thm-uosasm}, which is of Littlewood-type. It relates an infinite sum over $BC_{2n}$ Hall--Littlewood polynomials with a partition function of the six-vertex model on a finite domain. As in the previous section, we introduce an extra parameter $z$ into the sum on the left hand side of \eqref{thm-uosasm}, which is necessary to avoid divergence issues. 
+
+The partition function on the right hand side of \eqref{thm-uosasm} is closely related to $Z_{\rm UO}$ in \cite{kup2}, which is a multi-parameter generating series of off-diagonally symmetric ASMs with a U-turn boundary. Indeed, for 
+$z = t^{-1/2}$ we obtain the same Boltzmann weights as in \cite{kup2}, and this partition function can be evaluated as the product of two Pfaffians. For generic values of $z$, however, we have not obtained a simple closed form expression. Our results in this section are thus a direct parallel of those obtained in section \ref{sec:doub-refl}.
+
+Throughout this section, we take the Hall--Littlewood boundary parameters to be $\gamma = \delta = 0$.
+
+
+--- 13/20 (sim=0.585) he_free_boundary_processes/chunk_025.tex ---
+Summary: Records the classical even-partition Littlewood identity (the a=b=0 special case of Warnaar's theorem) used repeatedly in later computations.
+
+% Paper: he_free_boundary_processes
+% Section: Preliminaries > Macdonald polynomials
+
+[Summary: Records the classical even-partition Littlewood identity (the a=b=0 special case of Warnaar's theorem) used repeatedly in later computations.]
+
+The special case when $a=b=c=d=0$ is given by
+\begin{align}
+\label{littlewood}
+\sum_{\nu \text{ even}}
+P_{\nu}(y;0,t)
+=
+\prod_{i=1}^{n}
+\frac{1}{1-y_i^2}
+\prod_{1 \leqslant i < j \leqslant n}
+\frac{1-ty_i y_j}{1-y_i y_j}.
+\end{align}
+
+
+--- 14/20 (sim=0.584) colmenarejo_c-functions_koornwinder/chunk_090.tex ---
+Summary: Defines the anti-involution f -> f-bar (replacing all variables and parameters by their inverses), then defines the Macdonald-Koornwinder inner product (f_1,f_2)_+ = ct(f_1 f_2-bar / Delta^+_{CC}) as a constant-term integral against the kernel Delta^+_{CC}.
+
+% Paper: colmenarejo_c-functions_koornwinder
+% Section: Orthogonality > Definition of the inner product
+
+[Summary: Defines the anti-involution f -> f-bar (replacing all variables and parameters by their inverses), then defines the Macdonald-Koornwinder inner product (f_1,f_2)_+ = ct(f_1 f_2-bar / Delta^+_{CC}) as a constant-term integral against the kernel Delta^+_{CC}.]
+
+Let $\mathbb{K}[x] = \mathbb{K}[x_1^{\pm 1}, \ldots, x_n^{\pm1}]$.  Define an involution $\overline{\phantom{T}}\colon \mathbb{K}[x] \to \mathbb{K}[x]$ by
+\begin{equation}
+\overline{f}(x_1, \ldots, x_n;q,t,t_0^{\frac12},u_0^{\frac12}, t_n^{\frac12}, u_n^{\frac12}) 
+= f(x_1^{-1}, \ldots, x_n^{-1}; q^{-1}, t^{-1}, t_0^{-\frac12}, u_0^{-\frac12}, t_n^{-\frac12}, u_n^{-\frac12}).
+\label{invdefn}
+%\tag{invdefn}
+\end{equation}
+
+Let $\Delta^+_{CC}$ be as defined in~\eqref{rootformker}.
+Define a scalar product $(\ ,\ )_+\colon \mathbb{K}[x]\times \mathbb{K}[x] \to \mathbb{K}$ by
+\begin{equation}
+(f_1, f_2)_+
+= \mathrm{ct}\left( \frac{f_1 \overline{f_2}}
+{\Delta^+_{CC}}\right),
+\qquad\hbox{where}\quad
+\mathrm{ct}(f) = (\hbox{constant term in $f$}), \quad \hbox{for $f\in \mathbb{K}[x]$.}
+\label{ipdef}
+%\tag{ipdef}
+\end{equation}
+
+
+--- 15/20 (sim=0.583) konan_systematic_schmidt_type/chunk_069.tex ---
+Summary: Proves Lemma 4.2: the map Γ_u: ℙ^{(u)} → Σ_u sending λ to (σ, sorted(λ)) is a bijection, verified by constructing the explicit inverse and checking σ-admissibility is preserved, providing the single-block building block for the global block-partition bijection.
+
+% Paper: konan_systematic_schmidt_type
+% Section: Symmetric group and block over-partitions > The setup
+
+[Summary: Proves Lemma 4.2: the map Γ_u: ℙ^{(u)} → Σ_u sending λ to (σ, sorted(λ)) is a bijection, verified by constructing the explicit inverse and checking σ-admissibility is preserved, providing the single-block building block for the global block-partition bijection.]
+
+\begin{lem}\label{lem:compsigma}
+Define the map 
+\begin{align*}
+\Gamma_u \colon \overline{\mathcal{P}}^{(u)} &\to  \Sigma_u\\
+(\lambda_1,\ldots,\lambda_u) &\mapsto (\sigma,(\lambda_{\sigma(1)},\ldots,\lambda_{\sigma(u)})),
+\end{align*}
+where $\sigma$ satisfies \eqref{eq:compsigma}.
+The map $\Gamma_u$ is then well-defined, and it describes a bijection from $\mathbb{P}^{(u)}$ to $\Sigma_u$. 
+\end{lem}
+
+\begin{proof}
+Let $\lambda\in \mathbb{P}^{(u)}$. Then, $\sigma$ is such that $(\lambda_{\sigma(1)},\ldots,\lambda_{\sigma(u)})\in \overline{\mathcal{P}}^{(u)}$. Let $1\leq t\leq u-1$, and suppose that $\sigma(t)>\sigma(t+1)$. Then, applying \eqref{eq:sadmissible} with $i=\sigma(t+1)$ and $j=\sigma(t)$, we obtain that $$\sigma^{-1}(i)=t+1>t=\sigma^{-1}(j),$$ and $\lambda_{\sigma(t+1)}-\lambda_{\sigma(t)}=\lambda_{j}-\lambda_{i}<0$.
+Hence, $(\lambda_{\sigma(1)},\ldots,\lambda_{\sigma(u)})$ satisfies that
+$\lambda_{\sigma(i)}-\lambda_{\sigma(i+1)}>0$ for all $1\leq i\leq u-1$ such that $\sigma(i)>\sigma(i+1)$. Therefore, $(\lambda_{\sigma(1)},\ldots,\lambda_{\sigma(u)})$ is $\sigma$-admissible and $\Gamma_u$ is well-defined.
+
+It is straightforward to see that $\Gamma_u$ is injective, as a pair $(\sigma,(\mu_1,\ldots,\mu_u))$ can only have as pre-image
+$(\mu_{\sigma^{-1}(1)},\ldots,\mu_{\sigma^{-1}(u)})$. It then remains to show that $\Gamma_u$ is surjective. Let $(\sigma,(\mu_1,\ldots,\mu_u))\in \Sigma_u$. Note that for all $1\leq i\leq u-1$,
+$\mu_i-\mu_{i+1}\geq 0$. Hence, if
+$\mu_i-\mu_{i+1}=0$, then $\sigma(i)<\sigma(i+1)$. For $1\leq i<j\leq u$, if $\mu_j-\mu_i=0$, then $\mu_{t}-\mu_{t+1}=0$ for all $i\leq t<j$ and 
+$$\sigma(i)<\sigma(i+1)<\cdots<\sigma(j)$$ so that $\sigma(i)<\sigma(j)$.
+Thus, for all $1\leq j\leq u$,
+$$\sharp\{i: \sigma(i)\leq \sigma(j), \mu_i-\mu_j=0\} = \sharp\{i\leq  j: \mu_i-\mu_j=0\}.$$
+An over-lined part occurs after the non-over-lined parts of same size in $(\mu_1,\ldots,\mu_u)$, so that it is also the case in $(\mu_{\sigma^{-1}(1)},\ldots,\mu_{\sigma^{-1}(u)})$. Hence, $(\mu_{\sigma^{-1}(1)},\ldots,\mu_{\sigma^{-1}(u)})\in \mathbb{P}^{(u)}$.
+Finally, for all $1\leq i\leq u$, 
+\begin{align*}
+\sharp\{j:\mu_{\sigma^{-1}(j)}-\mu_{\sigma^{-1}(i)}>0\}+\sharp\{j\leq i:\mu_{\sigma^{-1}(j)}-\mu_{\sigma^{-1}(i)}=0\}&=\sharp\{j:\mu_{j}-\mu_{\sigma^{-1}(i)}>0\}\\
+&\qquad+\sharp\{j:\sigma(j)\leq i, \,\mu_{j}-\mu_{\sigma^{-1}(i)}=0\}\\
+&=\sharp\{j:\mu_{j}-\mu_{\sigma^{-1}(i)}>0\}\\
+&\qquad+\sharp\{j\leq\sigma^{-1}(i) :\mu_{j}-\mu_{\sigma^{-1}(i)}=0\}\\
+&=\sharp\{j\leq \sigma^{-1}(i):\mu_{j}- \mu_{\sigma^{-1}(i)}\geq 0\}\\
+&=\sigma^{-1}(i).
+\end{align*}
+By \eqref{eq:compsigma}, $\Gamma_u((\mu_{\sigma^{-1}(1)},\ldots,\mu_{\sigma^{-1}(u)}))=(\sigma,(\mu_1,\ldots,\mu_u))$, and we conclude. 
+\end{proof}
+
+
+--- 16/20 (sim=0.582) dousse_konan_capparelli_primc_crystals/chunk_006.tex ---
+Summary: Explains how Primc's coloured partition difference conditions produce the generating function 1/(q;q)_∞ under principal specialisation, then states the n²-colour generalisation Δ from the first paper that unifies all these conditions in a single formula.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Introduction and statement of results > Background
+
+[Summary: Explains how Primc's coloured partition difference conditions produce the generating function 1/(q;q)_∞ under principal specialisation, then states the n²-colour generalisation Δ from the first paper that unifies all these conditions in a single formula.]
+
+Consider coloured partitions satisfying the difference conditions of \eqref{Primcmatrix4} (resp. \eqref{Primcmatrix9}), where the coefficient $(i,j)$ in the matrix gives the minimal difference between consecutive parts coloured $i$ and $j$. Using the Weyl-Kac charater formula \cite{Kac}, Primc proved that in both cases, when performing the principal specialisation (corresponding to some dilations on the variables in the generating function), the generating function for such partitions reduces to $\frac{1}{(q;q)_{\infty}}$, which is simply the generating function for partitions. Here we used, for $n \in \mathbb{N} \cup \{\infty\},$ the standard $q$-series notation 
+$$(a;q)_n := (1-a)(1-aq)\cdots(1-aq^{n-1}).$$
+
+
+
+
+In the first paper of this series \cite{DK19}, we gave a large family of coloured partition identities which generalise and refine Primc's identities. To do so, we gave difference conditions which generalise both \eqref{Primcmatrix4} and \eqref{Primcmatrix9}.
+Let $(a_{n})_{n\in\mathbb{N}}$ and $(b_{n})_{n\in\mathbb{N}}$ be two sequences of colour symbols.  For all $i,k,i',k' \in \mathbb{N}$, we defined the minimal difference $\Delta$ in the following way:
+\begin{equation}
+\label{eq:Delta}
+\Delta(a_i b_k, a_{i'} b_{k'}) = \chi(i \geq i') - \chi(i=k=i')+\chi(k \leq k') - \chi(k=i'=k'),
+\end{equation}
+where $\chi(prop)$ equals $1$ if the proposition $prop$ is true and $0$ otherwise.
+
+
+--- 17/20 (sim=0.582) he_boundary_asep_six-vertex/chunk_054.tex ---
+Summary: This remark notes a byproduct of the proof: since the six-vertex model is already normalized, the proof of Theorem 3.6 gives a new vertex model proof of Warnaar's Littlewood identity (Theorem 1.1 of W06) for the partition function Π.
+
+% Paper: he_boundary_asep_six-vertex
+% Section: The half space six vertex model and half space Hall--Littlewood measure > Half space Hall--Littlewood measures
+
+[Summary: This remark notes a byproduct of the proof: since the six-vertex model is already normalized, the proof of Theorem 3.6 gives a new vertex model proof of Warnaar's Littlewood identity (Theorem 1.1 of W06) for the partition function Π.]
+
+\begin{remark}
+\label{rmk: Littlewood identity new pf}
+Since the proof of Theorem \ref{thm: general 6vm HL distr equality} does not require a priori knowledge of the normalizing constant $\Pi(a;q,t,\nu)$, and the six vertex model does not require any normalization, one can actually derive the formula \eqref{eq: Littlewood identity} from it. This is equivalent to Theorem 1.1 of \cite{W06}, and so we have given a new vertex model proof of this result.
+\end{remark}
+
+
+--- 18/20 (sim=0.579) fischer_littlewood_identities_fully/chunk_017.tex ---
+Summary: Motivates the study of these Littlewood identities by explaining that Littlewood identities for modified Robbins polynomials play the decisive role in connecting alternating sign matrices to plane partitions, and that bijective proofs of the generalized identities would be a key step toward combinatorial bijections between these classes.
+
+% Paper: fischer_littlewood_identities_fully
+% Section: Introduction
+
+[Summary: Motivates the study of these Littlewood identities by explaining that Littlewood identities for modified Robbins polynomials play the decisive role in connecting alternating sign matrices to plane partitions, and that bijective proofs of the generalized identities would be a key step toward combinatorial bijections between these classes.]
+
+The significance of the modified Robbins polynomials stems from the fact that, in recent work relating alternating sign triangles as well as \emph{alternating sign trapezoids} to \emph{totally symmetric self-complementary plane partitions} and \emph{descending plane partitions} by rather heavy computations, certain Littlewood identities for these polynomials play the most important role, see \cite[Lemma~4.1]{Fis19b}, \cite[Lemma~9]{Fis19a}, \cite[Lemma~3.4]{AlternatingSignPentagonsAndMagogPentagons} 
+and \cite[Lemma~9]{fourfold}. This also motivates our study of these identities: bijective proofs of the generalized Littlewood identities would be an important step toward establishing bijections between alternating sign matrix objects and plane partition objects. Moreover, if such bijective proofs exist, it is conceivable that the Robinson–Schensted–Knuth correspondence—which provides a bijective proof of the ordinary Littlewood identity—offers a natural starting point.
+
+
+--- 19/20 (sim=0.578) fischer_bounded_littlewood_asm/chunk_003.tex ---
+Summary: Motivates the paper by explaining that a Littlewood-type identity was crucial in connecting alternating sign triangles and alternating sign trapezoids to totally symmetric self-complementary plane partitions and descending plane partitions — but all existing proofs are non-combinatorial, making the study of this identity's combinatorics highly desirable.
+
+% Paper: fischer_bounded_littlewood_asm
+% Section: Introduction
+
+[Summary: Motivates the paper by explaining that a Littlewood-type identity was crucial in connecting alternating sign triangles and alternating sign trapezoids to totally symmetric self-complementary plane partitions and descending plane partitions — but all existing proofs are non-combinatorial, making the study of this identity's combinatorics highly desirable.]
+
+In recent papers \cite{Fis19b,Fis19a,fourfold}, where ``alternating sign matrix objects'' (namely, \emph{alternating sign triangles} and \emph{alternating sign trapezoids}) have been connected to certain ``plane partition objects'' (namely, \emph{totally symmetric self-complementary plane partitions} and
+\emph{column strict shifted plane partitions of fixed class}, which generalize the better known \emph{descending plane partitions}), a very similar identity played the crucial role to establish this still mysterious \cite{cube} connection. All these proofs are not of a combinatorial nature and involve rather complicated calculations, and so the study of the combinatorics of our Littlewood-type identity is very likely lead to a better understanding of the combinatorics of this relation.
+
+
+--- 20/20 (sim=0.577) kilic_kursungoz_functional_equations_andrews_gordon/chunk_045.tex ---
+Summary: Opens Section 5, explaining that extending S_{C₁,C₂} to include signs ε₁ᵐε₂ⁿ (ε = ±1) modifies the primary equations by sign factors and preserves the index-counting analysis, but partition interpretations are harder so inclusion-exclusion is used instead.
+
+% Paper: kilic_kursungoz_functional_equations_andrews_gordon
+% Section: Alternating series and inclusion-exclusion
+
+[Summary: Opens Section 5, explaining that extending S_{C₁,C₂} to include signs ε₁ᵐε₂ⁿ (ε = ±1) modifies the primary equations by sign factors and preserves the index-counting analysis, but partition interpretations are harder so inclusion-exclusion is used instead.]
+
+After the discussion in Sections \ref{secSrchAlgo}-\ref{secNarrowingSrchSpc},
+allowing the series \eqref{srMainDouble} to be
+\begin{align}
+\label{srMainDoubleAlt}
+ S_{C_1, C_2}(x) = S_{C_1, C_2}(x; q) = \sum_{m, n \geq 0} \epsilon_1^m \epsilon_2^n
+  \frac{ q^{ B_{11} \binom{m+1}{2} + B_{22} \binom{n+1}{2} + B_{12}mn + C_1 m + C_2 n }
+    x^{ D_1 m + D_2 n } }
+   { (q^{K_1}; q^{K_1})_m (q^{K_2}; q^{K_2})_n }
+\end{align}
+for $\epsilon_1 = \pm 1$, and for $\epsilon_2 = \pm 1$ comes almost for free.
+The functional equations are
+\begin{align}
+\nonumber
+ S_{C_1, C_2}(x) - S_{C_1 + K_1, C_2}(x)
+ & = \epsilon_1 x^{D_1} q^{ B_{11} + C_1 }
+  S_{C_1 + B_{11} - \gamma D_1, C_2 + B_{12} - \gamma D_2 }(x q^{\gamma}) \\
+\nonumber
+ S_{C_1, C_2}(x) - S_{C_1 , C_2 + K_2}(x)
+ & = \epsilon_2 x^{D_2} q^{ B_{22} + C_2 }
+  S_{C_1 + B_{12} - \gamma D_1, C_2 + B_{22} - \gamma D_2 }(x q^{\gamma}) \\
+\label{fneqPrimaryAlt}
+  S_{C_1, C_2}(x) & = S_{C_1 - \gamma D_1 , C_2 - \gamma D_1}(x q^{\gamma}),
+\end{align}
+accordingly.
+The indicated double indices are still the same,
+so the auxiliary linear system size estimation detailed in Section \ref{secNarrowingSrchSpc}
+stays the same.
+Of course, positive series and alternating series have to satisfy different systems of functional equations.
+However, we make another deviation from the procedure we followed before.
+We will not try and give a partition generating function interpretation
+via the system of functional equations we obtain through the algorithm.
+This is mainly because systems of functional equations
+which evidently imply non-negative coefficients are rarer.
+And, it is more difficult to give a signed partition interpretation
+via a system of functional equations.
+Another reason is that,
+once we have an alleged series-product identity,
+inclusion-exclusion on a signed partition generating function interpretation
+of \eqref{srMainDoubleAlt} is much easier.
+It has to be said that many of the identities we came by
+were variations on the theme of
+\begin{align}
+\nonumber
+  \sum_{m = 0}^N \begin{bmatrix} N \\ m \end{bmatrix} (-1)^m q^{ \binom{m}{2} } 
+  = \begin{cases} 1 & \textrm{ for } N = 0 \\ 0 & \textrm{ for } N > 0 \end{cases}, 
+\end{align}
+by the $q-$binomial theorem~\cite{A_thebluebook}.  
+This can easily be discerned as an inner single sum in the double sum \eqref{srMainDoubleAlt}.
+We discarded them.
+We prove two of the more interesting examples here, 
+namely Theorems \ref{thmAltRRG3} and \ref{thmAltAlladiGordonDilation}.
+
+

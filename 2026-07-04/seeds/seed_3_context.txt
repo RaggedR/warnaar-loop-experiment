@@ -1,0 +1,449 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 28307.21it/s]
+--- 1/20 (sim=0.812) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_013.tex ---
+Summary: Main results section: summarizes all A2 Andrews-Gordon identities and associated cylindric partition GF conjectures.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures
+[Summary: Main results section: summarizes all A2 Andrews-Gordon identities and associated cylindric partition GF conjectures.]
+
+In this section we give a summary of the $\mathrm{A}_2$ Andrews--Gordon 
+identities for $\operatorname{AG}_{\lambda;3}(q)$ as well as some closely related, manifestly 
+positive multisum expressions for the two-variable generating function of 
+cylindric partitions $\operatorname{GK}_{(c_0,c_1,c_2)}(z,q)$ for
+$c_0+c_1+c_2\not\equiv 0\pmod{3}$.
+
+
+--- 2/20 (sim=0.790) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_009.tex ---
+Summary: States the landmark Andrews-Schilling-Warnaar A2 Rogers-Ramanujan identity with quadratic form n₁²+n₂²-n₁n₂ in the exponent, the key prior result the paper extends to a 7-identity family.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and statement of results
+
+[Summary: States the landmark Andrews-Schilling-Warnaar A2 Rogers-Ramanujan identity with quadratic form n₁²+n₂²-n₁n₂ in the exponent, the key prior result the paper extends to a 7-identity family.]
+
+\begin{theorem}[Andrews--Schilling--Warnaar]
+\label{th:ASW}
+$$\sum_{n_1,n_2\geq 0} \frac{q^{n_1^2+n_2^2-n_1n_2}}{(q;q)_{n_1}} {2n_1+1\brack n_2}_q=\frac{1}{(q,q,q^3,q^4,q^6,q^6;q^7)_\infty}.$$
+\end{theorem}
+
+
+--- 3/20 (sim=0.788) corteel_welsh_A2_RR/chunk_005.tex ---
+Summary: States the main theorem (Theorem 1): the five A2 Rogers-Ramanujan identities as sum-product equalities involving Gaussian polynomials and modulus-7 infinite products; this is the paper's central target.
+
+% Paper: corteel_welsh_A2_RR
+% Section: Introduction
+
+[Summary: States the main theorem (Theorem 1): the five A2 Rogers-Ramanujan identities as sum-product equalities involving Gaussian polynomials and modulus-7 infinite products; this is the paper's central target.]
+
+\begin{thm} We have
+\begin{equation*}
+\begin{split}
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1} 
+\frac{q^{n_1^2+n_2^2-n_1n_2+n_1+n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1\\ n_2\end{array}\right]
+	\genfrac{[}{]}{0pt}{}{2n_1}{n_2}
+	&=\frac{1}{(q^2,q^3,q^3,q^4,q^4,q^5;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1}  \frac{q^{n_1^2+n_2^2-n_1n_2+n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1}{n_2}
+	&=\frac{1}{(q,q^2,q^3,q^4,q^5,q^6;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1+1}  \frac{q^{n_1^2+n_2^2-n_1n_2+n_1}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1+1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1+1}{n_2}
+	&=\frac{1}{(q,q^2,q^3,q^4,q^5,q^6;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1+1} \frac{q^{n_1^2+n_2^2-n_1n_2+n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1+1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1+1}{n_2}
+	&=\frac{1} {(q,q^2,q^2,q^5,q^5,q^6;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1}
+\frac{q^{n_1^2+n_2^2-n_1n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1}{n_2}
+	&=\frac{1}{(q,q,q^3,q^4,q^6,q^6;q^7)_\infty},\\
+\end{split}
+\end{equation*}
+where the Gaussian polynomial $\genfrac{[}{]}{0pt}{}{n}{k}$ is defined by
+$$
+\genfrac{[}{]}{0pt}{}{n}{k}
+%\left[\begin{array}{c} n\\ k\end{array}\right]
+	=\frac{(q;q)_n} {(q;q)_k(q;q)_{n-k}}.$$
+\label{main}
+\end{thm}
+
+
+--- 4/20 (sim=0.783) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_007.tex ---
+Summary: Presents the Andrews-Gordon q-series form of Gordon's identities, the A1 template whose structural pattern the paper's quadruple-sum A2 identities generalize.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and statement of results
+
+[Summary: Presents the Andrews-Gordon q-series form of Gordon's identities, the A1 template whose structural pattern the paper's quadruple-sum A2 identities generalize.]
+
+\begin{theorem}[Andrews--Gordon identities]
+\label{th:AGseries}
+Let $r \geq 2$ and $1 \leq i \leq r$ be two integers. We have
+\begin{equation}\label{eq:AGri}
+\sum_{n_1\geq\dots\geq n_{r-1}\geq0}\frac{q^{n_1^2+\dots+n_{r-1}^2+n_{i}+\dots+n_{r-1}}}{(q)_{n_1}} {n_1\brack n_1-n_2}_q \cdots {n_{r-2}\brack n_{r-2}-n_{r-1}}_q=\frac{(q^{2r+1},q^{i},q^{2r-i+1};q^{2r+1})_\infty}{(q)_\infty},
+\end{equation}
+where
+$${m+n \brack m}_q := \left\lbrace \begin{array}{ll}\frac{(q;q)_{m+n}}{(q;q)_m(q;q)_{n}},&\text{for }m, n \geq 0,\\ 0,&\text{otherwise,}\end{array}\right.$$
+is the classical $q$-binomial coefficient.
+\end{theorem}
+
+
+--- 5/20 (sim=0.779) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_102.tex ---
+Summary: Proofs (Thm k12): takes the L to infinity limit to complete the k=1 proof and notes the open problem for bounded A2 AG identities.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Proofs of the main results > Proof of Theorem~\ref{Thm_k12
+[Summary: Proofs (Thm k12): takes the L to infinity limit to complete the k=1 proof and notes the open problem for bounded A2 AG identities.]
+
+Letting $L$ tend to infinity using \eqref{Eq_Gc} yields 
+\eqref{Eq_RR-rank3-unbounded}.
+We remark that it is an open problem to find the
+bounded analogues of Theorem~\ref{Thm_k12} for $k=2$ 
+and (which should be easier) Conjecture~\ref{Con_cylindric-b} for 
+$k=2$, i.e., \cite[Theorem 3.2]{CW19}.
+
+Our first step in proving Proposition~\ref{Prop_RRcase} is to again use
+level-rank duality; \eqref{Eq_RR-rank3-bounded} is implied by the
+following rank-$2$ identity.
+
+
+--- 6/20 (sim=0.773) corteel_welsh_A2_RR/chunk_004.tex ---
+Summary: Announces the paper's main goal: extend the cylindric partition method to prove the A2 Rogers-Ramanujan identities of Andrews-Schilling-Warnaar.
+
+% Paper: corteel_welsh_A2_RR
+% Section: Introduction
+
+[Summary: Announces the paper's main goal: extend the cylindric partition method to prove the A2 Rogers-Ramanujan identities of Andrews-Schilling-Warnaar.]
+
+In this note, we take the idea of applying cylindric partitions to
+Rogers-Ramanujan type identities a step further,
+by using them to give an alternative proof of the $A_2$ Rogers-Ramanujan
+identities due to Andrews, Schilling and Warnaar \cite{ASW}.
+%
+
+
+--- 7/20 (sim=0.772) warnaar_A2_andrews_gordon/chunk_010.tex ---
+Summary: States Theorem 1 (A2 Andrews--Gordon identities, I): two explicit multisum-to-infinite-product identities for moduli 3k+2 and 3k+1 corresponding to vacuum weights.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Introduction
+
+[Summary: States Theorem 1 (A2 Andrews--Gordon identities, I): two explicit multisum-to-infinite-product identities for moduli 3k+2 and 3k+1 corresponding to vacuum weights.]
+
+
+\begin{theorem}[$\mathrm{A}_2$ Andrews--Gordon identities, I]
+\label{Thm_A2-vac-bothmoduli}
+For $k$ a positive integer, the following identity for 
+$\operatorname{AG}_{k\Lambda_0+k\Lambda_1+(k-1)\Lambda_2;3}(q)$ holds:
+\begin{align}\label{Eq_A2-vac}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}} 
+&\frac{q^{n_k^2}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} \\[2mm]
+&=\frac{(q^{3k+2};q^{3k+2})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q^k,q^{k+1},q^{k+1};q^{3k+2}), \notag
+\end{align}
+where $m_k:=2n_k$.
+Similarly, for $\operatorname{AG}_{k\Lambda_0+(k-1)\Lambda_1+(k-1)\Lambda_2;3}(q)$
+there holds $\operatorname{AG}_{\Lambda_0;3}(q)=1$ and
+\begin{align}
+\label{Eq_A2-vac-b}
+\sum_{\substack{n_1,\dots,n_{k-1}\geqslant 0 \\[1pt] 
+m_1,\dots,m_{k-1}\geqslant 0}} 
+&\frac{q^{\sum_{i=1}^{k-1} (n_i^2-n_im_i+m_i^2)}}{(q)_{n_1}}\,
+\genfrac{[}{]}{0pt}{}{2n_{k-1}}{m_{k-1}} 
+\prod_{i=1}^{k-2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}}\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} 
+\\[2mm]
+&=\frac{(q^{3k+1};q^{3k+1})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q^k,q^k,q^{k+1};q^{3k+1}) \notag
+\end{align}
+for $k\geqslant 2$.
+\end{theorem}
+
+
+--- 8/20 (sim=0.770) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_013.tex ---
+Summary: States the paper's four simpler new A2 Rogers-Ramanujan identities as quadruple sums equal to mod-8 infinite products, giving the first manifestly positive expressions for those characters.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and statement of results
+
+[Summary: States the paper's four simpler new A2 Rogers-Ramanujan identities as quadruple sums equal to mod-8 infinite products, giving the first manifestly positive expressions for those characters.]
+
+\begin{theorem}
+We have
+\label{th:mainintro}
+\begin{align*}
+&\sum_{n_1,n_2,n_3,n_4\geq 0 } \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2+n_1+n_2+n_3+n_4-n_1n_2 + n_2n_4}}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q=\frac{1}{(q^2,q^3,q^3,q^4,q^4,q^5,q^5,q^6;q^8)_\infty}, \nonumber \\
+&\sum_{n_1,n_2,n_3,n_4\geq 0 } \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2+n_2+n_3+n_4-n_1n_2 + n_2n_4}}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q
+%&=\sum_{n_1,n_2,n_3,n_4\geq 0 } \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2+n_1+n_3-n_1n_2 + n_2n_4} \left( 1 + q^{n_1+n_2+n_4+1} \right)}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q
+%\\& 
+= \frac{1}{(q,q^2,q^3,q^4,q^4,q^5,q^6,q^7;q^8)_\infty} , \nonumber \\
+%\sum_{n_1,n_2,n_3,n_4\geq 0 }& \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2+n_1-n_1n_2 + n_2n_4} \left( 1+q^{n_1+n_3+1}+q^{2n_1+n_2+n_3+n_4+2} \right)}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q \\
+%&=\sum_{n_1,n_2,n_3,n_4\geq 0 } \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2+n_1-n_1n_2 + n_2n_4} \left( q^{n_3}+q^{n_1+1}+q^{2n_1+n_3+2}+q^{3n_1+n_2+n_3+n_4+3} \right)}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q \\
+%&= \frac{1}{(q,q^2,q^2,q^3,q^5,q^6,q^6,q^7;q^8)_\infty}, \nonumber \\
+& \sum_{n_1,n_2,n_3,n_4\geq 0 } \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2+n_3-n_1n_2 + n_2n_4}}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q
+= \frac{1}{(q,q,q^3,q^3,q^5,q^5,q^7,q^7;q^8)_\infty}, \nonumber \\
+ &\sum_{n_1,n_2,n_3,n_4\geq 0 } \frac{q^{n_1^2+n_2^2+n_3^2+n_4^2-n_1n_2 + n_2n_4}}{(q;q)_{n_1}} {n_1\brack n_2}_q{n_1\brack n_4}_q{n_2 \brack n_3}_q 
+= \frac{1}{(q,q,q^2,q^4,q^4,q^6,q^7,q^7;q^8)_\infty}. \nonumber\\
+\end{align*}
+\end{theorem}
+
+
+--- 9/20 (sim=0.770) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_005.tex ---
+Summary: States Gordon's infinite family of partition identities (A1 case), the classical generalization of Rogers-Ramanujan that the paper ultimately extends to the A2 setting.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and statement of results
+
+[Summary: States Gordon's infinite family of partition identities (A1 case), the classical generalization of Rogers-Ramanujan that the paper ultimately extends to the A2 setting.]
+
+\begin{theorem}[Gordon's identities]
+\label{th:Gordon}
+Let $r$ and $i$ be integers such that $r\geq 2$ and $1\leq i \leq r.$ Let $S_{r,i}(n)$ be the number of partitions $\lambda=\lambda_1+\lambda_2+\cdots+\lambda_s$ of $n$ such that $\lambda_{j}-\lambda_{j+r-1} \geq 2$ for all $j$, and at most $i-1$ of the $\lambda_j$ are equal to $1$. Let $P_{r,i}(n)$ be the number of partitions of $n$ whose parts are not congruent to $0,\pm i \mod  2r+1$.
+
+Then for every positive integer $n$, we have 
+$$S_{r,i}(n)=P_{r,i}(n).$$
+\end{theorem}
+
+
+--- 10/20 (sim=0.770) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_001.tex ---
+Summary: Abstract stating the paper's central goal: prove seven new A2 Rogers-Ramanujan identities mod 8 via cylindric partitions with profile summing to 5.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+
+[Summary: Abstract stating the paper's central goal: prove seven new A2 Rogers-Ramanujan identities mod 8 via cylindric partitions with profile summing to 5.]
+
+\begin{abstract}
+We study the generating functions for cylindric partitions with profile $(c_1,c_2,c_3)$ for all $c_1,c_2,c_3$ such that $c_1+c_2+c_3=5$. This allows us to discover and prove seven new $A_2$ Rogers--Ramanujan identities modulo $8$ with quadruple sums, related with
+work of Andrews, Schilling, and Warnaar.
+\end{abstract}
+
+
+--- 11/20 (sim=0.769) warnaar_A2_andrews_gordon/chunk_015.tex ---
+Summary: States Conjecture 1 (A2 Andrews--Gordon identities, II): a family of multisum-to-product identities for modulus 3k+2, parametrized by 1<=s<=k+1, whose product side involves theta(q,q^s,q^{s+1};q^{3k+2}).
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+
+[Summary: States Conjecture 1 (A2 Andrews--Gordon identities, II): a family of multisum-to-product identities for modulus 3k+2, parametrized by 1<=s<=k+1, whose product side involves theta(q,q^s,q^{s+1};q^{3k+2}).]
+
+
+\begin{conjecture}[$\mathrm{A}_2$ Andrews--Gordon identities, II]
+\label{Con_A2-two}
+For integers $k,s$ such that $1\leqslant s\leqslant k+1$,
+\begin{align}\label{Eq_ks-con}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+& \frac{q^{n_k^2+\sum_{i=s}^k n_i}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2+m_i} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} \\
+&=\frac{(q^{3k+2};q^{3k+2})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q,q^s,q^{s+1};q^{3k+2}), \notag
+\end{align}
+where $m_k:=2n_k$.
+\end{conjecture}
+
+
+--- 12/20 (sim=0.769) warnaar_A2_andrews_gordon/chunk_027.tex ---
+Summary: States Conjecture 4 (A2 Andrews--Gordon identities, II'): the modulus-(3k+1) family of multisum-to-product identities parametrized by 1<=s<=k.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+1)$ case
+
+[Summary: States Conjecture 4 (A2 Andrews--Gordon identities, II'): the modulus-(3k+1) family of multisum-to-product identities parametrized by 1<=s<=k.]
+
+
+\begin{conjecture}
+[$\mathrm{A}_2$ Andrews--Gordon identities, II$'$]
+\label{Con_A2-two-b}
+For integers $k,s$ such that $k\geqslant 2$ and $1\leqslant s\leqslant k$,
+\begin{align}\label{Eq_A2-two-b}
+\sum_{\substack{n_1,\dots,n_{k-1}\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+& \frac{q^{\sum_{i=1}^{k-1} (n_i^2-n_im_i+m_i^2+m_i)+
+\sum_{i=s}^{k-1} n_i}}{(q)_{n_1}} \, \genfrac{[}{]}{0pt}{}{2n_{k-1}}{m_{k-1}}
+\prod_{i=1}^{k-2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} \genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} \\
+&=\frac{(q^{3k+1};q^{3k+1})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q,q^s,q^{s+1};q^{3k+1}). \notag
+\end{align}
+\end{conjecture}
+
+Again we have a proof for three (or two when $k=2$) values of $s$.
+
+
+--- 13/20 (sim=0.767) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_014.tex ---
+Summary: Main results (modulus 3k+2): introduces the first family of A2 AG identities for modulus 3k+2 beyond the vacuum identity.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+[Summary: Main results (modulus 3k+2): introduces the first family of A2 AG identities for modulus 3k+2 beyond the vacuum identity.]
+
+The simplest $\mathrm{A}_2$ Andrews--Gordon identity for the 
+modulus $3k+2$ is \eqref{Eq_A2-vac} of the introduction.
+This result is complemented with several further identities, the
+first of which corresponds to $\operatorname{AG}_{(3k-s)\Lambda_0+(s-1)\Lambda_1;3}(q)$.
+
+
+--- 14/20 (sim=0.765) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_001.tex ---
+Summary: Title/author/abstract: paper obtains A2 analogues of Andrews-Gordon identities and conjectures manifestly positive formulas for cylindric partition GFs.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+[Summary: Title/author/abstract: paper obtains A2 analogues of Andrews-Gordon identities and conjectures manifestly positive formulas for cylindric partition GFs.]
+
+\title{The $\mathrm{A}_2$ Andrews--Gordon identities and cylindric partitions}
+
+\author{S.\ Ole Warnaar}
+\address{School of Mathematics and Physics,
+The University of Queensland, Brisbane, QLD 4072, Australia}
+\email{o.warnaar@maths.uq.edu.au}
+
+\thanks{Work supported by the Australian Research Council.}
+
+\subjclass[2020]{05A15, 05A19, 11P84, 17B65, 33D15, 81R10}
+
+\begin{abstract}
+Inspired by a number of recent papers by Corteel, Dousse, Foda, Uncu and 
+Welsh on cylindric partitions and Rogers--Ramanujan-type identities, 
+we obtain the $\mathrm{A}_2$ (or $\mathrm{A}_2^{(1)}$) 
+analogues of the celebrated Andrews--Gordon identities.
+We further prove $q$-series identities that correspond to the
+infinite-level limit of the Andrews--Gordon identities
+for $\mathrm{A}_{r-1}$ (or $\mathrm{A}_{r-1}^{(1)}$) for arbitrary rank $r$.
+Our results for $\mathrm{A}_2$ also lead to conjectural, manifestly 
+positive, combinatorial formulas for the $2$-variable generating function 
+of cylindric partitions of rank $3$ and level $d$, such that $d$ is not a
+multiple of $3$.
+
+\smallskip
+
+\noindent\textbf{Keywords:} $\mathrm{A}_{r-1}^{(1)}$ branching functions, 
+character formulas, cylindric partitions, Rogers--Ramanujan identities. 
+\end{abstract}
+
+
+--- 15/20 (sim=0.763) warnaar_A2_andrews_gordon/chunk_069.tex ---
+Summary: Opens Section 6 (modulus-8 case) by explaining the goal: establish 11 A2 Andrews--Gordon identities for modulus 8 and compare with Corteel--Dousse--Uncu using the new hypergeometric transformations.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: The modulus-$8$ case
+
+[Summary: Opens Section 6 (modulus-8 case) by explaining the goal: establish 11 A2 Andrews--Gordon identities for modulus 8 and compare with Corteel--Dousse--Uncu using the new hypergeometric transformations.]
+
+
+In this section we focus on the $\mathrm{A}_2$ Andrews--Gordon identities
+for modulus $8$, and the corresponding two-variable generating function for 
+cylindric partitions of rank $3$ and level $5$.
+This is also the modulus considered by Corteel, Dousse and Uncu in
+\cite{CDU20}, and we make a comparison between their identities and ours.
+Relating our sum sides to those in \cite{CDU20} is surprisingly intricate
+and relies on the new transformation formulas \eqref{Eq_ksum} and
+\eqref{Eq_ksum2}.
+
+
+--- 16/20 (sim=0.761) warnaar_A2_andrews_gordon/chunk_019.tex ---
+Summary: States Theorem 3 (A2 Andrews--Gordon identities, III): multisum identities for modulus 3k+2 where the product side is a theta-function linear combination, valid for 1<=s<=k.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+
+[Summary: States Theorem 3 (A2 Andrews--Gordon identities, III): multisum identities for modulus 3k+2 where the product side is a theta-function linear combination, valid for 1<=s<=k.]
+
+
+\begin{theorem}[$\mathrm{A}_2$ Andrews--Gordon identities, III]
+\label{Thm_A2-three}
+For integers $k,s$ such that $1\leqslant s\leqslant k$,
+\begin{align*}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}} &
+\frac{q^{n_k^2+\sum_{i=s}^k n_i+\sum_{i=s}^{k-1} m_i}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}+\delta_{i,s-1}}{m_i} \\
+&=\frac{(q^{3k+2};q^{3k+2})_{\infty}^2}{(q)_{\infty}^2}
+\sum_{i=1}^s q^{s-i} \,\theta(q^i,q^i,q^{2i};q^{3k+2}), \notag
+\end{align*}
+where $m_k:=2n_k$.
+\end{theorem}
+
+
+--- 17/20 (sim=0.756) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_009.tex ---
+Summary: Intro: announces the paper's main result, giving simplest examples of A2 Andrews-Gordon identities for each modulus class.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Introduction
+[Summary: Intro: announces the paper's main result, giving simplest examples of A2 Andrews-Gordon identities for each modulus class.]
+
+Motivated by the results of Corteel et al., we succeeded in finding
+the analogues of the Andrews--Gordon identities for
+$\mathrm{A}_2^{(1)}$ for all moduli not congruent to $0$ modulo $3$.
+The simplest examples for each fixed modulus are given below,
+where $\theta(a_1,\dots,a_k;q):=\theta(a_1;q)\cdots\theta(a_k;q)$.
+
+
+--- 18/20 (sim=0.753) corteel_welsh_A2_RR/chunk_001.tex ---
+Summary: Abstract and dedication. States the paper's sole purpose: use cylindric partitions to rederive the A2 Rogers-Ramanujan identities of Andrews-Schilling-Warnaar.
+
+% Paper: corteel_welsh_A2_RR
+
+[Summary: Abstract and dedication. States the paper's sole purpose: use cylindric partitions to rederive the A2 Rogers-Ramanujan identities of Andrews-Schilling-Warnaar.]
+
+{\centering\footnotesize To George Andrews for his $80^{th}$ birthday \par}
+
+\vspace{.3cm}
+
+\begin{abstract}
+In this note we show how to use cylindric partitions to rederive the
+$A_2$ Rogers-Ramanujan identities originally proven by Andrews,
+Schilling and Warnaar.
+\end{abstract}
+
+%\maketitle
+
+
+--- 19/20 (sim=0.750) warnaar_A2_andrews_gordon/chunk_030.tex ---
+Summary: States Theorem 6 (A2 Andrews--Gordon identities, III'): modulus-(3k+1) analogue of Theorem 3, with a theta-function linear combination on the product side, valid for 1<=s<=k-1.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+1)$ case
+
+[Summary: States Theorem 6 (A2 Andrews--Gordon identities, III'): modulus-(3k+1) analogue of Theorem 3, with a theta-function linear combination on the product side, valid for 1<=s<=k-1.]
+
+
+\begin{theorem}
+[$\mathrm{A}_2$ Andrews--Gordon identities, III$'$]
+\label{Thm_A2-three-b}
+For integers $k,s$ such that $1\leqslant s\leqslant k-1$,
+\begin{align*}
+&\sum_{\substack{n_1,\dots,n_{k-1}\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+\frac{q^{\sum_{i=1}^{k-1}(n_i^2-n_im_i+m_i^2)+
+\sum_{i=s}^{k-1}(n_i+m_i)}}{(q)_{n_1}}\,\genfrac{[}{]}{0pt}{}{2n_{k-1}}{m_{k-1}}
+\prod_{i=1}^{k-2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}+\delta_{i,s-1}}{m_i} \\
+&\qquad\qquad\quad=
+\frac{(q^{3k+1};q^{3k+1})_{\infty}^2}{(q)_{\infty}^2}
+\sum_{i=1}^s q^{s-i}\,\theta(q^i,q^i,q^{2i};q^{3k+1}).
+\end{align*}
+\end{theorem}
+
+
+--- 20/20 (sim=0.750) warnaar_A2_andrews_gordon/chunk_084.tex ---
+Summary: Opens Section 7 (proofs of main results) and explains the common strategy: start from ASW99 Rogers--Ramanujan-type identities as seeds, then apply summation variable changes to reach the A2 Andrews--Gordon form.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Proofs of the main results > Proofs of Theorems~\ref{Thm_A2-vac-bothmoduli
+
+[Summary: Opens Section 7 (proofs of main results) and explains the common strategy: start from ASW99 Rogers--Ramanujan-type identities as seeds, then apply summation variable changes to reach the A2 Andrews--Gordon form.]
+
+
+\ref{Thm_threecases}, \ref{Thm_A2-three}, \ref{Thm_threecases-b} and 
+\ref{Thm_A2-three-b}}
+
+In this section we prove the $\mathrm{A}_2$ Andrews--Gordon
+identities claimed in the introduction and in Section~\ref{Sec_Main}.
+In each case, our starting point is one of the Rogers--Ramanujan-type
+identities of Andrews, Schilling and the author, which were proved in 
+\cite{ASW99} using an $\mathrm{A}_2$ analogue of the Bailey lemma. 
+(See also \cite{W06} for a proof based on Hall--Littlewood polynomials).
+We also present conditional proofs of Conjectures~\ref{Con_A2-two} and 
+\ref{Con_A2-two-b} for all $s$.
+
+

@@ -1,0 +1,358 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\qbin}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\title{The $q$-Binomial Foundation of the Bounded Fermionic Form Program:\\
+Proof of the $Q$-Transform and the Exactness of the Bottleneck\\
+\large (Round 2, Layer 3, Seed 7)}
+\author{Loop Experiment}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fix a rank-$3$ profile $c$ with $d=c_0+c_1+c_2\not\equiv 0 \pmod 3$ and let
+$H_{c,m}=(q;q)_m F_{c,m}$ be the normalized bounded generating function of cylindric
+partitions of profile $c$ with maximum part at most $m$. We give the first complete proof
+of the \emph{$Q$-transform} $Q_{n,c}=\sum_{m=0}^n(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}H_{c,m}$
+(previously stated by Seed~3 and verified numerically), prove its inverse
+$H_{c,m}=\sum_{n\le m}\qbin{m}{n}Q_{n,c}$ unconditionally, and deduce:
+(i) the Bounded Fermionic Form Conjecture implies Warnaar's positivity conjecture with
+$Q_{n,c}$ equal to the fermionic coefficient $a_n$; (ii) more sharply, the \emph{existence}
+of a coefficientwise-nonnegative $q$-binomial expansion of the family $(H_{c,m})_m$ is
+\emph{equivalent} to Warnaar's conjecture at $c$; (iii) the entire bracket tower of Seed~8
+has an unconditional expansion in the $Q$'s with manifestly nonnegative kernels, whence the
+MASTER conjecture is \emph{equivalent} to Warnaar's conjecture, profile by profile and level
+by level. This makes the Layer-2 bottleneck exact and unique, and corrects the claimed
+equivalence chain ``Monotonicity $\equiv f_0^{(m)}\ge 0\equiv$ BFF first level'': the first
+two are strictly-weaker nonnegative-kernel projections of the conjecture, while the third is
+the conjecture itself.
+\end{abstract}
+
+\section{Setup and conventions}
+
+Fix $r=3$ and a profile $c=(c_0,c_1,c_2)$, $c_i\ge 0$, with $d=c_0+c_1+c_2$ and
+$\ell=\gcd(d,3)$. Unless stated otherwise we assume $\ell=1$, i.e.\ $d\not\equiv0\pmod 3$
+--- exactly the regime of the Corteel--Dousse--Uncu/Warnaar positivity conjecture. All
+identities take place in the ring $\ZZ[[q]]$ of formal power series; \emph{no polynomiality
+assumptions are needed} except in Remark~\ref{rem:exact}.
+
+Let $g_m\in\ZZ[[q]]$ denote the generating function of cylindric partitions of profile $c$
+with maximum part \emph{exactly} $m$ (so $g_0=1$), and set
+\[
+F_{c,m}=\sum_{j=0}^m g_j,\qquad
+F_c(z,q)=\sum_{m\ge 0}g_m z^m,\qquad
+H_m := (q;q)_m F_{c,m},\qquad
+h_m := (q;q)_m g_m .
+\]
+Thus $H_0=1$ and $h_m = H_m-(1-q^m)H_{m-1}$ for $m\ge1$. The bounded polynomials are
+\[
+Q_n \;=\; Q_{n,c}(q)\;:=\;(q;q)_n\,[z^n]\Bigl((zq;q)_\infty\,F_c(z,q)\Bigr).
+\]
+We write $A\ge 0$ for a power series/polynomial with all coefficients nonnegative, and use
+both $q$-Pascal rules
+\begin{equation}\label{eq:pascal}
+\qbin{m}{j}=\qbin{m-1}{j}+q^{m-j}\qbin{m-1}{j-1}
+=\qbin{m-1}{j-1}+q^{j}\qbin{m-1}{j}.
+\end{equation}
+The $D$-tower and bracket tower (Round 1; Seed 8, Layer 2) are
+\[
+D_0^m=h_m,\qquad D_{k+1}^m=D_k^m-q^{k+1}D_k^{m-1};
+\qquad
+f_{-1}^{(m)}=g_m,\qquad
+f_k^{(m)}=(1-q^{m-k})f_{k-1}^{(m)}-q^{k+1}f_{k-1}^{(m-1)} .
+\]
+We use two previously proved pieces of pure algebra
+(Seed 8, Layer 2, referee-checked): \emph{Lemma T1}: $D_{k+1}^m=(q;q)_{m-k-1}f_k^{(m)}$
+for $k\ge-1$, $m\ge k+1$; and its boundary case \emph{Corollary T2}: $Q_n=f_{n-1}^{(n)}=D_n^n$.
+(Corollary T2 is also re-derived independently in Theorem~\ref{thm:D} below.)
+
+\section{The truncated Euler lemma and the $Q$-transform}
+
+\begin{lemma}[truncated Euler telescoping]\label{lem:E}
+For every integer $K\ge 0$,
+\[
+\sum_{k=0}^{K}\frac{(-1)^k q^{\binom{k}{2}}}{(q;q)_k}
+=\frac{(-1)^K q^{\binom{K+1}{2}}}{(q;q)_K}.
+\]
+\end{lemma}
+
+\begin{proof}
+Induction on $K$. For $K=0$ both sides equal $1$. Assume the identity at $K$; adding the
+$(K{+}1)$-st term,
+\[
+\frac{(-1)^K q^{\binom{K+1}{2}}}{(q;q)_K}
++\frac{(-1)^{K+1} q^{\binom{K+1}{2}}}{(q;q)_{K+1}}
+=(-1)^{K+1}q^{\binom{K+1}{2}}\,
+\frac{1-(1-q^{K+1})}{(q;q)_{K+1}}
+=\frac{(-1)^{K+1} q^{\binom{K+1}{2}+K+1}}{(q;q)_{K+1}},
+\]
+and $\binom{K+1}{2}+K+1=\binom{K+2}{2}$.
+\end{proof}
+
+\begin{theorem}[the $Q$-transform]\label{thm:Q}
+For every $n\ge 0$,
+\[
+Q_n=\sum_{m=0}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}H_m .
+\]
+\end{theorem}
+
+\begin{proof}
+By Euler's expansion $(x;q)_\infty=\sum_{k\ge0}(-1)^kq^{\binom{k}{2}}x^k/(q;q)_k$ at
+$x=zq$,
+\[
+(zq;q)_\infty=\sum_{k\ge 0}\frac{(-1)^k q^{\binom{k+1}{2}}}{(q;q)_k}\,z^k .
+\]
+Extracting the coefficient of $z^n$ from the product with $F_c(z,q)=\sum_m g_mz^m$ gives
+\begin{equation}\label{eq:Qdef}
+Q_n=(q;q)_n\sum_{m=0}^{n}\frac{(-1)^{n-m}q^{\binom{n-m+1}{2}}}{(q;q)_{n-m}}\,g_m .
+\end{equation}
+On the other hand, substituting $H_m=(q;q)_m\sum_{j\le m}g_j$ into the claimed right-hand
+side and using $\qbin{n}{m}(q;q)_m=(q;q)_n/(q;q)_{n-m}$,
+\begin{align*}
+\sum_{m=0}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}H_m
+&=(q;q)_n\sum_{j=0}^{n}g_j\sum_{m=j}^{n}\frac{(-1)^{n-m}q^{\binom{n-m}{2}}}{(q;q)_{n-m}}
+\\
+&=(q;q)_n\sum_{j=0}^{n}g_j\sum_{k=0}^{n-j}\frac{(-1)^{k}q^{\binom{k}{2}}}{(q;q)_{k}}
+&&(k=n-m)
+\\
+&=(q;q)_n\sum_{j=0}^{n}g_j\,
+\frac{(-1)^{n-j}q^{\binom{n-j+1}{2}}}{(q;q)_{n-j}}
+&&\text{(Lemma \ref{lem:E})}
+\end{align*}
+which is exactly \eqref{eq:Qdef}. All sums are finite, so the interchange is legitimate
+in $\ZZ[[q]]$.
+\end{proof}
+
+\begin{remark}
+For $3\mid d$ one has $Q_n=(q^3;q^3)_n[z^n]\bigl((zq;q)_\infty F_c\bigr)$; the Euler
+denominators $(q;q)_{n-m}$ then do not combine with $(q^3;q^3)$-factorials into a
+single-base $q$-binomial, so no analogue of Theorem \ref{thm:Q} in base $q^3$ results from
+this argument. This is outside the conjecture ($d\not\equiv0\bmod 3$) and is not pursued.
+\end{remark}
+
+\section{Gauss inversion and the exactness of the bottleneck}
+
+\begin{theorem}[Gauss inversion; classical]\label{thm:G}
+Let $(a_n)_{n\ge0}$, $(b_n)_{n\ge0}$ be sequences in $\ZZ[[q]]$. The following are
+equivalent:
+\[
+\textup{(i)}\ \ b_n=\sum_{j=0}^{n}\qbin{n}{j}a_j\quad\text{for all }n;
+\qquad\qquad
+\textup{(ii)}\ \ a_n=\sum_{m=0}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}b_m
+\quad\text{for all }n.
+\]
+Moreover, for a given $(b_n)$ the sequence $(a_n)$ with property \textup{(i)} is unique.
+\end{theorem}
+
+\begin{proof}
+Both transforms are lower-unitriangular. It suffices to prove the orthogonality
+\begin{equation}\label{eq:orth}
+\sum_{m=k}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}\qbin{m}{k}=\delta_{n,k}.
+\end{equation}
+Using $\qbin{n}{m}\qbin{m}{k}=\qbin{n}{k}\qbin{n-k}{m-k}$ and substituting $i=n-m$,
+$J=n-k$, the left side equals
+\[
+\qbin{n}{k}\sum_{i=0}^{J}(-1)^{i}q^{\binom{i}{2}}\qbin{J}{i}
+=\qbin{n}{k}\,(x;q)_J\Big|_{x=1}=\qbin{n}{k}\,\delta_{J,0},
+\]
+by Gauss's finite $q$-binomial theorem
+$\sum_{i=0}^J(-1)^iq^{\binom{i}{2}}\qbin{J}{i}x^i=(x;q)_J$. Given \eqref{eq:orth},
+(i)$\Rightarrow$(ii) and (ii)$\Rightarrow$(i) follow by substitution and interchanging the
+(finite) sums; uniqueness holds because a unitriangular system over the commutative ring
+$\ZZ[[q]]$ has a unique solution.
+\end{proof}
+
+\begin{corollary}[inverse $Q$-transform; unconditional]\label{cor:I}
+For every $m\ge0$,
+\[
+H_m=\sum_{n=0}^{m}\qbin{m}{n}Q_n .
+\]
+Equivalently, as generating functions,
+$\displaystyle\sum_{m\ge0}H_mz^m=\sum_{n\ge0}\frac{Q_n\,z^n}{(z;q)_{n+1}}$.
+\end{corollary}
+
+\begin{proof}
+Theorem \ref{thm:Q} is statement (ii) of Theorem \ref{thm:G} with $b_m=H_m$, $a_n=Q_n$;
+apply (ii)$\Rightarrow$(i). The generating-function form follows from
+$\sum_{m\ge j}\qbin{m}{j}z^m=z^j/(z;q)_{j+1}$.
+\end{proof}
+
+At $q=1$: $H_m(1)=\sum_n\binom{m}{n}(K-1)^n=K^m$ with $K=\tfrac16(d+1)(d+2)$, reconciling
+Welsh's evaluation $Q_n(1)=(K-1)^n$ with the orbit count $H_m(1)=K^m$ (Seed 2).
+
+\begin{corollary}[the bottleneck is exact and unique]\label{cor:B}
+\leavevmode
+\begin{enumerate}
+\item If $H_m=\sum_{j\le m}\qbin{m}{j}a_j$ for all $m$, with $a_j\in\ZZ[[q]]$ independent
+of $m$, then $a_j=Q_j$ for all $j$. In particular the Bounded Fermionic Form Conjecture
+(such an expansion with $a_j$ a manifestly nonnegative multisum) implies Warnaar's
+positivity conjecture at $c$, with the explicit formula $Q_n=a_n$.
+\item Conversely, the family $(H_m)_m$ admits a coefficientwise-nonnegative
+$q$-binomial expansion \emph{if and only if} $Q_n\ge0$ for all $n$, i.e.\ if and only if
+Warnaar's conjecture holds at $c$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(1) is the uniqueness in Theorem \ref{thm:G} plus Corollary \ref{cor:I}. (2): the unique
+expansion coefficients are the $Q_n$, so a nonnegative expansion exists iff they are
+nonnegative.
+\end{proof}
+
+Corollary \ref{cor:B}(2) answers the characterization question in general: \emph{any}
+sequence $(b_m)$ in $\ZZ[[q]]$ has a unique $q$-binomial expansion, and it is nonnegative
+iff the inverse transform of $(b_m)$ is nonnegative. There is no shortcut criterion to
+certify existence without exhibiting the coefficients: for the $H$-family, existence
+\emph{is} the conjecture. (This is the precise sense in which Warnaar's open problem of
+bounded $\mathrm{A}_2$ Andrews--Gordon identities and the positivity conjecture are two
+faces of one problem.)
+
+\section{$Q$-expansion of the towers and MASTER $\Leftrightarrow$ Conjecture}
+
+\begin{theorem}[unconditional $Q$-expansions]\label{thm:D}
+For all $0\le k\le m$,
+\[
+D_k^m=\sum_{j=k}^{m}q^{(k+1)(m-j)}\qbin{m-k}{j-k}Q_j .
+\]
+In particular $h_m=\sum_j q^{m-j}\qbin{m}{j}Q_j$, and $D_m^m=Q_m$. Moreover
+\[
+\Delta_m:=H_m-H_{m-1}=\sum_{j=1}^{m}q^{m-j}\qbin{m-1}{j-1}Q_j,
+\qquad
+D_1^m=\Delta_m-q(1-q^{m-1})\Delta_{m-1}.
+\]
+\end{theorem}
+
+\begin{proof}
+For $k=0$: by Corollary \ref{cor:I} and \eqref{eq:pascal},
+\[
+h_m=H_m-(1-q^m)H_{m-1}
+=\sum_j Q_j\Bigl(\qbin{m}{j}-\qbin{m-1}{j}+q^m\qbin{m-1}{j}\Bigr)
+=\sum_j Q_j\,q^{m-j}\Bigl(\qbin{m-1}{j-1}+q^{j}\qbin{m-1}{j}\Bigr)
+=\sum_j Q_j\,q^{m-j}\qbin{m}{j},
+\]
+where the middle step used the first rule in \eqref{eq:pascal} and the last used the
+second. For the inductive step,
+\[
+D_{k+1}^m=\sum_j Q_j\,q^{(k+1)(m-j)}\Bigl(\qbin{m-k}{j-k}-\qbin{m-k-1}{j-k}\Bigr)
+=\sum_j Q_j\,q^{(k+1)(m-j)}q^{(m-k)-(j-k)}\qbin{m-k-1}{j-k-1},
+\]
+and $(k+1)(m-j)+(m-j)=(k+2)(m-j)$. The boundary $k=m$ gives $D_m^m=Q_m$, an independent
+re-derivation of Corollary T2. The $\Delta_m$ formula is the first difference of
+Corollary \ref{cor:I} via \eqref{eq:pascal}, and the last identity is immediate from
+$h_m=\Delta_m+q^mH_{m-1}$ and the definition of $D_1^m$.
+\end{proof}
+
+Note that every kernel above is a monomial times a $q$-binomial coefficient: manifestly
+nonnegative. This has the following consequence.
+
+\begin{theorem}[MASTER $\Leftrightarrow$ Conjecture, per profile]\label{thm:M}
+Fix $c$ with $d\not\equiv0\pmod3$ and $M\ge0$. The following are equivalent:
+\begin{enumerate}
+\item $Q_i\ge 0$ for all $i\le M$;
+\item for all $m\le M$, all $-1\le k\le m-1$ and all $0\le j\le m-k-1$:
+$(q;q)_j\,f_k^{(m)}\ge 0$.
+\end{enumerate}
+In particular, Warnaar's conjecture at $c$ is equivalent to the full positivity part of
+the MASTER conjecture at $c$.
+\end{theorem}
+
+\begin{proof}
+(1)$\Rightarrow$(2). By Lemma T1, $f_k^{(m)}=D_{k+1}^m/(q;q)_{m-k-1}$ in $\ZZ[[q]]$
+(the divisor has constant term $1$, hence is invertible), so
+\[
+(q;q)_j\,f_k^{(m)}
+=\frac{D_{k+1}^m}{(q^{j+1};q)_{m-k-1-j}} .
+\]
+By Theorem \ref{thm:D}, $D_{k+1}^m=\sum_{i\ge k+1}q^{(k+2)(m-i)}\qbin{m-k-1}{i-k-1}Q_i\ge0$
+under (1), and $1/(q^{j+1};q)_{m-k-1-j}=\prod_{s=j+1}^{m-k-1}(1-q^s)^{-1}$ is a nonnegative
+power series. A product of nonnegative series is nonnegative. (The row $k=-1$ reads
+$(q;q)_jg_m=h_m/(q^{j+1};q)_{m-j}\ge0$.)
+
+(2)$\Rightarrow$(1). The cell $(k,j)=(m-1,0)$ is $f_{m-1}^{(m)}=Q_m\ge 0$
+(Corollary T2), for each $m\le M$.
+\end{proof}
+
+\begin{remark}[exactness of MASTER is automatic]\label{rem:exact}
+Suppose in addition that $H_m\in\ZZ[q]$ (Seed 3's polynomiality theorem, $\ell=1$), so all
+$D_{k+1}^m\in\ZZ[q]$. If the conjecture holds at $c$ and $f_k^{(m)}\neq0$, then
+$(q;q)_{m-k}f_k^{(m)}=(1-q^{m-k})D_{k+1}^m$ has strictly negative leading coefficient,
+since the nonzero nonnegative polynomial $D_{k+1}^m$ has positive leading coefficient.
+Hence the MASTER range $j\le m-k-1$ is sharp wherever $f_k^{(m)}\neq0$: the conjectured
+``fails at $j=m-k$'' clause needs no separate proof.
+\end{remark}
+
+\section{The corrected equivalence chain}
+
+\begin{corollary}[implication structure of the Layer-2 conjectures]\label{cor:C}
+Fix $c$ with $d\not\equiv0\pmod3$. Then, as statements about all $m,n$ simultaneously:
+\[
+\underbrace{\text{nonneg.\ $q$-binomial expansion of }(H_m)}_{\text{BFF, first level}}
+\;\Longleftrightarrow\;
+\underbrace{Q_n\ge0\ \forall n}_{\text{Warnaar}}
+\;\Longleftrightarrow\;
+\text{MASTER}
+\]
+and each of these implies (via the nonnegative kernels of Theorem \ref{thm:D}):
+\[
+\text{Monotonicity }(\Delta_m\ge0\ \forall m),\qquad
+h_m\ge0\ \forall m,\qquad
+f_0^{(m)}\ge0\ \forall m,\qquad
+D_k^m\ge 0\ \forall k,m .
+\]
+Monotonicity and $f_0^{(m)}\ge0$ are inequivalent-looking projections
+($D_1^m=\Delta_m-q(1-q^{m-1})\Delta_{m-1}$; positivity does not transfer through the
+mixed-sign factor $(q;q)_{m-1}$ of Lemma T1 in either direction), and no implication from
+any of these weaker statements back to the conjecture is known (cf.\ BA24).
+\end{corollary}
+
+\begin{proof}
+The equivalences are Corollary \ref{cor:B}(2) and Theorem \ref{thm:M}. The one-way arrows:
+each listed quantity is, by Theorem \ref{thm:D} (and Theorem \ref{thm:M}(a) for the
+$f$-cells), the image of the vector $(Q_j)_j$ under a componentwise-nonnegative kernel.
+\end{proof}
+
+Structurally: \emph{every} bounded positivity statement on the Layer-2 board is a
+nonnegative unitriangular kernel applied to the single vector $(Q_n)_n$, and the
+conjecture is the statement that the source vector itself is nonnegative --- the unique
+maximal element of this family. The strategic consequence for Layer 3+ is that no
+finite collection of kernel-image positivities (Monotonicity, $h_m\ge0$, $N_n\ge0$,
+individual MASTER cells) can suffice; one must either produce the expansion coefficients
+positively (the BFF route: explicit bounded $\mathrm{A}_2$ Andrews--Gordon multisums,
+where all $m$-dependence sits in a single $\qbin{m}{n_1}$), or prove positivity of $Q_n$
+by a mechanism outside this transform family (e.g.\ the Corteel--Welsh/R-relation or
+$\Phi_3$-division routes).
+
+\section{Worked example and verification}
+
+$d=2$, profile orbit $(1,1,0)$: the proved Rogers--Ramanujan form
+$H_m=\sum_j q^{j^2}\qbin{m}{j}$ (Seeds 3/4) is a $q$-binomial expansion with
+$a_j=q^{j^2}$; Corollary \ref{cor:B}(1) yields instantly $Q_n=q^{n^2}$, recovering the
+Layer-2 theorem of Seeds 1/6. Conversely $H_m=\sum_n\qbin{m}{n}q^{n^2}$ illustrates
+Corollary \ref{cor:I}.
+
+All results were verified exactly in $\ZZ[q]$ (script
+\texttt{scratch/scripts/seed7\_R2L3\_verify.sage}): Lemma \ref{lem:E} for $K\le12$;
+orthogonality \eqref{eq:orth} for $n\le8$; Theorems \ref{thm:Q}, \ref{thm:D} and
+Corollary \ref{cor:I} for $d=4$ (15 profiles, $n\le6$), $d=5$ (21 profiles, $n\le5$),
+$d=7$ (36 profiles, $n\le4$); the MASTER cells and the exactness remark in the same
+ranges. The computation pipeline itself (EMD/$H$-recursion) was validated for the first
+time against brute-force enumeration of cylindric partitions ($m\le3$, coefficients to
+$q^{10}$); this revealed that the project-standard EMD convention labels profiles in the
+\emph{reversed} orientation relative to the interlacing definition in
+\texttt{conjecture.tex} (brute-force profile $(0,3,1)$ matches the $H$-recursion on the
+orbit of $(0,1,3)$, etc.) --- a global relabeling harmless to all per-profile theorems,
+but essential bookkeeping when matching fermionic forms against Warnaar's tables
+(cf.\ conflict C2).
+
+\end{document}

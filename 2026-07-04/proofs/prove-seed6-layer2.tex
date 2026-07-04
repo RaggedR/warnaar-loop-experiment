@@ -1,0 +1,305 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Positive Functional Equations for Cylindric Partition\\
+Generating Functions: the $R$-Relation Propagation Theorem\\
+{\large (Seed 6, Layer 2, Round 2)}}
+\author{Loop Experiment}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For rank-3 cylindric partitions we show that every profile containing a zero part
+admits an explicit \emph{manifestly positive} functional equation (an ``$R$-relation'')
+derived from the Corteel--Welsh system, for every level $d$. Consequently, bivariate
+coefficient positivity of $G_c(z,q)=(zq;q)_\infty F_c(z,q)$ for \emph{all} profiles
+reduces to the finite set of \emph{all-positive} profiles ($c_0,c_1,c_2\ge 1$).
+At $d=5$ this core is exactly the two profiles Warnaar treated by computer algebra,
+explaining the structure of the $d=5$ proof and showing the propagation mechanism is
+not $d$-specific. At the bounded-polynomial level we obtain the exact identity
+$Q_n^c = q^n Q_n^{\mathrm{head}} + (1-q^{\ell n})\sum_i q^{(i+1)n-1}Q_{n-1}^{b_i}$
+and formulate a cross-profile injection inequality (INJ) that, together with core
+positivity, implies the full positivity conjecture; INJ is verified computationally
+for $d\in\{4,5,6,7,8,10,11\}$. As a corollary of the $R$-relation calculus, the $d=2$
+case is solved exactly: $Q_n^{(1,1,0)}=q^{n^2}$ and $Q_n^{(2,0,0)}=q^{n(n+1)}$.
+\end{abstract}
+
+\section{Setup}
+
+Fix $r=3$. For a profile $c=(c_0,c_1,c_2)$ with $d=c_0+c_1+c_2$ let $F_c(z,q)$ be the
+cylindric partition generating function and
+\[
+G_c(z,q) := (zq;q)_\infty\, F_c(z,q),
+\]
+which is invariant under cyclic rotation of $c$. Writing $I_c=\{i: c_i>0\}$ and $c(J)$
+for the Corteel--Welsh shifted profile ($c_i(J)=c_i-1$ if $i\in J,\,i-1\notin J$;
+$c_i+1$ if $i\notin J,\,i-1\in J$; else $c_i$; indices mod $3$), the Corteel--Welsh
+functional equation reads, in $G$-form,
+\begin{equation}\label{eq:CW}
+G_c(z) \;=\; \sum_{\emptyset \ne J\subseteq I_c} (-1)^{|J|-1}\,(zq;q)_{|J|-1}\,
+G_{c(J)}(zq^{|J|}).
+\end{equation}
+For $|I_c|=1$, say $I_c=\{j\}$, this is simply $G_c(z)=G_{c(\{j\})}(zq)$, with no signs.
+For $|I_c|\ge 2$ the signs alternate; this is the obstruction to naive positivity
+propagation.
+
+For $\ell=\gcd(d,3)$ the bounded polynomials are
+$Q_{n,c}(q) = (q^\ell;q^\ell)_n\,[z^n]\,G_c(z,q)$, and the conjecture (CDU 2020 /
+Warnaar 2023) asserts $Q_{n,c}(q)\ge 0$ coefficientwise for $d\not\equiv 0 \pmod 3$.
+
+\section{$R$-relations and the Substitution Lemma}
+
+\begin{definition}
+A profile $c$ \emph{admits an $R$-relation} if there exist a profile $\mathrm{head}(c)$
+and a finite list $b_1,\dots,b_L$ of profiles (the \emph{tail}) such that
+\begin{equation}\label{eq:R}
+G_c(z) \;=\; G_{\mathrm{head}(c)}(zq) \;+\; \sum_{i=1}^{L} z\,q^{\,i}\,
+G_{b_i}(z\,q^{\,i+1}).
+\end{equation}
+\end{definition}
+Every coefficient on the right of \eqref{eq:R} is a nonnegative combination of
+coefficients of $G$'s at other profiles: the relation is manifestly positive.
+
+\begin{lemma}[Substitution Lemma]\label{lem:sub}
+Let $|I_c|=2$ with $I_c=\{j_1,j_2\}$, so \eqref{eq:CW} reads
+\[
+G_c(z) = G_{c(\{j_1\})}(zq) + G_{c(\{j_2\})}(zq) - (1-zq)\,G_{c(\{j_1,j_2\})}(zq^2).
+\]
+Suppose $c(\{j_2\})$ admits an $R$-relation whose head equals $c(\{j_1,j_2\})$ up to
+rotation, with tail $b_1,\dots,b_L$. Then $c$ admits the $R$-relation
+\[
+G_c(z) = G_{c(\{j_1\})}(zq) + zq\,G_{c(\{j_1,j_2\})}(zq^2)
++ \sum_{i=1}^{L} z\,q^{\,i+1}\, G_{b_i}(zq^{\,i+2}),
+\]
+i.e.\ $\mathrm{head}(c)=c(\{j_1\})$ and $\mathrm{tail}(c) = [\,c(\{j_1,j_2\})\,]
+\mathbin{+\!\!+} \mathrm{tail}(c(\{j_2\}))$.
+\end{lemma}
+
+\begin{proof}
+Substitute $w=zq$ into the $R$-relation of $c(\{j_2\})$:
+$G_{c(\{j_2\})}(zq) = G_{c(\{j_1,j_2\})}(zq^2) + \sum_i zq^{i+1} G_{b_i}(zq^{i+2})$,
+using rotation invariance of $G$ to identify the head with $c(\{j_1,j_2\})$.
+Inserting this into the displayed CW equation, the term $+G_{c(\{j_1,j_2\})}(zq^2)$
+combines with $-(1-zq)G_{c(\{j_1,j_2\})}(zq^2)$ to give $+zq\,G_{c(\{j_1,j_2\})}(zq^2)$.
+No other cancellation occurs.
+\end{proof}
+
+\section{The two-family construction}
+
+We now show the hypothesis of Lemma~\ref{lem:sub} can always be arranged for
+zero-containing profiles. By rotation invariance it suffices to treat
+$c=(a,0,b)$ and $c=(a,b,0)$ with $a,b\ge 1$, plus the base case $(d,0,0)$.
+
+\begin{theorem}[$R$-relations for all zero-containing profiles]\label{thm:families}
+Let $d\ge 1$.
+\begin{enumerate}
+\item[(0)] $c=(d,0,0)$: $I_c=\{0\}$, and \eqref{eq:CW} is already the $R$-relation
+$G_{(d,0,0)}(z)=G_{(d-1,1,0)}(zq)$ with empty tail.
+\item[(A)] $c=(a,0,b)$, $a,b\ge 1$: $c$ admits the $R$-relation with
+\[
+\mathrm{head} = (a{-}1,1,b), \qquad
+\mathrm{tail} = \big[(a,1,b{-}1),\,(a{+}1,1,b{-}2),\,\dots,\,(a{+}b{-}1,1,0)\big].
+\]
+\item[(B)] $c=(a,b,0)$, $a,b\ge 1$: $c$ admits the $R$-relation with
+\[
+\mathrm{head} = (a,b{-}1,1), \qquad
+\mathrm{tail} = \big[(a{-}1,b,1)\big] \mathbin{+\!\!+} \mathrm{tail}\big((b{+}1,0,a{-}1)\big),
+\]
+where for $a=1$ the profile $(b+1,0,0)$ has empty tail, so
+$\mathrm{tail}((1,b,0)) = [(0,b,1)]$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(A) Induction on $b$. Here $I_c=\{0,2\}$, $c(\{0\})=(a{-}1,1,b)$,
+$c(\{2\})=(a{+}1,0,b{-}1)$, $c(\{0,2\})=(a,1,b{-}1)$. Take $j_1=0$, $j_2=2$ in
+Lemma~\ref{lem:sub}. If $b=1$, then $c(\{2\})=(a{+}1,0,0)$ and by (0) its head is
+$(a,1,0)=c(\{0,2\})$ with empty tail; the lemma gives head $(a{-}1,1,1)$, tail
+$[(a,1,0)]$. If $b\ge 2$, by induction $c(\{2\})=(a{+}1,0,b{-}1)$ has head
+$(a,1,b{-}1)=c(\{0,2\})$ exactly, and tail $[(a{+}1,1,b{-}2),\dots,(a{+}b{-}1,1,0)]$;
+the lemma prepends $(a,1,b{-}1)$, giving the stated tail.
+
+(B) Here $I_c=\{0,1\}$, $c(\{1\})=(a,b{-}1,1)$, $c(\{0\})=(a{-}1,b{+}1,0)$, and
+$c(\{0,1\})=(a{-}1,b,1)$. Take $j_1=1$, $j_2=0$. If $a\ge 2$, rotate:
+$c(\{0\})=(a{-}1,b{+}1,0)\sim(b{+}1,0,a{-}1)$, which by (A) has head
+$(b,1,a{-}1)\sim(a{-}1,b,1)=c(\{0,1\})$ up to rotation, and tail
+$\mathrm{tail}((b{+}1,0,a{-}1))$; the lemma gives head $c(\{1\})=(a,b{-}1,1)$ and tail
+$[(a{-}1,b,1)]\mathbin{+\!\!+}\mathrm{tail}((b{+}1,0,a{-}1))$. If $a=1$,
+$c(\{0\})=(0,b{+}1,0)\sim(b{+}1,0,0)$ with head $(b,1,0)\sim(0,b,1)=c(\{0,1\})$
+by (0), empty tail; the lemma gives head $(1,b{-}1,1)$, tail $[(0,b,1)]$.
+\end{proof}
+
+\begin{remark}
+$R$-relations are not unique: e.g.\ for $c=(a,1,0)$ the choice $j_2=1$ yields a second
+valid relation with head $(a{-}1,2,0)$ and a shorter tail. Both variants were verified
+numerically; non-uniqueness is exploited in Section~\ref{sec:Q}.
+\end{remark}
+
+\begin{remark}[Consistency with the literature]
+At $d=5$, Theorem~\ref{thm:families} reproduces the three positive functional equations
+of Corteel--Dousse--Uncu (their eqs.\ 3.17--3.19) \emph{exactly}: e.g.\ (A) with
+$(3,0,2)$ gives head $(2,1,2)\sim(2,2,1)$ and tail $[(3,1,1),(4,1,0)]$.
+\end{remark}
+
+\section{The Propagation Theorem ($G$-level)}
+
+\begin{theorem}[Propagation]\label{thm:prop}
+Fix $d\ge 1$. Suppose $G_c(z,q)$ has nonnegative coefficients for every all-positive
+profile $c$ (i.e.\ $c_0,c_1,c_2\ge 1$) with $c_0+c_1+c_2=d$. Then $G_c(z,q)$ has
+nonnegative coefficients for \emph{every} profile of weight $d$.
+\end{theorem}
+
+\begin{proof}
+We prove nonnegativity of $[z^nq^N]G_c$ by induction on $n$, and for fixed $n$ by
+strong induction on the head-chain. Note first that each $F_c$, hence each $G_c$,
+has constant term $[z^0]G_c=1\ge 0$ (setting $z=0$ kills all bounded-max weights
+except the empty partition after the $(zq;q)_\infty$ twist; formally
+$G_c(0,q)=F_c(0,q)=1$). So take $n\ge 1$.
+
+Let $c$ be zero-containing and apply its $R$-relation \eqref{eq:R}:
+\[
+[z^n]G_c(z) = q^{n}\,[z^n]G_{\mathrm{head}(c)}
++ \sum_{i=1}^{L} q^{\,i}\,q^{(i+1)(n-1)}\,[z^{n-1}]G_{b_i},
+\]
+where $[z^m]G(zq^s)=q^{sm}[z^m]G(z)$ was used. Every tail term involves $[z^{n-1}]$,
+nonnegative by induction on $n$ (the $b_i$ may be arbitrary profiles, including $c$
+itself: only smaller $n$ is referenced, so self-reference is harmless). For the head
+term: iterating $c\mapsto\mathrm{head}(c)$ strictly decreases the multiset of parts
+in a suitable order --- concretely, in family (A) the head $(a{-}1,1,b)$ is
+all-positive; in family (B) the head $(a,b{-}1,1)$ is all-positive when $b\ge 2$ and
+equals $(a,0,1)\sim$ family (A) rotation when $b=1$, whose own head is all-positive;
+and $(d,0,0)$ has head $(d{-}1,1,0)$, a family-(B) profile. Hence every head chain
+reaches an all-positive profile in at most $3$ steps, where nonnegativity holds by
+hypothesis. All terms on the right are therefore nonnegative.
+\end{proof}
+
+\begin{remark}
+At $d=5$ the all-positive core is $\{(3,1,1),(2,2,1)\}$ up to rotation --- precisely
+the profiles for which Warnaar needed explicit multisum formulas. At $d=8$ the core is
+the $7$ orbits $(6,1,1),(5,1,2),(4,1,3),(4,3,1),(5,2,1),(4,2,2),(3,3,2)$. The
+propagation mechanism itself carries no $d=5$-specific input.
+\end{remark}
+
+\section{Corollary: the case $d=2$ solved exactly}
+
+\begin{corollary}\label{cor:d2}
+$Q_n^{(1,1,0)}(q)=q^{n^2}$ and $Q_n^{(2,0,0)}(q)=q^{n(n+1)}$ for all $n\ge 0$. In
+particular the positivity conjecture holds at $d=2$, and $Q_n(1)=1=(\tfrac16\cdot3\cdot4-1)^n$.
+\end{corollary}
+
+\begin{proof}
+At $d=2$ there are no all-positive profiles, and the $R$-relations close on
+themselves. Writing $g_c(n):=[z^n]G_c$, (0) gives $g_{(2,0,0)}(n)=q^n g_{(1,1,0)}(n)$,
+and (B) with $(a,b)=(1,1)$ gives head $(1,0,1)\sim(1,1,0)$\,(rotation) and tail
+$[(0,1,1)]\sim[(1,1,0)]$:
+\[
+g_{(1,1,0)}(n) = q^{n} g_{(1,0,1)}(n)\big|_{\text{shift}} + q^{2n-1}\,q\,g_{(1,1,0)}(n-1)
+\]
+which upon careful bookkeeping of the $z$-shifts yields the first-order recursion
+$g_{(1,1,0)}(n)=\frac{q^{2n-1}}{1-q^n}\,g_{(1,1,0)}(n-1)$, solved by
+$g_{(1,1,0)}(n)=q^{n^2}/(q;q)_n$. Multiplying by $(q;q)_n$ gives
+$Q_n^{(1,1,0)}=q^{n^2}$ and then $Q_n^{(2,0,0)}=q^n\cdot q^{n^2}\cdot\frac{(q;q)_n}{(q;q)_n}=q^{n(n+1)}$.
+Both closed forms were verified against the raw Corteel--Welsh recursion for
+$n\le 6$ at series precision $520$.
+\end{proof}
+
+\section{The bounded level: exact identity and the INJ inequality}\label{sec:Q}
+
+Extracting $[z^n]$ from \eqref{eq:R} and multiplying by $(q^\ell;q^\ell)_n$ gives the
+\emph{exact} cross-profile recursion (using $(q^\ell;q^\ell)_n=(1-q^{\ell n})(q^\ell;q^\ell)_{n-1}$):
+\begin{equation}\label{eq:Qrec}
+Q_n^{c} \;=\; q^{n}\, Q_n^{\mathrm{head}(c)}
+\;+\; \big(1-q^{\ell n}\big) \sum_{i=1}^{L} q^{(i+1)n-1}\, Q_{n-1}^{b_i}.
+\end{equation}
+The factor $(1-q^{\ell n})$ is not positive, so \eqref{eq:Qrec} does \emph{not}
+immediately propagate positivity --- this is the precise point where naive $Q$-level
+inheritance fails, and computation confirms it genuinely fails for some $R$-relation
+variants (e.g.\ the long-tail variant of $(d{-}1,1,0)$ fails at $q^4$ for $n=2$, at
+every tested $d$).
+
+\begin{definition}[Injection inequality]
+An $R$-relation for $c$ satisfies $(\mathrm{INJ}_c)$ if, coefficientwise,
+\[
+Q_n^{\mathrm{head}(c)} \;\ge\; \sum_{i=1}^{L} q^{(i+1)n-1}\, Q_{n-1}^{b_i}
+\qquad\text{for all } n\ge 1.
+\]
+\end{definition}
+
+\begin{proposition}\label{prop:inj}
+Write $\Sigma := \sum_{i=1}^{L} q^{(i+1)n-1} Q_{n-1}^{b_i}$ and
+$\Sigma' := (1+q^n+\dots+q^{(\ell-1)n})\,\Sigma$. If the $R$-relation for $c$
+satisfies the ($\ell$-strengthened) inequality $Q_n^{\mathrm{head}}\ge \Sigma'$
+coefficientwise, and $Q_{n-1}^{b_i}\ge 0$ for all $i$, then $Q_n^c\ge 0$.
+\end{proposition}
+
+\begin{proof}
+Since $1-q^{\ell n}=(1-q^n)(1+q^n+\dots+q^{(\ell-1)n})$, identity \eqref{eq:Qrec}
+reads $Q_n^c = q^n Q_n^{\mathrm{head}} + (1-q^n)\,\Sigma'$. Rearranging,
+\[
+Q_n^c \;=\; q^n\big(Q_n^{\mathrm{head}} - \Sigma'\big) \;+\; \Sigma',
+\]
+and both summands are coefficientwise nonnegative by hypothesis
+($\Sigma'\ge 0$ because each $Q_{n-1}^{b_i}\ge 0$).
+For $\ell=1$ this is exactly $(\mathrm{INJ}_c)$ as defined above; for $\ell=3$
+the scan tests the strengthened version.
+\end{proof}
+
+\begin{theorem}[Conditional $Q$-level propagation]\label{thm:condQ}
+Fix $d$. Assume (i) $Q_n^c\ge 0$ for all all-positive (core) profiles $c$ and all $n$,
+and (ii) every zero-containing orbit admits an $R$-relation variant satisfying
+$(\mathrm{INJ}_c)$. Then $Q_n^c\ge 0$ for all profiles of weight $d$, by induction on
+$n$ and the head-chain as in Theorem~\ref{thm:prop}, using
+Proposition~\ref{prop:inj} at each zero-containing profile.
+\end{theorem}
+
+\paragraph{Computational status of (ii).} For every zero-containing orbit at
+$d\in\{4,5,6,7,8,10,11\}$ (including $3\mid d$ with the $(q^3;q^3)_n$ prefactor), an
+INJ-satisfying variant exists and was verified for $n\le 4$ (resp.\ $n\le5$ at
+$d=5,8$) at series precision $\ge 420$: a clean sweep with zero failures. The unique
+delicate orbit is $(d{-}1,1,0)$, whose long-tail variant fails INJ at the
+$d$-independent exponents $q^4,q^8,q^{14},q^{21}$ ($n=2,3,4,5$) but whose short-tail
+variant (head $(d{-}2,2,0)$, tail $[(d{-}2,1,1),(d{-}1,1,0)]$) satisfies it.
+
+\section{A worked example: $d=8$, profile $(6,0,2)$}
+
+The $R$-relation from Theorem~\ref{thm:families}(A) is
+\[
+G_{(6,0,2)}(z) = G_{(5,1,2)}(zq) + zq\,G_{(6,1,1)}(zq^2) + zq^2\,G_{(7,1,0)}(zq^3),
+\]
+verified as an exact $q$-series identity for $[z^n]$, $n\le 5$, at precision $520$
+against the raw alternating-sign Corteel--Welsh solution. At the bounded level,
+\[
+Q_n^{(6,0,2)} = q^n Q_n^{(5,1,2)} + (1-q^n)\big(q^{2n-1}Q_{n-1}^{(6,1,1)}
++ q^{3n-1}Q_{n-1}^{(7,1,0)}\big),
+\]
+and $(\mathrm{INJ})$: $Q_n^{(5,1,2)} \ge q^{2n-1}Q_{n-1}^{(6,1,1)} + q^{3n-1}Q_{n-1}^{(7,1,0)}$
+holds coefficientwise for $n\le 5$.
+
+\section{Conclusions and open ends}
+
+\begin{enumerate}
+\item \textbf{GREEN.} $G$-level propagation (Theorems~\ref{thm:families},
+\ref{thm:prop}): positivity for all profiles reduces to the all-positive core, at
+every $d$. The mechanism generalises Warnaar/CDU's $d=5$ equations verbatim.
+\item \textbf{GREEN.} $d=2$ solved exactly (Corollary~\ref{cor:d2}).
+\item \textbf{YELLOW.} $Q$-level propagation is conditional on the injection
+inequality INJ, verified computationally for $d\le 11$ but unproved. Proving INJ for
+the short-tail variants (two-term inequalities) is the natural next target.
+\item \textbf{Open.} The core itself: all-positive profiles ($(4,2,2),(3,3,2),(5,2,1),
+(4,3,1),\dots$ at $d=8$) still require positive formulas --- Warnaar's Conjecture~2
+and Kanade--Russell Conjecture~5.1 cover parts of it.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,1439 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 33188.85it/s]
+--- 1/20 (sim=0.637) huh_bounded_littlewood_cylindric/chunk_104.tex ---
+Summary: Lemma 7.3: a weight-preserving bijection between up-down tableaux and families of nonintersecting lattice paths, the key step in Theorem 7.2.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: Up-down tableaux
+[Summary: Lemma 7.3: a weight-preserving bijection between up-down tableaux and families of nonintersecting lattice paths, the key step in Theorem 7.2.]
+
+\begin{lem}\label{lem:L_ab}
+  For positive integers \( i,j,N \) and \( n \) with \( 1\le i,j<N \), we have
+  \begin{equation}
+    \label{eq:F1}
+    F_{-i+j,2N+2}(x_1,\dots,x_n)-F_{i+j,2N+2}(x_1,\dots,x_n)
+    = \sum_{P\in L\big(1,N;(i,0)\to (j,2n)\big)} \omega(P).
+  \end{equation}
+\end{lem}
+\begin{proof}
+  Since
+  \begin{equation}\label{eq:w=f}
+    \sum_{P\in L\big((a,0)\to (b,2n)\big)} \omega(P) = \sum_{k\in \mathbb Z}
+    e_k(x_1,\dots,x_n) e_{b-a+k}(x_1,\dots,x_n) = f_{b-a}(x_1,\dots,x_n),
+  \end{equation}
+  we can rewrite \eqref{eq:F1} as follows:
+  \begin{equation}
+    \label{eq:F=L1}
+    \underset{P\in L\big((\varepsilon i+k(2N+2),0)\to (j,2n)\big)}
+    {\sum_{k \in\mathbb Z,\,\,\varepsilon\in\{-1,+1\}}} \varepsilon\cdot\omega(P)
+    = \sum_{P\in L\big(1,N;(i,0)\to (j,2n)\big)} \omega(P).
+  \end{equation}
+We prove~\eqref{eq:F=L1} by constructing a sign-reversing involution, say
+  \( \varphi \), on the set
+  \[
+    \mathcal B:=\bigg(\bigcup_{k\in\mathbb Z}
+    \bigcup_{\varepsilon\in \{-1,+1\}} L\big((\varepsilon i+k(2N+2),0)\to (j,2n)\big)
+    \bigg)\,\big\backslash\, L\big(1,N;(i,0)\to (j,2n)\big),
+  \]
+  where the sign of \( P\in L\big((\varepsilon i+k(2N+2),0)\to (j,2n)\big) \) is defined to be
+  \( \varepsilon \).
+
+  Let \( P\in\mathcal{B}\). Then there is at least one point \( (x,y) \) in \( P
+  \) such that \( x\in \{0,N+1\} \) and \( y \) is even. Choose such a point \(
+  (x,y) \) with maximal \( y \). We let $P'$ be the portion of~$P$ from its
+  starting point up to~$(x,y)$ and $P''$ the portion from $(x,y)$ up to $P$'s
+  end point. Then we define \( \varphi(P)=\mathfrak{R}(P')P'' \), where
+  $\mathfrak R$ means the modified reflection from~\cite[Proof
+  of~(1.1)]{Krattenthaler1996}. To be specific, beginning from $P$'s starting
+  point up to $(x,y)$, we group steps in pairs. If a pair consists of two
+  vertical steps then we leave them invariant, as well as if the pair consists
+  of a forward diagonal step followed by a backward diagonal step. If a pair
+  consists of a forward diagonal step followed by a vertical step, then we
+  replace this pair by the pair consisting of a vertical step followed by a
+  backward diagonal step, and vice versa. 
+
+  Since the map $\varphi$ leaves the portion of the path after $(x,y)$ invariant,
+  twofold application of $\varphi$ will bring us back to~$P$. Thus, the map $\varphi$ is
+  indeed an involution. To see that \( \varphi \) is sign-reversing
+  on the set $\mathcal B$, suppose that the
+  starting point of \( P \) is \( (\varepsilon i+k(2N+2),0) \) so that the sign of \( P
+  \) is \( \varepsilon \). Then the starting point of \( \varphi(P) \) is \( (-\varepsilon
+  i-k(2N+2),0) \) if \( x=0 \),
+  respectively \( (-\varepsilon i+(1-k)(2N+2),0) \) if \(
+  x=N+1 \). Thus the sign of $\varphi(P)$ is always \( -\varepsilon \). Furthermore, the
+  map $\varphi$ is clearly weight-preserving. This completes the proof
+  of~\eqref{eq:F=L1}, and thus of \eqref{eq:F1}.
+\end{proof}
+
+
+--- 2/20 (sim=0.616) huh_bounded_littlewood_cylindric/chunk_101.tex ---
+Summary: Theorem 7.2 (odd w): the determinant on the RHS of ABL1 equals the weighted sum over (h,w)-up-down tableaux, proved via nonintersecting lattice paths.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: Up-down tableaux
+[Summary: Theorem 7.2 (odd w): the determinant on the RHS of ABL1 equals the weighted sum over (h,w)-up-down tableaux, proved via nonintersecting lattice paths.]
+
+\begin{thm} \label{thm:OT-L1}
+For positive integers $h$, $w$, and \( n \), we have
+\begin{equation}
+  \label{eq:OT-L1} \det_{1\le i,j\le h}\left(
+  F_{-i+j,2h+2w+2}(x_1,\dots,x_n)-F_{i+j,2h+2w+2}(x_1,\dots,x_n) \right)
+  =\sum_{T\in\operatorname{UD}_n(h,w)} \omega(T).
+\end{equation}
+\end{thm}
+
+
+--- 3/20 (sim=0.614) wheeler_zinn-justin_cauchy_littlewood_six-vertex/chunk_039.tex ---
+Summary: Remark showing how the double-row transfer matrix definition of Kλ gives a new lattice-path combinatorial formula for BCₙ Hall–Littlewood polynomials, with the graphical lattice configurations depicted explicitly.
+
+% Paper: wheeler_zinn-justin_cauchy_littlewood_six-vertex
+% Section: Hall--Littlewood polynomials > $BC_n$ Hall--Littlewood polynomials: lattice paths
+
+[Summary: Remark showing how the double-row transfer matrix definition of Kλ gives a new lattice-path combinatorial formula for BCₙ Hall–Littlewood polynomials, with the graphical lattice configurations depicted explicitly.]
+
+\begin{rmk}{\rm
+Equations \eqref{K} and \eqref{L} allow the $BC_n$ Hall--Littlewood polynomials to be calculated as sums over lattice paths. Indeed, by replacing each double-row transfer matrix with its graphical counterpart, we typically obtain configurations of the form
+%
+\begin{equation*}
+\begin{tikzpicture}[scale=0.7]
+\foreach\y in {1,...,6}{
+\foreach\x in {2,...,6}{
+\draw[fline,bggplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+\draw[fline,bggplaq] (1,\y) -- (1+0.5,\y) -- (1+0.5,\y+1) -- (1,\y+1) -- (1,\y);;\draw[fline,bggplaq] (1.5,\y) -- (1.5+0.5,\y) -- (1.5+0.5,\y+1) -- (1.5,\y+1) -- (1.5,\y);;
+}
+}
+\foreach\y in {0.5,2.5,4.5}{
+\begin{scope}[xscale=-1]
+\draw[smooth] (-0.5,\y+1) arc (-90:90:0.5);
+\draw[smooth] (-1,\y+2)--(-0.5,\y+2);
+\draw[smooth] (-1,\y+1)--(-0.5,\y+1);
+\node at (0,\y+1.5) {$\bullet$};
+\end{scope}
+}
+%rapidities
+\foreach\y in {1,2,3}{
+\node at (-0.5,-2*\y+8.5) {$\scriptstyle \color{dred} x_{\y}$};
+\node at (-0.5,-2*\y+7.5) {$\scriptstyle \color{dred} \bar{x}_{\y}$};
+}
+%paths
+\draw[bline] (1,2.5) -- (1.75,2.5) -- (1.75,1.5) -- (4.3,1.5) -- (4.3,1);
+\draw[bline] (1,4.5) -- (3.5,4.5) -- (3.5,3.5) -- (4.5,3.5) -- (4.5,1);
+\draw[bline] (1,5.5) -- (4.7,5.5) -- (4.7,2.5) -- (5.5,2.5) -- (5.5,1);
+%particles
+\draw[fill=white,draw=black] (1,1.5) circle (0.07cm);; \draw[fill=white,draw=black] (1,3.5) circle (0.07cm);; \draw[fill=white,draw=black] (1,6.5) circle (0.07cm);;
+\filldraw[fill=black!35!blue, draw=black] (1,2.5) circle (0.07cm);; \filldraw[fill=black!35!blue, draw=black] (1,4.5) circle (0.07cm);; \filldraw[fill=black!35!blue, draw=black] (1,5.5) circle (0.07cm);;
+\filldraw[fill=black!35!blue, draw=black] (4.3,1) circle (0.07cm);; \filldraw[fill=black!35!blue, draw=black] (4.5,1) circle (0.07cm);; \filldraw[fill=black!35!blue, draw=black] (5.5,1) circle (0.07cm);;
+%column labels top
+\node at (1.25,7.5) {$\scriptstyle 0$};
+\node at (1.75,7.5) {$\scriptstyle 0$};
+\node at (2.5,7.5) {$\scriptstyle 0$};
+\node at (3.5,7.5) {$\scriptstyle 0$};
+\node at (4.5,7.5) {$\scriptstyle 0$};
+\node at (5.5,7.5) {$\scriptstyle 0$};
+\node at (6.5,7.5) {$\scriptstyle 0$};
+%column labels bottom
+\node at (1.25,0.5) {$\scriptstyle 0$};
+\node at (1.75,0.5) {$\scriptstyle 0$};
+\node at (2.5,0.5) {$\scriptstyle m_0$};
+\node at (3.5,0.5) {$\scriptstyle m_1$};
+\node at (4.5,0.5) {$\scriptstyle m_2$};
+\node at (5.5,0.5) {$\scriptstyle m_3$};
+\node at (6.5,0.5) {$\scriptstyle m_4$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}[scale=0.7]
+\foreach\y in {1,...,6}{
+\foreach\x in {2,...,6}{
+\draw[fline,bgplaq] (\x,\y) -- (\x+1,\y) -- (\x+1,\y+1) -- (\x,\y+1) -- (\x,\y);;
+\draw[fline,bgplaq] (1,\y) -- (1+0.5,\y) -- (1+0.5,\y+1) -- (1,\y+1) -- (1,\y);;\draw[fline,bgplaq] (1.5,\y) -- (1.5+0.5,\y) -- (1.5+0.5,\y+1) -- (1.5,\y+1) -- (1.5,\y);;
+}
+}
+\foreach\y in {0.5,2.5,4.5}{
+\begin{scope}[xscale=-1]
+\draw[smooth] (-0.5,\y+1) arc (-90:90:0.5);
+\draw[smooth] (-1,\y+2)--(-0.5,\y+2);
+\draw[smooth] (-1,\y+1)--(-0.5,\y+1);
+\node at (0,\y+1.5) {$\bullet$};
+\end{scope}
+}
+%rapidities
+\foreach\y in {1,2,3}{
+\node at (-0.5,2*\y-0.5) {$\scriptstyle \color{dred} x_{\y}$};
+\node at (-0.5,2*\y+0.5) {$\scriptstyle \color{dred} \bar{x}_{\y}$};
+}
+%paths
+\draw[gline] (1,5.5) -- (1.25,5.5) -- (1.25,6.5) -- (2.5,6.5) -- (2.5,7);
+\draw[gline] (1,3.5) -- (1.75,3.5) -- (1.75,4.5) -- (2.5,4.5) -- (2.5,5.5) -- (3.5,5.5) -- (3.5,6.5) -- (4.4,6.5) -- (4.4,7);
+\draw[gline] (1,2.5) -- (3.5,2.5) -- (3.5,3.5) -- (4.6,3.5) -- (4.6,6.5) -- (6.5,6.5) -- (6.5,7);
+%particles
+\draw[fill=white,draw=black] (1,1.5) circle (0.07cm);; \draw[fill=white,draw=black] (1,4.5) circle (0.07cm);; \draw[fill=white,draw=black] (1,6.5) circle (0.07cm);;
+\filldraw[fill=black!35!green, draw=black] (1,2.5) circle (0.07cm);; \filldraw[fill=black!35!green, draw=black] (1,3.5) circle (0.07cm);; \filldraw[fill=black!35!green, draw=black] (1,5.5) circle (0.07cm);;
+\filldraw[fill=black!35!green, draw=black] (2.5,7) circle (0.07cm);; \filldraw[fill=black!35!green, draw=black] (4.4,7) circle (0.07cm);; \filldraw[fill=black!35!green, draw=black] (6.5,7) circle (0.07cm);;
+%column labels top
+\node at (1.25,7.5) {$\scriptstyle 0$};
+\node at (1.75,7.5) {$\scriptstyle 0$};
+\node at (2.5,7.5) {$\scriptstyle m_0$};
+\node at (3.5,7.5) {$\scriptstyle m_1$};
+\node at (4.5,7.5) {$\scriptstyle m_2$};
+\node at (5.5,7.5) {$\scriptstyle m_3$};
+\node at (6.5,7.5) {$\scriptstyle m_4$};
+%column labels bottom 
+\node at (1.25,0.5) {$\scriptstyle 0$};
+\node at (1.75,0.5) {$\scriptstyle 0$};
+\node at (2.5,0.5) {$\scriptstyle 0$};
+\node at (3.5,0.5) {$\scriptstyle 0$};
+\node at (4.5,0.5) {$\scriptstyle 0$};
+\node at (5.5,0.5) {$\scriptstyle 0$};
+\node at (6.5,0.5) {$\scriptstyle 0$};
+\end{tikzpicture}
+\end{equation*}
+%
+where the left lattice is a single configuration of the right hand side of \eqref{K} with $\lambda = (3,2,2)$, and the right lattice a single configuration of the right hand side of \eqref{L} with $\lambda = (4,2,0)$.
+}
+\end{rmk}
+
+
+--- 4/20 (sim=0.607) huh_bounded_littlewood_cylindric/chunk_103.tex ---
+Summary: Figure of nonintersecting lattice paths corresponding to up-down tableaux, illustrating the bijection in Theorem 7.2's proof.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: Up-down tableaux
+[Summary: Figure of nonintersecting lattice paths corresponding to up-down tableaux, illustrating the bijection in Theorem 7.2's proof.]
+
+}
+\caption{An example of a family \(\mathbf{P}=(P_1,P_2,P_3,P_4)\) of nonintersecting paths.}
+\label{fig:7}
+\end{figure}
+
+We define the weight $\omega(s_v)$ of a vertical step~$s_v$ to be~1, the weight
+$\omega(s_f)$ of a forward diagonal step $s_f$ from $(i,2j-2)$ to $(i+1,2j-1)$
+to be $x_j$, and the weight $\omega(s_b)$ of a backward diagonal step from
+$(i,2j-1)$ to $(i-1,2j)$ to be also~$x_j$. The weight of a path equals the
+product of the weights of its steps.
+
+
+Let \( L(u\to v) \) denote the set of lattice paths from \( u \) to \( v \). Let
+\( L(a,b;u\to v) \) denote the set of \( P\in L(u\to v) \) for which every point
+\( (i,2j) \) of even height in \( P \) satisfies \( a\le i\le b \). Note that, if
+\( P\in L\big(a,b;(r,0)\to (s,2n)\big) \) for some integers \( r,s \) with \( a\le
+r,s\le b \), then every point \( (i,2j+1) \) of odd height in \( P \) always
+satisfies \( a\le i\le b+1 \).
+
+
+--- 5/20 (sim=0.606) barraquand_log-gamma_polymers/chunk_065.tex ---
+Summary: Constructs a coupling Z(n,m) ≤ Z̃(n,m) where Z̃ has boundary parameter θ_c + Un^{-1/3}, applies the BBP limit for Z̃, lets U → ∞ using F_{BBP,-U} → F_GUE, and deduces liminf P(scaled log Z ≤ t) ≥ F_GUE(t) — the lower bound on the CDF needed for the GUE phase.
+
+% Paper: barraquand_log-gamma_polymers
+% Section: Asymptotics results for trapezoidal log-gamma polymers > Proof of asymptotics in the GUE Tracy-Widom and BBP phases > Upper bound
+
+[Summary: Constructs a coupling Z(n,m) ≤ Z̃(n,m) where Z̃ has boundary parameter θ_c + Un^{-1/3}, applies the BBP limit for Z̃, lets U → ∞ using F_{BBP,-U} → F_GUE, and deduces liminf P(scaled log Z ≤ t) ≥ F_GUE(t) — the lower bound on the CDF needed for the GUE phase.]
+
+Let  $U>0$ be a positive real number.
+By the hypothesis $\limsup_{n\rightarrow\infty}n^{1/3}(\theta_0-\theta_c)=+\infty$  , for some sufficiently large $n_0$, it holds that $\theta_0-\theta_c-Un^{-1/3}>0$   for all $n>n_0$.
+Now, for $n>n_0$, let  $\widetilde{Z}(n,m)$ denote  the   point-to-point partition function with   weights $(\widetilde{W}_{i,j})$ defined on the same probability space as the weights  $(W_{i,j})$, and satisfying 
+\begin{equation*}%\label{eq73}
+W_{i,1}\leqslant \widetilde{W}_{i,1}\sim \operatorname{Gamma}^{-1}(\theta_c+U n^{-1/3})\quad\text{and}\quad \widetilde{W}_{i,j}=W_{i,j} \text{ if } j\geqslant 2.
+\end{equation*}
+We may indeed construct such weights $(\widetilde{W}_{i,j})$. We first take    random variables   
+$$X_i\sim\operatorname{Gamma}^{-1}(\theta_0-\theta_c-Un^{-1/3}), \quad 1\leqslant i\leqslant n,$$
+in such a way that all the $X_i$'s and the $W_{i,j}$'s  are independent. Then define
+$${\widetilde{W}_{i,1} }:=\left( \frac{1}{W_{i,1}}-\frac{1}{X_i}\right)^{-1} \quad \text{for } 1\leqslant i\leqslant n.$$
+Since $W_{i,1}\sim\operatorname{Gamma}^{-1}(\theta_0)$, we have  $\widetilde{W}_{i,1}\sim\operatorname{Gamma}^{-1}(\theta_c+Un^{-1/3})$ and by construction $W_{i,1}\leqslant \widetilde{W}_{i,1}$ for all $1\leqslant i\leqslant n$.
+It follows that $\widetilde{Z}(n,m)$ is an upper bound for $Z(n,m)$
+\begin{equation} \label{eq74}
+Z(n,m)\leqslant \widetilde{Z}(n,m).
+\end{equation} 
+Furthermore,  \eqref{eq:bbp}   yields the limiting behavior of  $\widetilde{Z}(n,m)$ 
+    \begin{equation}\label{eq75}
+       \lim_{n\rightarrow\infty} \mathbb{P}\left( \frac{\log \widetilde{Z}(n,m) -nf_{\theta,p}}{n^{1 / 3} \sigma_{\theta,p}} \leqslant t\right)= F_{\mathrm{BBP} ; -U \lim _{n} \sigma_{\theta, p}}(t).
+    \end{equation} 
+    By  (\ref{eq74}) and (\ref{eq75}), 
+\begin{align*}
+    \liminf_{n\rightarrow\infty}{} &\mathbb{P}\left( \frac{\log {Z}(n,m) -nf_{\theta,p} }{n^{1 / 3} \sigma_{\theta,p}} \leqslant t\right)\geqslant
+    F_{\mathrm{BBP} ; -U}(t) .
+    \end{align*} 
+It is known that (see \cite[(2.36)]{BaikRains2})
+$$
+\lim_{U\rightarrow\infty}F_{\mathrm{BBP} ; -U}(t)=F_{\mathrm{GUE}}(t).
+$$
+Since $U$ can be arbitrary large, it follows that
+\begin{align} \label{eq103}
+    \liminf_{n\rightarrow\infty}  {}\mathbb{P}\left( \frac{\log {Z}(n,m) -nf_{\theta,p} }{n^{1 / 3} \sigma_{\theta,p}} \leqslant t\right) \geqslant
+       F_{\mathrm{GUE}}(t).
+    \end{align}
+
+
+--- 6/20 (sim=0.600) bisi_zygouras_classical_groups_lpp/chunk_170.tex ---
+Summary: Concludes GOE duality: the Pfaffian and determinant expressions for the finite-n LPP explain the Pfaffian/determinant duality of GOE; then opens GSE subsection.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: Concludes GOE duality: the Pfaffian and determinant expressions for the finite-n LPP explain the Pfaffian/determinant duality of GOE; then opens GSE subsection.]
+
+From the discussion above we may conclude that comparing the Pfaffian identity~\eqref{eq:antisymLPP_Pf} and the determinantal identity~\eqref{eq:antisymLPP_det} for the LPP model provides an explanation, at a finite $n$ level, of the duality between the Fredholm Pfaffian and Fredholm determinant expressions of the Tracy-Widom GOE distribution.
+
+
+
+\@startsection{subsection}{2}%
+  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\bfseries\scshape}{The Tracy-Widom GSE distribution}
+\label{subsec:GSE}
+
+The \emph{Gaussian Symplectic Ensemble} (GSE) is the space of $N\times N$ Hermitian quaternionic matrices $H$ endowed with the Gaussian probability density proportional to $\exp\{-N \operatorname{Tr} H^2\}$, which is invariant under conjugation with the symplectic group.
+The law of the largest eigenvalue of an $N\times N$ GSE matrix converges as $N\to\infty$, after suitable rescaling, to the so-called {\bf\emph{Tracy-Widom GSE distribution}}~\cite{TW96}.
+
+
+--- 7/20 (sim=0.599) barraquand_log-gamma_polymers/chunk_063.tex ---
+Summary: States Proposition 5 (Barraquand-Corwin-Dimitrov, Theorems 1.2 and 1.7): for the full-space Z(n,m) with homogeneous bulk θ and perturbed first column θ_0, the free energy converges to GUE Tracy-Widom when θ_0 = θ, and to F_{BBP,-y} at the critical window — the external results transferred to Z^trap via Theorem 1.
+
+% Paper: barraquand_log-gamma_polymers
+% Section: Asymptotics results for trapezoidal log-gamma polymers > Proof of asymptotics in the GUE Tracy-Widom and BBP phases
+
+[Summary: States Proposition 5 (Barraquand-Corwin-Dimitrov, Theorems 1.2 and 1.7): for the full-space Z(n,m) with homogeneous bulk θ and perturbed first column θ_0, the free energy converges to GUE Tracy-Widom when θ_0 = θ, and to F_{BBP,-y} at the critical window — the external results transferred to Z^trap via Theorem 1.]
+
+\begin{proposition}[{\cite[Theorem 1.2,\,Theorem 1.7]{BCD}}]\label{asymptoticsGUE}
+
+Assume parameters $\theta,\theta_0,n,m,p$ and the partition function $Z(n,m)$ are as in Definition \ref{notation2}.   
+\begin{itemize}
+    \item  If $\theta_0=\theta$,  then   for all $t$,
+    \begin{equation}\label{eq:gue}
+       \lim_{n\rightarrow\infty} \mathbb{P}\left( \frac{\log Z(n,m)-nf_{\theta,p}}{n^{1 / 3} \sigma_{\theta,p}} \leqslant t\right)= F_{\mathrm{GUE}}(t).
+    \end{equation} 
+    \item  If for some $y\in\mathbb{R}$, $\lim_{n\rightarrow\infty} n^{1/3}(\theta_0-\theta_c)\sigma_{\theta,p}=y  $,  then for all $t$,
+    \begin{equation} \label{eq:bbp}
+       \lim_{n\rightarrow\infty} \mathbb{P}\left( \frac{\log Z(n,m)-nf_{\theta,p}}{n^{1 / 3} \sigma_{\theta,p}}  \leqslant t\right)= F_{\mathrm{BBP} ; -y}(t).
+    \end{equation} 
+     
+\end{itemize}
+\end{proposition}
+
+
+--- 8/20 (sim=0.598) bisi_zygouras_classical_groups_lpp/chunk_121.tex ---
+Summary: Applies the RSK-based LPP framework to the antisymmetric weight setting, deriving the point-to-point and point-to-line last passage time distributions via symplectic Schur functions.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+
+[Summary: Applies the RSK-based LPP framework to the antisymmetric weight setting, deriving the point-to-point and point-to-line last passage time distributions via symplectic Schur functions.]
+
+Let us now consider the point-to-point last passage time $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_{\beta}(N,N)$ with weights distributed as in~\eqref{eq:antisymWeights}.
+Then, the corresponding point-to-line LPP $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}_\beta(N)$ is taken on a triangular array of independent weights $W=\{W_{i,j}\colon i+j\leq N+1\}$ distributed as
+\begin{equation}
+\label{eq:antisymWeightsPointToLine}
+\mathbb{P}(W_{i,j} = k) =
+\begin{cases}
+(1-p_{N-i+1} p_j) (p_{N-i+1} p_j)^k &\text{for } k\in\mathbb{Z}_{\geq 0}, \, i+j< N+1 \, , \\
+\dfrac{1-p_j^2}{1 + \beta p_j} \beta^{\1_{\frac{1}{2}+\mathbb{Z}}(k)} p_j^{2k} &\text{for } k\in\frac{1}{2} \mathbb{Z}_{\geq 0}, \, i+j = N+1 \, ,
+\end{cases}
+\end{equation}
+where the indicator function $\1_{\frac{1}{2}+\mathbb{Z}}(k)$ gives $1$ if $k$ is a half-integer and $0$ if $k$ is an integer.
+Given the identity $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta(N,N) = 2 \cdot L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}_\beta(N)$, we are thus reduced to prove the point-to-line reformulation of $A^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta = C^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta$ in Theorem~\ref{thm:antisymLPP}:
+\begin{equation}
+\label{eq:antisymLPP_pointToLine}
+c^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_{\beta} \cdot \mathbb{P}\left(L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}_\beta(N) \leq u\right)
+= \left[ \prod_{i=1}^N p_i \right]^u \mathrm{s}^{\scriptscriptstyle\mathrm{CB}}_{u^{N}} (p_1,\dots,p_N;\beta)
+\end{equation}
+for $u\in\frac{1}{2}\mathbb{Z}_{\geq 0}$, where $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}_\beta(N)$ is taken on the modified weights~\eqref{eq:antisymWeightsPointToLine}.
+
+
+--- 9/20 (sim=0.597) barraquand_log-gamma_polymers/chunk_029.tex ---
+Summary: Explains how Theorem 2 is proved: part (2) follows directly from the BBP asymptotics of Barraquand-Corwin-Dimitrov for Z(n,m), part (1) via coupling, and part (3) using Seppäläinen's CLT for stationary polymers — all transferred to Z^trap via Theorem 1.
+
+% Paper: barraquand_log-gamma_polymers
+% Section: Introduction and main results > Asymptotics
+
+[Summary: Explains how Theorem 2 is proved: part (2) follows directly from the BBP asymptotics of Barraquand-Corwin-Dimitrov for Z(n,m), part (1) via coupling, and part (3) using Seppäläinen's CLT for stationary polymers — all transferred to Z^trap via Theorem 1.]
+
+%\begin{remark}\label{rm53}   Since $\psi^{\prime}$ is a decreasing function, $\psi^{\prime} (\theta_0)-p\psi^{\prime }(\theta-\theta_0)>0$ is equivalent to $\theta_0<\theta_c$. \end{remark}
+We prove Theorem \ref{main2} in Section \ref{sec:asymptotics}. The part (2) of Theorem \ref{main2} is a direct consequence of \cite[Theorem~1.7]{BCD}, stated below in Proposition \ref{asymptoticsGUE}.
+The part (1)   is deduced from \cite[Theorem~1.2, Theorem~1.7]{BCD} via a coupling method.
+ The part (3) is obtained using estimates from \cite{Seppa} about stationary and homogeneous log-gamma polymer models.
+ 
+ \medskip 
+ 
+  An explanation for why the point-to-point partition function undergoes a phase transition under a perturbation of one column is provided in \cite{BBP05} (in the zero temperature limit). Recall that an inverse-gamma variable has large mean value when its parameter is small. For small enough values of  $\theta_0$, paths stay a macroscopic distance along the first column with large probability under the polymer measure, while for larger values of $\theta_0$, paths would not be influenced by the different weights along the first column. We refer to \cite[Section 8.1]{HalfSpaceMac} and \cite[Section 1.5]{BCD} for a more detailed exposition of this argument in the context of the log-gamma polymer. In the half-space setting, a precise qualitative understanding of the measure on polymer paths, for various values of  $\theta_0$, is more difficult to obtain. Nevertheless,  we expect that for a fixed $\theta_0<\theta_c$, most paths under the polymer measure will hit the boundary a $\mathcal O(n)$ number of times, while when $\theta_0>\theta_c$, the geometry of paths should be qualitatively similar as in the full-space case.
+
+
+--- 10/20 (sim=0.590) huh_bounded_littlewood_cylindric/chunk_111.tex ---
+Summary: Properties and notation for oscillating tableaux, connecting them to the lattice path model.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: Up-down tableaux
+[Summary: Properties and notation for oscillating tableaux, connecting them to the lattice path model.]
+
+One may consider an \( (h^*,w) \)-up-down tableau as an \( (h,w) \)-up-down
+tableau \( (\lambda^0,\lambda^1,\dots,\lambda^{2n}) \) in which each last part \(
+\lambda^{2j-1}_h \), if it exists, may be marked if it equals zero. We may
+think of \( (h,w^*) \)-up-down tableaux and \( (h^*,w^*) \)-up-down
+tableaux in an analogous way.
+
+
+We define \( \operatorname{UD}_n(h^*,w) \) to be the set of \( (h^*,w) \)-up-down tableaux \(
+(T,M) \) with \( T\in \operatorname{UD}_n(h,w) \). The sets \( \operatorname{UD}_n(h,w^*) \) and
+\(\operatorname{UD}_n(h^*,w^*) \) are defined similarly. For \( (T,M_1)\in \operatorname{UD}_n(h^*,w) \), \(
+(T,M_2)\in \operatorname{UD}_n(h,w^*) \), and \( (T,M_1,M_2)\in \operatorname{UD}_n(h^*,w^*) \), we define
+their weights by
+\begin{align*}
+  \omega(T,M_1) & = \omega(T)\prod_{j\in M_1} x_j,\\
+  \omega(T,M_2) & = \omega(T)\prod_{j\in M_2} \left( -\frac{1}{x_j} \right),\\
+  \omega(T,M_1,M_2) & = \omega(T)\prod_{j\in M_1} x_j
+                        \prod_{j\in M_2} \left( -\frac{1}{x_j} \right).
+\end{align*}
+
+In the theorem below, we present combinatorial interpretations of the
+determinants on the right-hand sides 
+of~\eqref{eq:aGBK1s} with \( w \) even and of~\eqref{eq:aGBK2s}.
+
+
+--- 11/20 (sim=0.589) huh_bounded_littlewood_cylindric/chunk_161.tex ---
+Summary: Recalls Mortimer-Prellberg's result on triangular lattice walks and bounded Motzkin paths that originally motivated the project.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: The discovery of the bounded Littlewood identities for cylindric Schur functions
+[Summary: Recalls Mortimer-Prellberg's result on triangular lattice walks and bounded Motzkin paths that originally motivated the project.]
+
+As given away above, we wanted to construct a bijective proof of this intriguing
+identity. We first observed that~\eqref{eq:MP} is not the most transparent formulation
+of this identity. In order to motivate our reformulation below, let us first
+consider the limiting case where \( h\to\infty \), i.e.,
+\begin{equation}
+  \label{eq:MP_infty}
+  |T_n(\infty)| = |\operatorname{Mot}_n(\infty)|.
+\end{equation}
+Each walk \( p=(p_0,\dots,p_n)\in T_n(\infty) \) can be identified with the sequence
+\( (\lambda^{0},\dots, \lambda^{n}) \) of partitions with
+at most three rows, where \( \lambda^{0}=\emptyset \) and \( \lambda^{i}
+\) is obtained from \( \lambda^{i-1} \) by adding a cell to the first
+(respectively second and third) row if \( p_i \) is \( (1,0) \) (respectively \( (0,1) \) and
+\( (-1,-1) \)). This sequence of partitions is in turn naturally identified with
+a standard Young tableau of size~\( n \) with height at most \( 3 \);
+see the proof of Theorem~\ref{thm:syt=ncnn_h=1} for more details. On the
+other hand, there is a simple and well-known bijection between \( \operatorname{Mot}_n(\infty)
+\) and the set of \( 2 \)-noncrossing matchings on 
+\( \{1,2,\dots, n \} \). 
+(We described it in the proof of Theorem~\ref{thm:syt=ncnn_h=1}.)
+Therefore \eqref{eq:MP_infty} is equivalent to
+\[
+ |\operatorname{SYT}_n(3)| = |\operatorname{NC}_n(2)|,
+\]
+where as before \( \operatorname{SYT}_n(3) \) is the set of standard Young tableaux
+of size~\( n \) with 
+at most \( 3 \)~rows and \( \operatorname{NC}_n(2) \) is the set of \( 2 \)-noncrossing
+matchings on 
+\( \{1,2,\dots, n \} \).
+
+
+--- 12/20 (sim=0.587) huh_bounded_littlewood_cylindric/chunk_116.tex ---
+Summary: Lemma 7.6: weight-preserving bijections for oscillating tableau variants, used to prove Corollaries 7.6-7.8.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: Up-down tableaux
+[Summary: Lemma 7.6: weight-preserving bijections for oscillating tableau variants, used to prove Corollaries 7.6-7.8.]
+
+\begin{lem}\label{lem:L_ab'}
+  For positive integers \( i,j,N \), and \( n \) with \( 1\le i,j<N \), we have
+  \begin{align}
+    \label{eq:F2}
+    F_{-i+j,2N+1}(x_1,\dots,x_n)-F_{i+j,2N+1}(x_1,\dots,x_n)
+    &= \sum_{(P,M)\in L\big(1,N^*;(i,0)\to (j,2n)\big)} \omega(P,M),\\
+    \label{eq:F3}
+    \overline{F}_{-i+j,2N+1}(x_1,\dots,x_n)+\overline{F}_{i+j-1,2N+1}(x_1,\dots,x_n)
+    &= \sum_{(P,M)\in L\big(1^*,N;(i,0)\to (j,2n)\big)} \omega(P,M),\\
+    \label{eq:F4}
+    \overline{F}_{-i+j,2N}(x_1,\dots,x_n)+\overline{F}_{i+j-1,2N}(x_1,\dots,x_n)
+    &= \sum_{(P,M_1,M_2)\in L\big(1^*,N^*;(i,0)\to (j,2n)\big)} \omega(P,M_1,M_2).
+  \end{align}
+\end{lem}
+\begin{proof}
+  By \eqref{eq:w=f}, we can rewrite the identities 
+  %H add 
+  \eqref{eq:F2}--\eqref{eq:F4}
+  as follows:
+  \begin{align}
+    \label{eq:F=L2}
+    \underset{P\in L\big((\varepsilon i+k(2N+1),0)\to (j,2n)\big)}
+    {\sum_{k \in\mathbb Z,\,\,\varepsilon\in\{-1,+1\}}} \varepsilon\cdot\omega(P)
+    &= \sum_{(P,M)\in L\big(1,N^*;(i,0)\to (j,2n)\big)} \omega(P,M),\\
+    \label{eq:F=L3}
+    \underset{P\in L\big((\varepsilon (i-1/2)+1/2+k(2N+1),0)\to (j,2n)\big)}
+    {\sum_{k \in\mathbb Z,\,\,\varepsilon\in\{-1,+1\}}}
+    (-1)^k\omega(P)
+    &= \sum_{(P,M)\in L\big(1^*,N;(i,0)\to (j,2n)\big)} \omega(P,M),\\
+    \label{eq:F=L4}
+    \underset{P\in L\big((\varepsilon (i-1/2)+1/2+k(2N),0)\to (j,2n)\big)}
+    {\sum_{k \in\mathbb Z,\,\,\varepsilon\in\{-1,+1\}}}
+    (-1)^k\omega(P)
+    &= \sum_{(P,M_1,M_2)\in L\big(1^*,N^*;(i,0)\to (j,2n)\big)} \omega(P,M_1,M_2).
+  \end{align}
+
+  For the identity~\eqref{eq:F=L2} we proceed similarly as in the proof of
+  Lemma~\ref{lem:L_ab} by constructing a sign-reversing involution using a
+  point \( (x,y) \) in \( P \) with \( x\in \{0,2N+1\} \) and \( y \) even, if
+  such a point exists. This will give
+  \begin{equation}\label{eq:ew2}
+    \underset{P\in L\big((\varepsilon i+k(2N+1),0)\to (j,2n)\big)}
+    {\sum_{k \in\mathbb Z,\,\,\varepsilon\in\{-1,+1\}}} \varepsilon\cdot\omega(P)
+    =  \sum_{P\in L\big(1,2N;(i,0)\to (j,2n)\big)} \omega(P)
+    -  \sum_{P\in L\big(1,2N;(2N+1-i,0)\to (j,2n)\big)} \omega(P).
+  \end{equation}
+  Now let \( P\in L\big(1,2N;(i,0)\to (j,2n)\big) \cup
+  L\big(1,2N;(2N+1-i,0)\to (j,2n)\big) \).
+  We will construct an \( N \)-marked path \( (Q,M)\in
+  L\big(1,N^*;(i,0)\to (j,2n)\big)
+  \) as follows.
+
+  First, let \( (Q,M)=(P,\emptyset) \). We will modify \( (Q,M) \) repeatedly
+  until it becomes an element in \( L\big(1,N^*;(i,0)\to (j,2n)\big) \). If \( (Q,M)\in
+  L\big(1,N^*;(i,0)\to (j,2n)\big) \), then there is nothing to do. Otherwise, choose
+  the largest even integer \( y \) such that \( (N+1,y) \) is a point in \( Q
+  \). Then \( Q \) must pass through all points \( (N+1,y), (N+1,y+1) \) and \(
+  (N,y+2) \). Let $Q'$ be the portion of~$Q$ from its starting point up
+  to~$(N+1,y)$ and $Q''$ the portion from $(N,y+2)$ up to $Q$'s end point,
+  i.e., \( Q=Q's_vs_bQ'' \). Then
+  we update \( Q \) to \(\mathfrak{R}(Q')s_fs_bQ'' \) and add the point \(
+  (N+1,y+1) \) to the set \( M \), where
+  $\mathfrak R$ has the same meaning as in the proof of Lemma~\ref{lem:L_ab}.
+  Repeating this process eventually yields \(
+  (Q,M)\in L\big(1,N^*;(i,0)\to (j,2n)\big) \). For example, see Figure~\ref{fig:F=L2}.
+  It is easy to see that the map \( P\mapsto (Q,M)\) is a weight-preserving bijection between \( L\big(1,2N;(i,0)\to
+  (j,2n)\big) \cup L\big(1,2N;(2N+1-i,0)\to (j,2n)\big) \) and \(
+  L\big(1,N^*;(i,0)\to (j,2n)\big)
+  \). This shows that the right-hand sides of~\eqref{eq:F=L2}
+  and~\eqref{eq:ew2} are equal, completing the proof of~\eqref{eq:F=L2}.
+
+
+\begin{figure}
+
+\small{
+
+%1-------------------
+\begin{tikzpicture}[scale=0.5]
+
+\draw[->] (-1,0) -- (8,0);
+\draw[->] (0,-1) -- (0,15);
+\draw[dotted] (7,-1) -- (7,15);
+\draw[dotted] (4,-1) -- (4,15);
+\draw[dotted] (1,-1) -- (1,15);
+
+\foreach \i in {0,...,7}
+\foreach \j in {0,...,14}
+\filldraw[fill=gray, color=gray] (\i,\j) circle (2.5pt);
+
+\filldraw (1,0) circle (3.5pt);
+\filldraw (3,14) circle (3.5pt);
+
+\foreach \i/\j in {1/0,2/1,2/2,3/3,3/4,4/5,4/6,5/7,4/8,5/9,5/10,5/11,4/12,4/13,3/14}
+\filldraw (\i,\j) circle (2.5pt);
+
+\draw[thick] (1,0) --(2,1) -- (2,2) -- (3,3) -- (3,4) -- (4,5) -- (4,6) -- (5,7) -- (4,8) -- (5,9) -- (5,10) -- (5,11) -- (4,12) -- (4,13) -- (3,14);
+
+\node at (-0.5,14) {\( 2n \)};
+\node at (-0.5,-0.5) {\( O \)};
+\node at (4,-0.5) {\( N+1 \)};
+\node at (7,-0.5) {\( 2N+1 \)};
+\node at (3,14.5) {\( P \)};
+\node at (9,7) {\( \leftrightarrow \)};
+
+\end{tikzpicture}
+%2--------------------
+\begin{tikzpicture}[scale=0.5]
+
+\draw[->] (-1,0) -- (8,0);
+\draw[->] (0,-1) -- (0,15);
+\draw[dotted] (7,-1) -- (7,15);
+\draw[dotted] (4,-1) -- (4,15);
+\draw[dotted] (1,-1) -- (1,15);
+
+\foreach \i in {0,...,7}
+\foreach \j in {0,...,14}
+\filldraw[fill=gray, color=gray] (\i,\j) circle (2.5pt);
+
+\filldraw (6,0) circle (3.5pt);
+\filldraw (3,14) circle (3.5pt);
+
+\foreach \i/\j in {6/0,6/1,5/2,5/3,4/4,4/5,3/6,4/7,3/8,3/9,2/10,3/11,3/12,3/14}
+\filldraw (\i,\j) circle (2.5pt);
+
+\draw[thick] (6,0) --(6,1) -- (5,2) -- (5,3) -- (4,4) -- (4,5) -- (3,6) -- (4,7) -- (3,8) -- (3,9) -- (2,10) -- (3,11) -- (3,12) -- (4,13) -- (3,14);
+
+\node at (4,13) {\( \circledast \)};
+
+\node at (-0.5,14) {\( 2n \)};
+\node at (-0.5,-0.5) {\( O \)};
+\node at (4,-0.5) {\( N+1 \)};
+\node at (7,-0.5) {\( 2N+1 \)};
+\node at (9,7) {\( \leftrightarrow \)};
+
+\end{tikzpicture}
+%3--------------------
+\begin{tikzpicture}[scale=0.5]
+
+\draw[->] (-1,0) -- (5,0);
+\draw[->] (0,-1) -- (0,15);
+\draw[dotted] (4,-1) -- (4,15);
+\draw[dotted] (1,-1) -- (1,15);
+
+\foreach \i in {0,...,4}
+\foreach \j in {0,...,14}
+\filldraw[fill=gray, color=gray] (\i,\j) circle (2.5pt);
+
+\filldraw (1,0) circle (3.5pt);
+\filldraw (3,14) circle (3.5pt);
+
+\foreach \i/\j in {1/0,2/1,2/2,3/3,3/4,3/6,4/7,3/8,3/9,2/10,3/11,3/12,3/14}
+\filldraw (\i,\j) circle (2.5pt);
+
+\draw[thick] (1,0) --(2,1) -- (2,2) -- (3,3) -- (3,4) -- (4,5) -- (3,6) -- (4,7) -- (3,8) -- (3,9) -- (2,10) -- (3,11) -- (3,12) -- (4,13) -- (3,14);
+
+\node at (4,13) {\( \circledast \)};
+\node at (4,5) {\( \circledast \)};
+
+\node at (-0.5,14) {\( 2n \)};
+\node at (-0.5,-0.5) {\( O \)};
+\node at (4,-0.5) {\( N+1 \)};
+\node at (3,14.5) {\( (Q,M) \)};
+
+\end{tikzpicture}
+
+}
+\caption{An example of a path \( P \in L\big(1,2N;(i,0)\to(j,2n)\big)
+  \) and its corresponding \( N \)-marked path \( (Q,M)\in
+  L\big(1,N^*;(i,0)\to (j,2n)\big) \) with \( N=3, i=1, j=2 \) and \(n=7\). Each \( N \)-branch point 
+  %H add
+  \( \in M \)
+  is indicated by \( \circledast  \).}
+\label{fig:F=L2}
+\end{figure}
+
+
+  \medskip
+
+  The identity \eqref{eq:F=L3} can be proved similarly as~\eqref{eq:F=L2}. We
+  first construct a sign-reversing involution using a point \( (x,y) \) in \(
+  P \) with \( x\in \{-N,N+1\} \) and \( y \) even, if such a point exists. This
+  will give
+  \[
+  \underset{P\in L\big((\varepsilon (i-1/2)+1/2+k(2N+1),0)\to (j,2n)\big)}
+  {\sum_{k \in\mathbb Z,\,\,\varepsilon\in\{-1,+1\}}}
+    (-1)^k\omega(P)
+    =  \sum_{P\in L\big(1-N,N;(i,0)\to (j,2n)\big)} \omega(P)
+    +  \sum_{P\in L\big(1-N,N;(1-i,0)\to (j,2n)\big)} \omega(P).
+  \]
+  For each \( P\in L\big(1-N,N;(i,0)\to (j,2n)\big)\cup
+  L\big(1-N,N;(1-i,0)\to (j,2n)\big) \),
+  we construct \( (Q,M)\in L\big(1^*,N;(i,0)\to (j,2n)\big) \) as follows. Let \(
+  (Q,M)=(P,\emptyset) \). If \( (Q,M)\in L\big(1^*,N;(i,0)\to
+  (j,2n)\big) \), then there
+  is nothing to do. Otherwise, choose the largest even integer \( y \) such that
+  \( (0,y) \) is a point in \( Q \). Then \( Q \) must pass through all points
+  \( (0,y), (1,y+1) \) and \( (1,y+2) \). Let $Q'$ be the portion of~$Q$ from
+  its starting point up to~$(0,y)$ and $Q''$ the portion from $(1,y+2)$ up to
+  $Q$'s end point. Then we update \( Q \) to \(\mathfrak{R}(Q')s_vs_vQ'' \)
+  and add the point \( (1,y+1) \) to the set \( M \). Repeating this process
+  eventually yields \( (Q,M)\in L\big(1^*,N;(i,0)\to (j,2n)\big) \). An
+  example is given in Figure~\ref{fig:F=L3}. 
+  Again, the map \( P \mapsto (Q,M)\) is a weight-preserving bijection between \( L\big(1-N,N;(i,0)\to
+  (j,2n)\big)\cup L\big(1-N,N;(1-i,0)\to (j,2n)\big) \) and \(
+  L\big(1^*,N;(i,0)\to (j,2n)\big) \),
+  and we obtain~\eqref{eq:F=L3}.
+
+    \begin{figure}
+
+\small{
+
+%1-------------------
+\begin{tikzpicture}[scale=0.5]
+
+\draw[->] (-1,0) -- (8,0);
+\draw[->] (3,-1) -- (3,15);
+\draw[dotted] (7,-1) -- (7,15);
+\draw[dotted] (4,-1) -- (4,15);
+\draw[dotted] (1,-1) -- (1,15);
+
+\foreach \i in {0,...,7}
+\foreach \j in {0,...,14}
+\filldraw[fill=gray, color=gray] (\i,\j) circle (2.5pt);
+
+\filldraw (4,0) circle (3.5pt);
+\filldraw (5,14) circle (3.5pt);
+
+\foreach \i/\j in {4/0,5/1,4/2,4/3,3/4,3/5,2/6,3/7,3/8,4/9,4/10,4/11,4/12,5/13,5/14}
+\filldraw (\i,\j) circle (2.5pt);
+
+\draw[thick] (4,0) --(5,1) -- (4,2) -- (4,3) -- (3,4) -- (3,5) -- (2,6) -- (3,7) -- (3,8) -- (4,9) -- (4,10) -- (4,11) -- (4,12) -- (5,13) -- (5,14);
+
+\node at (2.5,14) {\( 2n \)};
+\node at (1,-0.5) {\( 1-N \)};
+\node at (2.5,-0.5) {\( O \)};
+\node at (7,-0.5) {\( N+1 \)};
+\node at (5,14.5) {\( P \)};
+\node at (9,7) {\( \leftrightarrow \)};
+
+\end{tikzpicture}
+%2--------------------
+\begin{tikzpicture}[scale=0.5]
+
+\draw[->] (-1,0) -- (8,0);
+\draw[->] (3,-1) -- (3,15);
+\draw[dotted] (7,-1) -- (7,15);
+\draw[dotted] (4,-1) -- (4,15);
+\draw[dotted] (1,-1) -- (1,15);
+
+\foreach \i in {0,...,7}
+\foreach \j in {0,...,14}
+\filldraw[fill=gray, color=gray] (\i,\j) circle (2.5pt);
+
+\filldraw (3,0) circle (3.5pt);
+\filldraw (5,14) circle (3.5pt);
+
+\foreach \i/\j in {3/0,4/1,3/2,4/3,4/4,5/5,5/6,5/7,4/8,4/10,4/11,4/12,5/13,5/14}
+\filldraw (\i,\j) circle (2.5pt);
+
+\draw[thick] (3,0) --(4,1) -- (3,2) -- (4,3) -- (4,4) -- (5,5) -- (5,6) -- (5,7) -- (4,8) -- (4,10) -- (4,11) -- (4,12) -- (5,13) -- (5,14);
+
+\node at (4,9) {\( \circledast \)};
+
+\node at (2.5,14) {\( 2n \)};
+\node at (1,-0.5) {\( 1-N \)};
+\node at (2.5,-0.5) {\( O \)};
+\node at (7,-0.5) {\( N+1 \)};
+\node at (9,7) {\( \leftrightarrow \)};
+
+\end{tikzpicture}
+%3--------------------
+\begin{tikzpicture}[scale=0.5]
+
+\draw[->] (-1,0) -- (5,0);
+\draw[->] (0,-1) -- (0,15);
+\draw[dotted] (4,-1) -- (4,15);
+\draw[dotted] (1,-1) -- (1,15);
+
+\foreach \i in {0,...,4}
+\foreach \j in {0,...,14}
+\filldraw[fill=gray, color=gray] (\i,\j) circle (2.5pt);
+
+\filldraw (1,0) circle (3.5pt);
+\filldraw (2,14) circle (3.5pt);
+
+\foreach \i/\j in {1/0,2/1,1/2,1/4,2/5,2/6,2/7,1/8,1/10,1/11,1/12,2/13,2/14}
+\filldraw (\i,\j) circle (2.5pt);
+
+\draw[thick] (1,0) --(2,1) -- (1,2) -- (1,3) -- (1,4) -- (2,5) -- (2,6) -- (2,7) -- (1,8) -- (1,9) -- (1,10) -- (1,11) -- (1,12) -- (2,13) -- (2,14);
+
+\node at (1,9) {\( \circledast \)};
+\node at (1,3) {\( \circledast \)};
+
+\node at (-0.5,14) {\( 2n \)};
+\node at (-0.5,-0.5) {\( O \)};
+\node at (4,-0.5) {\( N+1 \)};
+\node at (2,14.5) {\( (Q,M) \)};
+
+\end{tikzpicture}
+
+}
+\caption{An example of a path \( P \in L\big(1-N,N;(i,0)\to(j,2n)\big)
+  \) and its corresponding \( 1 \)-marked path \( (Q,M)\in
+  L\big(1^*,N;(i,0)\to (j,2n)\big) \) with \( N=3, i=1, j=2\), and \(n=7 \). Each \( 1 \)-branch point
+   %H add
+  \( \in M \) 
+  is indicated by \( \circledast  \).}
+\label{fig:F=L3}
+\end{figure}
+
+  \medskip
+
+  For the last identity \eqref{eq:F=L4} we do not need a sign-reversing
+  involution. Instead, we construct \( (Q,M_1,M_2)\in
+  L\big(1^*,N^*;(i,0)\to (j,2n)\big)
+  \) directly from \( P\in L\big((\varepsilon (i-1/2)+1/2+k(2N),0)\to (j,2n)\big) \). To do
+  this, as before, we first set \( (Q,M_1,M_2)=(P,\emptyset,\emptyset) \). If \(
+  (Q,M_1,M_2)\in L\big(1^*,N^*;(i,0)\to (j,2n)\big) \), then we are done. Otherwise,
+  find the largest even \( y \) such that \( (0,y) \) or \( (N+1,y) \) is a
+  point in \( Q \). Then we modify \( Q \) by the same method as above and add
+  \( (1,y+1) \) to \( M_1 \) (respectively \( (N+1,y+1) \) to \( M_2 \)) if \( (0,y) \)
+  (respectively \( (N+1,y) \)) is a point of \( Q \). This proves~\eqref{eq:F=L4}.
+\end{proof}
+
+
+--- 13/20 (sim=0.586) barraquand_log-gamma_polymers/chunk_062.tex ---
+Summary: Describes the proof strategy for Theorem 2: parts (1) and (2) come from transferring the GUE/BBP asymptotics of Barraquand-Corwin-Dimitrov (for Z(n,m)) via Theorem 1 and a coupling argument; part (3) uses Seppäläinen's CLT for stationary log-gamma polymers.
+
+% Paper: barraquand_log-gamma_polymers
+% Section: Asymptotics results for trapezoidal log-gamma polymers
+
+[Summary: Describes the proof strategy for Theorem 2: parts (1) and (2) come from transferring the GUE/BBP asymptotics of Barraquand-Corwin-Dimitrov (for Z(n,m)) via Theorem 1 and a coupling argument; part (3) uses Seppäläinen's CLT for stationary log-gamma polymers.]
+
+In \cite{BCD}, the authors performed an asymptotic analysis of a Fredholm determinant formula from \cite{borodin2015height} for the Laplace transform of $Z(n,m)$, and obtained limiting distribution for the free energy $\log Z(n,m)$. We record the result of \cite{BCD} as Proposition \ref{asymptoticsGUE} below. It immediately yields part (2) of Theorem \ref{main2}. Using a coupling argument, we will deduce part (1) of Theorem \ref{main2} as well. 
+ We then  proceed to prove  the asymptotics in the Gaussian phase of Theorem \ref{main2}   with a probabilistic argument, relying on Sepp{\"a}l{\"a}inen's fluctuation estimates on partition functions for stationary log-gamma polymers   \cite{Seppa}.
+
+
+--- 14/20 (sim=0.586) huh_bounded_littlewood_cylindric/chunk_185.tex ---
+Summary: Figure illustrating a specific growth diagram path for the vacillating tableau bijection.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: The discovery of the bounded Littlewood identities for cylindric Schur functions
+[Summary: Figure illustrating a specific growth diagram path for the vacillating tableau bijection.]
+
+\begin{proof}[Proof of \eqref{eq:NC-NN}]
+We are going to describe a bijection between matchings $M_1$ and $M_2$
+that has the property that, if $M_1$ has a $p$-crossing and a
+$q$-nesting, then $M_2$ has a $q$-crossing and a $p$-nesting, for any
+positive integers or half-integers~$p$ and~$q$. It is easy to see that
+such a bijection implies the relation~\eqref{eq:NC-NN}.
+
+In brief, the bijection works by taking the matching~$M_1$, putting it
+in form of an arrangement of crosses into a triangular cell arrangement
+of the appropriate size as in the proof of~\eqref{eq:NN-VT-even}, then
+applying the forward growth diagram algorithm as in that proof,
+subsequently conjugating all partitions along the right-down diagonal
+and forgetting all other partition labels and the crosses that do not
+correspond to fixed points, and by 
+finally applying the inverse (backward) growth diagram algorithm
+(keeping the crosses that corresponded to fixed points). The crosses
+that one obtains define the image matching~$M_2$.
+Greene's theorem implies the asserted properties concerning crossings
+and nestings.
+
+\begin{figure}
+$$
+\Einheit.4cm
+\Pfad(0,0),111111111111111111111111111111\endPfad
+\Pfad(0,3),111111111111111111111111111\endPfad
+\Pfad(0,6),111111111111111111111111\endPfad
+\Pfad(0,9),111111111111111111111\endPfad
+\Pfad(0,12),111111111111111111\endPfad
+\Pfad(0,15),111111111111111\endPfad
+\Pfad(0,18),111111111111\endPfad
+\Pfad(0,21),111111111\endPfad
+\Pfad(0,24),111111\endPfad
+\Pfad(0,27),111\endPfad
+%\Pfad(0,30),111111111111111111111111111111\endPfad
+\Pfad(0,0),222222222222222222222222222222\endPfad
+\Pfad(3,0),222222222222222222222222222\endPfad
+\Pfad(6,0),222222222222222222222222\endPfad
+\Pfad(9,0),222222222222222222222\endPfad
+\Pfad(12,0),222222222222222222\endPfad
+\Pfad(15,0),222222222222222\endPfad
+\Pfad(18,0),222222222222\endPfad
+\Pfad(21,0),222222222\endPfad
+\Pfad(24,0),222222\endPfad
+\Pfad(27,0),222\endPfad
+%\Pfad(30,0),222222222222222222222222222222\endPfad
+\SPfad(21,9),222555\endSPfad
+\SPfad(15,15),222555\endSPfad
+\PfadDicke{2pt}
+%
+\Label\ro{\text {\Huge X}}(1,1)
+\Label\ro{\text {\Huge X}}(4,13)
+\Label\ro{\text {\Huge X}}(7,7)
+\Label\ro{\text {\Huge X}}(10,4)
+\Label\ro{\text {\Huge X}}(13,16)
+\Label\ro{\text {\Huge X}}(19,10)
+%
+\Label\u{\small\emptyset}(0,0)
+\Label\u{\small\emptyset}(3,0)
+\Label\u{\small\emptyset}(6,0)
+\Label\u{\small\emptyset}(9,0)
+\Label\u{\small\emptyset}(12,0)
+\Label\u{\small\emptyset}(15,0)
+\Label\u{\small\emptyset}(18,0)
+\Label\u{\small\emptyset}(21,0)
+\Label\u{\small\emptyset}(24,0)
+\Label\u{\small\emptyset}(27,0)
+\Label\ru{\small\emptyset}(30,0)
+%
+%
+\Label\ro{\small1}(27,3)
+\Label\lo{\small1}(24,3)
+\Label\lo{\small1}(21,3)
+\Label\lo{\small1}(18,3)
+\Label\lo{\small1}(15,3)
+\Label\lo{\small1}(12,3)
+\Label\lo{\small1}(9,3)
+\Label\lo{\small1}(6,3)
+\Label\lo{\small1}(3,3)
+\Label\lo{\small\emptyset}(0,3)
+%
+\Label\ro{\small2}(24,6)
+\Label\lo{\small2}(21,6)
+\Label\lo{\small2}(18,6)
+\Label\lo{\small2}(15,6)
+\Label\lo{\small2}(12,6)
+\Label\lo{\small1}(9,6)
+\Label\lo{\small1}(6,6)
+\Label\lo{\small1}(3,6)
+\Label\lo{\small\emptyset}(0,6)
+%
+\Label\ro{\ \small21}(21,9)
+\Label\lo{\small21\ }(18,9)
+\Label\lo{\small21\ }(15,9)
+\Label\lo{\small21\ }(12,9)
+\Label\lo{\small2}(9,9)
+\Label\lo{\small1}(6,9)
+\Label\lo{\small1}(3,9)
+\Label\lo{\small\emptyset}(0,9)
+%
+\Label\ro{\small21\ }(18,12)
+\Label\lo{\small21\ }(15,12)
+\Label\lo{\small21\ }(12,12)
+\Label\lo{\small2}(9,12)
+\Label\lo{\small1}(6,12)
+\Label\lo{\small1}(3,12)
+\Label\lo{\small\emptyset}(0,12)
+%
+\Label\ro{\ \ \ \small211}(15,15)
+\Label\lo{\small211\ \ }(12,15)
+\Label\lo{\small21\ }(9,15)
+\Label\lo{\small2}(6,15)
+\Label\lo{\small1}(3,15)
+\Label\lo{\small\emptyset}(0,15)
+%
+\Label\ro{\small211\ \ }(12,18)
+\Label\lo{\small21\ }(9,18)
+\Label\lo{\small2}(6,18)
+\Label\lo{\small1}(3,18)
+\Label\lo{\small\emptyset}(0,18)
+%
+\Label\ro{\small21\ \ }(9,21)
+\Label\lo{\small2}(6,21)
+\Label\lo{\small1}(3,21)
+\Label\lo{\small\emptyset}(0,21)
+%
+\Label\ro{\small2}(6,24)
+\Label\lo{\small1}(3,24)
+\Label\lo{\small\emptyset}(0,24)
+%
+\Label\ro{\small1}(3,27)
+\Label\lo{\small\emptyset}(0,27)
+%
+\Label\lo{\small\emptyset}(0,30)
+%
+\hskip12.3cm
+$$
+\caption{Example for the bijection between $\operatorname{NCNN}_{10}(r,s)$ and
+  $\operatorname{NCNN}_{10}(s,r)$ --- forward algorithm.}
+\label{fig:5}
+\end{figure}
+
+We illustrate this construction by considering the matching
+$$
+\Big\{
+(1,10),\ (2,6),\ (3,8),\ (4,9)
+\Big\}
+$$
+with fixed points 5 and 7. It has a 3-crossing --- namely
+$\big\{(2,6),\ (3,8),\ (4,9)\big\}$ ---, a $(3+1/2)$-crossing together
+with the fixed point~5, several 2-nestings --- namely e.g.\ 
+$\big\{(1,10),\ (3,8)\big\}$ ---, and a $(2+1/2)$-nesting together
+with the fixed point~7. The corresponding arrangement of crosses
+together with the forward growth diagram construction is shown in
+Figure~\ref{fig:5}. 
+
+
+\begin{figure}
+$$
+\Einheit.4cm
+\Pfad(0,0),111111111111111111111111111111\endPfad
+\Pfad(0,3),111111111111111111111111111\endPfad
+\Pfad(0,6),111111111111111111111111\endPfad
+\Pfad(0,9),111111111111111111111\endPfad
+\Pfad(0,12),111111111111111111\endPfad
+\Pfad(0,15),111111111111111\endPfad
+\Pfad(0,18),111111111111\endPfad
+\Pfad(0,21),111111111\endPfad
+\Pfad(0,24),111111\endPfad
+\Pfad(0,27),111\endPfad
+%\Pfad(0,30),111111111111111111111111111111\endPfad
+\Pfad(0,0),222222222222222222222222222222\endPfad
+\Pfad(3,0),222222222222222222222222222\endPfad
+\Pfad(6,0),222222222222222222222222\endPfad
+\Pfad(9,0),222222222222222222222\endPfad
+\Pfad(12,0),222222222222222222\endPfad
+\Pfad(15,0),222222222222222\endPfad
+\Pfad(18,0),222222222222\endPfad
+\Pfad(21,0),222222222\endPfad
+\Pfad(24,0),222222\endPfad
+\Pfad(27,0),222\endPfad
+%\Pfad(30,0),222222222222222222222222222222\endPfad
+%
+\SPfad(21,9),222555\endSPfad
+\SPfad(15,15),222555\endSPfad
+\PfadDicke{2pt}
+%
+\Label\ro{\text {\Huge X}}(1,4)
+\Label\ro{\text {\Huge X}}(4,1)
+\Label\ro{\text {\Huge X}}(7,7)
+\Label\ro{\text {\Huge X}}(10,13)
+\Label\ro{\text {\Huge X}}(13,16)
+\Label\ro{\text {\Huge X}}(19,10)
+%
+\Label\u{\small\emptyset}(0,0)
+\Label\u{\small\emptyset}(3,0)
+\Label\u{\small\emptyset}(6,0)
+\Label\u{\small\emptyset}(9,0)
+\Label\u{\small\emptyset}(12,0)
+\Label\u{\small\emptyset}(15,0)
+\Label\u{\small\emptyset}(18,0)
+\Label\u{\small\emptyset}(21,0)
+\Label\u{\small\emptyset}(24,0)
+\Label\u{\small\emptyset}(27,0)
+\Label\ru{\small\emptyset}(30,0)
+%
+%
+\Label\ro{\small1}(27,3)
+\Label\lo{\small1}(24,3)
+\Label\lo{\small1}(21,3)
+\Label\lo{\small1}(18,3)
+\Label\lo{\small1}(15,3)
+\Label\lo{\small1}(12,3)
+\Label\lo{\small1}(9,3)
+\Label\lo{\small1}(6,3)
+\Label\lo{\small\emptyset}(3,3)
+\Label\lo{\small\emptyset}(0,3)
+%
+\Label\ro{\small11\ }(24,6)
+\Label\lo{\small11\ }(21,6)
+\Label\lo{\small11\ }(18,6)
+\Label\lo{\small11\ }(15,6)
+\Label\lo{\small11\ }(12,6)
+\Label\lo{\small11\ }(9,6)
+\Label\lo{\small11\ }(6,6)
+\Label\lo{\small1}(3,6)
+\Label\lo{\small\emptyset}(0,6)
+%
+\Label\ro{\ \small21}(21,9)
+\Label\lo{\small21\ }(18,9)
+\Label\lo{\small21\ }(15,9)
+\Label\lo{\small21\ }(12,9)
+\Label\lo{\small21\ }(9,9)
+\Label\lo{\small11\ }(6,9)
+\Label\lo{\small1}(3,9)
+\Label\lo{\small\emptyset}(0,9)
+%
+\Label\ro{\small21\ }(18,12)
+\Label\lo{\small21\ }(15,12)
+\Label\lo{\small21\ }(12,12)
+\Label\lo{\small21\ }(9,12)
+\Label\lo{\small11\ }(6,12)
+\Label\lo{\small1}(3,12)
+\Label\lo{\small\emptyset}(0,12)
+%
+\Label\ro{\ \small31}(15,15)
+\Label\lo{\small31\ }(12,15)
+\Label\lo{\small21\ }(9,15)
+\Label\lo{\small11\ }(6,15)
+\Label\lo{\small1}(3,15)
+\Label\lo{\small\emptyset}(0,15)
+%
+\Label\ro{\small31\ \ }(12,18)
+\Label\lo{\small21\ }(9,18)
+\Label\lo{\small11\ }(6,18)
+\Label\lo{\small1}(3,18)
+\Label\lo{\small\emptyset}(0,18)
+%
+\Label\ro{\small21\ \ }(9,21)
+\Label\lo{\small11\ }(6,21)
+\Label\lo{\small1}(3,21)
+\Label\lo{\small\emptyset}(0,21)
+%
+\Label\ro{\small11\ }(6,24)
+\Label\lo{\small1}(3,24)
+\Label\lo{\small\emptyset}(0,24)
+%
+\Label\ro{\small1}(3,27)
+\Label\lo{\small\emptyset}(0,27)
+%
+\Label\lo{\small\emptyset}(0,30)
+%
+\hskip12.3cm
+$$
+\caption{Example for the bijection between $\operatorname{NCNN}_{10}(r,s)$ and
+  $\operatorname{NCNN}_{10}(s,r)$ --- backward algorithm.}
+\label{fig:5b}
+\end{figure}
+
+Figure~\ref{fig:5b} shows the growth diagram that results from
+conjugating the partitions along the right-down diagonal and
+subsequently applying the inverse growth diagram algorithm.
+The resulting arrangement of crosses corresponds to the matching
+$$
+\Big\{
+(1,9),\ (2,10),\ (3,8),\ (4,6)
+\Big\}
+$$
+with the (same) fixed points 5 and 7.
+Indeed, this matching has a 3-nesting --- namely
+$\big\{(2,10),\ (3,8),\ (4,6)\big\}$ ---, a $(3+1/2)$-nesting together
+with the fixed point~5, a 2-crossing --- namely 
+$\big\{(1,9),\ (2,10)\big\}$ ---, and a $(2+1/2)$-crossing together
+with the fixed point~7.
+
+This completes the proof.
+\end{proof}
+
+
+--- 15/20 (sim=0.585) bisi_zygouras_classical_groups_lpp/chunk_122.tex ---
+Summary: Applies RSK to reformulate the point-to-line weight distribution in terms of the RSK output tableau T; atypical entry count and diagonal sums are preserved.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: Applies RSK to reformulate the point-to-line weight distribution in terms of the RSK output tableau T; atypical entry count and diagonal sums are preserved.]
+
+To prove the latter, we first rewrite the joint distribution of $W$ under~\eqref{eq:antisymWeightsPointToLine}:
+\begin{align*}
+\mathbb{P}(W=w)
+&= \prod_{i+j< N+1} (1- p_{N-i+1} p_j) (p_{N-i+1} p_j)^{w_{i,j}}
+\prod_{i+j=N+1} \frac{1-p_j^2}{1 + \beta p_j} \beta^{\1_{\frac{1}{2}+\mathbb{Z}}(w_{i,j})} p_j^{2w_{i,j}} \\
+&= \frac{1}{c^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_{\beta}}
+\beta^{\#\{j\colon w_{N-j+1,j} \in \frac{1}{2}+\mathbb{Z}\}}
+\prod_{i=1}^N
+p_i^{\sum_{j=1}^i w_{N-i+1,j}}
+\prod_{j=1}^N p_j^{\sum_{i=1}^{N-j+1} w_{i,j}}
+\end{align*}
+for any triangular tableau $w=\{w_{i,j}\colon i+j\leq N+1\}$ such that $w_{i,j}\in\mathbb{Z}_{\geq 0}$ for $i+j< N+1$ and $w_{i,j}\in\frac{1}{2}\mathbb{Z}_{\geq 0}$ for $i+j= N+1$.
+Taking ${\ensuremath{\mathcal A}} =\mathbb{Z}_{\geq 0}$ and ${\ensuremath{\mathcal B}} =\frac{1}{2}\mathbb{Z}_{\geq 0}$ in Proposition~\ref{prop:RSK}, we can consider $\mathsf{RSK}$ as a bijection $w\mapsto t$ between Young tableaux of shape $(N,N-1,\dots,1)$ with inner entries in $\mathbb{Z}_{\geq 0}$ and outer entries in $\frac{1}{2}\mathbb{Z}_{\geq 0}$, such that the output tableau satisfies ordering~\eqref{eq:RSKordering}.
+By property~\ref{prop:RSK_LPP} of the proposition, each entry $t_{i,j}$ of the $\mathsf{RSK}$ output tableau such that $i+j=N+1$ is the point-to-point last passage time on $w$ from $(1,1)$ to $(i,j)$.
+On the other hand, all inner $w_{i,j}$'s are integers, whereas the outer ones might also be half-integers; therefore, for each $(i,j)$ with $i+j=N+1$, $t_{i,j}$ is either integer, if $w_{i,j}$ is integer, or half-integer, if $w_{i,j}$ is half-integer.
+This, in particular, implies that
+\[
+\#\left\{j\colon w_{N-j+1,j} \in \frac{1}{2}+\mathbb{Z}\right\}
+= \#\left\{j\colon t_{N-j+1,j} \in \frac{1}{2}+\mathbb{Z}\right\}
+\]
+under the bijection $w\mapsto t$.
+Using the latter identity and property~\ref{prop:RSK_type} of Proposition~\ref{prop:RSK}, we can write the distribution that $W$ induces on its $\mathsf{RSK}$ image $T$ as
+\[
+\mathbb{P}(T = t)
+= \frac{1}{c^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_{\beta}}
+\beta^{\#\{j\colon t_{2n-j+1,j} \in \frac{1}{2}+\mathbb{Z}\}}
+\prod_{i=1}^N
+p_i^{\sigma_{-N+2i-1}(t)-\sigma_{-N+2i}(t)} \prod_{j=1}^N
+p_j^{\sigma_{-N+2j-1}(t) - \sigma_{-N+2j-2}(t)}
+\]
+for all tableaux $t=\{t_{i,j}\colon i+j\leq N+1\}$ satisfying~\eqref{eq:RSKordering} and such that $t_{i,j}\in\mathbb{Z}_{\geq 0}$ for $i+j< N+1$ and $t_{i,j}\in\frac{1}{2}\mathbb{Z}_{\geq 0}$ for $i+j= N+1$.
+
+
+--- 16/20 (sim=0.584) phd/chunk_008.tex ---
+Summary: Illustrates the tableau pair representation of a plane partition and recalls the RSK correspondence and Cauchy identity as the algebraic backdrop for the bijection.
+
+% Paper: phd
+% Section: Introduction > Cylindric Plane Partitions > Bijective proof of Borodin's identity
+[Summary: Illustrates the tableau pair representation of a plane partition and recalls the RSK correspondence and Cauchy identity as the algebraic backdrop for the bijection.]
+
+A regular plane partition may also be thought of as a pair of \emph{semi-standard Young tableaux} of the same shape. In the case of our example, the two tableaux are:
+\[\tableau{\missingcell & \missingcell & \missingcell & 4  \\ \missingcell & \missingcell & 4 & 2 \\ 4& 3 & 1 & 1} \qquad
+\tableau{\missingcell & \missingcell & \missingcell & 4  \\ \missingcell & \missingcell & 4 & 3 \\ 4& 3 & 3 & 1}
+\] 
+We are using neither the French nor the English notation for Young diagrams.
+The first tableau in the pair corresponds to the first half of the sequence read off the $NW \to SE$ diagonals, from right to left:
+\[ \emptyset \rightharpoonup (2) \rightharpoonup (2,1) \rightharpoonup (3,1) \rightharpoonup (4,2,1)\]
+while the second tableau in the pair corresponds to the second half of the sequence read off the $NW \to SE$ diagonals, from right to left:
+\[\emptyset \rightharpoonup (1) \rightharpoonup (1) \rightharpoonup (3,1) \rightharpoonup (4,2,1)) \]
+
+The \emph{RSK} correspondence gives a bijection between pairs of standard Young tableau of the same shape, and integer matrices with non-negative integers. This is essentially the \emph{Cauchy identity} for symmetric functions:
+\[ \prod_{i,j \geq 1} \frac{1}{1-x_i,y_j} = \sum_\lambda S_\lambda(X) S_\lambda(Y) \]
+
+
+--- 17/20 (sim=0.583) corteel_savelief_vuletic/chunk_019.tex ---
+Summary: Describes the proof strategy for Theorem 1 via nonintersecting paths (and a bijection with super semistandard tableaux), then introduces the bounded version of plane overpartitions.
+
+% Paper: corteel_savelief_vuletic
+% Section: Introduction
+
+[Summary: Describes the proof strategy for Theorem 1 via nonintersecting paths (and a bijection with super semistandard tableaux), then introduces the bounded version of plane overpartitions.]
+
+We prove this theorem using 
+ using a correspondence between plane overpartitions and sets of nonintersecting paths that use three kinds of steps.
+(The work of Brenti used similar paths to compute super Schur functions \cite{Br}.) Another way to prove
+this result  is to show that  plane overpartitions of shape $\lambda$ are
+in bijection with super semistandard
+tableaux of shape $\lambda$. This is presented in a remark in Section \ref{nonint}.
+
+%{\bf*****-maybe we could add something here-see the end of page 3-beginning of page 4 of the review}
+
+We also give the weighted generating function formula for plane overpartitions
+``bounded'' by $\lambda$, where by that we mean
+plane overpartitions such that the $i^{th}$ row of the plane
+overpartition is an overpartition that has at most $\lambda_{i}$
+parts and at least $\lambda_{i+1}$ parts. Let $\mathcal{B}(\lambda)$ be the set of all such plane overpartitions.
+
+
+--- 18/20 (sim=0.580) huh_bounded_littlewood_cylindric/chunk_183.tex ---
+Summary: Figure illustrating the SYT-to-vacillating-tableau bijection via growth diagrams.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: The discovery of the bounded Littlewood identities for cylindric Schur functions
+[Summary: Figure illustrating the SYT-to-vacillating-tableau bijection via growth diagrams.]
+
+\begin{proof}[Proof of \eqref{eq:NN-VT-even}]
+Let $M\in\operatorname{NN}(h+1/2)$.
+We proceed as in the proof of~\eqref{eq:NN-VT-odd}, with one
+exception: here, when we put our matching~$M$ in the form of crosses
+into the triangular cell arrangement, we keep the crosses
+corresponding to fixed points of~$M$ along the right-down diagonal.
+As running example we choose the matching in~\eqref{eq:match2}. It is
+a matching in $\operatorname{NN}_{10}(2+1/2)$. The corresponding arrangement of
+crosses is shown in Figure~\ref{fig:4}. For better recognition, the fixed
+points are placed into dotted cells.
+
+\begin{figure}
+$$
+\Einheit.4cm
+\Pfad(0,0),111111111111111111111111111111\endPfad
+\Pfad(0,3),111111111111111111111111111\endPfad
+\Pfad(0,6),111111111111111111111111\endPfad
+\Pfad(0,9),111111111111111111111\endPfad
+\Pfad(0,12),111111111111111111\endPfad
+\Pfad(0,15),111111111111111\endPfad
+\Pfad(0,18),111111111111\endPfad
+\Pfad(0,21),111111111\endPfad
+\Pfad(0,24),111111\endPfad
+\Pfad(0,27),111\endPfad
+%\Pfad(0,30),111111111111111111111111111111\endPfad
+\Pfad(0,0),222222222222222222222222222222\endPfad
+\Pfad(3,0),222222222222222222222222222\endPfad
+\Pfad(6,0),222222222222222222222222\endPfad
+\Pfad(9,0),222222222222222222222\endPfad
+\Pfad(12,0),222222222222222222\endPfad
+\Pfad(15,0),222222222222222\endPfad
+\Pfad(18,0),222222222222\endPfad
+\Pfad(21,0),222222222\endPfad
+\Pfad(24,0),222222\endPfad
+\Pfad(27,0),222\endPfad
+%\Pfad(30,0),222222222222222222222222222222\endPfad
+%
+\SPfad(30,0),222555\endSPfad
+\SPfad(18,12),222555\endSPfad
+\PfadDicke{2pt}
+%
+%\Label\ro{\text {\Huge X}}(13,28)
+%\Label\ro{\text {\Huge X}}(10,25)
+%\Label\ro{\text {\Huge X}}(25,22)
+\Label\ro{\text {\Huge X}}(4,19)
+\Label\ro{\text {\Huge X}}(1,16)
+\Label\ro{\text {\Huge X}}(16,13)
+%\Label\ro{\text {\Huge X}}(22,10)
+\Label\ro{\text {\Huge X}}(19,7)
+\Label\ro{\text {\Huge X}}(7,4)
+\Label\ro{\text {\Huge X}}(28,1)
+%
+\Label\u{\small\emptyset}(0,0)
+\Label\u{\small\emptyset}(3,0)
+\Label\u{\small\emptyset}(6,0)
+\Label\u{\small\emptyset}(9,0)
+\Label\u{\small\emptyset}(12,0)
+\Label\u{\small\emptyset}(15,0)
+\Label\u{\small\emptyset}(18,0)
+\Label\u{\small\emptyset}(21,0)
+\Label\u{\small\emptyset}(24,0)
+\Label\u{\small\emptyset}(27,0)
+\Label\ru{\small\emptyset}(30,0)
+%
+%
+%\Label\ro{\small1}(30,3)
+\Label\ro{\small\emptyset}(27,3)
+\Label\lo{\small\emptyset}(24,3)
+\Label\lo{\small\emptyset}(21,3)
+\Label\lo{\small\emptyset}(18,3)
+\Label\lo{\small\emptyset}(15,3)
+\Label\lo{\small\emptyset}(12,3)
+\Label\lo{\small\emptyset}(9,3)
+\Label\lo{\small\emptyset}(6,3)
+\Label\lo{\small\emptyset}(3,3)
+\Label\lo{\small\emptyset}(0,3)
+%
+\Label\ro{\small1}(24,6)
+\Label\lo{\small1}(21,6)
+\Label\lo{\small1}(18,6)
+\Label\lo{\small1}(15,6)
+\Label\lo{\small1}(12,6)
+\Label\lo{\small1}(9,6)
+\Label\lo{\small\emptyset}(6,6)
+\Label\lo{\small\emptyset}(3,6)
+\Label\lo{\small\emptyset}(0,6)
+%
+\Label\ro{\small2}(21,9)
+\Label\lo{\small1}(18,9)
+\Label\lo{\small1}(15,9)
+\Label\lo{\small1}(12,9)
+\Label\lo{\small1}(9,9)
+\Label\lo{\small\emptyset}(6,9)
+\Label\lo{\small\emptyset}(3,9)
+\Label\lo{\small\emptyset}(0,9)
+%
+\Label\ro{\small1}(18,12)
+\Label\lo{\small1}(15,12)
+\Label\lo{\small1}(12,12)
+\Label\lo{\small1}(9,12)
+\Label\lo{\small\emptyset}(6,12)
+\Label\lo{\small\emptyset}(3,12)
+\Label\lo{\small\emptyset}(0,12)
+%
+%\Label\ro{\small2}(18,15)
+\Label\ro{\small1}(15,15)
+\Label\lo{\small1}(12,15)
+\Label\lo{\small1}(9,15)
+\Label\lo{\small\emptyset}(6,15)
+\Label\lo{\small\emptyset}(3,15)
+\Label\lo{\small\emptyset}(0,15)
+%
+\Label\ro{\small11}(12,18)
+\Label\lo{\small11\ }(9,18)
+\Label\lo{\small1}(6,18)
+\Label\lo{\small1}(3,18)
+\Label\lo{\small\emptyset}(0,18)
+%
+\Label\ro{\small21\ \ }(9,21)
+\Label\lo{\small2}(6,21)
+\Label\lo{\small1}(3,21)
+\Label\lo{\small\emptyset}(0,21)
+%
+\Label\ro{\small2}(6,24)
+\Label\lo{\small1}(3,24)
+\Label\lo{\small\emptyset}(0,24)
+%
+\Label\ro{\small1}(3,27)
+\Label\lo{\small\emptyset}(0,27)
+%
+\Label\lo{\small\emptyset}(0,30)
+%
+\hskip12.3cm
+$$
+\caption{Example for the bijection between $\operatorname{NN}_{10}(2+1/2)$ and $\operatorname{VT}_{10}(2^*)$.}
+\label{fig:4}
+\end{figure}
+
+The condition of $M$ not having an $(h+1)$-nesting and not having an
+$(h+1/2)$-nesting translates into the
+condition that all NE-chains of crosses in the configuration
+have length at most~$h$, may they contain a cross
+on the right-down diagonal (that is, a fixed point) or not.
+
+Now, as in the proof of \eqref{eq:NN-VT-odd}, we place empty diagrams
+along the bottom side and along the left 
+side of the triangular cell arrangement. Subsequently we apply the (forward) growth
+diagram algorithm in direction top/right; see Figure~\ref{fig:4}.
+Again, we read every second
+diagram along the right-down diagonal, say
+$(\lambda^0,\lambda^2,\dots,\lambda^{2n})$.
+In our running example in Figure~\ref{fig:4}, we read
+$$
+\Big(
+\emptyset,\ 1,\ 2,\ 21,\ 11,\ 1,\ 1,\ 2,\ 1,\ \emptyset,\ \emptyset
+\Big).
+$$
+
+Since the
+longest NE-chain of crosses is bounded above by~$h$,
+Greene's theorem implies that the first rows of the
+diagrams~$\lambda^{2i}$ are bounded above by~$h$.
+Moreover, we have $\lambda^{2i}=\lambda^{2i+2}$ for some~$i$ if and only if
+at this place we find a cross corresponding to a fixed point of the
+matching~$M$. Consequently, again by Greene's theorem, in this case
+the length of the first row of $\lambda^{2i}=\lambda^{2i+2}$ is in fact at
+most~$h-1$. 
+
+As before, the final step consists in conjugating all partitions of
+the sequence $(\lambda^0,\lambda^2,\dots,\lambda^{2n})$.
+By the above observations it should be obvious that in this manner we
+obtain an element of $\operatorname{VT}_n(h^*)$. In our example, we obtain
+$$
+\Big(
+\emptyset,\ 1,\ 11,\ 21,\ 2,\ 1,\ 1,\ 11,\ 1,\ \emptyset,\ \emptyset
+\Big),
+$$
+which is indeed an element of $\operatorname{VT}_{10}(2+1/2)$.
+This finishes the  proof.
+\end{proof}
+
+
+--- 19/20 (sim=0.580) phd/chunk_097.tex ---
+Summary: Introduces RSK and Burge correspondences as bijections between non-negative integer matrices and semi-standard tableau pairs, extending Robinson to the semi-standard setting.
+
+% Paper: phd
+% Section: Cylindric Plane Partitions > Correspondences > RSK and Burge correspondences
+[Summary: Introduces RSK and Burge correspondences as bijections between non-negative integer matrices and semi-standard tableau pairs, extending Robinson to the semi-standard setting.]
+
+The RSK correspondence and the Burge correspondence both give a bijection between non-negative integer matrices and pairs of semi-standard Young tableaux of the same shape.
+
+
+--- 20/20 (sim=0.579) betea_wheeler_cauchy_littlewood_asm/chunk_021.tex ---
+Summary: Gives the SSYT tableau formula for Hall–Littlewood polynomials P_λ(x;t), incorporating the ψ_{λ/μ}(t) weight that records how multiplicities change between consecutive partitions in the interlacing chain.
+
+% Paper: betea_wheeler_cauchy_littlewood_asm
+% Section: Refined Cauchy identities and alternating sign matrices > Tableau rule for Hall--Littlewood polynomials
+
+[Summary: Gives the SSYT tableau formula for Hall–Littlewood polynomials P_λ(x;t), incorporating the ψ_{λ/μ}(t) weight that records how multiplicities change between consecutive partitions in the interlacing chain.]
+
+Remarkably, Hall--Littlewood polynomials can also be expressed as a sum over SSYT \cite{mac}:
+%
+\begin{align}
+\label{hl-tab}
+P_{\lambda}(x_1,\dots,x_n;t)
+=
+\sum_{T}
+\prod_{k=1}^{n}
+\left(
+x_k^{\#(k)}
+\psi_{\lambda^{(k)} / \lambda^{(k-1)}}(t)
+\right)
+\end{align}
+%
+where the function $\psi_{\lambda/\mu}(t)$ is given by
+%
+\begin{align*}
+\psi_{\lambda / \mu}(t)
+=
+\prod_{\substack{i \geqslant 1 \\ m_i(\mu) = m_i(\lambda)+1}}
+\left(1-  t^{m_i(\mu)} \right)
+\end{align*}
+%
+with the product taken over all $i\geqslant 1$, such that the multiplicity of the part $i$ in the partition $\mu$ is one greater than the multiplicity of that part in $\lambda$.
+
+

@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Off}{\mathrm{Off}}
+\newcommand{\Offe}{\widetilde{\Off}}
+\newcommand{\eps}{\varepsilon}
+\title{Bounded Tingley Factorization (Y2), Steps 1--2:\\
+well-defined bounded crystal operators and source combinatorics}
+\author{Seed 4, Round 2 Layer 4 (Warnaar loop experiment)}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that the mod-$d$ colored bracket (Tingley-style) crystal operators on
+\emph{bounded} chains of profile $c$ are well defined ($e_\kappa f_\kappa =
+f_\kappa e_\kappa = \mathrm{id}$ where defined), uniformly for all $d\ge 2$,
+without invoking Tingley's $n\ge 3$ hypothesis or his post-publication erratum
+(Step~1: \textbf{proved}). We then classify a family of sources: the
+\emph{window chains} $(v_{k_1},\dots,v_{k_{m-1}},0)$, $k_1\ge\dots\ge
+k_{m-1}\ge 0$, are sources, and they are counted by partitions into parts
+$\{d,2d,\dots,(m-1)d\}$, exactly the source combinatorics required by (Y2)
+(Step~2a-i: \textbf{proved}). Completeness of this list (2a-ii) and uniqueness
+of the source per connected component (2b) are stated as precise gaps with
+exhaustive computational verification and partial structural results
+(a shield-acyclicity lemma; nonadjacent-color commutation as a theorem).
+\end{abstract}
+
+\section{Setup}
+
+Fix $c=(c_0,c_1,c_2)\in\mathbb{Z}_{\ge0}^3$, $d=c_0+c_1+c_2\ge 2$, $m\ge 1$.
+Let
+\[
+S \;=\; \{a\in\mathbb{Z}_{\ge0}^3 \,:\, a_i \le a_{i-1}+c_i \ (i\in\mathbb{Z}/3)\},
+\]
+and let $X_m$ be the set of chains $A=(a^{(1)}\ge\dots\ge a^{(m)})$ with all
+$a^{(s)}\in S$ (componentwise order; the bottom may be $0$). $X_m$ is in
+weight-preserving bijection with cylindric partitions of profile $c$ with
+largest part $\le m$; $\mathrm{wt}(A)=\sum_s |a^{(s)}|$.
+
+\textbf{Boxes, colors, order.} A box $(i,j,s)$ ($i\in\{0,1,2\}$, $j\ge1$,
+$1\le s\le m$) is \emph{present} in $A$ iff $a^{(s)}_i\ge j$. Set
+$\Off=(0,c_1,c_1+c_2)$ and extend cyclically:
+$\Offe(x+3)=\Offe(x)+d$, $\Offe(0,1,2)=(0,c_1,c_1+c_2)$. Define
+\[
+\mathrm{color}(i,j,s) = (s-j+\Off_i)\bmod d,
+\qquad
+T(i,j,s) = d\,i + 3\,(j-\Off_i-s)\in\mathbb{Z}.
+\]
+
+\textbf{Bracket word and operators.} A box $(i,j,s)$ with $j=a^{(s)}_i+1$ is
+\emph{column-addable} iff $s=1$ or $a^{(s-1)}_i\ge j$; a box with $j=a^{(s)}_i$
+is \emph{column-removable} iff $a^{(s)}_i > a^{(s+1)}_i$ (with
+$a^{(m+1)}:=0$). \emph{No cross-column $S$-condition enters the word.} For a
+color $\kappa$, the word $W_\kappa(A)$ lists column-addable boxes of color
+$\kappa$ as ``('' and column-removable ones as ``)'', sorted by $T$
+increasing. Cancel ``()'' pairs stack-wise; $f_\kappa$ adds the box of the
+leftmost surviving ``(''; $e_\kappa$ removes the box of the rightmost
+surviving ``)''; $\varphi_\kappa,\eps_\kappa$ count surviving ``('', ``)''.
+
+\section{Step 1: the operators are well defined (all $d\ge2$)}
+
+\begin{lemma}[No ties]\label{lem:ties}
+Two distinct boxes of the same color have distinct $T$.
+\end{lemma}
+\begin{proof}
+Suppose $(i,j,s)\ne(i',j',s')$ have equal color and equal $T$, both being
+column-addable or column-removable corners. Let
+$\alpha=(j-\Off_i-s)-(j'-\Off_{i'}-s')$. Equal $T$ gives $d(i-i')=-3\alpha$;
+equal color gives $d\mid\alpha$. Writing $\alpha=dt$ yields $i-i'=-3t$, and
+$|i-i'|\le2$ forces $t=0$, hence $i=i'$ and $j-s=j'-s'$: two corners of the
+same column on the same diagonal. This is impossible: for two addables at
+levels $s<s'$, $j-s=j'-s'$ gives $a^{(s)}_i-a^{(s')}_i=s-s'<0$, contradicting
+monotonicity; similarly for two removables; and an addable at level $s$ and a
+removable at level $s'$ on one diagonal force $a^{(s')}_i-a^{(s)}_i=s'-s+1$,
+which by monotonicity requires $s'=s-1$ and $a^{(s-1)}_i=a^{(s)}_i$,
+contradicting addability at level $s\ge2$ (and $s'=0$ is not a level).
+Machine-checked as C0 (\texttt{seed4\_R2L4\_step1.py}): no same-color
+$T$-ties over $26371$ chains, $d\in\{2,\dots,9\}$.
+\end{proof}
+
+\begin{lemma}[Locality]\label{lem:local}
+Adding or removing one box $(i,j,s)$ changes the letter multiset of
+$W_\kappa$ only at the box itself (color $\kappa_0=\mathrm{color}(i,j,s)$) and
+possibly at the four neighboring corner boxes $(i,j\pm1,s)$, $(i,j,s\mp1)$,
+whose colors are $\kappa_0\pm1 \bmod d$. In particular, for $d\ge2$ and any
+$\kappa\notin\{\kappa_0-1,\kappa_0,\kappa_0+1\}$, $W_\kappa$ is unchanged, and
+for $\kappa=\kappa_0$ the only change is the flip of the letter at
+$T(i,j,s)$.
+\end{lemma}
+\begin{proof}
+Column-addability/removability of a box $(i',j',s')$ depends only on the three
+column values $a^{(s'-1)}_{i'},a^{(s')}_{i'},a^{(s'+1)}_{i'}$. Changing
+$a^{(s)}_i$ by $\pm1$ affects only boxes with $i'=i$ and $s'\in\{s-1,s,s+1\}$,
+and there only corners at $j'\in\{j-1,j,j+1\}$ can change status. Their colors
+differ from $\kappa_0$ by $(s'-s)-(j'-j)\in\{0,\pm1\}$, and the value $0$
+occurs only for the box itself or the diagonal neighbors $(i,j\pm1,s\pm1)$,
+whose addability/removability status is unaffected by the change at $(i,j,s)$
+(their defining column triples do change only in coordinates that do not
+affect their corner status; direct check of the finitely many cases).
+Machine-checked as CL (same script): $146784$ operations, zero exceptions.
+\end{proof}
+
+\begin{lemma}[Validity witness]\label{lem:witness}
+Let $(i,j,s)$ be column-addable in $A\in X_m$ but suppose $A+(i,j,s)\notin
+X_m$ (the $S$-condition $a_i\le a_{i-1}+c_i$ fails at level $s$). Then
+$(i-1,\,a^{(s)}_{i-1}+1,\,s)$ is column-addable, has the \emph{same color},
+and sits at $T-d$; moreover no color-$\kappa_0$ letter lies strictly between
+$T-d$ and $T$. Hence the invalid ``('' is never the leftmost surviving ``(''
+(the witness ``('' either survives to its left or cancels against a ``)''
+strictly left of $T$, forcing a surviving ``('' left of $T$ in either case
+by the stack rule). Dually for removals with witness at $T+d$.
+\end{lemma}
+\begin{proof}
+Failure of the $S$-condition after adding means $a^{(s)}_i+1 >
+a^{(s)}_{i-1}+c_i$, i.e.\ $a^{(s)}_{i-1} \le a^{(s)}_i - c_i$; combined with
+$a^{(s)}_{i-1}\ge a^{(s)}_i - c_i$ (from $a^{(s)}\in S$) we get
+$a^{(s)}_{i-1}=a^{(s)}_i-c_i =: j'-1$ with $j'=j-c_i$. Column-addability of
+$(i-1,j',s)$: for $s\ge2$, $a^{(s-1)}_{i-1}\ge a^{(s-1)}_i - c_i \ge j-c_i =
+j'$ using $a^{(s-1)}\in S$ and $a^{(s-1)}_i\ge j$ (addability of $(i,j,s)$);
+for $s=1$ automatic. Color: $s-j'+\Off_{i-1} = s-j+c_i+\Off_{i-1} \equiv
+s-j+\Off_i \pmod d$. Position: $T(i-1,j',s)=T(i,j,s)-d$ (direct computation,
+also for $i=0$ using $\Offe$). The gap $(T-d,T)$ contains no color-$\kappa_0$
+boxes because color-$\kappa_0$ boxes occupy an arithmetic progression of step
+$d$ in $T$ (as $T\equiv d\,i - 3(\Off_i+\kappa_0) \pmod{3d}$ on color
+$\kappa_0$, consecutive slots differ by $d$). Machine-checked as CV: $35292$
+$S$-violating boxes encountered, witness present and correctly placed in all.
+\end{proof}
+
+\begin{lemma}[Signature flip]\label{lem:flip}
+Let $w$ be a bracket word and let $p$ be the position of the leftmost
+surviving ``(''. Flipping $p$ to ``)'' makes $p$ the rightmost surviving
+``)'' of the new word, and the surviving multiset changes by exactly
+$(\varphi,\eps)\mapsto(\varphi-1,\eps)$ at that color with the new ``)''
+surviving. Dually for the rightmost surviving ``)''.
+\end{lemma}
+\begin{proof}
+Stack-depth argument. The prefix before $p$ is unchanged and contains no
+surviving ``(''. In the new word the stack at $p$ is as in $w$; the new ``)''
+at $p$ survives iff the stack is empty there, which holds because $p$ was the
+\emph{leftmost} surviving ``('' of $w$ (any unmatched ``('' before $p$ would
+survive in $w$). To the right of $p$, matchings are unchanged: if some ``)''
+at $q>p$ first emptied the new stack, then in $w$ that ``)'' would have popped
+$p$ --- contradicting that $p$ survives in $w$. Hence the new surviving
+``)''-set is the old one plus $p$, and $p$ is rightmost among them because all
+old surviving ``)'' lie left of all old surviving ``(''.
+\end{proof}
+
+\begin{theorem}[Step 1]\label{thm:step1}
+For all $d\ge 2$ and all profiles $c$: $f_\kappa$ and $e_\kappa$ map $X_m$ to
+$X_m\cup\{0\}$, and $e_\kappa f_\kappa=\mathrm{id}$ on $\{f_\kappa\ne0\}$,
+$f_\kappa e_\kappa=\mathrm{id}$ on $\{e_\kappa\ne0\}$. Moreover
+$\varphi_\kappa(f_\kappa A)=\varphi_\kappa(A)-1$,
+$\eps_\kappa(f_\kappa A)=\eps_\kappa(A)+1$.
+\end{theorem}
+\begin{proof}
+Closure: by Lemma~\ref{lem:witness} the leftmost surviving ``('' is never
+$S$-invalid, and column-validity ($a^{(s-1)}_i\ge j$, $a^{(s)}_i\ge
+a^{(s+1)}_i$ after the change) is built into column-addability/removability;
+so $f_\kappa A\in X_m$ when defined, dually for $e_\kappa$. Inverse: by
+Lemma~\ref{lem:local} the color-$\kappa$ word of $f_\kappa A$ differs from
+that of $A$ only by the flip at the added box; by Lemma~\ref{lem:flip} that
+box is the rightmost surviving ``)'' of $W_\kappa(f_\kappa A)$, so $e_\kappa$
+removes exactly it. Ties never obstruct (Lemma~\ref{lem:ties}).
+Machine verification: $0$ failures over $26371$ chains and $146784$ operator
+applications, $d\in\{2,\dots,9\}$ including $3\mid d$
+(\texttt{seed4\_R2L4\_step1.py}, checks C0/CL/CV/CS/CE).
+\end{proof}
+
+\begin{remark}
+The proof nowhere uses Tingley's hypothesis $n\ge3$ nor the erratum-affected
+part of his \S4.2: the bracket word is defined \emph{column-locally}, so the
+only interaction between columns is the witness of Lemma~\ref{lem:witness},
+which is an immediate neighbor at $T\mp d$. In particular $d=2$ is covered
+uniformly, resolving adjudication~(vi) of the Layer-3 synthesis.
+\end{remark}
+
+\section{Step 2a: window chains are sources}
+
+\begin{definition}[Window vectors and $v$-chains]
+For $k\ge0$ let $v_{k,i}=\sum_{t=0}^{k-1}c_{(i-t)\bmod 3}
+=\Offe(i)-\Offe(i-k)$. Then $|v_k|=kd$, $v_k\in S$, $v_k\le v_{k+1}$.
+For $k_1\ge\dots\ge k_{m-1}\ge0$ the \emph{$v$-chain} is
+$A=(v_{k_1},\dots,v_{k_{m-1}},0)\in X_m$.
+\end{definition}
+
+\begin{theorem}[2a-i]\label{thm:sources}
+Every $v$-chain is a source: $\eps_\kappa(A)=0$ for all $\kappa$.
+\end{theorem}
+
+\begin{proof}[Proof (per-boundary matching)]
+Set $k_m:=0$. For a boundary $1\le s\le m-1$ let $\delta=k_s-k_{s+1}$,
+$x=-k_s$, and window $w_i=\Offe(x+i+\delta)-\Offe(x+i)\ge0$. Direct
+computation from the definitions gives: the letters of the full word
+attributable to boundary $s$ are, per slot $j\in\{0,1,2\}$, with
+$F(y)=d(y-x)-3\Offe(y)-3s$ (note $F(y+3)=F(y)$):
+\begin{itemize}
+\item ``)'' at $T=F(x+j)$, color $(s+\Offe(x+j))\bmod d$, present iff $w_j>0$;
+\item ``('' at $T=F(x+j)-d\delta$, \emph{same color}, present iff
+$w_{(j-\delta)\bmod 3}>0$.
+\end{itemize}
+(The level-$1$ addables form boundary $0$ and are extra ``(''s; there are no
+removables at level $m$ since $a^{(m)}=0$.) Since boundaries partition the
+letters, it suffices to exhibit, \emph{within each boundary and each color},
+an injection from ``)''s to strictly earlier ``(''s; the union over
+boundaries is injective and implies the ballot condition, hence
+$\eps_\kappa=0$.
+
+\emph{Count equality.} At each boundary and color, $\#``)''=\#``(''$: the
+multisets $\{\Offe(x+j)\bmod d\}_j$ and $\{\Offe(x+i+\delta)\bmod d\}_i$
+coincide (three consecutive arguments of $\Offe$), and a column with $w_i=0$
+deletes the same value from both.
+
+\emph{Matching.} (M1) If $\delta\ge3$: every $w_i\ge\lfloor\delta/3\rfloor
+d>0$, all six letters exist, and the slot-wise pairing ``('' at
+$F_j-d\delta<F_j$ works. (M2) If $\delta\equiv0\pmod 3$: the partner column
+$(j-\delta)\bmod3=j$, so existence is equivalent on both sides and the
+slot-wise pairing works. (M3) If $\delta\in\{1,2\}$: a partner may be
+missing, but count equality supplies a same-color replacement ``('' in
+another slot $j'$; the required inequality $F_{j'}-d\delta<F_j$ involves
+only $F_{j'}-F_j=d(j'-j)-3\Delta$ with
+$\Delta=\Offe(x+j')-\Offe(x+j)\in\{0,\pm d\}$ on a common color class, so
+every comparison is a multiple of $d$ determined by $(j,j',\mathrm{sgn}\,
+\Delta,\delta)$ and the existence flags, which are determined by the zero
+pattern of $c$ and $x\bmod 3$. This finite space was checked exhaustively:
+all compositions $c$ of $d\le12$ (every zero pattern and value coincidence),
+generic large profiles per zero pattern, $x\bmod3\in\{0,1,2\}$,
+$\delta\in\{1,\dots,9\}$: $25272$ boundary/color instances, ballot holds in
+all, no $T$-ties (\texttt{seed4\_R2L4\_boundary.py}). Invariance under
+$x\mapsto x+3$ ($F$ periodic, colors shift by $d\equiv0$, $w$ unchanged) and
+(M1) for $\delta\ge3$ make the sweep exhaustive for the reduced data.
+\end{proof}
+
+\begin{corollary}[Source generating function, lower bound]\label{cor:gf}
+The map $(k_1\ge\dots\ge k_{m-1})\mapsto$ conjugate partition realizes a
+weight-preserving bijection between $v$-chains and partitions into parts
+$\{d,2d,\dots,(m-1)d\}$; $\mathrm{wt}(A)=d\sum_s k_s$. Hence
+\[
+\sum_{\text{$v$-chains}} q^{\mathrm{wt}} \;=\;
+\prod_{j=1}^{m-1}\frac{1}{1-q^{jd}},
+\]
+exactly the source combinatorics required by (Y2).
+\end{corollary}
+
+\section{Step 2a-ii and 2b: precise gaps and partial results}
+
+\begin{lemma}[Shield acyclicity]\label{lem:acyclic}
+Call a removable $r$ \emph{shielded} by an addable $p$ if they have the same
+color and $T(p)<T(r)$. $\eps_\kappa(A)=0$ for all $\kappa$ iff there is a
+globally injective assignment of shields. Any such assignment strictly
+decreases $T$ along shield chains, so its digraph is acyclic and every chain
+terminates at an addable that is not the $T$-successor of a removable
+(``free'' addable).
+\end{lemma}
+\begin{proof}
+The injection criterion for the ballot condition is standard (Hall-type:
+each prefix contains the distinct shields of its ``)''s). Acyclicity is
+immediate from $T$-decrease.
+\end{proof}
+
+\begin{conjecture}[2a-ii, completeness]\label{conj:complete}
+Every source of $X_m$ is a $v$-chain.
+\end{conjecture}
+
+\noindent\textbf{Evidence and partial proof.} (i) Exhaustive verification:
+sources coincide with $v$-chains in $16$ cases $(c,m,W)$, $d\in\{2,\dots,8\}$,
+$m\le4$ (\texttt{seed4\_R2L4\_step2.py}, checkA). (ii) The base case $m=1$ is
+verified for $d\le10$, \emph{all} profiles $c$, weights $\le 3d+6$: the only
+source is $0$. (iii) By Lemma~\ref{lem:acyclic}, a nonzero source would carry
+shield chains ending at free addables; at $m=1$ the color/position
+congruences ($u_{i'}\equiv u_i-1\bmod d$ with $u_i=a_i-\Off_i$, plus
+$T$-inequalities) contradict the $S$-inequalities $u_0\ge u_1\ge u_2\ge
+u_0-d$ in the endpoint cases worked so far; the remaining endpoint cases and
+the induction on $m$ are open.
+
+\begin{theorem}[Nonadjacent commutation]\label{thm:commute}
+If $\kappa\not\equiv\lambda,\lambda\pm1 \pmod d$ then $e_\kappa
+e_\lambda=e_\lambda e_\kappa$ and likewise for $f$'s, wherever defined.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:local}, applying $e_\lambda$ leaves $W_\kappa$ untouched,
+and conversely; both compositions remove the same pair of boxes.
+\end{proof}
+
+\begin{conjecture}[2b, unique source per component]\label{conj:unique}
+Every connected component of $(X_m,e_\kappa,f_\kappa)$ contains exactly one
+source.
+\end{conjecture}
+
+\noindent\textbf{Evidence and obstruction.} Exhaustive union-find over
+$e$-edges: every $W$-truncated component has exactly one source, $0$
+violations in $6$ cases $d\in\{2,3,4,5,7\}$ (checkC); moreover \emph{global
+confluence} (the set of sources reachable by arbitrary $e$-descents from any
+chain is a singleton) verified in $9$ cases, up to $2968$ chains per case
+(\texttt{seed4\_R2L4\_step2b.py}, check D). Obstruction to the natural proof:
+adjacent-color one-step divergences have unbounded meet depth (observed
+depths up to $9$ at $W=10$; check F), so no fixed-depth local-confluence
+(Stembridge-type) lemma exists and Newman's lemma with bounded search is
+unavailable. Suggested routes: an explicit crystal morphism onto the vacuum
+component, or a string-length invariant.
+
+\section{Verification summary}
+All scripts in \texttt{2026-07-04/scratch/scripts/}:
+\texttt{seed4\_R2L4\_step1.py} (Step 1: C0/CL/CV/CS/CE; $26371$ chains,
+$146784$ ops, $35292$ $S$-violating boxes, all pass);
+\texttt{seed4\_R2L4\_sources.py}, \texttt{seed4\_R2L4\_step2.py} (source
+classification, GF match, union-find);
+\texttt{seed4\_R2L4\_match.py}, \texttt{seed4\_R2L4\_step2b.py} (matching
+recon; global confluence; meet-depth histogram);
+\texttt{seed4\_R2L4\_boundary.py} (the (M3) finite case check, $25272$
+instances, $0$ failures; plus $\eps=0$ re-verified on $684$ $v$-chain cases,
+$0$ surviving removables).
+
+\end{document}

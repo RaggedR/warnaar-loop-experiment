@@ -1,0 +1,735 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 26808.84it/s]
+--- 1/20 (sim=0.767) tingley/chunk_001.tex ---
+Summary: Title page and abstract — states the paper's three combinatorial models for sl_n-hat crystals and their main applications: partition functions, rank-level duality, and Kyoto path model.
+
+% Paper: tingley
+
+[Summary: Title page and abstract — states the paper's three combinatorial models for sl_n-hat crystals and their main applications: partition functions, rank-level duality, and Kyoto path model.]
+
+\title[Three combinatorial models for $\widehat{\text{sl}}_n$ crystals]{Three combinatorial models for $\widehat{\text{sl}}_n$ crystals, with applications to cylindric plane partitions}
+
+\author{Peter Tingley}
+\email{pwtingle@math.berkeley.edu}
+\address{UC Berkeley, Department of Mathematics\\ Berkeley, CA}
+\thanks{This work was supported by the RTG grant DMS-0354321.}
+
+\begin{abstract}
+We define three combinatorial models for $\widehat{\text{sl}}_n$ crystals, parametrized by partitions, configurations of beads on an ``abacus", and cylindric plane partitions, respectively. These are reducible, but we can identify an irreducible subcrystal corresponding to any dominant integral highest weight $\Lambda$. Cylindric plane partitions actually parametrize a basis for $V_\Lambda \otimes F$, where $F$ is the space spanned by partitions. We use this to calculate the partition function for a system of random cylindric plane partitions. We also observe a form of rank level duality. Finally, we use an explicit bijection to relate our work to the Kyoto path model.
+\end{abstract}
+
+
+\date{\today}
+
+
+--- 2/20 (sim=0.761) tingley/chunk_033.tex ---
+Summary: Poses two open questions — lifting the crystal structures to U_q(sl_n-hat) representations on cylindric plane partitions, and using the new representation-theoretic link to compute correlation functions of random cylindric plane partitions — pointing toward future work.
+
+% Paper: tingley
+% Section: Questions
+
+[Summary: Poses two open questions — lifting the crystal structures to U_q(sl_n-hat) representations on cylindric plane partitions, and using the new representation-theoretic link to compute correlation functions of random cylindric plane partitions — pointing toward future work.]
+
+We finish with a short discussion of two questions which we feel are natural next steps for the work presented in this paper. 
+
+
+\begin{Question}
+Can one lift our crystal structures to get representations of $U_q(\widehat{\text{sl}}_n)$? In particular, do cylindric plane partitions parametrize a basis for a representations of $U_q(\widehat{\text{sl}}_n)$ in any natural way?
+\end{Question}
+
+
+In \cite{KMPY:1996}, Kashiwara, Miwa, Petersen and Yung study a $q$-deformed Fock space. This space has an action of $U_q(\widehat{\text{sl}}_n)$, and a commuting action by the Bosons. In our picture, the space spanned by cylindric plane partitions has a $\widehat{\text{sl}}_n$ crystal structure and a commuting action of $\mbox{gl}_\infty$. Using the Boson-Fermion correspondence, one can realize $\mbox{gl}_\infty$ inside a completion of the Bosonic algebra. We hope there is a natural action of $U_q(\widehat{\text{sl}}_n)$ on the space spanned by cylindric plane partitions, coming from an embedding of this space into the $q$-deformed Fock space. 
+
+This should have interesting consequences because of our rank-level duality: The space spanned by cylindric plane partitions on a given cylinder would simultaneously carry actions of $U_q(\widehat{\text{sl}}_n)$, $U_q(\widehat{\text{sl}}_\ell)$, and two copies of $\mbox{gl}_\infty$. One copy of $\mbox{gl}_\infty$ would commute with the $U_q(\widehat{\text{sl}}_n)$ action and the other would commute with the $U_q(\widehat{\text{sl}}_\ell)$ action. It would be interesting to see how the other actions interact. 
+
+There are also several papers of Denis Uglov which may shed some light on this question (see \cite{Uglov:1999}, and references therein). He studies an action of $\widehat{\text{sl}}_n$ on the space spanned by $\ell$-tuples of charged partitions. The crystal structure coming from his action is very similar to ours, and we believe it can be made to agree exactly by changing some conventions. He also studies commuting actions of $\widehat{\text{sl}}_\ell$ and the Heisenberg algebra. It would be nice to fit these into our picture as well. However, his action does not appear to preserve the space spanned by descending abacus configurations, so it will not descend directly to the desired action on the space spanned by cylindric plane partitions.
+
+
+\begin{Question}
+Our Theorem \ref{mypart} gives a new way to calculate the partition function for a system of random cylindric plane partitions, using the representation theory of $\widehat{\text{sl}}_n$. Can one use similar methods to do other calculations on such a statistical system? In particular, does this give a new way to calculate the correlation functions found by Borodin in \cite{Borodin:2006}? Alternatively, can one use results about random cylindric plane partitions to get interesting results about the representation theory of $\widehat{\text{sl}}_n$?
+
+\end{Question}
+
+We have not pursued this line of inquiry in any depth, but it seems we have a new link between cylindric plane partitions and $\widehat{\text{sl}}_n$ representation theory. One can certainly hope that results from one area will transfer in some way to the other.
+
+
+--- 3/20 (sim=0.734) butorac_lepowsky_wakimoto_cl_affine/chunk_023.tex ---
+Summary: Introduces the section on weighted crystals, explaining that the paper uses Kashiwara's crystal basis theory only at the combinatorial level (colored directed graphs parametrizing weight bases) to organize negative root vectors of the three affine types studied.
+
+% Paper: butorac_lepowsky_wakimoto_cl_affine
+% Section: Weighted crystals for  $C_l$ and  $B_l$
+
+[Summary: Introduces the section on weighted crystals, explaining that the paper uses Kashiwara's crystal basis theory only at the combinatorial level (colored directed graphs parametrizing weight bases) to organize negative root vectors of the three affine types studied.]
+
+In this section, we introduce some weighted crystals for Cartan matrices of types $C_l$ and  $B_l$ and their tensor products---see \cite{HK, K90, K91, KKMMNN} for the definitions and results we use. Here we shall not distinguish properly between $U_q(\mathfrak g)$-modules $L(\lambda)$ for quantum groups and $\mathfrak g$-modules $L(\lambda)$ for simple Lie algebras---what we really want is a parametrization of the basis $\mathcal B(\lambda)$ of the $\mathfrak g$-module $L(\lambda)$ ``suggested'' by the crystal bases theory.
+
+
+--- 4/20 (sim=0.722) kanade_russell_tight_cylindric_partitions/chunk_004.tex ---
+Summary: Explains how Corteel–Welsh functional equations for bivariate GFs of cylindric partitions have driven closed-form results, while noting the undesirable extra factor separating cylindric-partition GFs from 𝔰𝔩̂_r characters due to disconnected crystal graphs.
+
+% Paper: kanade_russell_tight_cylindric_partitions
+% Section: Overview
+
+[Summary: Explains how Corteel–Welsh functional equations for bivariate GFs of cylindric partitions have driven closed-form results, while noting the undesirable extra factor separating cylindric-partition GFs from 𝔰𝔩̂_r characters due to disconnected crystal graphs.]
+
+Indeed, Corteel and Welsh \cite{CorWel} found functional equations for the bivariate generating functions for cylindric partitions. These equations have proved very useful in proving closed form formulas for the bivariate (and thus univariate), generating functions of cylindric partitions (see \cite{CorWel}, \cite{CorDouUnc}, \cite{KanRus-cyl}, etc.). While the case of two rows is fairly straightforward (see Remark \ref{rem:allcyl2rowzq} below), the case of three rows is already very intriguing and the corresponding bivariate conjectural formulas remain open (except for some small profiles) \cite{KanRus-cyl}.
+It is natural that refining the generating functions with more statistics is an important yet difficult process.
+
+As mentioned above, our interest in cylindric partitions stems from the fact that they are intricately linked to the combinatorics of standard (i.e., integrable highest-weight) modules for $\widehat{\mathfrak{sl}}_r$. This connection goes back to the work of the ``Kyoto School'' \cite{DatJimKunMiwOka}, \cite{JimMisMiwOka}, explained further in \cite{Tin-three} and \cite{FodWel}.
+Yet, as is visible in \eqref{eqn:cylchar}, the univariate generating function of cylindric partitions differs from principally specialized characters by a somewhat undesirable factor.
+The reason for this phenomenon appears to be the fact that the $\widehat{\mathfrak{sl}}_r$ crystal graph on the cylindric partitions of a fixed profile is not connected \cite{Tin-three}.
+
+
+--- 5/20 (sim=0.722) kursungoz_seyrek_decomposition_cylindric_partitions/chunk_098.tex ---
+Summary: Comments: suggests further directions and connections to combinatorial Hopf algebras and crystal bases.
+
+% Paper: kursungoz_seyrek_decomposition_cylindric_partitions
+% Section: Acknowledgements
+[Summary: Comments: suggests further directions and connections to combinatorial Hopf algebras and crystal bases.]
+
+\url{https://doi.org/10.1007/s40687-022-00355-x}
+
+\bibitem{BU} Walter Bridges and Ali K. Uncu, 
+Weighted cylindric partitions, 
+\emph{J Algebr Comb}, {\bf 56}:1309--1337, (2022).  
+
+\url{https://doi.org/10.1007/s10801-022-01156-9}
+
+
+\bibitem {Borodin}  Alexei Borodin., 
+Periodic Schur process and cylindric partitions, 
+\emph{Duke Math. J.}, {\bf 140}(3):391--468, 2007. 
+	
+\url{https://doi.org/10.1215/S0012-7094-07-14031-6}
+
+
+\bibitem{Corteel-RR-RSK} Sylvie Corteel, 
+Rogers-Ramanujan identities and the Robinson-Schensted-Knuth correspondence, 
+\emph{Proc. Amer. Math. Soc.}, {\bf 145}:2011--2022, 2017.  
+
+\url{http://dx.doi.org/10.1090/proc/13373}
+
+
+\bibitem{CDU}  Sylvie Corteel, Jehanne Dousse and Ali K. Uncu
+Cylindric partitions and some new Rogers–Ramanujan identities, 
+\emph{Proc. Amer. Math. Soc.}, {\bf 150}:481--497, (2022).  
+
+\url{https://doi.org/10.1090/proc/15570}
+
+
+\bibitem{CSV} Sylvie Corteel, Cyrille Savelief, Mirjana Vuletić,
+Plane overpartitions and cylindric partitions,
+\emph{Journal of Combinatorial Theory, Series A}, {\bf 118}(4):1239--1269, 2011.  
+
+\url{https://doi.org/10.1016/j.jcta.2010.12.001}
+
+
+\bibitem{CW} Sylvie Corteel and Trevor Welsh, 
+The $A_2$ Rogers–Ramanujan Identities Revisited, 
+\emph{Ann. Comb.}, {\bf 23}:683--694, (2019).  
+
+\url{https://doi.org/10.1007/s00026-019-00446-7}
+
+
+--- 6/20 (sim=0.722) kursungoz_cylindric_partitions_decomposition/chunk_098.tex ---
+Summary: Comments: suggests further directions and connections to combinatorial Hopf algebras and crystal bases.
+
+% Paper: kursungoz_cylindric_partitions_decomposition
+% Section: Acknowledgements
+[Summary: Comments: suggests further directions and connections to combinatorial Hopf algebras and crystal bases.]
+
+\url{https://doi.org/10.1007/s40687-022-00355-x}
+
+\bibitem{BU} Walter Bridges and Ali K. Uncu, 
+Weighted cylindric partitions, 
+\emph{J Algebr Comb}, {\bf 56}:1309--1337, (2022).  
+
+\url{https://doi.org/10.1007/s10801-022-01156-9}
+
+
+\bibitem {Borodin}  Alexei Borodin., 
+Periodic Schur process and cylindric partitions, 
+\emph{Duke Math. J.}, {\bf 140}(3):391--468, 2007. 
+	
+\url{https://doi.org/10.1215/S0012-7094-07-14031-6}
+
+
+\bibitem{Corteel-RR-RSK} Sylvie Corteel, 
+Rogers-Ramanujan identities and the Robinson-Schensted-Knuth correspondence, 
+\emph{Proc. Amer. Math. Soc.}, {\bf 145}:2011--2022, 2017.  
+
+\url{http://dx.doi.org/10.1090/proc/13373}
+
+
+\bibitem{CDU}  Sylvie Corteel, Jehanne Dousse and Ali K. Uncu
+Cylindric partitions and some new Rogers–Ramanujan identities, 
+\emph{Proc. Amer. Math. Soc.}, {\bf 150}:481--497, (2022).  
+
+\url{https://doi.org/10.1090/proc/15570}
+
+
+\bibitem{CSV} Sylvie Corteel, Cyrille Savelief, Mirjana Vuletić,
+Plane overpartitions and cylindric partitions,
+\emph{Journal of Combinatorial Theory, Series A}, {\bf 118}(4):1239--1269, 2011.  
+
+\url{https://doi.org/10.1016/j.jcta.2010.12.001}
+
+
+\bibitem{CW} Sylvie Corteel and Trevor Welsh, 
+The $A_2$ Rogers–Ramanujan Identities Revisited, 
+\emph{Ann. Comb.}, {\bf 23}:683--694, (2019).  
+
+\url{https://doi.org/10.1007/s00026-019-00446-7}
+
+
+--- 7/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_285.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+The intrinsic energy $\mathscr{H}$ is, as all the local energies $\mathscr{H}_i$ are, constant on classical connected components of $\widehat{B}(\varkappa)$. This is a consequence of \eqref{eq:energy_and_kashiwara} and of the fact that the combinatorial $R$-matrix commutes with Kashiwara operators.
+
+
+--- 8/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_276.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+For any $r_1,r_2 \in \mathbb{N}$, crystal graphs $\widehat{B}(r_1,r_2)$ and $\widehat{B}(r_2,r_1)$ are isomorphic, via a unique isomorphism of crystal graphs called \emph{combinatorial $R$-matrix} 
+\begin{equation}
+    R:B^{r_1,1} \otimes B^{r_2,1} \to B^{r_2,1} \otimes B^{r_1,1}.
+\end{equation}
+There exists a number of equivalent definitions of $R$ (see \cite{Kang_Kashiwara_et_al,Nakayashiki_Yamada,shimozono_affine}) and the one reported below is a reformulation of the original algorithm by Nakayashiki and Yamada as in Rule 3.10 of \cite{Nakayashiki_Yamada}. Consider $b_i \in B^{r_i,1}$ for $i=1,2$ and we want to find $\tilde{b}_i \in B^{r_i,1}$ such that 
+\begin{equation}
+    R(b_1 \otimes b_2) = \tilde{b}_2 \otimes \tilde{b}_1,
+\end{equation}
+by shifting cells from one column to the other. The procedure goes as follows.
+
+
+--- 9/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_283.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\medskip
+
+A theorem in \cite{Kang_Kashiwara_et_al} describes how the energy function changes under the action of crystal operators. Assuming that $R(b_1 \otimes b_2)= \tilde{b}_2 \otimes \tilde{b}_1$, we have
+\begin{equation} \label{eq:energy_and_kashiwara}
+    H(\widetilde{e}_{i}(b_1 \otimes b_2))
+    =
+    \begin{cases}
+         H(b_1 \otimes b_2) - 1
+        \qquad 
+        & \text{if } i=0, \,\varphi_0(b_1) \ge \varepsilon_0(b_2)  \text{ and } \varphi_0(\tilde{b}_2) \ge \varepsilon_0(\tilde{b}_1),
+        \\
+        H(b_1 \otimes b_2) + 1
+        \qquad 
+        & \text{if } i=0, \,\varphi_0(b_1) < \varepsilon_0(b_2)  \text{ and } \varphi_0(\tilde{b}_2) < \varepsilon_0(\tilde{b}_1),
+        \\
+        H(b_1 \otimes b_2) 
+        & \text{else}.
+    \end{cases}
+\end{equation}
+
+Just as we associate an energy function to a tensor product of two elements $b_1 \otimes b_2$, there exists a canonical way of defining an energy on arbitrary finite products $b_1 \otimes \cdots \otimes b_N$.
+
+
+--- 10/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_281.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+We use the notation $R_i$ to denote the $R$-matrix acting only on the $i$-th and $(i+1)$-th component of a tensor product $b_1\otimes \cdots \otimes b_N$ 
+\begin{equation} \label{eq:R_matrix_local}
+    R_i = \mathbf{1}^{\otimes (i-1)}  \otimes R \otimes \mathbf{1}^{\otimes (N-i)}.
+\end{equation}
+
+
+--- 11/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_280.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{remark}
+The combinatorial $R$-matrix, as the name suggests, satisfies the Yang-Baxter equation
+\begin{equation}
+    (R \otimes \mathbf{1}) (\mathbf{1} \otimes R) (R \otimes \mathbf{1}) = (\mathbf{1} \otimes R) (R \otimes \mathbf{1}) (\mathbf{1} \otimes R)
+\end{equation}
+and can be also defined as the $q \to 0$ limit of the fused $R$-matrix of $\mathcal{U}_q(\widehat{sl}_{n})$. We will not make use of this fact in this paper, but the interested reader can consult \cite{Kang_Kashiwara_et_al,shimozono_affine}.
+\end{remark}
+
+
+--- 12/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_279.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{example}\label{example:combinatorial_R}
+    In the evaluation below we have $r_1=3$ and $r_2=4$:
+\begin{equation} \label{eq:example_combinatorial_R}
+    \begin{ytableau}
+        2\\3\\6
+    \end{ytableau} 
+    \,\,
+    \otimes
+    \,\,
+    \begin{ytableau}
+        1\\2\\4\\5
+    \end{ytableau}
+    \xrightarrow[]{\hspace{.3cm} R \hspace{.3cm}}
+    \begin{ytableau}
+        2\\3\\5\\6
+    \end{ytableau} 
+    \,\,
+    \otimes
+    \,\,
+    \begin{ytableau}
+        1\\2\\4
+    \end{ytableau}
+    \,\,\,,
+\end{equation}
+This follows from the construction
+    \begin{equation} \label{eq:combinatorial_R_example}
+        \begin{matrix}
+         1 & 2 & 2 & 3 & 4 & 5 & 6
+        \\
+         \boldsymbol{)} & \boldsymbol{(} & \boldsymbol{)} & 
+         \boldsymbol{(} & \boldsymbol{)} & \boldsymbol{)} &
+         \boldsymbol{(}
+         \\
+         \boldsymbol{)} & \textcolor{gray}{(} & \textcolor{gray}{)} & 
+         \textcolor{gray}{(} & \textcolor{gray}{)} & \boldsymbol{)} &
+         \boldsymbol{(}
+         \\
+         \textcolor{gray}{)} & \textcolor{gray}{(} & \textcolor{gray}{)} & 
+         \textcolor{gray}{(} & \textcolor{gray}{)} & \boldsymbol{)} &
+         \textcolor{gray}{(}
+         \\
+         \textcolor{gray}{)} & \textcolor{gray}{(} & \textcolor{gray}{)} & 
+         \textcolor{gray}{(} & \textcolor{gray}{)} & \boldsymbol{(} &
+         \textcolor{gray}{(}
+         \\
+         \boldsymbol{)} & \boldsymbol{(} & \boldsymbol{)} & 
+         \boldsymbol{(} & \boldsymbol{)} & \boldsymbol{(} &
+         \boldsymbol{(}
+        \end{matrix}
+        \,\,\,.
+    \end{equation}
+Notice that in the forth line we matched the only winding pair of parenthesis as for (3) of \eqref{eq:combinatorial_R_def}. This in particular implies that in this case we have $H(b_1\otimes b_2)=1$.
+\end{example}
+
+
+--- 13/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_277.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{equation} \label{eq:combinatorial_R_def}
+    \begin{minipage}{.9\linewidth}
+        \begin{enumerate}
+            \item Prepare the word $w = 1^{m_1(b_1)} 1^{m_1(b_2)} 2^{m_2(b_1)} 2^{m_2(b_2)} \cdots $ writing in increasing order all entries, with multiplicities, appearing in $b_1$ and $b_2$. Associate to each entry of $b_1$ an opening parenthesis ``(" and to each entry of $b_2$ a closing parenthesis ``)". In case a letter $i$ appears twice in $w$ we follow the convention that the leftmost one belongs to $b_1$.
+            \item Sequentially match all pairs of consecutive symbols ``(", ``)". At the end of this process the subword made of unmatched parentheses will have the form $)\cdots ) ( \cdots ($. 
+            \item Assuming periodic boundary conditions sequentially match all leftmost unmatched symbols ``)" with rightmost unmatched ``(". Call these \emph{winding pairs} of $b_1 \otimes b_2$.
+            \item After matching winding pairs, the list of unmatched parentheses will form a sequence of $r_1 - r_2$ symbols ``(" or $r_2 - r_1$ symbols ``)", depending on whether $r_1 \ge r_2$ or viceversa. Either way swap the orientation of all remaining unmatched parentheses.
+            \item Construct $\tilde{b}_1$ from letters of $w$ associated with ``(" symbols and $\tilde{b}_2$ from those associated with ``)".
+        \end{enumerate}
+    \end{minipage}
+\end{equation}
+
+
+--- 14/20 (sim=0.719) imamura_skew_rsk_dynamics/chunk_278.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+We also define the \emph{energy function} 
+\begin{equation}
+    H(b_1 \otimes b_2) = \text{number of winding pairs of }b_1 \otimes b_2.
+\end{equation}
+
+To have a better understanding of the algorithm for $R$ consider the following example.
+
+
+--- 15/20 (sim=0.719) dousse_konan_multi-grounded_partitions/chunk_037.tex ---
+Summary: This chunk introduces the D_{n+1}^{(2)} crystal and computes its energy matrix H — noting it extends the A_{2n}^{(2)} matrix by one extra row/column for 0̄ — and identifies the two ground state paths (constant at 0 and 0̄ respectively), setting up the proof of both parts of Theorem 1.3.
+
+% Paper: dousse_konan_multi-grounded_partitions
+% Section: Examples of application: character formulas for several classical affine Lie algebras > The Lie algebra $D_{n+1
+
+[Summary: This chunk introduces the D_{n+1}^{(2)} crystal and computes its energy matrix H — noting it extends the A_{2n}^{(2)} matrix by one extra row/column for 0̄ — and identifies the two ground state paths (constant at 0 and 0̄ respectively), setting up the proof of both parts of Theorem 1.3.]
+
+\label{sec:D2}
+We now turn to the algebra $D_{n+1}^{(2)}$ for $n\geq 2$ and prove Theorem \ref{theo:chardn2}.
+The crystal $\mathcal{B}$ of the vector representation of $D_{n+1}^{(2)} (n\geq 2)$ is given by the crystal graph in Figure \ref{fig3} with the weights
+\begin{align*}
+\overline{\mathrm{wt}} (0)&= \overline{\mathrm{wt}}(\overline{0})= 0,\\
+\overline{\mathrm{wt}} (u) &= -\overline{\mathrm{wt}} (\overline{u}) = \sum_{i=u}^{n} \alpha_i \text{ for all $u\in \{1,\ldots,n\}$.}
+\end{align*}
+Here, the null root is $\delta = \sum_{i=0}^n \alpha_i$.
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+%%crystal graph B
+\draw (-4,0) node{$\mathcal{B}$ :};
+\draw (-4,-0.75) node{$\mathfrak p_{\Lambda_0}=(\cdots0\,0\,0\,0) $};
+\draw (-4,-1.5) node{$\mathfrak p_{\Lambda_n}=(\cdots\overline{0}\,\overline{0}\,\overline{0}\,\overline{0})$};
+\draw (-1.5,-0.75) node {$0$};
+\draw (8.25,-0.75) node {$\overline{0}$};
+\draw (0,0) node {$1$};
+\draw (1.5,0) node {$2$};
+\draw (5,0) node {$n-1$};
+\draw (6.75,0) node {$n$};
+\draw (3.15,0) node {$\cdots$};
+\draw (0,-1.5) node {$\overline{1}$};
+\draw (1.5,-1.5) node {$\overline{2}$};
+\draw (5,-1.5) node {$\overline{n-1}$};
+\draw (6.75,-1.5) node {$\overline{n}$};
+\draw (3.15,-1.5) node {$\cdots$};
+\draw (-0.2-1.5,0.2-0.75)--(0.2-1.5,0.2-0.75)--(0.2-1.5,-0.2-0.75)--(-0.2-1.5,-0.2-0.75)--(-0.2-1.5,0.2-0.75);
+\draw (-0.2+8.25,0.2-0.75)--(0.2+8.25,0.2-0.75)--(0.2+8.25,-0.2-0.75)--(-0.2+8.25,-0.2-0.75)--(-0.2+8.25,0.2-0.75);
+\foreach \x in {0,1,4.5} 
+\foreach \y in {0,1}
+\draw (-0.2+1.5*\x,0.2-1.5*\y)--(0.2+1.5*\x,0.2-1.5*\y)--(0.2+1.5*\x,-0.2-1.5*\y)--(-0.2+1.5*\x,-0.2-1.5*\y)--(-0.2+1.5*\x,0.2-1.5*\y);
+\foreach \x in {0} 
+\foreach \y  in {0,1}
+\draw (-0.45+5+2*\x,0.2-1.5*\y)--(0.45+5+2*\x,0.2-1.5*\y)--(0.45+5+2*\x,-0.2-1.5*\y)--(-0.45+5+2*\x,-0.2-1.5*\y)--(-0.45+5+2*\x,0.2-1.5*\y);
+
+\draw [thick, ->] (-1.45,-0.5)--(-0.3,-0.05);
+\draw [thick, <-] (-1.45,-1)--(-0.3,-1.45);
+\draw (-0.8,-0.1) node {\footnotesize{$0$}};
+\draw (-0.8,-1.4) node {\footnotesize{$0$}};
+\draw [thick, ->] (0.3,0)--(1.2,0);
+\draw [thick, <-] (0.3,-1.5)--(1.2,-1.5);
+\draw (0.75,0.15) node {\footnotesize{$1$}};
+\draw (0.75,-1.67) node {\footnotesize{$1$}};
+\draw [thick, ->] (1.8,0)--(2.7,0);
+\draw [thick, <-] (1.8,-1.5)--(2.7,-1.5);
+\draw (2.25,0.15) node {\footnotesize{$2$}};
+\draw (2.25,-1.67) node {\footnotesize{$2$}};
+\draw [thick, ->] (3.6,0)--(4.5,0);
+\draw [thick, <-] (3.6,-1.5)--(4.5,-1.5);
+\draw (4.05,0.15) node {\footnotesize{$n-2$}};
+\draw (4.05,-1.67) node {\footnotesize{$n-2$}};
+\draw [thick, ->] (5.6,0)--(6.4,0);
+\draw [thick, <-] (5.6,-1.5)--(6.4,-1.5);
+\draw (6,0.15) node {\footnotesize{$n-1$}};
+\draw (6,-1.67) node {\footnotesize{$n-1$}};
+\draw [thick, ->] (7.05,-0.05)--(8.2,-0.5);
+\draw [thick, <-] (7.05,-1.45)--(8.2,-1);
+\draw (7.6,-0.1) node {\footnotesize{$n$}};
+\draw (7.6,-1.4) node {\footnotesize{$n$}};
+\end{tikzpicture}
+\end{center}
+\caption{Crystal graph $\mathcal{B}$  of the vector representation for the Lie algebra $D_{n+1}^{(2)}(n\geq 2)$}
+\label{fig3}
+\end{figure}
+
+
+Again, we compute the energy function $H$ on $\mathcal{B}\otimes \mathcal{B}$ such that $H(0\otimes 0)=0$ with the help of the crystal graph of $\mathcal{B}\otimes \mathcal{B}$ given in Figure \ref{fig4}.
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.5, every node/.style={scale=0.5}]
+\draw [thick,->] (-10,0)--(-9,0);
+\draw (-8.8,0) node[right] {: $0$-arrow};
+\draw [->] (-10,-1)--(-9,-1);
+\draw (-8.8,-1) node[right] {: $n$-arrow};
+\draw [->] (-10,-2)--(-9,-2);
+\filldraw (-9.5,-2) circle(2pt);
+\draw (-8.8,-2) node[right] {: chains of two $n$-arrows};
+\filldraw (-9.5,-3) circle(2pt);
+\draw (-8.8,-3) node[right] {: vertex of the form $\overline{0}\otimes \cdot$ or $\cdot\otimes\overline{0}$};
+\draw [dashed,->] (-10,-4)--(-9,-4);
+\draw (-8.8,-4) node[right] {: paths of $i$-arrows, for consecutive $i\neq 0,n$};
+\draw (-10,-4.6)--(-9,-4.6)--(-9,-5.4)--(-10,-5.4)--(-10,-4.6);
+\draw (-8.8,-5) node[right] {: connected components without $0$-arrows};
+%%crystal graph B
+%%crystal graph B
+\foreach \x in {0,...,7} 
+\foreach \y in {0,...,7}
+\draw (-0.2-0.4+3*\x,0.2-1.5*\y)--(0.2-0.4+3*\x,0.2-1.5*\y)--(0.2-0.4+3*\x,-0.2-1.5*\y)--(-0.2-0.4+3*\x,-0.2-1.5*\y)--(-0.2-0.4+3*\x,0.2-1.5*\y);
+\foreach \x in {0,...,7} 
+\foreach \y in {0,...,7}
+\draw (-0.2+0.4+3*\x,0.2-1.5*\y)--(0.2+0.4+3*\x,0.2-1.5*\y)--(0.2+0.4+3*\x,-0.2-1.5*\y)--(-0.2+0.4+3*\x,-0.2-1.5*\y)--(-0.2+0.4+3*\x,0.2-1.5*\y);
+
+
+\foreach \x in {0,...,7} 
+\foreach \y in {0,...,7}
+\draw (3*\x,-1.5*\y) node {$\otimes$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,0) node {$0$};
+\foreach \y in {0,...,7} 
+\draw (-0.4,-1.5*\y) node {$0$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-1.5) node {$1$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+3,-1.5*\y) node {$1$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-3) node {$u$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+6,-1.5*\y) node {$u$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-4.5) node {$n$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+9,-1.5*\y) node {$n$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-6) node {$\overline{n}$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+12,-1.5*\y) node {$\overline{n}$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-7.5) node {$\overline{u}$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+15,-1.5*\y) node {$\overline{u}$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-9) node {$\overline{1}$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+18,-1.5*\y) node {$\overline{1}$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-10.5) node {$0$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+21,-1.5*\y) node {$0$};
+
+\foreach \x in {0,...,5,7} 
+\draw [thick, ->] (3*\x,-0.25)--(3*\x,-1.25);
+\draw [thick, ->] (3*3.5,-0.25)--(3*3.5,-1.25);
+\foreach \y in {0,2,3,4,5,6,7} 
+\draw [thick, ->] (18.9,-1.5*\y)--(20.1,-1.5*\y);
+\draw [thick, ->] (18.9,-1.5*3.5)--(20.1,-1.5*3.5);
+
+\foreach \x in {0,2,3,4,6,7} 
+\draw [dashed, ->] (3*\x,-1.75)--(3*\x,-2.75);
+\draw [dashed, ->] (3*3.5,-1.75)--(3*3.5,-2.75);
+\foreach \y in {0,1,3,4,5,7} 
+\draw [dashed, ->] (15.9,-1.5*\y)--(17.1,-1.5*\y);
+\draw [dashed, ->] (15.9,-1.5*3.5)--(17.1,-1.5*3.5);
+
+\foreach \x in {0,1,3,5,6,7} 
+\draw [dashed, ->] (3*\x,-3.25)--(3*\x,-4.25);
+\draw [dashed, ->] (3*3.5,-3.25)--(3*3.5,-4.25);
+\foreach \y in {0,1,2,4,6,7} 
+\draw [dashed, ->] (12.9,-1.5*\y)--(14.1,-1.5*\y);
+\draw [dashed, ->] (12.9,-1.5*3.5)--(14.1,-1.5*3.5);
+
+
+\foreach \x in {0,1,2,4,5,6,7} 
+\draw [->] (3*\x,-4.75)--(3*\x,-5.75);
+\foreach \y in {0,1,2,3,5,6,7} 
+\draw [->] (9.9,-1.5*\y)--(11.1,-1.5*\y);
+
+\foreach \x in {0,2,3,4,6,7}
+\draw [dashed, ->] (3*\x,-7.75)--(3*\x,-8.75);
+\draw [dashed, ->] (3*3.5,-7.75)--(3*3.5,-8.75);
+\foreach \y in {0,1,2,4,6,7} 
+\draw [dashed, ->] (6.9,-1.5*\y)--(8.1,-1.5*\y);
+\draw [dashed, ->] (6.9,-1.5*3.5)--(8.1,-1.5*3.5);
+
+\foreach \x in {0,1,3,5,6,7} 
+\draw [dashed, ->] (3*\x,-6.25)--(3*\x,-7.25);
+\draw [dashed, ->] (3*3.5,-6.25)--(3*3.5,-7.25);
+\foreach \y in {0,1,3,4,5,7} 
+\draw [dashed, ->] (3.9,-1.5*\y)--(5.1,-1.5*\y);
+\draw [dashed, ->] (3.9,-1.5*3.5)--(5.1,-1.5*3.5);
+
+\foreach \x in {1,...,5} 
+\draw [thick, ->] (3*\x,-9.25)--(3*\x,-10.25);
+\draw [thick, ->] (3*3.5,-9.25)--(3*3.5,-10.25);
+\foreach \y in {2,...,6} 
+\draw [thick, ->] (0.9,-1.5*\y)--(2.1,-1.5*\y);
+\draw [thick, ->] (0.9,-1.5*3.5)--(2.1,-1.5*3.5);
+
+\draw [->] (9.2,-5.25)--(10.3,-5.25); 
+\draw [->] (10.5,-5.35)--(10.5,-5.9);
+
+\foreach \x in {21}
+\foreach \y in {10.5}
+\draw [red] (-0.7+\x,0.25-\y)--(0.7+\x,0.25-\y)--(0.7+\x,-0.25-\y)--(-0.7+\x,-0.25-\y)--(-0.7+\x,0.25-\y);
+
+\foreach  \x in {21}
+\draw [blue](-0.7+\x,0.25-1.5)--(0.7+\x,0.25-1.5)--(0.7+\x,-0.25-9)--(-0.7+\x,-0.25-9)--(-0.7+\x,0.25-1.5);
+
+\foreach \y in {10.5}
+\draw [blue](-0.7+3,0.25-\y)--(0.7+18,0.25-\y)--(0.7+18,-0.25-\y)--(-0.7+3,-0.25-\y)--(-0.7+3,0.25-\y);
+
+\draw [red] (-0.7+3,1-3)--(-0.7+3,-0.25-9)--(0.25+16.5,-0.25-9)--(0.25+10.5,-0.25-6)--(0.25+10.5,0.25-5.25)--(-0.7+9,0.25-5.25)--(-0.7+3,1-3);
+
+\draw [foge] (-0.7+3,0.25-1.5)--(0.7+18,0.25-1.5)--(0.7+18,-0.25-9)--(-0.7+18,-0.25-9)--(-0.7+12,-0.25-6)--(-0.7+12,-0.25-4.5)--(-0.7+9,-0.25-4.5)--(-0.7+3,-0.25-1.5)--(-0.7+3,0.25-1.5);
+
+
+\foreach \x in {0,...,7} 
+\filldraw (3*\x,-5.25) circle(2pt);
+\foreach \y in {0,1,2,3,3.5,4,5,6,7} 
+\filldraw (10.5,-1.5*\y) circle(2pt);
+
+\end{tikzpicture}
+\end{center}
+\caption{Crystal graph of $\mathcal{B}\otimes \mathcal{B}$ for the Lie algebra $D_{n+1}^{(2)} (n\geq 2)$}
+\label{fig4}
+\end{figure}
+
+
+We obtain the following energy matrix:
+\begin{equation}\label{eq:energyD}
+H= \bordermatrix{
+\text{}&1&2&\cdots&n&\overline{0}&\overline{n}&\cdots&\overline{2}&\overline{1}&0
+\cr 1 &2&\cdots &\cdots&2&2&2&\cdots & \cdots &2&1
+\cr 2& 0 &\ddots&2^*&\vdots&\vdots&\vdots&&&\vdots&\vdots
+\cr \vdots&\vdots&\ddots&\ddots &\vdots&\vdots&\vdots&2^*&&\vdots&\vdots
+\cr n&\vdots&&\ddots&2&2&2&\cdots&\cdots&2&1
+\cr \overline{0}&\vdots&&&\ddots&0&2&\cdots&\cdots&2&1
+\cr \overline{n}&\vdots&&&&\ddots&2&\cdots&\cdots&2&\vdots
+\cr \vdots&\vdots&&0^*&&&\ddots&\ddots&2^*&\vdots&\vdots
+\cr \overline{2}&\vdots&&&&& &\ddots &\ddots &\vdots &\vdots
+\cr \overline{1}&0&\cdots&\cdots&\cdots&\cdots&\cdots&\cdots& 0&2 &1
+\cr 0&1&\cdots&\cdots&\cdots&\cdots& \cdots & \cdots& \cdots&1&0
+} .
+\end{equation}
+
+In this case, there are two irreducible highest weight modules of level $1$: $L(\Lambda_0)$ and $L(\Lambda_n)$, and the corresponding ground state paths are $\mathfrak p_{\Lambda_0}=\cdots000$ and $\mathfrak p_{\Lambda_{n}}=\cdots\overline{0}\overline{0}\overline{0}$, respectively. Again, though both ground state paths are constant, we make use of the additional variable $d$ of Theorem \ref{theo:formchar2} to simplify our computations.
+
+
+--- 16/20 (sim=0.716) tingley/chunk_029.tex ---
+Summary: Establishes that the crystal and gl_∞ actions commute and together make cylindric plane partitions a basis for V_Λ ⊗ F (Theorem 4.13), with the weight of a cylindric plane partition decomposing into the principally-graded weight of v(π) plus n|λ(π)| — the key result used to compute the partition function.
+
+% Paper: tingley
+% Section: Relation to cylindric plane partitions > More structure on cylindric plane partitions
+
+[Summary: Establishes that the crystal and gl_∞ actions commute and together make cylindric plane partitions a basis for V_Λ ⊗ F (Theorem 4.13), with the weight of a cylindric plane partition decomposing into the principally-graded weight of v(π) plus n|λ(π)| — the key result used to compute the partition function.]
+
+In this section we give a bijection between descending abacus configurations with compactification $\psi_{(0)}$ and $B_\Lambda \times P$, where $B_\Lambda$ is the crystal associated to an irreducible $\widehat{\text{sl}}_n$ representation $V_\Lambda$, and $P$ is the set of all partitions. It follows that there is also a bijection between cylindric plane partitions with a given boundary and $B_\Lambda \times P$. These bijections are useful because they preserve an appropriate notion of weight.
+
+\begin{Definition}
+Let $\psi$ be an abacus configuration. Notice that you can always transform $\psi$ to it's compactification by a series of moves, each of which moves one black bead exactly one step to the left. One can easily see that the number of such moves needed is well defined. This number is the weight of $\psi$, denoted $| \psi |$.
+\end{Definition}
+
+\begin{Definition}
+If $\pi$ is a cylindric plane partition, the weight of $\pi$, denoted $|\pi |$, is the sum of the entries of $\pi$ over one period. 
+\end{Definition}
+
+\begin{Definition} \label{zdef} To each descending abacus configuration $\psi$, assign:
+\begin{enumerate}
+
+\item \label{z1} A tight descending abacus configuration $\gamma (\psi)$.
+
+\item \label{z2} A partition $\lambda (\psi)$.
+
+\item \label{z4} A canonical basis vector $v (\psi) \in V_\Lambda$.
+
+\end{enumerate}
+
+\noindent as follows:
+
+(\ref{z1}): Moving from left to right, act by $T_k$ (see definition \ref{dtk}) until $\psi_\cdot^k$ is tight with respect to $\psi_\cdot^{k+1}$ for every $k$. The result is $\gamma (\psi)$. 
+
+(\ref{z2}): Construct a row of beads by putting a black bead for each $\psi^i_\cdot$, and, between the beads corresponding to $\psi^i_\cdot$ and $\psi^{i+1}_\cdot$, put a white bead for each time you can apply $T_i$ to $\psi^i_\cdot$ and stay strictly to the right of $\psi^{i+1}_\cdot$. Then use the correspondence between rows of beads and partitions to get $\lambda (\psi)$ (shifting to get charge 0 if necessary). 
+
+(\ref{z4}): By Theorem \ref{hipart},  we know that the set of tight descending abacus configurations with compactification $\psi_{(0)}$ are the vertices of the crystal graph for $V_\Lambda$. These in turn correspond to canonical basis vectors in $V_\Lambda$ (see, for example, \cite{Hong&Kang:2000} for a discussion of canonical bases). Let $v(\psi)$ be the canonical basis element associated to $\gamma(\psi)$.
+\end{Definition}
+
+\begin{Comment} Since we have a bijection between cylindric plane partitions and abacus configurations, we can also associate this data to a cylindric plane partition $\pi$. In that case, we use the notation $\gamma(\pi), \lambda (\pi)$ and $v(\pi)$. 
+\end{Comment}
+
+Let $\mbox{gl}_\infty$ be the Lie algebra of $(\Bbb{Z}+1/2) \times (\Bbb{Z}+1/2)$ matrices with finitely many non-zero entries. As in \cite{Kac:1990}, Chapter 14 (among others), the space $F$ spanned by all partitions is an irreducible $\mbox{gl}_\infty$ module. The generators $E_{p, p+1}$ and $E_{p+1, p}$ of $\mbox{gl}_\infty$ act on a partition as follows: Let $r \in F$, and consider the row of beads corresponding to $r$. 
+
+$\bullet$  If position $p+1$ of $r$ is full and position $p$ is empty then $E_{p, p+1}$ moves the bead in position $p+1$ to position $p$. Otherwise $E_{p, p+1} (r)=0$.
+
+$\bullet$  If position $p$ of $r$ is full and position $p+1$ is empty, then $E_{p+1, p}$ moves the bead in position $p$ to position $p+1$. Otherwise $E_{p+1, p} (r)=0$.
+
+We then get a $\mbox{gl}_\infty$ action on the space of abacus configurations, where $\mbox{gl}_\infty$ acts on $\lambda (\psi)$ without affecting $\gamma(\psi)$. The following theorem will be our key tool in this section:
+
+\begin{Theorem} \label{weights} 
+\begin{enumerate}
+\item \label{ccommutes} The $\widehat{\text{sl}}_n$ crystal structure on the space of descending abacus configurations with compactification $\psi_{(0)}$ commutes with the $\mbox{gl}_\infty$ action. Furthermore, $ \psi \rightarrow (\gamma (\psi),  \lambda (\psi))$ is a bijection with $B_\Lambda \times P$. Here $\Lambda = \Lambda(\psi_{(0)})$ (see Definition \ref{Lambdaa}), $B_\Lambda$ is the crystal graph of the $\widehat{\text{sl}}_n$ representation $V_\Lambda$ realized according to Theorem \ref{hipart}, and $P$ is the set of all partitions.
+
+\item \label{cabacus} $\{ v(\psi) \otimes \lambda (\psi) \},$ where $\psi$ ranges over all descending abacus configurations with a given compactification $\psi_{(0)}$, is a basis  $V_\Lambda \otimes F$. Here $F$ is the space spanned by all partitions and $\Lambda = \Lambda (\psi_{(0)})$ (see Definition \ref{Lambdaa}). Furthermore, the weight of $\psi$ is the sum of the principle graded weight of $v (\psi)$ and $n |\lambda(\psi)|$.
+
+\item \label{ccpp} $\{ v(\pi) \otimes \lambda(\pi) \}$, where $\pi$ ranges over the set of all cylindric plane partitions $\pi$ with given boundary, is a basis for $V_\Lambda  \otimes F$. Here $F$ is the space of all partitions and $\Lambda = \Lambda (\pi)$ (see Definition \ref{Lambdab}). Furthermore, the weight of such a configuration is the sum of the principle graded weight of $v(\pi)$ and $n |\lambda(\pi)|$.
+
+\end{enumerate}
+\end{Theorem}
+
+\begin{proof}
+(\ref{ccommutes}): Notice that $\psi$ is uniquely defined by the pair $(\gamma (\psi), \lambda (\psi))$. Lemma \ref{structure_lemma} part (\ref{p2}) implies that $e_i$ and$f_i$ act on $\gamma (\psi)$, ignoring $\lambda (\psi)$. Also, by definition, $\mbox{gl}_\infty$ acts only on $\lambda (\psi)$, ignoring $\gamma (\psi)$. Together, this implies that all $f_i$ commute with the $\mbox{gl}_\infty$ action. Similarly, the $e_i$ commute with the $\mbox{gl}_\infty$ action. Theorem \ref{hipart} says that the $\widehat{\text{sl}}_n$ crystal generated by $\psi_{(0)}$ is $B_\Lambda$. Hence Lemma \ref{structure_lemma} part (\ref{p4}) implies that this map is a bijection to $B_\Lambda \otimes F$.
+
+In order to prove (\ref{cabacus}) and (\ref{ccpp}), recall that the principally graded weight of a canonical basis vector $v \in V_\Lambda$ can be calculated from the crystal graph: set the weight of the highest weight element to be $0$, and let $f_i$ have degree $1$. This is a well defined grading on $B_\Lambda$ by standard results (see \cite{Hong&Kang:2000}). The principle grading on $V_\Lambda$ is obtained by letting $v(b)$ have the same weight as $b$. In particular, acting on $\psi$ by $f_i$ increases the principally graded weight of $v(\psi)$ by one.
+
+(\ref{cabacus}): It follows from part (\ref{ccommutes}) that $\{ v(\psi) \otimes \lambda (\psi) \}$ is a basis for $V_\Lambda \otimes F$. It remains to show that the weights are correct. It is clear from the definitions that the operations $f_i$ add one to the weight of an abacus configuration, and $T_k^*$ adds $n$. As above, acting by $f_i$ increases the principally graded weight of $v(\psi)$ by $1$, without affecting $\lambda(\psi)$. Acting by $T_k^*$ adds one box to $\lambda(\psi)$ without affecting $v(\psi)$. The result follows.
+
+
+(\ref{ccpp}): This follows from (\ref{cabacus}), once one notices that moving a bead one position to the right on the abacus (in such a way that it remains decreasing) always corresponds to adding $1$ to one entry of the corresponding cylindric plane partition.
+\end{proof}
+
+
+--- 17/20 (sim=0.714) dousse_konan_capparelli_primc_crystals/chunk_034.tex ---
+Summary: Opens Section 2 by announcing it will recall the definitions and theorems from crystal base theory needed for the paper, pointing to Hong-Kang's book as the standard reference.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Basics on Crystals
+
+[Summary: Opens Section 2 by announcing it will recall the definitions and theorems from crystal base theory needed for the paper, pointing to Hong-Kang's book as the standard reference.]
+
+\label{sec:reptheory}
+In this section, we recall the definitions and basic theorems from crystal base theory which are necessary for our purpose.
+We refer to the book \cite{HK}, which we consider to be a good summary of the basic theory of Kac-Moody algebras \cite[Chapter 2]{HK}, quantum groups \cite[Chapter 3]{HK} and crystal bases \cite[Chapters 4, 10]{HK}. For a more combinatorial approach and more emphasis on the finite dimensional case, we refer the reader to \cite{SchillingBump}.
+
+Throughout this section, $n$ is a fixed positive integer.
+
+
+--- 18/20 (sim=0.713) imamura_skew_rsk_dynamics/chunk_217.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+\begin{corollary} \label{prop:commutation_kashiwara_int_ins}
+    Let $h$ be anyone between $\widetilde{e}_{i},\widetilde{f}_{i},i=1,\dots,n-1$ and $P$ be a semi-standard tableau. Then for all $r\in \mathbb{Z}$ we have $h \circ \mathcal{R}_{[r]}(P) = \mathcal{R}_{[r]} \circ h (P)$.
+\end{corollary}
+\begin{proof}
+    Internal insertion transformation $P\mapsto \mathcal{R}_{[r]}(P)$ can be realized through jeu de taquin moves, as a consequence of \cref{prop:Knuth_eq_int_ins}, \cref{thm:Knuth_equiv_jdt} and hence it commutes with $\widetilde{e}_{i},\widetilde{f}_{i}, i=1,\dots, n-1$ by \cref{prop:commutation_jdt_kashiwara}.
+\end{proof}
+
+
+--- 19/20 (sim=0.713) imamura_skew_rsk_dynamics/chunk_216.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+We will utilize result of \cref{prop:commutation_jdt_kashiwara} in a slightly weaker form reported next. Recall that $\mathcal{R}_{[r]}$ denotes the internal insertion.
+
+
+--- 20/20 (sim=0.713) imamura_skew_rsk_dynamics/chunk_214.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+The study of $\mathfrak{sl}_n$ crystal structure of the set of semi-standard tableaux has a long history rooted in the seminal paper \cite{robinson1938representations}. In fact, as recalled in \cite{Shimozono_dummies}, the first instance of the RSK correspondence, was realized by Robinson imposing that map $\pi \mapsto P$ would commute with the action of $\widetilde{e}_{i},\widetilde{f}_{i}$. 
+In general, Kashiwara operators are \emph{coplactic} transformations, which means that they commute with \emph{jeu de taquin} moves; see \cref{subs:jdt}. This known result is stated in the following proposition. In order to make the text self-contained all ingredients necessary to its proof, along with a short review of theory of Knuth relations, are reported in \cref{app:Knuth_rel}.
+
+

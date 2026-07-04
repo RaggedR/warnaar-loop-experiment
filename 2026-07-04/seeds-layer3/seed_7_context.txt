@@ -1,0 +1,571 @@
+--- 1/20 (sim=0.662) albion_proof_littlewood_lee-rains-warnaar/chunk_007.tex ---
+Summary: Roadmap of the proof strategy: vanishing integrals → bounded Littlewood identities (via Koornwinder expansion) → unbounded limit → Corollary via q→1.
+
+% Paper: albion_proof_littlewood_lee-rains-warnaar
+% Section: Introduction
+
+[Summary: Roadmap of the proof strategy: vanishing integrals → bounded Littlewood identities (via Koornwinder expansion) → unbounded limit → Corollary via q→1.]
+
+The outline of the paper is as follows.
+In the next section we give preliminaries regarding partitions, Schur
+functions and Koornwinder polynomials.
+In Section~\ref{Sec_integral} we prove a pair of vanishing integrals for
+Schur functions again conjectured by Lee, Rains and Warnaar in the Macdonald
+case \cite[Conjecture~9.2]{LRW20}.
+Then, in Section~\ref{Sec_proofs}, we follow the techniques of
+\cite{RW21} to prove the bounded analogues of Theorem~\ref{Thm_q=t}
+conjectured in \cite[Conjecture~9.4]{LRW20}.
+The theorem then follows by taking an appropriate limit.
+We conclude with a derivation of Corollary~\ref{Cor}.
+
+
+--- 2/20 (sim=0.661) bounded_littlewood/chunk_077.tex ---
+Summary: Lemma giving the finite-n limit of I_K when T -> t^n; key for connecting virtual to actual integrals.
+
+% Paper: bounded_littlewood
+% Section: Virtual Koornwinder integrals > Basic definitions
+[Summary: Lemma giving the finite-n limit of I_K when T -> t^n; key for connecting virtual to actual integrals.]
+
+\begin{lemma}\label{Lem_wrong-order}
+For fixed $n$, let $t_0\cdots t_3 t^{n-2}=t^k$, 
+where $k$ is a nonnegative integer. Then
+\begin{align*}
+\lim_{T\to t^n} & I_K(f;q,t,T;t_0,t_1,t_2,t_3)  \\
+&=\tfrac{1}{2} I_K^{(n)}(f;q,t;t_0,t_1,t_2,t_3) \\
+&\quad +\tfrac{1}{2} I_K^{(k)}
+\Big(f\Big[x_1^{\pm}+\cdots+x_k^{\pm}+\sum_{r=0}^3 \frac{t_r-t/t_r}{1-t}
+\Big];q,t;t/t_0,t/t_1,t/t_2,t/t_3\Big).
+\end{align*}
+\end{lemma}
+
+
+--- 3/20 (sim=0.653) bounded_littlewood/chunk_118.tex ---
+Summary: Proposition computing f_lambda^{(m)} (the coefficient of K_lambda in the RHS of a bounded identity) as an I_K^{(m)} integral.
+
+% Paper: bounded_littlewood
+% Section: Bounded Littlewood identities > Proofs of Theorems~\ref{THM_BOUNDED1
+[Summary: Proposition computing f_lambda^{(m)} (the coefficient of K_lambda in the RHS of a bounded identity) as an I_K^{(m)} integral.]
+
+\begin{proposition}\label{Prop_fIK}
+For $m$ a nonnegative integer and $\lambda\subset (2m)^n$,
+\begin{equation}\label{Eq_rhs}
+f_{\lambda}^{(m)}(q,t;t_0,t_1,t_2,t_3)
+=(-1)^{\lvert\lambda\rvert} I_K^{(m)}\big(P_{\lambda'}(t,q);t,q;t_0,t_1,t_2,t_3\big).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $x=(x_1,\dots,x_n)$ and $y=(y_1,\dots,y_m)$.
+According to the Cauchy identity for Koornwinder polynomials \eqref{Eq_Mim} 
+\begin{multline}\label{Eq_Mim2}
+\sum_{\lambda\subset m^n} (-1)^{\lvert\lambda\rvert} 
+(x_1\cdots x_n)^m K_{m^n-\lambda}(x;q,t;t_0,t_1,t_2,t_3) 
+K_{\lambda'}(y;t,q;t_0,t_1,t_2,t_3) \\
+=\sigma_1\big[{-}xy^{\pm}\big].
+\end{multline}
+If we expand the right-hand side in terms of Macdonald polynomials
+using the Cauchy identity \eqref{Eq_Mac-Cauchy-a}, this yields
+\begin{multline*}
+\sum_{\lambda\subset m^n} (-1)^{\lvert\lambda\rvert} 
+(x_1\cdots x_n)^m K_{m^n-\lambda}(x;q,t;t_0,t_1,t_2,t_3) 
+K_{\lambda'}(y;t,q;t_0,t_1,t_2,t_3) \\
+=\sum_{\lambda\subset (2m)^n} (-1)^{\lvert\lambda\rvert} P_{\lambda}(x;q,t) 
+P_{\lambda'}(y^{\pm};t,q).
+\end{multline*}
+Equating coefficients of $P_{\lambda}(x;q,t)K_0(y;t,q;t_0,t_1,t_2,t_3)$, we find
+\begin{multline*}
+[P_{\lambda}(x;q,t)] (x_1\cdots x_n)^m K_{m^n}(x;q,t;t_0,t_1,t_2,t_3) \\
+=(-1)^{\lvert\lambda\rvert} [K_0(y;t,q;t_0,t_1,t_2,t_3)] P_{\lambda'}(y^{\pm};t,q),
+\end{multline*}
+for $\lambda\subset (2m)^n$.
+Recalling \eqref{Eq_functional-IKn} and \eqref{Eq_PKf} completes the proof.
+\end{proof}
+
+
+--- 4/20 (sim=0.645) bounded_littlewood/chunk_117.tex ---
+Summary: Opens the proof section; outlines the general strategy of reducing each bounded identity to a virtual Koornwinder integral evaluation.
+
+% Paper: bounded_littlewood
+% Section: Bounded Littlewood identities > Proofs of Theorems~\ref{THM_BOUNDED1
+[Summary: Opens the proof section; outlines the general strategy of reducing each bounded identity to a virtual Koornwinder integral evaluation.]
+
+\label{Sec_Method}
+We begin by outlining the general strategy, which is to transform the
+problem of proving bounded Littlewood identities into that of 
+evaluating virtual Koornwinder integrals.
+
+Recall that if $g\in\Lambda_n$ and $\{f_{\lambda}\}$ is a basis of $\Lambda_n$,
+then $[f_{\lambda}]g$ is the coefficient of $f_{\lambda}$ in the expansion of $g$.
+Working in full generality, we would like to find a closed-form expression
+for
+\begin{equation}\label{Eq_PKf}
+f_{\lambda}^{(m)}(q,t;t_0,t_1,t_2,t_3):=
+\big[ P_{\lambda}(x;q,t) \big] (x_1\cdots x_n)^m 
+K_{m^n}(x;q,t;t_0,t_1,t_2,t_3),
+\end{equation}
+where $m$ is a nonnegative integer.
+Since 
+\[
+(x_1\cdots x_n)^m K_{m^n}(x;q,t;t_0,t_1,t_2,t_3)=\sum_{\lambda\subset (2m)^n} 
+u_{\lambda}\, m_{\lambda}(x),
+\]
+it follows that $f_{\lambda}^{(m)}(q,t;t_0,t_1,t_2,t_3)$ vanishes
+unless $\lambda\subset (2m)^n$.
+
+
+--- 5/20 (sim=0.642) bounded_littlewood/chunk_024.tex ---
+Summary: Defines q-binomial coefficients and Rogers--Szego polynomials H_m(z;q); these appear as specialised building blocks.
+
+% Paper: bounded_littlewood
+% Section: Macdonald--Koornwinder theory > Rogers--Szeg\H{o
+[Summary: Defines q-binomial coefficients and Rogers--Szego polynomials H_m(z;q); these appear as specialised building blocks.]
+
+For integers $k,n$ such that $0\leqslant k\leqslant n$, let 
+\[
+\genfrac{[}{]}{0pt}{}{n}{k}_q:=\frac{(q;q)_n}{(q;q)_k(q;q)_{n-k}}
+\]
+be a $q$-binomial coefficient.
+Then the Rogers--Szeg\H{o} polynomials $H_m(z;q)$ are defined as
+\cite{Szego26}
+\begin{equation}\label{RS}
+H_m(z;q):=\sum_{k=0}^m z^k \genfrac{[}{]}{0pt}{}{m}{k}_q,
+\end{equation}
+for $m$ a nonnegative integer.
+They have generating function \cite[page 49]{Andrews76}
+\begin{equation}\label{Eq_RS-GF}
+\sum_{m\geqslant 0} \frac{H_m(z;q) t^m}{(q;q)_m}=
+\frac{1}{(t,tz;q)_{\infty}},
+\end{equation}
+and satisfy the three-term recurrence relation
+\[
+H_{m+1}(z;q)=(1+z)H_m(z;q)-(1-q^m) z H_{m-1}(z;q)
+\]
+subject to the initial conditions $H_{-1}=0$, $H_0=1$.
+For $0<q<1$, the Rogers--Szeg\H{o} polynomials
+satisfy the orthogonality relation
+\[
+\frac{1}{2\pi\hspace{0.5pt}\mathrm{i}\hspace{0.5pt}} \int_{\mathbb{T}} 
+H_m(zq^{-1/2};q) H_n(\bar{z}q^{-1/2};q)\,
+\big\lvert(zq^{1/2};q)_{\infty}\big\rvert^2\,
+\frac{\operatorname{d\hspace{-1.5pt} z}{z}=q^{-m}(q;q)_m \, \delta_{m,n},
+\]
+where $\mathbb{T}$ is the positively-oriented unit circle.
+
+
+--- 6/20 (sim=0.642) warnaar_affine_jacobi-trudi_identities/chunk_044.tex ---
+Summary: Defines modified Hall-Littlewood polynomials P'_lambda via plethystic substitution and records their principal specialization, used later to convert finite identities to infinite products.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Symmetric functions > (Cylindric) Schur functions
+[Summary: Defines modified Hall-Littlewood polynomials P'_lambda via plethystic substitution and records their principal specialization, used later to convert finite identities to infinite products.]
+
+To conclude our discussion of the Hall--Littlewood polynomials
+for $\mathrm{GL}(n,\mathbb{C})$, we define its modified analogue.
+Consider the expansion of the Hall--Littlewood symmetric functions
+in terms of the Newton power sums
+\[
+P_{\lambda}(x_1,x_2,\dots;t)=\sum_{\mu} c_{\lambda\mu}(t) p_{\mu}(x_1,x_2,\dots),
+\]
+where $p_{\mu}=\prod_{i\geqslant 1} p_{\mu_i}$ and
+$p_0=1$, $p_r(x_1,x_2,\dots)=x_1^r+x_2^r+\cdots$ for $r\geqslant 1$.
+Then the modified Hall--Littlewood polynomial
+$P'_{\lambda}(x_1,x_2,\dots,x_n;t)$ is defined as
+\[
+P'_{\lambda}(x_1,\dots,x_n;t)=\sum_{\mu} c_{\lambda\mu}(t)
+p_{\mu} (X_1(t),\dots,X_n(t) ),
+\]
+where $X_i(t)=\bigl(x_i,x_it,x_it^2,\dots\bigr)$.
+Alternatively, using plethystic notation,
+$P'_{\lambda}(x;t)=P'_{\lambda}(x/(1-t);t)$.
+From the definition, it follows immediately that
+\begin{equation}\label{Eq_PPp-spec}
+P'_{\lambda}\bigl(1,q,\dots,q^{n-1};q^n\bigr)=
+P_{\lambda}\bigl(1,q,q^2,\dots;q^n\bigr).
+\end{equation}
+
+\subsection[The B\_n, C\_n and BC\_n]{The $\boldsymbol{\mathrm{B}_n}$, $\boldsymbol{\mathrm{C}_n}$ and $\boldsymbol{\mathrm{BC}_n}$
+Hall--Littlewood polynomials}\label{Sec_HL-BCn}
+
+
+--- 7/20 (sim=0.639) cohl_rogers_generating_function/chunk_029.tex ---
+Summary: Introduces the continuous q-Legendre polynomials P_n(x|q) as a special case of Rogers polynomials (γ=q^{1/2}), setting up the corollary that gives their generating function generalization.
+
+% Paper: cohl_rogers_generating_function
+% Section: The continuous $q$-ultraspherical/Rogers polynomials
+
+[Summary: Introduces the continuous q-Legendre polynomials P_n(x|q) as a special case of Rogers polynomials (γ=q^{1/2}), setting up the corollary that gives their generating function generalization.]
+
+Furthermore, (\ref{4:21}) produces the 
+following result in terms of the continuous
+$q$-Legendre polynomials defined in terms of 
+the continuous 
+$q$-ultraspherical/Rogers polynomials by 
+\cite[p. 478]{Koekoeketal}
+\[
+P_n(x|q):=q^{n/4}C_n(x;q^{1/2}|q).
+\]
+
+
+--- 8/20 (sim=0.637) bounded_littlewood/chunk_215.tex ---
+Summary: Problem 2: find a q-analogue of the simplest B_n bounded Hall--Littlewood identity (lambda_1 <= m, uniform coefficients).
+
+% Paper: bounded_littlewood
+% Section: Open problems > Missing $q$-analogues
+[Summary: Problem 2: find a q-analogue of the simplest B_n bounded Hall--Littlewood identity (lambda_1 <= m, uniform coefficients).]
+
+\begin{problem}
+Find a $q$-analogue of 
+\[
+\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant m}} P_{\lambda}(x;t)
+=(x_1\cdots x_n)^{\frac{m}{2}} P_{(\hspace{-0.7pt}\frac{m}{2}\hspace{-0.7pt})^{n}}^{(\mathrm{B}_n)}(x;t,0).
+\]
+\end{problem}
+
+
+--- 9/20 (sim=0.631) cohl_rogers_generating_function/chunk_027.tex ---
+Summary: States the Chebyshev of the first kind corollary: the Rogers generating function expands in T_n(x) with coefficients involving a ₂φ₁ and the Neumann factor ε_n, a q-analogue of Cohl-Dominici's identity.
+
+% Paper: cohl_rogers_generating_function
+% Section: The continuous $q$-ultraspherical/Rogers polynomials
+
+[Summary: States the Chebyshev of the first kind corollary: the Rogers generating function expands in T_n(x) with coefficients involving a ₂φ₁ and the Neumann factor ε_n, a q-analogue of Cohl-Dominici's identity.]
+
+\begin{cor}
+Let $x\in[-1,1]$, $|t|<1$, $\beta,\gamma
+\in (-1,1)\setminus\{0\}$, $0<|q|<1$.
+Then
+\begin{equation}
+\frac{(t\beta e^{i\theta},t\beta e^{-i\theta};q)_\infty}
+{(te^{i\theta},te^{-i\theta};q)_\infty}=\sum_{n=0}^\infty 
+\epsilon_n 
+\frac{(\beta;q)_n}{(q;q)_n}
+t^n 
+\qhyp21{\beta,\beta q^{n}}{q^{n+1}}{t^2}
+\!
+T_n(x).
+\label{4:28}
+\end{equation}
+\end{cor}
+
+
+--- 10/20 (sim=0.631) bounded_littlewood/chunk_115.tex ---
+Summary: Theorem 7 (BOUNDED7): bounded HL identity with the one-parameter Rogers--Szego weight; RHS is a B_n polynomial.
+
+% Paper: bounded_littlewood
+% Section: Bounded Littlewood identities > Statement of results > $t$-Identities
+[Summary: Theorem 7 (BOUNDED7): bounded HL identity with the one-parameter Rogers--Szego weight; RHS is a B_n polynomial.]
+
+\begin{theorem}\label{THM_BOUNDED7}
+For $x=(x_1,\dots,x_n)$ and $m$ a nonnegative integer,
+\begin{equation}\label{Eq_bounded7}
+\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant m}} h_{\lambda}^{(m)}(t_2;t) 
+P_{\lambda}(x;t) =(x_1\cdots x_n)^{\frac{m}{2}}
+P_{(\hspace{-0.7pt}\frac{m}{2}\hspace{-0.7pt})^{n}}^{(\mathrm{B}_n)}(x;t,t_2).
+\end{equation}
+\end{theorem}
+
+
+--- 11/20 (sim=0.629) lee_rains_warnaar_elliptic_branching/chunk_128.tex ---
+Summary: Explains the n-independence of the integral via lifted Koornwinder polynomials; then discusses the t=q case where vanishing is proved and non-vanishing values have pfaffian expressions.
+
+% Paper: lee_rains_warnaar_elliptic_branching
+% Section: Open problems
+[Summary: Explains the n-independence of the integral via lifted Koornwinder polynomials; then discusses the t=q case where vanishing is proved and non-vanishing values have pfaffian expressions.]
+
+That the integral on the right of \eqref{Eq_vanishing-Iab} depends on~$n$
+only through $t^n$ follows from the fact that this integral is equal to
+the $T=t^n$ instance of
+\begin{gather*}
+\big[\tilde{K}_0\big(x_1,\dots,x_n;q,t,T;a^{1/2},-a^{1/2},
+b^{1/2},-b^{1/2}\big)\big] P_{\lambda}\big(x_1^{\pm},\dots,x_n^{\pm};q,t\big)
+\end{gather*}
+with $\tilde{K}_{\lambda}$ the lifted Koornwinder polynomial~\eqref{Eq_liftedK},
+see~\cite{Rains05}.
+
+When $t=q$ we have a proof of the vanishing part of the conjecture
+and alternative expressions for the right-hand sides of
+\eqref{Eq_IqtqtT} and \eqref{Eq_I1qtqtT} in terms of pfaffians.
+Define $I_{\lambda}(a,b;q,T):=I_{\lambda}(a,b;q,q,T)$ and
+$Z_n(a,b;q):=Z_n(a,b;q,q)$.
+
+
+--- 12/20 (sim=0.628) warnaar_affine_jacobi-trudi_identities/chunk_037.tex ---
+Summary: States Lemma: expands (x1...xn)*e_{n-k}(x^pm) as a Hall-Littlewood series with q-binomial coefficients — the key tool connecting bounded Littlewood identities to the k=1 conjecture proofs.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Symmetric functions > (Cylindric) Schur functions
+[Summary: States Lemma: expands (x1...xn)*e_{n-k}(x^pm) as a Hall-Littlewood series with q-binomial coefficients — the key tool connecting bounded Littlewood identities to the k=1 conjecture proofs.]
+
+\begin{Lemma}\label{Lem_eP}
+Let $x=(x_1,\dots,x_n)$ and $k$ an integer such that $-n\leqslant k\leqslant n$.
+Then
+\begin{equation*}%\label{Eq_eP}
+(x_1\cdots x_n) \dot{e}_{n-k}(x)=
+\sum_{\substack{r,s\geqslant 0\\[1pt] s-k \text{ even}}}
+\genfrac{[}{]}{0pt}{}{s}{\frac{1}{2}(s-k)}_t P_{(2^r,1^s)}(x;t).
+\end{equation*}
+\end{Lemma}
+
+
+--- 13/20 (sim=0.628) cohl_rogers_generating_function/chunk_035.tex ---
+Summary: Explores consequences of the quadratic transformation: the a=0 specialization recovers the q-binomial theorem; t=iqb^{-1/2} gives an unusual ₈φ₇ summation; and the q↑1⁻ limit yields the classical Gauss hypergeometric quadratic transformation.
+
+% Paper: cohl_rogers_generating_function
+% Section: The continuous $q$-ultraspherical/Rogers polynomials > A quadratic transformation for basic hypergeometric functions
+
+[Summary: Explores consequences of the quadratic transformation: the a=0 specialization recovers the q-binomial theorem; t=iqb^{-1/2} gives an unusual ₈φ₇ summation; and the q↑1⁻ limit yields the classical Gauss hypergeometric quadratic transformation.]
+
+This quadratic transformation has some interesting consequences. 
+For $a=0$ one obtains the $q$-binomial theorem (\ref{2:10}).
+For $t\in\mathbb C$, $t= iqb^{-1/2}$, the ${}_2\phi_1$ can be summed 
+by the $q$-Kummer (Bailey-Daum) summation
+\cite[(II.9)]{GaspRah} (this leads to a very unusual summation 
+of the ${}_8\phi_7$).
+It corresponds in the $q\uparrow 1^{-}$ limit to 
+the quadratic transformation for the Gauss hypergeometric function
+\cite[(15.8.21), (15.8.1)]{NIST:DLMF} 
+\begin{equation}
+\hyp21{a,b}{a-b+1}{t^2}=\frac{1}{(1\pm t)^{2a}}
+\hyp21{a,a-b+\frac12}{2a-2b+1}{\frac{\pm 4t}{(1\pm t)^2}}.
+\label{quadGausshypergeom}
+\end{equation}
+Note that \cite[(4.1)]{RahmanVerma93} is a quadratic transformation of basic 
+hypergeometric series which in the limit $q\uparrow 1^{-}$ yields (\ref{quadGausshypergeom}). 
+However, this quadratic transformation seems altogether different.
+
+
+--- 14/20 (sim=0.625) griffin_ono_rogers-ramanujan_arithmetic/chunk_081.tex ---
+Summary: Reviews the algebraicity of j(τ) at CM points (standard complex multiplication theory) and introduces the Klein j-function in preparation for the Kubert-Lang algebraic integrality theorem for Siegel function singular values.
+
+% Paper: griffin_ono_rogers-ramanujan_arithmetic
+% Section: Siegel Functions > Basic Facts about Siegel functions
+
+[Summary: Reviews the algebraicity of j(τ) at CM points (standard complex multiplication theory) and introduces the Klein j-function in preparation for the Kubert-Lang algebraic integrality theorem for Siegel function singular values.]
+
+Additionally, we have the following important results about the 
+algebraicity of the singular values of the Siegel functions in relation to
+the singular values of the $\operatorname{SL}_2(\mathbb Z)$ modular function
+\begin{align*}
+j(\tau)&:=\frac{\big(1+240\sum_{n=1}^{\infty} 
+\sum_{d\mid n}d^3 q^n\big)^3}{q\prod_{n=1}^{\infty}
+(1-q^n)^{24}}\\
+&\hphantom{:}=
+\frac{\eta(\tau)^{24}}{\eta(2\tau)^{24}}+3\cdot2^{8}+3\cdot2^{16}\,
+\frac{\eta(2\tau)^{24}}{\eta(\tau)^{24}}+2^{24}\,
+\frac{\eta(2\tau)^{48}}{\eta(\tau)^{48}}\\[2mm]
+&\hphantom{:}=q^{-1}+744+196884q+\cdots,
+\end{align*}
+\noindent
+which are well known to be algebraic by the theory of 
+complex multiplication (for example, see \cite{Borel, Cox}).
+
+
+--- 15/20 (sim=0.623) kanade_russell_completing_a2_andrews_schilling_warnaar/chunk_022.tex ---
+Summary: Presents Warnaar's iteration of the basic binomial relation to produce a finite truncation identity, then takes n_0 to infinity to recover the two-variable infinite identity; sets up the induction for all t.
+
+% Paper: kanade_russell_completing_a2_andrews_schilling_warnaar
+% Section: Infinite level \texorpdfstring{$\operatorname{A > Proof and other related identities
+
+
+[Summary: Presents Warnaar's iteration of the basic binomial relation to produce a finite truncation identity, then takes n_0 to infinity to recover the two-variable infinite identity; sets up the induction for all t.]
+Warnaar considers
+\begin{align}
+\Phi_n(z;q)=\dfrac{1}{(zq)_n}
+\end{align}
+and iterates the relation:
+\begin{align}
+\sum_{j=0}^n  z^jq^{j^2}
+\begin{bmatrix} n \\ j \end{bmatrix}
+\Phi_j(z;q)=\Phi_n(z;q).
+\label{eqn:basicbin}
+\end{align}
+If we iterate it finitely many times, we reach:
+\begin{align}
+\sum_{n_1,n_2,\cdots, n_k=0}^{n_0}
+z^{n_1+\cdots+n_k}q^{n_1^2+\cdots+n_k^2}
+\begin{bmatrix} n_0 \\ n_1 \end{bmatrix}\begin{bmatrix} n_1 \\ n_2 \end{bmatrix}\cdots \begin{bmatrix} n_{k-1} \\ n_k \end{bmatrix}
+\dfrac{1}{(zq)_{n_k}}=\dfrac{1}{(zq)_{n_0}}.
+\label{eqn:andrewswarnaar}
+\end{align}
+Letting $k\rightarrow\infty$ (i.e., iterating the relation infinitely many times) 
+we see:
+\begin{align}
+\sum_{n_1,n_2,\cdots=0}^{n_0}
+\begin{bmatrix} n_0 \\ n_1 \end{bmatrix}
+\left(
+\prod_{i\geq 1} z^{n_i}q^{n_i^2}
+\begin{bmatrix} n_i \\ n_{i+1} \end{bmatrix}
+\right)
+=
+\sum_{n_1,n_2,\cdots=0}^{n_0}
+\left(
+\prod_{i\geq 1} z^{n_i}q^{n_i^2}
+\begin{bmatrix} n_{i-1} \\ n_{i} \end{bmatrix}
+\right)
+=\dfrac{1}{(zq)_{n_0}}.
+\label{eqn:andrewswarnaar_inf_fin}
+\end{align}
+Now with $n_0\rightarrow\infty$, 
+we immediately get \eqref{eqn:andrewswarnaar_inf}.
+
+Now we prove \eqref{eqn:InfiniteAG} for all $t$. Note that setting $z=1$ in \eqref{eqn:andrewswarnaar_inf} recovers the $t=\infty$ case of 
+\eqref{eqn:InfiniteAG} and 
+setting $z=q$ recovers the $t=1$ case.
+We start with an easy lemma.
+
+
+--- 16/20 (sim=0.622) cuenca_interpolation_macdonald/chunk_082.tex ---
+Summary: Announces the strategy: degenerate the binomial formula for interpolation Macdonald polynomials (from Okounkov) in the limit q→0 to derive the HL-basis expansion of F^cal_λ, using three preparatory lemmas.
+
+% Paper: cuenca_interpolation_macdonald
+% Section: Inhomogeneous Hall-Littlewood polynomials > A degeneration of interpolation Macdonald polynomials
+
+[Summary: Announces the strategy: degenerate the binomial formula for interpolation Macdonald polynomials (from Okounkov) in the limit q→0 to derive the HL-basis expansion of F^cal_λ, using three preparatory lemmas.]
+
+Next we degenerate the well known binomial formula for interpolation Macdonald polynomials, \cite{Ok3}, in the limit regime $q\rightarrow 0$.
+We need several lemmas.
+
+
+--- 17/20 (sim=0.622) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_056.tex ---
+Summary: Hypergeometric preliminaries: announces two q-binomial transformation formulas needed for the proof of Theorem k12 and the mod-8 results.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Hypergeometric preliminaries
+[Summary: Hypergeometric preliminaries: announces two q-binomial transformation formulas needed for the proof of Theorem k12 and the mod-8 results.]
+
+In this section we prove two transformation formulas for sums over
+$q$-binomial coefficients.
+These transformations are needed in the proof of Theorem~\ref{Thm_k12} 
+for $k=2$ and to transform the modulus-$8$ Andrews--Gordon identities
+stated in next section into the modulus-$8$ identities discovered previously 
+by Corteel, Dousse and Uncu.
+Readers not particularly interested in identities for $q$-binomial
+coefficients and in basic hypergeometric series may wish to skip this
+section.
+
+
+--- 18/20 (sim=0.621) bounded_littlewood/chunk_092.tex ---
+Summary: Introduces the Hall--Littlewood virtual Koornwinder integral section; evaluates I_K(P_mu(q,0)) in terms of Rogers--Szego polynomials.
+
+% Paper: bounded_littlewood
+% Section: Virtual Koornwinder integrals > Closed-form evaluations---the Hall--Littlewood case
+[Summary: Introduces the Hall--Littlewood virtual Koornwinder integral section; evaluates I_K(P_mu(q,0)) in terms of Rogers--Szego polynomials.]
+
+We present one final virtual Koornwinder integral with 
+Hall--Littlewood polynomial argument.
+It evaluates in terms of the generalised Rogers--Szeg\H{o} polynomials 
+\eqref{Eq_RSBCn}, and does not appear to have a simple $t$-analogue
+for Macdonald polynomials.
+
+Let
+\[
+I_K^{(n)}(P_{\mu}(q,0);q,0;t_0,t_1,t_2,t_3)
+:=\lim_{t\to 0} I_K^{(n)}(P_{\mu}(q,t);q,t;t_0,t_1,t_2,t_3). 
+\]
+
+
+--- 19/20 (sim=0.620) bounded_littlewood/chunk_213.tex ---
+Summary: Problem 1: find q-analogues of two Hall--Littlewood bounded identities arising from special parameter choices in Theorem 6.
+
+% Paper: bounded_littlewood
+% Section: Open problems > Missing $q$-analogues
+[Summary: Problem 1: find q-analogues of two Hall--Littlewood bounded identities arising from special parameter choices in Theorem 6.]
+
+\begin{problem}
+Find $q$-analogues of 
+\[
+\sum t^{\operatorname{odd}(\lambda)/2} 
+\bigg( \prod_{i=1}^{2m-1} (t;t^2)_{\lceilm_i(\lambda)/2\rceil}\bigg)
+P_{\lambda}(x;t) 
+=(x_1\cdots x_n)^m P^{(\mathrm{C}_n)}_{m^n}(x;t,t)
+\]
+and
+\begin{multline*}
+\sum t^{\operatorname{odd}(\lambda)/4} 
+\bigg(\prod_{\substack{i=1 \\[0.5pt] i \textup{ even}}}^{2m-1}
+(t^{1/2};t)_{\lceilm_i(\lambda)/2\rceil}
+(-t;t)_{\lfloorm_i(\lambda)/2\rfloor}\bigg) \\ \times
+\bigg(\prod_{\substack{i=1 \\[0.5pt] i \textup{ odd}}}^{2m-1}
+(t;t^2)_{m_i(\lambda)/2} \bigg) P_{\lambda}(x;t) 
+=(x_1\cdots x_n)^m P^{(\mathrm{C}_n)}_{m^n}\big(x;t,t^{1/2}\big).
+\end{multline*}
+In both cases the sum is over partitions $\lambda$ such that 
+$\lambda_1\leqslant 2m$ and such that parts of odd size have even multiplicity.
+\end{problem}
+
+
+--- 20/20 (sim=0.620) warnaar_A2_andrews_gordon/chunk_057.tex ---
+Summary: Establishes notation for q-shifted factorials, q-binomial coefficients, and basic hypergeometric series, and clarifies the analytic vs. formal power series perspective used in the proofs.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Hypergeometric preliminaries
+
+[Summary: Establishes notation for q-shifted factorials, q-binomial coefficients, and basic hypergeometric series, and clarifies the analytic vs. formal power series perspective used in the proofs.]
+
+
+Throughout we use standard notation from the theory of basic hypergeometric
+functions and $q$-series, see e.g., \cite{Andrews76,GR04}.
+In general we view identities such as the $\mathrm{A}_2$ Andrews--Gordon
+identities of Theorem~\ref{Thm_A2-vac-bothmoduli} from the point of view
+of formal power series, with $q$ a formal variable.
+In some of our proofs, however, we take an analytic approach, 
+requiring complex $q$ such that $\vertq\vert<1$.
+\begin{comment}
+The main two identities in this section, given by \eqref{Eq_ksum}
+and \eqref{Eq_ksum-2} are polynomial identities (in $q$), so that
+$q$ may simply be viewed as an indeterminate.
+The same applies to Lemma~\ref{Lem_trafo}, which is a transformation
+formula for terminating basic hypergeometric series, so that all
+variables ($q$, $a$ and $c$) may be treated as indeterminates.
+However in some of our proofs, such that the proofs of Lemmas~\ref{Lem_trafo} 
+and \eqref{XXX} below, we do require an analytic point of view,
+typically requiring complex variables with $\vertq\vert<1$.
+\end{comment}
+The $q$-shifted factorials $(a)_{\infty}$ and $(a)_n$ are defined as
+\[
+(a)_{\infty}=(a;q)_{\infty}:=\prod_{i=0}^{\infty}(1-aq^i)
+\quad\text{and}\quad
+(a)_n=(a;q)_n:=\frac{(a)_{\infty}}{(aq^n)_{\infty}},
+\]
+where $n$ is an arbitrary integer.
+In particular,
+\[
+(a)_n=\prod_{i=0}^{n-1}(1-aq^i)
+\]
+for $n$ a nonnegative integer, and
+\begin{equation}\label{Eq_nul}
+\frac{1}{(q)_n}=0
+\end{equation}
+for $n$ a negative integer.
+We also adopt the usual condensed notation
+\[
+(a_1,\dots,a_k)_n = (a_1)_n\cdots (a_k)_n
+\]
+for $n\in\mathbb{Z}\cup\{\infty\}$.
+For $n,m\in\mathbb{Z}$, the $q$-binomial coefficient $\genfrac{[}{]}{0pt}{}{n}{m}$ is 
+given by
+\begin{equation}\label{Eq_qbinomial}
+\genfrac{[}{]}{0pt}{}{n}{m}=\genfrac{[}{]}{0pt}{}{n}{m}_q:=
+\begin{cases}
+\displaystyle \frac{(q)_n}{(q)_m(q)_{n-m}}
+&\text{if $0\leqslant m\leqslant n$}, \\[3mm]
+0 & \text{otherwise}.
+\end{cases}
+\end{equation}
+The ${_r\phi_s}$ basic hypergeometric series is defined as \cite{GR04}
+\begin{equation}\label{Eq_bhs}
+\fourIdx{}{r}{}{s}\phi
+                      \bigg[\genfrac{}{}{0pt}{}{a_1,\dots,a_r}{b_1,\dots,b_s};q,z\bigg]:=
+\sum_{k=0}^{\infty} \frac{(a_1,\dots,a_r)_k}{(q,b_1,\dots,b_s)_k}
+\Big((-1)^k q^{\binom{k}{2}}\Big)^{s-r+1} z^k,
+\end{equation}
+where it is assumed that none of the $b_i$ is of the form $q^{-n}$ for 
+some nonnegative integer $n$.
+The series \eqref{Eq_bhs} is said to be terminating if one of the
+$a_i$ is of the form $q^{-n}$ for $n$ a nonnegative integer, in which
+case we may assume all the variables to be indeterminates.
+If the series is non-terminating, we typically assume that 
+the $a_i$, $b_j$ as well as $z$ and $q$ are complex such that
+$\vertz\vert,\vertq\vert<1$.
+
+

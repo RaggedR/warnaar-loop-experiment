@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\EMD}{\operatorname{EMD}}
+\newcommand{\rk}{\operatorname{rank}}
+
+\title{The Master Recursion for $Q_{n,c}(q)$, the Preimage EMD Dichotomy,\\
+and the Shape of the Level-$2$ Numerator}
+\author{Seed 7, Layer 2, Round 2}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Composing the (proved) adjugate inversion of the Corteel--Welsh system with the
+conversion $Q_{n,c}=(q^\ell;q^\ell)_n\,g_{c,n}$ yields an explicit one-step
+recursion expressing $Q_n$ in terms of $Q_{n-1}$ and $Q_{n-2}$ via
+Earth-Mover's-Distance weights on profile space (Theorem~\ref{thm:master}).
+We prove a dichotomy for the behaviour of $\EMD(c,\cdot)$ under the three
+$2$-shift preimage moves (Lemma~\ref{lem:dichotomy}) and deduce that all
+negativity in the level-$2$ numerator $N_2=(1+q^2+q^4)Q_2$ is confined to three
+rigid ``sandwich'' shapes with a single negative coefficient each
+(Theorem~\ref{thm:shape}). We also show that divisibility of $N_n$ by
+$1+q^n+q^{2n}$ factors through a single scalar identity per root, generalizing
+the level-$1$ EMD Equidistribution Theorem. Positivity of $N_n$ (verified for
+$n\le 5$ at $d=4$ and $n\le 2$ at $d\in\{5,7\}$) remains conjectural.
+\end{abstract}
+
+\section{Setup and notation}
+
+Fix $r=3$ and a profile $c=(c_0,c_1,c_2)$ with $d=c_0+c_1+c_2$,
+$\ell=\gcd(d,3)$. Write $G_c(z,q)=(zq;q)_\infty F_c(z,q)$,
+$g_{c,n}=[z^n]G_c(z,q)$ and $Q_{n,c}=(q^\ell;q^\ell)_n\,g_{c,n}$.
+For $J\subseteq I_c=\{i:c_i>0\}$ let $c(J)$ be the Corteel--Welsh shifted
+profile. The Earth Mover's Distance on profiles satisfies (proved in Round~2
+Layer~1, Seed~4/Seed~7)
+\begin{equation}\label{eq:emd}
+\EMD(c,c') \;=\; 3\max\bigl(0,\;c'_1-c_1,\;c_0-c'_0\bigr)+(c'_0-c_0)-(c'_1-c_1),
+\end{equation}
+$\operatorname{adj}(I-A(x))[c,c']=x^{\EMD(c,c')}$ and
+$\det(I-A(x))=-(x^3-1)$, whence the \emph{adjugate inversion}
+\begin{equation}\label{eq:inv}
+g_{c,n}\;=\;\frac{1}{1-q^{3n}}\sum_{c'} q^{\,n\,\EMD(c,c')}\,b_n(c').
+\end{equation}
+
+\section{The master recursion}
+
+\begin{theorem}[Master recursion]\label{thm:master}
+For $n\ge 1$ (with $Q_{-1}:=0$, $Q_{0,c}:=1$),
+\[
+Q_{n,c}\;=\;\frac{1-q^{\ell n}}{1-q^{3n}}
+\sum_{c'} q^{\,n\,\EMD(c,c')}\,\mathrm{BR}_n(c'),
+\]
+where
+\begin{align*}
+\mathrm{BR}_n(c') \;=\;& q^{2n-1}\!\!\sum_{\substack{J\subseteq I_{c'}\\ |J|=2}}\!\! Q_{n-1,c'(J)}
+\;+\;[\rk(c')=3]\Bigl(-(q^{3n-2}+q^{3n-1})\,Q_{n-1,c'}\\
+&\qquad\qquad +\;q^{3n-3}\,(1-q^{\ell(n-1)})\,Q_{n-2,c'}\Bigr).
+\end{align*}
+For $\ell=1$ the prefactor is $1/(1+q^n+q^{2n})$.
+\end{theorem}
+
+\begin{proof}
+Extract $[z^n]$ from the Corteel--Welsh equation for $G_c$,
+$G_c(z,q)=\sum_{\emptyset\ne J\subseteq I_c}(-1)^{|J|-1}(zq;q)_{|J|-1}
+G_{c(J)}(zq^{|J|},q)$, using $(zq;q)_0=1$, $(zq;q)_1=1-zq$,
+$(zq;q)_2=1-z(q+q^2)+z^2q^3$. The $z^0$-coefficients of the truncated
+Pochhammers produce the matrix $A(q^n)$ acting on the current level; the
+remaining terms give
+\[
+b_n(c)\;=\;q^{2n-1}\!\!\sum_{\substack{J\subseteq I_c\\|J|=2}}\!\! g_{c(J),n-1}
+\;-\;[\rk(c)=3]\,(q^{3n-2}+q^{3n-1})\,g_{c,n-1}
+\;+\;[\rk(c)=3]\,q^{3n-3}\,g_{c,n-2},
+\]
+where we used that $|J|=3$ forces $c(J)=c$ and requires $\rk(c)=3$.
+Insert this into \eqref{eq:inv} and substitute
+$g_{\cdot,m}=Q_{m,\cdot}/(q^\ell;q^\ell)_m$, multiplying through by
+$(q^\ell;q^\ell)_n$ and using
+$(q^\ell;q^\ell)_n/(q^\ell;q^\ell)_{n-1}=1-q^{\ell n}$ and
+$(q^\ell;q^\ell)_n/(q^\ell;q^\ell)_{n-2}=(1-q^{\ell n})(1-q^{\ell(n-1)})$.
+At $n=1$ the $g_{c,-1}$ term is absent.
+\end{proof}
+
+\begin{remark}
+Verified against an independent Neumann-iteration solve of the CW linear
+system (no adjugate used): $d=4$, $n\le3$; $d=5,7$, $n\le2$; all profiles,
+exact coefficient match, and $Q_{2,c}(1)=\bigl(\tfrac{(d+1)(d+2)}{6}-1\bigr)^2$.
+The fully unfolded $n=2$ double sum, obtained by inserting the closed form
+$Q_{1,c}=\frac{1}{1+q+q^2}\sum_{c'}q^{\EMD(c,c')}B(c')$
+($B=q(2-q),\,q,\,0$ for ranks $3,2,1$), also matches exactly.
+\end{remark}
+
+\section{The preimage EMD dichotomy}
+
+For a profile $c'$ call $c''$ a \emph{$2$-shift preimage} of $c'$ if
+$c''(J)=c'$ for some $J\subseteq I_{c''}$ with $|J|=2$. Explicitly the three
+candidate moves are
+\[
+J=\{0,1\}:\; c''=c'+e_0-e_2,\qquad
+J=\{1,2\}:\; c''=c'-e_0+e_1,\qquad
+J=\{0,2\}:\; c''=c'-e_1+e_2 .
+\]
+A direct support check shows: a rank-$3$ profile $c'$ has exactly three
+preimages, a rank-$2$ profile exactly one, a rank-$1$ profile none.
+
+\begin{lemma}[Preimage EMD dichotomy]\label{lem:dichotomy}
+Fix $c$ and $c'$, put $e_0=\EMD(c,c')$, and for each existing preimage $c''$
+put $\Delta=\EMD(c,c'')-e_0$. Then $\Delta\in\{-2,+1\}$, and at most one of
+the three preimages has $\Delta=-2$.
+\end{lemma}
+
+\begin{proof}
+Set $u=c'_0-c_0$, $v=c'_1-c_1$, so by \eqref{eq:emd}
+$e_0=f(u,v):=3M(u,v)+u-v$ with $M(u,v)=\max(0,v,-u)$. The three preimage
+moves act on $(u,v)$ by $a=(+1,0)$, $b=(-1,+1)$, $c=(0,-1)$.
+
+\emph{Move $a$:} the linear part $u-v$ increases by $1$;
+$M(u+1,v)=\max(0,v,-u-1)\in\{M,M-1\}$. Hence $\Delta_a\in\{1,-2\}$, and
+$\Delta_a=-2$ iff $M=-u$ and $-u-1\ge\max(0,v)$, i.e.\
+$-u\ge\max(0,v)+1$ (in particular $u\le-1$).
+
+\emph{Move $c$:} the linear part increases by $1$;
+$M(u,v-1)\in\{M,M-1\}$, and $\Delta_c=-2$ iff $v\ge\max(0,-u)+1$
+(in particular $v\ge1$).
+
+\emph{Move $b$:} the linear part decreases by $2$;
+$M(u-1,v+1)=\max(0,v+1,-u+1)\in\{M,M+1\}$, so $\Delta_b\in\{-2,1\}$, and
+$\Delta_b=-2$ iff $M(u-1,v+1)=M$, which forces $M=0$ with $v+1\le0$ and
+$-u+1\le0$, i.e.\ $v\le-1$ and $u\ge1$.
+
+Mutual exclusivity of the three conditions: $\Delta_a=-2$ needs $u\le-1$
+while $\Delta_b=-2$ needs $u\ge1$; $\Delta_c=-2$ needs $v\ge1$ while
+$\Delta_b=-2$ needs $v\le-1$; and $\Delta_a=-2$ with $\Delta_c=-2$ gives
+$-u\ge v+1$ and $v\ge -u+1$, whence $-u\ge -u+2$, absurd.
+\end{proof}
+
+(Computationally re-checked for $d\in\{4,5,7,8,10\}$, all pairs $(c,c')$:
+zero violations; both values $\{-2,1\}$ occur for ranks $2$ and $3$.)
+
+\section{The shape of the level-2 numerator}
+
+Let $\ell=1$ and define $N_2(c):=(1+q^2+q^4)\,Q_{2,c}
+=\sum_{c'}q^{2\EMD(c,c')}\mathrm{BR}_2(c')$.
+Regrouping the sum by the profile appearing as the argument of $Q_1$ and
+applying Lemma~\ref{lem:dichotomy} gives:
+
+\begin{theorem}[Shape theorem]\label{thm:shape}
+Fix $c$ and write $e_0=e_0(c')=\EMD(c,c')$, and for rank-$3$ profiles let
+$k(c,c')\in\{0,1\}$ be the number of preimages of $c'$ with $\Delta=-2$. Then
+\begin{align*}
+N_2(c)\;=\;&\sum_{\rk(c')=2} q^{2\EMD(c,c'')+3}\,Q_{1,c'}
+\qquad (c''=\text{the unique preimage of }c')\\
+&+\sum_{\substack{\rk(c')=3\\ k=0}} q^{2e_0+4}\,(2q-1)\,Q_{1,c'}
+\;+\sum_{\substack{\rk(c')=3\\ k=1}} q^{2e_0-1}\,(1-q^5+q^6)\,Q_{1,c'}\\
+&+\sum_{\rk(c')=3} q^{2e_0+3}\,(1-q).
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:master} at $n=2$,
+$N_2(c)=\sum_{c'}W(c,c')\,Q_{1,c'}+\sum_{\rk(c')=3}q^{2e_0+3}(1-q)$ with
+$W(c,c')=q^3\sum_{c''}q^{2\EMD(c,c'')}-[\rk(c')=3](q^4+q^5)q^{2e_0}$, the
+inner sum over preimages $c''$ of $c'$; the last term is the $Q_0$
+contribution $q^3(1-q)Q_{0,c'}=q^3(1-q)$. For rank-$2$ profiles $W$ is the
+single monomial shown. For rank-$3$ profiles all three preimages exist and by
+Lemma~\ref{lem:dichotomy} their exponents are $2(e_0+\Delta_i)+3$ with
+$\Delta_i\in\{-2,1\}$ and at most one $-2$:
+if $k=0$, $W=3q^{2e_0+5}-q^{2e_0+4}-q^{2e_0+5}=q^{2e_0+4}(2q-1)$;
+if $k=1$, $W=q^{2e_0-1}+2q^{2e_0+5}-q^{2e_0+4}-q^{2e_0+5}
+=q^{2e_0-1}(1-q^5+q^6)$.
+\end{proof}
+
+\begin{corollary}
+Every negative coefficient of any single term of $N_2(c)$ arises from one of
+the three sandwich polynomials $2q-1$, $1-q^5+q^6$, $1-q$, each contributing
+exactly one negative coefficient per rank-$3$ profile $c'$
+(namely $-q^{2e_0+4}(Q_{1,c'}+1)$ in total).
+\end{corollary}
+
+\section{Equidistribution at level $n$}
+
+\begin{theorem}[Scalar reduction of divisibility]\label{thm:scalar}
+Let $\gcd(d,3)=1$ and $\zeta$ be any root of $1+q^n+q^{2n}$, so that
+$\omega_\zeta:=\zeta^n$ is a primitive cube root of unity. Since
+$\EMD(c,c')\equiv\delta(c')-\delta(c)\pmod 3$ with $\delta(c)=(c_0-c_1)\bmod3$,
+\[
+N_n(c)\big|_{q=\zeta}
+=\omega_\zeta^{-\delta(c)}\;S_n(\zeta),\qquad
+S_n(\zeta):=\sum_{c'}\omega_\zeta^{\delta(c')}\,\mathrm{BR}_n(c')\big|_{q=\zeta}.
+\]
+Hence divisibility of all $|{\cal P}_d|$ numerators $N_n(c)$ by $1+q^n+q^{2n}$
+is equivalent to the single scalar identity $S_n(\zeta)=0$ per root $\zeta$.
+\end{theorem}
+
+\begin{proof}
+Immediate from $\zeta^{n\EMD}=\omega_\zeta^{\EMD}$ and the mod-$3$ formula for
+$\EMD$ (Layer 1, Seed 7). The identity $S_n(\zeta)=0$ itself follows from
+Welsh's polynomiality of $Q_n$; at $n=2$ it was also verified directly
+($S_2(\omega)=S_2(-\omega)=0$ for $d=4,5,7$). This is the level-$n$
+generalization of the EMD Equidistribution Theorem: the $c$-dependence factors
+out completely, leaving one global charge-conservation identity.
+\end{proof}
+
+\section{What remains open}
+
+\begin{conjecture}[Numerator positivity]\label{con:num}
+$N_n(c)=(1+q^n+q^{2n})\,Q_{n,c}\ \ge\ 0$ coefficientwise for all $n,c$
+(when $\gcd(d,3)=1$).
+\end{conjecture}
+
+Verified: $d=4$, $n\le5$, all $15$ profiles (exact arithmetic);
+$d=5,7$, $n\le2$, all profiles. Two further facts constrain any proof:
+(i) $(1+q+q^2)Q_2\ge0$ holds but $(1-q+q^2)Q_2\ge0$ \emph{fails} for every
+profile tested, so positivity descends from $N_2$ through the $\Phi_6$
+division first and the $\Phi_3$ division last;
+(ii) the profile monotonicity $Q_{1,c'(J)}\ge q^a Q_{1,c'}$ is false for all
+$a\ge1$, so no termwise pairing inside Theorem~\ref{thm:shape} can work:
+positivity of $N_2$ is an irreducibly global, EMD-weighted phenomenon.
+By Theorem~\ref{thm:shape} the required cancellation is now confined to a
+single negative coefficient per rank-$3$ profile, a drastic reduction of the
+search space for a sign-reversing injection.
+
+\end{document}

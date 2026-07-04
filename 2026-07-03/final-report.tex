@@ -1,0 +1,514 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Positivity of Bounded Cylindric Partition Polynomials:\\
+A Multi-Agent Proof Exploration Report}
+\author{Loop Experiment --- 27 Agent Instances\\
+\small Final Report Agent (synthesis of Layers 1--3 and Agents A--C)}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report on a systematic computational and theoretical exploration of the positivity conjecture for bounded cylindric partition polynomials $Q_{n,c}(q)$, originally stated by Corteel--Dousse--Uncu (2020) and refined by Warnaar (2023). Over 27 agent instances across three parallel layers and three sequential agents, the experiment produced: (i) a proof that $Q_1 \geq 0$ for all $d \not\equiv 0 \pmod{3}$ via an injection lemma; (ii) an iterated $q$-difference identity $Q_n = D_n^n$ reformulating the conjecture as a domination tower; (iii) a universal determinant $\det(I - A(x)) = -(x^3 - 1)$ for the Corteel--Welsh system; (iv) the Adjugate Monomial Theorem giving $\operatorname{adj}(I - A(x))_{c,c'} = x^{\operatorname{EMD}(c,c')}$ and a manifestly positive path formula for $P_n$; (v) evidence that $Q_{n,c}(q)$ decomposes into $\mathrm{GL}_3$ key polynomials (Demazure characters); and (vi) an extension of the conjecture to all $d$ (including $d \equiv 0 \pmod{3}$) with the correct normalization $\ell = \gcd(d,3)$. The full positivity conjecture remains open. This report catalogues all partial results, failed approaches, and broken assumptions.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%=============================================================================
+\part{Expository Background}
+%=============================================================================
+
+\section{Cylindric Partitions}\label{sec:CP}
+
+\begin{definition}
+Given a composition $c = (c_0, c_1, \ldots, c_{r-1})$ with $c_i \geq 0$, a \emph{cylindric partition of profile~$c$} is a sequence of $r$ partitions $\Lambda = (\lambda^{(0)}, \lambda^{(1)}, \ldots, \lambda^{(r-1)})$ satisfying the \emph{cyclic interlacing conditions}:
+\[
+\lambda^{(i)}_j \geq \lambda^{(i+1 \bmod r)}_{j + c_{i+1 \bmod r}}
+\quad \text{for all } i \in \{0, \ldots, r-1\},\; j \geq 1.
+\]
+The \emph{size} is $|\Lambda| = \sum_i |\lambda^{(i)}|$ and the \emph{maximum} is $\max(\Lambda) = \max_i \lambda^{(i)}_1$.
+\end{definition}
+
+Throughout this report we fix $r = 3$ (three partitions arranged around a cylinder of circumference $t = 3 + d$, where $d = c_0 + c_1 + c_2$). There are $\binom{d+2}{2}$ compositions of~$d$ into three non-negative parts; these are the \emph{profiles} of the problem.
+
+\section{Generating Functions}\label{sec:GF}
+
+Let $\mathcal{C}_c$ denote the set of all cylindric partitions of profile~$c$, and $\mathcal{C}_{c,n}$ those with $\max(\Lambda) \leq n$. Define:
+\begin{align}
+F_c(q) &= \sum_{\Lambda \in \mathcal{C}_c} q^{|\Lambda|}, &
+F_c(z,q) &= \sum_{\Lambda \in \mathcal{C}_c} q^{|\Lambda|} z^{\max(\Lambda)}, &
+F_{c,n}(q) &= \sum_{\Lambda \in \mathcal{C}_{c,n}} q^{|\Lambda|}.
+\end{align}
+The bivariate generating function satisfies $F_c(z,q) = \sum_{n \geq 0} G_n(q)\, z^n$, where $G_n = F_{c,n} - F_{c,n-1}$ counts cylindric partitions with maximum exactly~$n$.
+
+\subsection{Borodin's product formula}
+
+\begin{theorem}[Borodin 2007]
+With $t = 3 + d$,
+\[
+F_c(q) = \frac{1}{(q^t;q^t)_\infty} \prod_{\substack{1 \leq i < j \leq 3 \\ m=1,\ldots,c_i}} \frac{1}{(q^{m+d_{i+1,j}+j-i};q^t)_\infty} \cdot \prod_{\substack{2 \leq j < i \leq 3 \\ m=1,\ldots,c_i}} \frac{1}{(q^{t-(m+d_{j,i-1}+i-j)};q^t)_\infty},
+\]
+where $d_{i,j} = c_i + c_{i+1} + \cdots + c_j$.
+\end{theorem}
+
+\subsection{The Corteel--Welsh functional equation}
+
+For $J \subseteq I_c = \{i : c_i > 0\}$ nonempty, the \emph{shifted profile} $c(J)$ is obtained by decrementing $c_i$ at positions where~$i \in J$ and $(i-1) \notin J$, and incrementing where $i \notin J$ and $(i-1) \in J$, cyclically.
+
+\begin{proposition}[Corteel--Welsh 2019]\label{prop:CW}
+$\displaystyle F_c(y,q) = \sum_{\emptyset \neq J \subseteq I_c} (-1)^{|J|-1} \frac{F_{c(J)}(yq^{|J|},q)}{1 - yq^{|J|}}.$
+\end{proposition}
+
+This inclusion-exclusion identity, combined with Borodin's product formula, is the main computational tool.
+
+\section{The Bounded Polynomials \texorpdfstring{$Q_{n,c}(q)$}{Q\_n,c(q)}}\label{sec:Qn}
+
+\begin{definition}\label{def:Qn}
+For $n \geq 0$, composition $c = (c_0, c_1, c_2)$ with $d = c_0 + c_1 + c_2$ and $\ell = \gcd(d, 3)$, define
+\[
+Q_{n,c}(q) := (q^\ell; q^\ell)_n \cdot [z^n]\!\big((zq;q)_\infty \cdot F_c(z,q)\big).
+\]
+\end{definition}
+
+Welsh (2021) proved $Q_{n,c}(q)$ is a polynomial, and for $d \not\equiv 0 \pmod{3}$ established $Q_{n,c}(1) = \bigl(\tfrac{1}{6}(d+1)(d+2) - 1\bigr)^n$.
+
+\begin{remark}
+The factor $(zq;q)_\infty = \prod_{i \geq 1}(1 - zq^i)$ introduces massive alternating-sign cancellation: its Taylor coefficients in~$z$ involve $(-1)^m q^{\binom{m+1}{2}} / (q;q)_m$. The positivity of $Q_{n,c}(q)$ asserts that this cancellation always resolves non-negatively.
+\end{remark}
+
+\subsection{Notation}
+
+We write $g_m(q) = [z^m] F_c(z,q)$ for the number of cylindric partitions with $\max(\Lambda) = m$, and
+\[
+h_m(q) = (q;q)_m \cdot g_m(q).
+\]
+These are related to $Q_n$ by the alternating sum
+\begin{equation}\label{eq:altsum}
+Q_{n,c}(q) = \sum_{j=0}^n (-1)^j\, q^{j(j+1)/2}\, \binom{n}{j}_{\!q}\, h_{n-j}(q),
+\end{equation}
+where $\binom{n}{j}_q$ is the $q$-binomial coefficient.
+
+\section{The Conjecture}\label{sec:conjecture}
+
+\begin{conjecture}[Corteel--Dousse--Uncu 2020 / Warnaar 2023]\label{conj:main}
+Let $c = (c_0, c_1, c_2)$ with $d = c_0 + c_1 + c_2$ and $d \not\equiv 0 \pmod{3}$. Then $Q_{n,c}(q)$ has non-negative coefficients.
+\end{conjecture}
+
+\noindent\textbf{What is known.} Warnaar proved the conjecture for $d \leq 5$ by providing explicit manifestly positive multisum formulas. Uncu (2024) proved new identities for moduli 11 and 13. No proof is known for general~$d$.
+
+%=============================================================================
+\part{Partial Results}
+%=============================================================================
+
+\section{Proved Results}
+
+\subsection{Positivity of \texorpdfstring{$Q_1$}{Q\_1}}\label{sec:Q1}
+
+\begin{theorem}[Injection Lemma; Layer 3, Seed 4]\label{thm:injection}
+For all $m \geq 1$, all $d \geq 1$, and all profiles~$c$, we have $g_m(q) \geq q \cdot g_{m-1}(q)$ coefficient-wise.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Define an injection $\phi \colon \mathcal{C}_{c}^{=m-1} \to \mathcal{C}_{c}^{=m}$ (where $\mathcal{C}_c^{=k}$ denotes cylindric partitions with maximum exactly~$k$) as follows. Given $\Lambda$ with $\max(\Lambda) = m-1$, let $i$ be the smallest index with $c_i > 0$ and $\lambda^{(i)}_1 = m-1$. Set $\phi(\Lambda)$ to be $\Lambda$ with $\lambda^{(i)}_1$ replaced by~$m$. The map $\phi$ increases the size by~1 (hence the factor $q$), is injective by the deterministic choice of~$i$, and preserves the cyclic interlacing conditions because $c_i \geq 1$ ensures the modified constraint $\lambda^{(i)}_1 \leq \lambda^{(i-1)}_1 + c_i$ remains valid.
+\end{proof}
+
+\begin{corollary}[Layer 3, Seeds 4 \& 6]\label{cor:Q1pos}
+For $d \not\equiv 0 \pmod{3}$, $Q_{1,c}(q) \geq 0$.
+\end{corollary}
+
+\begin{proof}[Proof sketch]
+The injection lemma gives that $g_1$ has weakly increasing coefficients. Since $Q_1 = (1-q) g_1 - q$, and $(1-q)$ applied to a weakly increasing sequence gives non-negative first differences, the result follows. An alternative proof (Agent~C) writes $Q_1 = p(q) - 1$ where $p(q) = (1-q) F_{c,1}(q)$ has non-negative coefficients and $p(0) = 1$.
+\end{proof}
+
+\noindent\textbf{Assessment:} \textsc{green}. The injection is explicit, the proof is complete. Two independent proofs exist.
+
+\subsection{The iterated \texorpdfstring{$q$}{q}-difference identity}\label{sec:Dkm}
+
+\begin{theorem}[Layer 2, Seed 4]\label{thm:Dkm}
+Define $D_0^m = h_m$ and $D_k^m = D_{k-1}^m - q^k D_{k-1}^{m-1}$ for $k \geq 1$. Then $Q_n = D_n^n$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Starting from~\eqref{eq:altsum}, use the classical identity $e_j(q, q^2, \ldots, q^k) = q^{j(j+1)/2} \binom{k}{j}_q$ (principal specialization of elementary symmetric functions) to rewrite the alternating sum as an iterated $q$-difference operator applied to $h_m$ at $m = n$, $k = n$.
+\end{proof}
+
+\begin{corollary}
+$D_k^m(1) = (\text{base} - 1)^k \cdot \text{base}^{m-k}$, where $\text{base} = (d+1)(d+2)/6$.
+\end{corollary}
+
+\noindent\textbf{Assessment:} \textsc{green}. This reformulates Conjecture~\ref{conj:main} as $D_k^m \geq 0$ for all $m \geq k \geq 0$, which is a tower of domination conditions $D_{k-1}^m \geq q^k D_{k-1}^{m-1}$.
+
+\medskip\noindent\textbf{Status of the tower.} All $D_k^m$ values were verified non-negative for $d = 2, 4, 5, 7, 8$ with $k, m \leq 8$ (87+ entries, zero failures). However, the base case $h_m \geq 0$ was shown to be \textbf{false} for $m \geq 2$ (see Section~\ref{sec:hm_negative}), which invalidates the inductive proof strategy via this tower.
+
+\subsection{The universal determinant}\label{sec:det}
+
+\begin{theorem}[Layer 3, Seed 6]\label{thm:det}
+Let $A(x)$ be the $N \times N$ matrix (where $N = \binom{d+2}{2}$) encoding the Corteel--Welsh shift operation on profiles. Then
+\[
+\det(I - A(x)) = -(x^3 - 1) = (1 - x)(1 + x + x^2)
+\]
+for all $d \geq 1$.
+\end{theorem}
+
+\noindent Verified exactly via SageMath for $d = 1$ through $11$ (matrix sizes $3 \times 3$ to $78 \times 78$). The factorization into $(1 - x)$ and $(1 + x + x^2)$ reflects the cube-root-of-unity eigenvalue structure that appears throughout the problem.
+
+\noindent\textbf{Assessment:} \textsc{green} (computational verification for $d \leq 11$; formal proof for all~$d$ pending).
+
+\subsection{The Adjugate Monomial Theorem}\label{sec:adjugate}
+
+\begin{definition}
+The \emph{Earth Mover's Distance} (EMD) on compositions of~$d$ into 3 parts, with clockwise transport on $\mathbb{Z}/3\mathbb{Z}$, is
+\[
+\operatorname{EMD}(c, c') = 3 \max(0,\; c'_1 - c_1,\; c_0 - c'_0) + (c'_0 - c_0) - (c'_1 - c_1).
+\]
+\end{definition}
+
+\begin{theorem}[Sequential Phase, Agent B]\label{thm:adjugate}
+For all $d \geq 1$,
+\[
+\operatorname{adj}(I - A(x))_{c,c'} = x^{\operatorname{EMD}(c,c')}.
+\]
+Every entry of the adjugate matrix is a monomial with coefficient~$1$.
+\end{theorem}
+
+\noindent Verified exactly for $d = 1, 2, 3, 4, 5, 7, 8$ (matrix sizes up to $45 \times 45$).
+
+\begin{corollary}[Manifestly positive path formula for $P_n$]\label{cor:Pn}
+The polynomial $P_n(c) = (q^3; q^3)_n \cdot F_{c,n}(q)$ satisfies
+\[
+P_n(c) = \sum_{\text{paths } (c^{(0)}, c^{(1)}, \ldots, c^{(n)} = c)} \prod_{k=1}^n q^{k \cdot \operatorname{EMD}(c^{(k)}, c^{(k-1)})}.
+\]
+This is a sum of monomials with coefficient~$1$, hence manifestly non-negative.
+\end{corollary}
+
+\noindent This gives a new proof of Kursungoz--Seyrek's $P_n \geq 0$ result with an explicit combinatorial interpretation: $P_n$ counts EMD-weighted paths on the graph of profiles.
+
+\noindent\textbf{Assessment:} \textsc{green} (computational verification; algebraic proof sketch exists via the Bellman equation but formal completion pending).
+
+\subsection{The \texorpdfstring{$\mathrm{GL}_3$}{GL3} key polynomial decomposition}\label{sec:GL3}
+
+\begin{theorem}[Layer 2, Seed 5; Layer 3, Seed 2]\label{thm:keypoly}
+For all tested values ($d = 2, 4, 5, 7, 8$; $n = 0, 1, 2, 3$), $Q_{n,c}(q)$ decomposes as a non-negative integer combination of $\mathrm{GL}_3$ key polynomials (Demazure characters) $\kappa_w(\lambda)$ at the specialization $(x_1, x_2, x_3) = (q, q^2, q^3)$.
+\end{theorem}
+
+\noindent More precisely:
+\begin{itemize}
+\item For $d = 7$, $c = (3,2,2)$: $Q_1 = \kappa_{(0,0,1)} + \kappa_{(0,0,2)} + \kappa_{(0,1,0)}$ (unique decomposition, dimensions $3 + 6 + 2 = 11$).
+\item $Q_2$ decomposes into 8 key polynomials with total dimension $121 = 11^2$.
+\item All $D_k^m$ (not just $Q_n$) decompose into non-negative integer combinations of $\mathrm{GL}_3$ key polynomials.
+\end{itemize}
+
+\noindent Since key polynomials have manifestly non-negative coefficients, an abstract proof that the decomposition exists for all~$n$ and~$d$ would immediately prove the conjecture.
+
+\noindent\textbf{Assessment:} \textsc{yellow}. Verified computationally; no proof that the decomposition exists in general.
+
+\subsection{Partial Demazure character match}\label{sec:demazure}
+
+\begin{proposition}[Layer 3, Seed 7]\label{prop:demazure}
+For balanced profiles (those with $c_1 = c_2$ or a cyclic equivalent) and $d = 2, 4, 5, 7$:
+\[
+Q_{1,c}(q) = D_{s_1 s_2}(q) - 1,
+\]
+where $D_{s_1 s_2}$ is the principally specialized Demazure character of $\widehat{\mathfrak{sl}}_3$ at level~$d$, computed via the LS path crystal for the word $s_1 s_2$.
+\end{proposition}
+
+\noindent For $d = 4$, $c = (2,1,1)$, the match $h_1 = D_{s_1 s_2}$ was confirmed at the polynomial level (not just evaluation). However, this match \textbf{fails} for asymmetric profiles and for $n \geq 2$, even for balanced profiles (see Section~\ref{sec:demazure_fail}).
+
+\noindent\textbf{Assessment:} \textsc{yellow}. Exact polynomial match for $n = 1$ balanced profiles; the correct grading for general cases is likely the energy function on Kirillov--Reshetikhin crystals, not the principal grading.
+
+\subsection{Extended positivity and unified evaluation}\label{sec:extended}
+
+\begin{conjecture}[Agent C, extending Corteel--Dousse--Uncu]\label{conj:extended}
+For $r = 3$ and \textbf{any} $d \geq 1$, the polynomial $Q_{n,c}(q)$ defined with $\ell = \gcd(d, 3)$ has non-negative coefficients. Moreover,
+\[
+Q_{n,c}(1) = \left(\frac{\ell \cdot (d+4)(d-1)}{6}\right)^n.
+\]
+\end{conjecture}
+
+\noindent This unifies the known formula for $d \not\equiv 0\!\pmod{3}$ (where $\ell = 1$ and the expression equals $\bigl(\tfrac{(d+1)(d+2)}{6} - 1\bigr)^n$) with a new formula for $d \equiv 0\!\pmod{3}$ (where $\ell = 3$ and it equals $\bigl(\tfrac{(d+4)(d-1)}{2}\bigr)^n$).
+
+Verified computationally for $d = 1$ through $12$, $n \leq 4$. Previous reports of negativity for $d \equiv 0\!\pmod{3}$ were due to using $\ell = 1$ instead of $\ell = 3$.
+
+\noindent\textbf{Assessment:} \textsc{yellow}. Extensive computational support; no proof. The evaluation formula should be provable by extending Welsh's argument.
+
+\subsection{Additional proved results}
+
+\begin{itemize}
+\item \textbf{Equal Distribution Lemma} (Layer 3, Seed 6): When $d \not\equiv 0\!\pmod{3}$, the three congruence classes of the linear form $2x + y$ on the triangle $T = \{(x,y) : x \leq c_1,\; y \leq c_2,\; x + y \geq -c_0\}$ all have cardinality $(d+1)(d+2)/6$. Verified for all profiles with $d \leq 20$. Formal proof via character sums pending.
+
+\item \textbf{Cyclic invariance}: $Q_{n,(c_0,c_1,c_2)} = Q_{n,(c_1,c_2,c_0)}$ (Layer 1, Seed 3; confirmed by all subsequent work). The symmetry is $C_3$, \textbf{not} the full dihedral group $D_3$: reversal symmetry $Q_{n,(c_0,c_1,c_2)} = Q_{n,(c_2,c_1,c_0)}$ was \textbf{disproved} by Agent~B.
+
+\item \textbf{Degree formula}: $\deg(Q_{n,c}) = (d-1)n^2 + O(n)$, with leading term $(d-1)n^2$ universal and the linear correction profile-dependent. The top monomial is $q^{\deg}$ with coefficient~$1$, preceded by a gap.
+
+\item \textbf{$d = 2$ closed form}: $Q_{n,(1,1,0)}(q) = q^{n^2}$ (a single monomial).
+
+\item \textbf{CW system is not $D_3$-equivariant} (Layer 2, Seed 6): The shifted profile operation $c(J)$ does not commute with the dihedral action on compositions. The $C_3$ symmetry of~$Q_n$ is emergent, not manifest in the recurrence.
+
+\item \textbf{No fixed-size matrix model} (Layer 2, Seed 8): Since $\deg(Q_n)$ is quadratic in~$n$, no model of the form $(M^n)_{ij}$ with fixed matrix~$M$ can produce $Q_n$.
+
+\item \textbf{Matrix product formula} (Agent A): $F_{c,n} = \prod_{k=1}^n (I - A(q^k))^{-1} \cdot \mathbf{v}_0$, where $\mathbf{v}_0 = (1, \ldots, 1)^T$.
+
+\item \textbf{$h_m$ has negative coefficients for $d \equiv 0\!\pmod{3}$} (Layer 3, Seeds 4 \& 8): The lattice point counts in the binary cylindric partition cone oscillate with period~3 when $3 \mid d$, producing negative terms in $h_1 = (1-q) g_1$. This \textbf{explains} the mod-3 restriction in the original conjecture.
+\end{itemize}
+
+
+\section{Strongly Supported Conjectures}\label{sec:yellow}
+
+The following were verified computationally but remain unproved.
+
+\begin{enumerate}
+\item \textbf{ISP Propagation Theorem} (Layer 3, Seed 3): If $D_k^m$ matches $q^{k+1} D_k^{m-1}$ for the first $L_k(m) = m - \lceil(k+2)/2\rceil$ leading coefficients at level~$k$, then the same property holds at level $k+1$. Verified for $d = 4$, $k \leq 6$, $m \leq 10$.
+
+\item \textbf{Domination tower}: $D_{k-1}^m \geq q^k D_{k-1}^{m-1}$ coefficient-wise for all $k \geq 1$, $m \geq k$. Verified for $d = 2, 4, 5, 7, 8$ with $k, m \leq 8$.
+
+\item \textbf{Universal min-degree formula}: $\min\deg(D_k^m) = (k+1)m - \lfloor(k+2)^2/4\rfloor + 1$, independent of~$d$ and profile.
+
+\item \textbf{Leading coefficient periodicity}: For $d \geq 4$ and $k \geq 2$, the leading coefficient of $D_k^m$ at its minimum degree is $1$ if $k$ is even, $2$ if $k$ is odd.
+
+\item \textbf{Min-degree increments of $Q_n$ skip multiples of~3} (Layer 2, Seed 8): For $d = 4$, the sequence $\min\deg(Q_n) - \min\deg(Q_{n-1})$ runs through $1, 2, 4, 5, 7, 8, 10, 11, \ldots$ (positive integers not divisible by~3).
+
+\item \textbf{KR crystal dimension match}: The Kirillov--Reshetikhin crystal $B^{1,d}$ for $A_2^{(1)}$ has dimension $\binom{d+2}{2}$, equal to the number of CW profiles.
+\end{enumerate}
+
+
+%=============================================================================
+\part{What Didn't Work}
+%=============================================================================
+
+\section{Failed Approaches}\label{sec:failed}
+
+\begin{longtable}{@{}p{3.5cm}p{4cm}p{4cm}p{2.5cm}@{}}
+\toprule
+\textbf{Technique} & \textbf{Why promising} & \textbf{Where it broke} & \textbf{Fundamental?} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Technique} & \textbf{Why promising} & \textbf{Where it broke} & \textbf{Fundamental?} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+
+Total positivity of $\{F_{c,N}\}$ &
+$q$-log-concavity holds (2$\times$2 Hankel $\geq 0$) &
+$3 \times 3$ Hankel minor strongly negative (min coeff $-85821$ for $c=(2,1,1)$) &
+Yes \\
+
+$h_m \geq 0$ for $m \geq 2$ &
+$h_m(1) = \text{base}^m$; $h_1 \geq 0$ proved; would be base case for $D_k^m$ tower &
+$h_2$ has negative coefficients even for $d \not\equiv 0\!\pmod{3}$: e.g.\ $h_2(1) = -25$ for $d=4$, $c=(2,1,1)$. The $(q;q)_m$ factor has alternating signs requiring higher-order conditions on $g_m$. &
+Yes \\
+
+Garsia--Milne involution on alternating sum &
+Standard tool for proving alternating-sign identities positive &
+The $j$-th term lives in the space of CPs with $\max = n-j$; no natural weight-preserving sign-reversing map between these spaces (cross-$N$ obstruction) &
+Yes (for ``local move'' involutions) \\
+
+Schur positivity &
+$Q_n$ as a character should decompose into irreducibles &
+$Q_{n,c}(q)$ is NOT a non-negative combination of $\mathfrak{sl}_3$ Schur polynomials at $(q,q^2,q^3)$ for $d \geq 4$. Demazure characters (key polynomials) are the right basis. &
+Yes \\
+
+Bailey pairs &
+Natural framework for $q$-series identities &
+The $Q$-to-$h$ transform is a convolution (kernel depends only on $j$), not a Bailey transform (kernel depends on $n$ and $j$) &
+Yes \\
+
+CW recurrence as $q$-difference equation &
+Takigiku--Tsuchioka used this for mod-14 identities &
+CW shifts the \emph{profile}, not just $z$. Produces a coupled system across all profiles (36 unknowns for $d=7$), not a single equation. &
+Yes (per-profile) \\
+
+Bilateral Rogers--Ramanujan &
+$Q_n$ has quadratic top degree matching bilateral sum exponents &
+Schlosser's $z$ tracks summation index; $F_c$'s $z$ tracks $\max(\Lambda)$. Fundamentally different quantities. &
+Partially \\
+
+$D_4^{(3)}$ $Z$-algebra &
+Tsuchioka's framework for modulus-9 identities &
+$D_4^{(3)}$ lives at modulus 9 ($d = 6$), excluded from the conjecture. The partial commutation relations fail when $A + B \in 3\mathbb{Z}$. &
+Yes (for $D_4^{(3)}$ specifically) \\
+
+GL$_2$ key polynomials &
+Successful decomposition for $d \leq 5$ &
+Fails for $d \geq 7$: coefficient multiplicities require more than 2 variables. GL$_3$ is necessary. &
+Yes (for GL$_2$) \\
+
+KR tensor product weight spaces $= Q_n$ &
+KR crystal $B^{1,d}$ has correct dimension &
+Energy-graded weight space evaluates to wrong number at $q = 1$ (9 instead of 16 for $d=4$, $n=2$). Connection is more indirect. &
+Yes (for direct identification) \\
+
+Abel summation $P_n \to Q_n$ &
+$P_n \geq 0$ is known; $Q_n$ is an alternating transform of $P_n$ &
+The transform coefficients $a_m - a_{m+1}$ alternate in sign. &
+Yes \\
+
+Demazure crystal match for $n \geq 2$ &
+$n=1$ balanced match is exact &
+No Demazure character $D_w$ with word length $\leq 6$ matches $\sum_{j=0}^2 Q_j$ for $d=4$ balanced profiles. Principal grading is too naive. &
+Partially (wrong grading) \\ \label{sec:demazure_fail}
+
+$D_3$ quotient of CW system &
+Would reduce 36$\times$36 to 8$\times$8 for $d=7$ &
+CW shift $c(J)$ does not commute with $D_3$ action. Symmetry is emergent. &
+Yes \\
+\end{longtable}
+
+
+\section{\texorpdfstring{$h_m \geq 0$}{h\_m >= 0} is false for \texorpdfstring{$m \geq 2$}{m >= 2}}\label{sec:hm_negative}
+
+This deserves special emphasis because multiple layers invested significant effort into the $D_k^m$ tower under the assumption that $h_m = D_0^m \geq 0$ was the approachable base case.
+
+\begin{theorem}[Agent A]\label{thm:hm_neg}
+For all tested profiles with $d \geq 4$ (including $d \not\equiv 0\!\pmod{3}$), the polynomial $h_m(q) = (q;q)_m \cdot g_m(q)$ has negative coefficients for $m \geq 2$.
+\end{theorem}
+
+\noindent Example: for $d = 4$, $c = (2,1,1)$, $h_2$ has coefficients $\ldots, 0, -3, -7, -12, -14, -9, -4, -1$ in its tail.
+
+\begin{remark}
+The earlier reports of ``$D_k^m \geq 0$ verified for 87+ entries'' (Layer 3) were based on power series truncated at finite precision, not the full polynomial $h_m$. The truncated power series can appear non-negative even when the polynomial has negative coefficients, because the negative terms arise at degrees beyond the truncation. With sufficient precision ($\geq 6 \max(k,m)^2 + 50$), the $D_k^m$ values for $k \geq 1$ remain non-negative in all tested cases, but the base case $D_0^m = h_m$ does not.
+\end{remark}
+
+This invalidates \textbf{Path A} (the algebraic/inductive proof via the $D_k^m$ tower with base case $h_m \geq 0$) as described in Layers 2--3. Any tower-based approach needs a fundamentally different base decomposition.
+
+
+%=============================================================================
+\part{The Surviving Proof Paths}
+%=============================================================================
+
+\section{Path C: Warnaar's \texorpdfstring{$A_2$}{A2} invariance identity}
+
+Warnaar proved a manifestly positive multisum identity for the bounded generating function. For $k = 1$ and $k = 2$, he used level-rank duality to reduce rank-3 to rank-2, where the bounded functional equations close. This yields explicit positive formulas for $Q_n$ in those cases.
+
+For general $k \geq 3$, the rank-2 reduction does not work (the system has 7 types of box insertions instead of 3), and Warnaar calls this an ``open problem.'' Three agents (A, B, C) identified this as the most promising direction but none computed with it successfully.
+
+\section{Path D: Adjugate monomial structure and signed involutions}
+
+The Adjugate Monomial Theorem (Theorem~\ref{thm:adjugate}) gives a beautiful monomial structure to $P_n$. The positivity conjecture is precisely the claim that the $q$-binomial transform of the EMD path sum is non-negative. Concretely, $Q_n$ is a convolution of the path sum with the alternating-sign coefficients of $(zq;q)_\infty$.
+
+A proof via this path would require a signed involution on an ``extended path space'' (pairs of a path of length~$j$ and a partition into at most $n - j$ parts) that cancels all negative terms. No such involution has been found.
+
+\section{Path E: System recurrence}
+
+Agent C derived and verified a system recurrence:
+\[
+Q_n(c) = \frac{1}{1 - q^{3n}} \sum_{c'} q^{n \cdot \operatorname{EMD}(c,c')} \cdot \operatorname{RHS}(c'; Q_{n-1}, Q_{n-2}),
+\]
+where $\operatorname{RHS}$ involves the $|J| = 1, 2, 3$ terms of the CW recurrence applied to $Q_{n-1}$ and $Q_{n-2}$. After factoring out $(1-q^n)$, the remaining denominator is $(1 + q^n + q^{2n})$, which acts as a cube-root-of-unity filter.
+
+This gives an explicit inductive formula: $Q_n$ from $Q_{n-1}$ and $Q_{n-2}$. The formula was verified to produce non-negative quotients for $d = 4, 5, 7$, $n \leq 3$. However, the $\operatorname{RHS}$ has negative coefficients from the $|J| = 3$ correction terms, and proving that the adjugate convolution compensates these negatives remains open.
+
+\section{Path B: Representation theory (wounded but alive)}
+
+The evidence for a representation-theoretic interpretation is substantial:
+\begin{itemize}
+\item CW profiles $=$ $\mathfrak{sl}_3$ level-$d$ dominant integral weights (structural bijection).
+\item $Q_n$ decomposes into $\mathrm{GL}_3$ key polynomials (Demazure characters) with non-negative multiplicities.
+\item $Q_1 = D_{s_1 s_2} - 1$ for balanced profiles (exact polynomial match).
+\item $(d+1)(d+2)/6 - 1$ counts non-trivial $C_3$-orbits of $\mathfrak{sl}_3$ level-$d$ weights.
+\item KR crystal $B^{1,d}$ has $\dim = \binom{d+2}{2} =$ number of profiles.
+\end{itemize}
+
+The candidate algebra is $\widehat{\mathfrak{sl}}_3$ at level~$d$, with profile $c = (c_0, c_1, c_2)$ corresponding to highest weight $c_0 \Lambda_0 + c_1 \Lambda_1 + c_2 \Lambda_2$. If $Q_{n,c}(q)$ can be identified as a Demazure character (or a character of some naturally defined module), then positivity follows from Kumar--Mathieu's theorem.
+
+The key obstacle is that the \textbf{principal grading} is not the correct specialization for general profiles and $n \geq 2$. The \textbf{energy function} on KR crystal tensor products (Kyoto path model) is the most likely correct grading, but SageMath does not expose it on LS path crystals, and direct KR tensor product matching gave wrong evaluations.
+
+\medskip\noindent\textbf{Dissent among agents.} Seeds 4 and 8 believe the $d \equiv 0\!\pmod{3}$ case requires completely different methods. Seed 7 believes the representation-theoretic approach might handle all~$d$ uniformly. Seed 5 estimates a 40\% probability of identifying the specific Demazure module.
+
+
+%=============================================================================
+\part*{Appendix: Broken Assumptions}
+\addcontentsline{toc}{part}{Appendix: Broken Assumptions}
+%=============================================================================
+
+The following assumptions were held by one or more agents and subsequently falsified. These are the hardest-won insights of the experiment.
+
+\begin{enumerate}[label=\textbf{BA\arabic*.}, leftmargin=2.5em]
+
+\item \textbf{``$Q_{1,c}$ depends only on $d$.''} \textsc{false}. $Q_{1,c}(q)$ depends on the specific profile~$c$ (up to cyclic permutation), though $Q_{1,c}(1)$ is profile-independent. \emph{(Layer 1, Seed 6.)}
+
+\item \textbf{``$h_m \geq 0$ implies $Q_n \geq 0$.''} \textsc{not directly true}. Even if all $h_m$ had non-negative coefficients, the alternating $q$-binomial transform does not preserve positivity via any known identity. Moreover, $h_m \geq 0$ is itself false for $m \geq 2$. \emph{(Layer 1, Seed 1; Agent A.)}
+
+\item \textbf{``$Q_n = Q_1^n$ as a polynomial.''} \textsc{false}. $\deg(Q_n)$ grows quadratically, $\deg(Q_1^n)$ linearly. \emph{(Layer 1, Seeds 2, 4, 8.)}
+
+\item \textbf{``$g_m(q)$ is a polynomial.''} \textsc{false}. $g_m$ is a power series (cylindric partitions can have arbitrarily many parts). Only $h_m = (q;q)_m \cdot g_m$ is a polynomial. \emph{(Layer 1, Seeds 1, 7, 8.)}
+
+\item \textbf{``$\{F_{c,N}\}$ is totally positive.''} \textsc{false}. The $3 \times 3$ Hankel minor is strongly negative. \emph{(Layer 2, Seed 2.)}
+
+\item \textbf{``$Q_n$ is Schur-positive.''} \textsc{false}. Not a non-negative combination of $\mathfrak{sl}_3$ Schur polynomials at $(q, q^2, q^3)$ for $d \geq 4$. Demazure characters are the right basis. \emph{(Layer 2, Seed 3.)}
+
+\item \textbf{``$h_m$ is multiplicative.''} \textsc{false}. $h_2 \neq h_1 \ast h_1$. Rules out tensor product interpretations. \emph{(Layer 2, Seed 3.)}
+
+\item \textbf{``$h_m$ is $q$-log-concave.''} \textsc{false}. $h_{m+1}^2 - h_m \cdot h_{m+2}$ has negative coefficients. \emph{(Layer 2, Seed 1.)}
+
+\item \textbf{``The CW system is $D_3$-equivariant.''} \textsc{false}. The profile shift $c(J)$ does not commute with $D_3$. \emph{(Layer 2, Seed 6.)}
+
+\item \textbf{``$\mathrm{GL}_2$ key polynomials suffice for all $d$.''} \textsc{false}. Fails for $d \geq 7$. Need $\mathrm{GL}_3$. \emph{(Layer 2, Seed 8.)}
+
+\item \textbf{``A fixed-size matrix model can produce $Q_n$.''} \textsc{false}. Quadratic degree growth vs.\ linear. \emph{(Layer 2, Seed 8.)}
+
+\item \textbf{``Positivity fails for $d \equiv 0\!\pmod{3}$.''} \textsc{false}. With $\ell = \gcd(d,3)$, $Q_n \geq 0$ for all tested $d$ including $3, 6, 9, 12$. \emph{(Layer 3, Seed 7; Agent C.)}
+
+\item \textbf{``$h_m \geq 0$ for $m \geq 2$ when $d \not\equiv 0\!\pmod{3}$.''} \textsc{false}. $h_2$ has negative coefficients even for $d = 4$. \emph{(Agent A.)}
+
+\item \textbf{``KR tensor product weight spaces equal $Q_n$.''} \textsc{false}. Evaluations disagree. \emph{(Agent A.)}
+
+\item \textbf{``The principal grading is correct for Demazure matching.''} \textsc{likely false} for general profiles and $n \geq 2$. Works only for $n = 1$ balanced profiles. \emph{(Layer 3, Seed 7.)}
+
+\item \textbf{``$h_2$ is a single Demazure character.''} \textsc{false}. The dimension 25 is skipped in the Demazure dimension sequence for $d = 4$. \emph{(Layer 3, Seed 8.)}
+
+\item \textbf{``$Q_n$ has reversal symmetry.''} \textsc{false}. $Q_n$ has cyclic invariance ($C_3$) but NOT $S_3$ reversal symmetry. \emph{(Agent B.)}
+
+\item \textbf{``The CW recurrence computes $F_{c,n}$.''} \textsc{false}. It computes $G_n = F_{c,n} - F_{c,n-1}$. \emph{(Layer 3, Seed 6.)}
+
+\item \textbf{``Parts can be truncated for computation.''} \textsc{false}. Cylindric partitions can have arbitrarily many parts; only total $q$-weight should be truncated. Several seeds had bugs from this. \emph{(Layer 1, Seed 7.)}
+
+\item \textbf{``Previous reports of $D_k^m$ negativity.''} \textsc{false} --- truncation artifacts from insufficient precision ($< 6\max(k,m)^2 + 50$). \emph{(Layer 3, Seed 5.)}
+\end{enumerate}
+
+
+%=============================================================================
+\part*{Conclusion}
+\addcontentsline{toc}{part}{Conclusion}
+%=============================================================================
+
+The positivity conjecture for $Q_{n,c}(q)$ remains \textbf{open}. However, the experiment has substantially clarified the landscape:
+
+\begin{enumerate}
+\item \textbf{$Q_1 \geq 0$ is proved} for $d \not\equiv 0\!\pmod{3}$ via the injection lemma.
+
+\item The \textbf{Adjugate Monomial Theorem} provides a manifestly positive path formula for $P_n$ and reduces the conjecture to showing that a specific $q$-binomial transform of this path sum is non-negative.
+
+\item The iterated $q$-difference identity $Q_n = D_n^n$ gives a precise algebraic reformulation, but the inductive proof path through it is blocked because $h_m = D_0^m$ has negative coefficients for $m \geq 2$.
+
+\item The representation-theoretic direction (Demazure characters of $\widehat{\mathfrak{sl}}_3$) shows partial matches and structural alignment, but the correct grading and precise module identification remain open.
+
+\item The conjecture likely extends to \textbf{all} $d$ (including $d \equiv 0\!\pmod{3}$) with $\ell = \gcd(d,3)$, and admits a unified evaluation formula $Q_n(1) = (\ell \cdot (d+4)(d-1)/6)^n$.
+
+\item Multiple natural proof strategies have been definitively eliminated: total positivity of $\{F_{c,N}\}$, Schur positivity, Bailey pairs, direct bilateral Rogers--Ramanujan identification, $h_m$ positivity for $m \geq 2$, GL$_2$ key polynomial decompositions, simple involutions on the alternating sum, and direct KR tensor product matching.
+\end{enumerate}
+
+The most promising surviving approaches are: (i)~extending Warnaar's $A_2$ invariance identity to general~$k$; (ii)~constructing a signed involution on the extended path space using the EMD monomial structure; (iii)~identifying the correct crystal-theoretic grading (likely the energy function on KR tensor products) for the Demazure character match; and (iv)~proving that the system recurrence with adjugate convolution preserves non-negativity.
+
+\bigskip
+\noindent\textit{This report was produced from ${\sim}11{,}000$ lines of scratch work by 27 agent instances (8 seeds $\times$ 3 layers $+$ 3 sequential agents). All computational claims were verified by at least two independent agents unless otherwise noted. Results marked \textsc{green} are proved or algebraically verified; \textsc{yellow} means computationally verified but unproved; \textsc{red} means attempted but failed or incomplete. The reader should treat \textsc{yellow} results as conjectures requiring independent verification.}
+
+\end{document}

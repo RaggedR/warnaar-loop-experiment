@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+\title{The bounded cylindric polynomials $Q_{n,c}(q)$ for $d=2$:\\
+a Rogers--Ramanujan mechanism}
+\author{Seed 1, Layer 2, Round 2}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $r=3$ and $d=2$ we prove $Q_{n,c}(q)=q^{n^2}$ for all profiles $c$ in the
+cyclic orbit of $(1,1,0)$, and $Q_{n,c}(q)=q^{n(n+1)}$ for all $c$ in the orbit
+of $(2,0,0)$. In particular Warnaar's positivity conjecture holds for $d=2$.
+The proof runs through a general lemma, valid for every profile and rank:
+multiplying the Corteel--Welsh functional equation by $(yq;q)_\infty$ converts
+it into a $q$-difference system with \emph{polynomial} coefficients
+$(-1)^{|J|-1}(yq;q)_{|J|-1}$. For $d=2$ this system collapses to the classical
+Rogers--Ramanujan $q$-difference equation $G(y)=G(yq)+yq\,G(yq^2)$, whose
+coefficients are manifestly nonnegative; this is precisely why the alternating
+signs of $(yq;q)_\infty$ disappear.
+\end{abstract}
+
+\section{Setting}
+
+Fix $r=3$. For a profile $c=(c_1,c_2,c_3)$ with $d=c_1+c_2+c_3$, let
+$F_c(y,q)=\sum_{\Lambda\in\mathcal C_c}q^{|\Lambda|}y^{\max(\Lambda)}$ be the
+bivariate cylindric partition generating function, and write
+$F_c(y,q)=\sum_{n\ge0}f_{c,n}(q)\,y^n$. For fixed $n$ and $w$ the number of
+cylindric partitions with $\max(\Lambda)=n$ and $|\Lambda|=w$ is finite (all
+parts are $\le n$, so the total size $w$ bounds the number of parts); hence
+each $f_{c,n}\in\mathbb Z[[q]]$ and $F_c\in\mathbb Z[[q]][[y]]$. All identities
+below are identities in the ring $\mathbb Z[[q]][[y]]$, in which any element
+with constant term $1$ (e.g.\ $1-yq^j$, $1-q^n$, $(yq;q)_\infty$) is a unit.
+
+For $d=2$ we have $\ell=\gcd(d,3)=1$, so
+\[
+Q_{n,c}(q)=(q;q)_n\,[y^n]\bigl((yq;q)_\infty\,F_c(y,q)\bigr).
+\]
+Since rotating the profile rotates the cylinder --- a bijection preserving
+$|\Lambda|$ and $\max(\Lambda)$ --- $F_c$, and hence $Q_{n,c}$, depends only on
+the cyclic orbit of $c$. For $d=2$ there are exactly two orbits, represented
+by $a=(1,1,0)$ and $b=(2,0,0)$. Write $A(y)=F_{(1,1,0)}(y,q)$ and
+$B(y)=F_{(2,0,0)}(y,q)$.
+
+Our tool is the Corteel--Welsh functional equation: for any profile $c$, with
+$I_c=\{i:c_i>0\}$ and $c(J)$ the shifted profile,
+\begin{equation}\label{eq:CW}
+F_c(y,q)=\sum_{\emptyset\subsetneq J\subseteq I_c}(-1)^{|J|-1}\,
+\frac{F_{c(J)}(yq^{|J|},q)}{1-yq^{|J|}}.
+\end{equation}
+
+\section{The key lemma: where the alternating signs go}
+
+\begin{lemma}[$G$-transform of the Corteel--Welsh system]\label{lem:GCW}
+For any rank $r$ and any profile $c$, set $G_c(y):=(yq;q)_\infty\,F_c(y,q)$.
+Then
+\begin{equation}\label{eq:GCW}
+G_c(y)=\sum_{\emptyset\subsetneq J\subseteq I_c}(-1)^{|J|-1}\,
+(yq;q)_{|J|-1}\;G_{c(J)}(yq^{|J|}).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Substitute $F_{c(J)}(yq^{|J|},q)=G_{c(J)}(yq^{|J|})/(yq^{|J|+1};q)_\infty$ into
+\eqref{eq:CW} and multiply both sides by $(yq;q)_\infty$. The coefficient of
+$G_{c(J)}(yq^{|J|})$ becomes, with $s=|J|$,
+\[
+\frac{(yq;q)_\infty}{(1-yq^{s})\,(yq^{s+1};q)_\infty}
+=\frac{(yq;q)_\infty}{(yq^{s};q)_\infty}
+=(yq;q)_{s-1},
+\]
+using $(yq^{s};q)_\infty=(1-yq^{s})(yq^{s+1};q)_\infty$ and
+$(yq;q)_\infty=(yq;q)_{s-1}(yq^{s};q)_\infty$.
+\end{proof}
+
+\begin{remark}
+Lemma~\ref{lem:GCW} explains the role of the sign-alternating factor
+$(yq;q)_\infty$ in the definition of $Q_{n,c}$: it is exactly the cofactor
+that clears every denominator $1-yq^{|J|}$ from the Corteel--Welsh system,
+leaving a $q$-difference system with \emph{finite polynomial} coefficients
+$(yq;q)_{|J|-1}$. Since $Q_{n,c}=(q^{\ell};q^{\ell})_n\,[y^n]G_c(y)$, the
+positivity conjecture is a statement about the solution of the
+polynomial-coefficient system \eqref{eq:GCW}.
+\end{remark}
+
+\section{The case $d=2$}
+
+\begin{theorem}\label{thm:main}
+For all $n\ge0$,
+\[
+Q_{n,c}(q)=q^{n^2}\quad\text{for }c\in\{(1,1,0),(0,1,1),(1,0,1)\},
+\qquad
+Q_{n,c}(q)=q^{n(n+1)}\quad\text{for }c\in\{(2,0,0),(0,2,0),(0,0,2)\}.
+\]
+In particular the Corteel--Dousse--Uncu/Warnaar positivity conjecture holds
+for $d=2$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: the system.}
+For $c=(1,1,0)$ we have $I_c=\{1,2\}$ and (indices cyclic, $c_0=c_3$):
+$c(\{1\})=(0,2,0)$, $c(\{2\})=(1,0,1)$, $c(\{1,2\})=(0,1,1)$. Using cyclic
+invariance to replace $F_{(0,2,0)}$ by $B$ and $F_{(1,0,1)},F_{(0,1,1)}$ by
+$A$, \eqref{eq:CW} reads
+\begin{equation}\label{eq:CWa}
+A(y)=\frac{B(yq)}{1-yq}+\frac{A(yq)}{1-yq}-\frac{A(yq^2)}{1-yq^2}.
+\end{equation}
+For $c=(2,0,0)$ we have $I_c=\{1\}$ and $c(\{1\})=(1,1,0)$, so
+\begin{equation}\label{eq:CWb}
+B(y)=\frac{A(yq)}{1-yq}.
+\end{equation}
+
+\emph{Step 2: eliminate $B$.}
+Substituting \eqref{eq:CWb} (at $y\mapsto yq$) into \eqref{eq:CWa},
+\[
+A(y)=\frac{A(yq)}{1-yq}
++A(yq^2)\left[\frac{1}{(1-yq)(1-yq^2)}-\frac{1}{1-yq^2}\right]
+=\frac{A(yq)}{1-yq}+\frac{yq\,A(yq^2)}{(1-yq)(1-yq^2)},
+\]
+since $1-(1-yq)=yq$. Multiplying by $1-yq$:
+\begin{equation}\label{eq:star}
+(1-yq)\,A(y)=A(yq)+\frac{yq}{1-yq^2}\,A(yq^2).
+\end{equation}
+
+\emph{Step 3: the $G$-transform.}
+Let $G(y)=(yq;q)_\infty A(y)$. Substituting
+$A(y)=G(y)/(yq;q)_\infty$, $A(yq)=G(yq)/(yq^2;q)_\infty$,
+$A(yq^2)=G(yq^2)/(yq^3;q)_\infty$ into \eqref{eq:star} and multiplying by
+$(yq;q)_\infty=(1-yq)(yq^2;q)_\infty=(1-yq)(1-yq^2)(yq^3;q)_\infty$ gives
+\[
+(1-yq)\,G(y)=(1-yq)\,G(yq)+yq\,(1-yq)\,G(yq^2).
+\]
+Dividing by the unit $1-yq$:
+\begin{equation}\label{eq:RR}
+G(y)=G(yq)+yq\,G(yq^2).
+\end{equation}
+This is the classical Rogers--Ramanujan $q$-difference equation.
+(Equivalently: apply Lemma~\ref{lem:GCW} to both profiles --- the $|J|=1$
+terms carry coefficient $+1$, the single $|J|=2$ term carries $-(1-yq)$, and
+elimination of $G_B$ recombines the signs into the nonnegative coefficients
+$1$ and $yq$ of \eqref{eq:RR}.)
+
+\emph{Step 4: uniqueness and solution.}
+Write $G(y)=\sum_{n\ge0}g_n(q)y^n$. Comparing coefficients of $y^n$ in
+\eqref{eq:RR}:
+\[
+g_n=q^n g_n+q^{2(n-1)}\cdot q\,g_{n-1}
+\qquad\Longleftrightarrow\qquad
+(1-q^n)\,g_n=q^{2n-1}g_{n-1}\quad(n\ge1).
+\]
+Since $1-q^n$ is a unit of $\mathbb Z[[q]]$, the $g_n$ are uniquely determined
+by $g_0$. Now $g_0=G(0)=F_c(0,q)=1$ (only the empty cylindric partition has
+maximum $0$), and by induction, using $\sum_{j=1}^{n}(2j-1)=n^2$,
+\[
+g_n=\frac{q^{n^2}}{(q;q)_n}.
+\]
+Therefore
+\[
+Q_{n,(1,1,0)}(q)=(q;q)_n\,g_n=q^{n^2}.
+\]
+
+\emph{Step 5: the orbit of $(2,0,0)$.}
+Let $G_B(y)=(yq;q)_\infty B(y)$. By \eqref{eq:CWb},
+\[
+G_B(y)=\frac{(yq;q)_\infty}{1-yq}\,A(yq)=(yq^2;q)_\infty A(yq)=G(yq),
+\]
+so $[y^n]G_B=q^n g_n=q^{n(n+1)}/(q;q)_n$ and
+$Q_{n,(2,0,0)}(q)=q^{n(n+1)}$.
+
+By cyclic invariance the same formulas hold across each orbit. Both are
+monomials, hence have nonnegative coefficients; and
+$Q_{n,c}(1)=1=\bigl(\tfrac16(d+1)(d+2)-1\bigr)^n$ for $d=2$, consistent with
+Welsh's evaluation.
+\end{proof}
+
+\begin{remark}[Example]
+$n=2$, $c=(1,1,0)$: the recursion gives
+$g_1=q/(1-q)$, $g_2=q^{3}g_1/(1-q^2)=q^{4}/\bigl((1-q)(1-q^2)\bigr)$, so
+$Q_{2}=(q;q)_2\,g_2=q^{4}$. Direct expansion of
+$(q;q)_2\,[y^2]\bigl((yq;q)_\infty F_{(1,1,0)}(y,q)\bigr)$, with
+$f_{c,0}=1$, $f_{c,1}=2q/(1-q)$,
+$f_{c,2}=q^2(2+q+q^2)/\bigl((1-q)^2(1+q)\bigr)
+=2q^2+3q^3+6q^4+7q^5+10q^6+\cdots$
+(machine-verified against the Corteel--Welsh system), reproduces $q^4$ after
+the massive cancellation --- verified to precision $q^{900}$.
+\end{remark}
+
+\begin{remark}[Why the signs collapse, and what is special about $d=2$]
+Three separate phenomena combine:
+(i)~\emph{globally}, Lemma~\ref{lem:GCW} absorbs the infinite alternating
+series $(yq;q)_\infty$ into finite coefficients $(yq;q)_{|J|-1}$;
+(ii)~\emph{for $d=2$}, elimination of the second orbit recombines the residual
+signs $\{+1,+1,-(1-yq)\}$ into the manifestly nonnegative coefficients
+$\{1,yq\}$ of \eqref{eq:RR}; (iii)~the resulting recursion
+$(1-q^n)g_n=q^{2n-1}g_{n-1}$ is first order with monomial coefficient, which
+is why $Q_n$ degenerates to a single monomial rather than a positive
+polynomial. For $d>2$, step~(iii) genuinely fails (the eliminated system has
+higher order), but steps (i)--(ii) formulate the conjecture as a positivity
+property of the polynomial-coefficient system \eqref{eq:GCW}; finding the
+general-$d$ analogue of the sign recombination (ii) is the open problem.
+\end{remark}
+
+\begin{remark}[Relation to known results]
+$t=k+d=5$ is the Rogers--Ramanujan modulus; equation \eqref{eq:RR} and its
+solution are classical (Rogers 1894), and Corteel--Welsh (2019) used
+\eqref{eq:CW} at $d=2$ to reprove the Rogers--Ramanujan identities. Warnaar
+(2023) proved positivity for $d=2$ via explicit multisums. The content here is
+the clean statement and proof in the $Q_{n,c}$ normalization, together with
+Lemma~\ref{lem:GCW}, which is profile- and rank-independent and isolates
+exactly where the alternating signs go.
+\end{remark}
+
+\section*{Verification}
+Script \texttt{scratch/scripts/seed1\_R2L2\_d2\_verify.sage}: (1) brute-force
+enumeration of all cylindric partitions of size $\le25$ for all six profiles
+matches the Corteel--Welsh solution (validating \eqref{eq:CWa},
+\eqref{eq:CWb} and the shifted-profile computations); (2) $Q_{n}=q^{n^2}$ and
+$Q_n=q^{n(n+1)}$ verified for $n\le10$ at precision $q^{900}$ (well above the
+truncation-safety bound $6n^2+200=800$); (3) equations \eqref{eq:star},
+\eqref{eq:RR}, \eqref{eq:GCW}, $G_B(y)=G(yq)$ and $g_n=q^{n^2}/(q;q)_n$ each
+verified coefficientwise. All checks passed.
+
+\end{document}

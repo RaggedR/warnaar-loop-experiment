@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{identity}[theorem]{Identity}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\emd}{\operatorname{EMD}}
+\newcommand{\qbin}[2]{\begin{bmatrix}#1\\#2\end{bmatrix}_q}
+
+\title{The Rotation Orbit Tower and a Proof of $h_m\ge 0$ for $d=2$\\
+\large Seed 4, Layer 2 --- Warnaar positivity project}
+\author{Seed 4 (Layer 2, Round 2)}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove two results toward the core bottleneck of the positivity
+conjecture for $Q_{n,c}(q)$ ($r=3$, $d\not\equiv 0 \bmod 3$), namely the
+conjecture $h_m := (q^{\ell};q^{\ell})_m\, g_m \ge 0$ with
+$g_m = P_m/(q^3;q^3)_m$ and $\ell=\gcd(d,3)=1$.
+First, an \emph{orbit-tower reduction} valid for all $d$ with $3\nmid d$:
+$h_m$-positivity is equivalent to coefficientwise nonnegativity of an
+explicit tower $H_m = U(q^m)H_{m-1}$, $H_0=\mathbf 1$, where $U(x)$ is a
+fixed $N\times N$ polynomial matrix, $N=\tfrac{(d+1)(d+2)}{6}$, indexed by
+the $\mathbb Z/3$-rotation orbits of profiles. The exact divisibility making
+$U$ polynomial follows from a two-line congruence for the cyclic earth-mover
+distance. Second, for $d=2$ we solve the tower in closed form: $h_m$ equals
+a finite Rogers--Ramanujan (MacMahon--Schur) polynomial, hence is manifestly
+nonnegative. The proof uses only the $q$-Pascal and absorption identities.
+\end{abstract}
+
+\section{Setup}
+
+Fix $r=3$ and $d\ge 1$ with $3\nmid d$. A \emph{profile} is a composition
+$c=(c_0,c_1,c_2)$ of $d$ into three nonnegative parts; there are
+$\binom{d+2}{2}$ of them. The cyclic (clockwise) earth-mover distance is
+\[
+\emd(c,c') \;=\; 3\max(0,\alpha,\beta)-\alpha-\beta,
+\qquad \alpha = c'_1-c_1,\quad \beta = c_0-c'_0 .
+\]
+Define $P_m(c)$ as the generating function of weighted profile paths,
+\[
+P_0(c)=1,\qquad
+P_m(c)\;=\;\sum_{c'} q^{\,m\,\emd(c,c')}\,P_{m-1}(c'),
+\]
+so that $P_m(c)=\sum_{\gamma} q^{\sum_{k=1}^m k\,\emd(c^{k},c^{k-1})}$ over
+paths $\gamma=(c^0,\dots,c^m=c)$. The Layer-1 results (Adjugate Monomial
+Theorem and its consequences, all verified) express the core quantity as
+\[
+h_m(c)\;=\;\frac{(q;q)_m}{(q^3;q^3)_m}\,P_m(c)
+\;=\;\frac{P_m(c)}{\prod_{k=1}^m (1+q^k+q^{2k})},
+\]
+using $(1-q^{3k})/(1-q^k)=1+q^k+q^{2k}$. The bottleneck conjecture is that
+$h_m(c)$ is a polynomial with nonnegative coefficients.
+
+Let $\rho(c)=(c_2,c_0,c_1)$ denote cyclic rotation of profiles. Directly
+from the formula, $\emd(\rho a,\rho b)=\emd(a,b)$; hence by induction
+$P_m(\rho c)=P_m(c)$ and $h_m$ is constant on $\rho$-orbits. Since
+$3\nmid d$, no profile is $\rho$-fixed, so all orbits have size $3$ and
+there are $N=\binom{d+2}{2}/3=\frac{(d+1)(d+2)}{6}$ of them.
+
+\section{The orbit tower}
+
+\begin{lemma}[mod-3 congruence for EMD]\label{lem:mod3}
+For all profiles $a,b$ of $d$,
+\[
+\emd(a,b)\;\equiv\; b_0-a_0+a_1-b_1 \pmod 3,
+\qquad
+\emd(a,\rho b)-\emd(a,b)\;\equiv\; d \pmod 3 .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\emd = 3\max(0,\alpha,\beta)-\alpha-\beta \equiv -\alpha-\beta
+= (a_1-b_1)+(b_0-a_0) \pmod 3$, the first congruence holds. With
+$\rho b=(b_2,b_0,b_1)$,
+\[
+\bigl[(\rho b)_0-a_0+a_1-(\rho b)_1\bigr]-\bigl[b_0-a_0+a_1-b_1\bigr]
+= (b_2-b_0)-(b_0-b_1)= b_0+b_1+b_2-3b_0 \equiv d \pmod 3. \qedhere
+\]
+\end{proof}
+
+\begin{theorem}[Orbit-tower reduction, all $3\nmid d$]\label{thm:tower}
+Choose orbit representatives $a_1,\dots,a_N$, and for each pair $(i,j)$ set
+$E_t(i,j)=\emd(a_i,\rho^t a_j)$, $t=0,1,2$. Then:
+\begin{enumerate}
+\item The exponents $E_0,E_1,E_2$ are pairwise distinct modulo $3$; hence
+$x^{E_0}+x^{E_1}+x^{E_2}$ is divisible by $1+x+x^2$ in $\mathbb Z[x]$, and
+\[
+U_{ij}(x)\;:=\;\frac{x^{E_0(i,j)}+x^{E_1(i,j)}+x^{E_2(i,j)}}{1+x+x^2}
+\;\in\;\mathbb Z[x].
+\]
+\item The vector $H_m=(h_m(a_1),\dots,h_m(a_N))$ satisfies
+\[
+H_m \;=\; U(q^m)\,H_{m-1},\qquad H_0=(1,\dots,1)^{\mathsf T}.
+\]
+\end{enumerate}
+Consequently $h_m\ge 0$ (all $c$, all $m$) if and only if the tower
+$H_m$ is coefficientwise nonnegative for all $m$.
+\end{theorem}
+
+\begin{proof}
+(1) By Lemma~\ref{lem:mod3}, $E_t\equiv E_0+td \pmod 3$; since $3\nmid d$
+these are the three residues in some order. If $\omega$ is a primitive cube
+root of unity, $\omega^{E_0}+\omega^{E_1}+\omega^{E_2}=1+\omega+\omega^2=0$,
+so both primitive cube roots of unity are roots of
+$x^{E_0}+x^{E_1}+x^{E_2}$, which is therefore divisible by $1+x+x^2$.
+
+(2) Group the $P$-recursion by orbits, using $\rho$-invariance of
+$P_{m-1}$:
+\[
+P_m(a_i)=\sum_{j=1}^N\Bigl(\sum_{t=0}^2 q^{m E_t(i,j)}\Bigr)P_{m-1}(a_j).
+\]
+Divide both sides by $\prod_{k\le m}(1+q^k+q^{2k})$; the factor
+$1+q^m+q^{2m}$ absorbs into the bracket by part (1) with $x=q^m$, giving
+the stated system for $H_m$. The base case is $P_0=1$.
+\end{proof}
+
+\begin{remark}
+Lemma~\ref{lem:mod3} turns the equidistribution phenomenon observed
+computationally in earlier layers (Seed 7) into a proof. Theorem
+\ref{thm:tower} replaces the infinite family of statements
+``$(q;q)_m P_m/(q^3;q^3)_m\ge 0$'' by nonnegativity of a tower generated
+by one \emph{fixed, explicitly computable} polynomial matrix.
+\end{remark}
+
+\section{Solution of the tower for $d=2$}
+
+For $d=2$ there are $N=2$ orbits, with representatives $a_1=(2,0,0)$ and
+$a_2=(1,1,0)$. Direct computation of the twelve values
+$\emd(a_i,\rho^t a_j)$ gives the exponent triples
+\[
+\{E_t(1,1)\}=\{0,2,4\},\quad
+\{E_t(1,2)\}=\{E_t(2,1)\}=\{1,2,3\},\quad
+\{E_t(2,2)\}=\{0,1,2\},
+\]
+so, since $(1+x^2+x^4)=(1+x+x^2)(1-x+x^2)$,
+\[
+U(x)=\begin{pmatrix}1-x+x^2 & x\\ x & 1\end{pmatrix}.
+\]
+
+Recall the Gaussian binomial $\qbin{m}{j}$ and define the finite
+Rogers--Ramanujan (MacMahon--Schur) polynomials
+\[
+A_m=\sum_{j\ge 0} q^{j^2+j}\qbin{m}{j},\qquad
+B_m=\sum_{j\ge 0} q^{j^2}\qbin{m}{j},\qquad
+C_m=\sum_{j\ge 0} q^{j^2+2j}\qbin{m}{j}.
+\]
+
+\begin{theorem}[$d=2$ solved]\label{thm:d2}
+For $d=2$ and all $m\ge 0$,
+\[
+h_m(c)=A_m \ \ \text{if } c\in\{(2,0,0),(0,2,0),(0,0,2)\},
+\qquad
+h_m(c)=B_m \ \ \text{if } c\in\{(1,1,0),(0,1,1),(1,0,1)\}.
+\]
+In particular $h_m(c)$ has nonnegative coefficients for all $c$ and $m$.
+\end{theorem}
+
+The proof rests on three elementary identities. We use the $q$-Pascal rule
+$\qbin{m}{j}=\qbin{m-1}{j}+q^{m-j}\qbin{m-1}{j-1}$ and the absorption
+identities $(1-q^j)\qbin{n}{j}=(1-q^n)\qbin{n-1}{j-1}$ and
+$(1-q^{n-j})\qbin{n}{j}=(1-q^n)\qbin{n-1}{j}$.
+
+\begin{identity}\label{id:B}
+$B_m-B_{m-1}=q^m A_{m-1}$.
+\end{identity}
+\begin{proof}
+By $q$-Pascal, $B_m-B_{m-1}=\sum_j q^{j^2}\,q^{m-j}\qbin{m-1}{j-1}$.
+Substituting $j=i+1$: $\;q^m\sum_i q^{i^2+i}\qbin{m-1}{i}=q^mA_{m-1}$.
+\end{proof}
+
+\begin{identity}\label{id:A}
+$A_m-A_{m-1}=q^{m+1} C_{m-1}$.
+\end{identity}
+\begin{proof}
+By $q$-Pascal, $A_m-A_{m-1}=\sum_j q^{j^2+j}\,q^{m-j}\qbin{m-1}{j-1}
+= q^m\sum_i q^{(i+1)^2}\qbin{m-1}{i}=q^{m+1}C_{m-1}$.
+\end{proof}
+
+\begin{identity}[key lemma]\label{id:C}
+$q\,C_n = B_n-(1-q^{n+1})A_n$ for all $n\ge 0$.
+\end{identity}
+\begin{proof}
+Compute
+\[
+B_n-A_n+q^{n+1}A_n-qC_n
+=\sum_j \qbin{n}{j}q^{j^2}\Bigl((1-q^j)-q^{2j+1}(1-q^{n-j})\Bigr).
+\]
+Apply the first absorption identity to the term $(1-q^j)\qbin{n}{j}$ and
+the second to $(1-q^{n-j})\qbin{n}{j}$:
+\[
+=(1-q^n)\Bigl(\sum_j q^{j^2}\qbin{n-1}{j-1}
+-\sum_j q^{j^2+2j+1}\qbin{n-1}{j}\Bigr)
+=(1-q^n)\Bigl(\sum_i q^{i^2+2i+1}\qbin{n-1}{i}
+-\sum_j q^{j^2+2j+1}\qbin{n-1}{j}\Bigr)=0,
+\]
+where the first sum was reindexed by $j=i+1$.
+(For $n=0$ all three of $A_0,B_0,C_0$ equal $1$ and the identity reads
+$q=1-(1-q)$.)
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:d2}]
+By Theorem~\ref{thm:tower} it suffices to show that
+$(A_m,B_m)$ satisfies the $d=2$ tower, i.e.\ with $x=q^m$,
+\[
+A_m=(1-x+x^2)A_{m-1}+xB_{m-1},\qquad
+B_m=xA_{m-1}+B_{m-1},
+\]
+with base case $A_0=B_0=1=H_0$. The $B$-equation is
+Identity~\ref{id:B}. For the $A$-equation,
+\[
+(1-q^m+q^{2m})A_{m-1}+q^mB_{m-1}
+=A_{m-1}+q^m\bigl(B_{m-1}-(1-q^m)A_{m-1}\bigr)
+=A_{m-1}+q^m\cdot qC_{m-1}=A_m,
+\]
+using Identity~\ref{id:C} with $n=m-1$ and then Identity~\ref{id:A}.
+Since the tower has a unique solution given $H_0$, we conclude
+$H_m=(A_m,B_m)$, i.e.\ $h_m(a_1)=A_m$, $h_m(a_2)=B_m$, and by
+$\rho$-invariance the same holds on the full orbits. Nonnegativity is
+manifest from the defining sums.
+\end{proof}
+
+\paragraph{Example ($m=2$).}
+$A_2=1+q^2+q^3+q^6$, $B_2=1+q+q^2+q^4$. Check the tower with $x=q^2$:
+$B_2=q^2A_1+B_1=q^2(1+q^2)+(1+q)$ \checkmark;
+$A_2=(1-q^2+q^4)(1+q^2)+q^2(1+q)=(1+q^6)+(q^2+q^3)$ \checkmark.
+Also $\prod_{k\le 2}(1+q^k+q^{2k})\cdot A_2 = P_2((2,0,0))$, verified
+against the direct path enumeration.
+
+\section{Status for $d=4$ and outlook}
+
+For $d=4$ the tower is $5\times 5$. Computationally, three of the five
+orbit values admit bounded fermionic forms of Warnaar's Conjecture-2 shape
+\[
+H_m=\sum_{n,j} q^{n^2-nj+j^2+an+bj}\qbin{m}{n}\begin{bmatrix}2n\\
+j\end{bmatrix}_q,
+\]
+namely the orbits of $(1,1,2)$, $(0,0,4)$, and $(0,3,1)$ (verified for
+$m\le 5$). The two remaining orbits, of $(0,1,3)$ and $(0,2,2)$, provably
+do not fit a single sum of this shape, and an exhaustive search over pairs
+of such sums also failed; these profiles lie outside the family covered by
+Warnaar's Conjecture~2 and finding their fermionic forms is open. The
+$d=2$ proof provides the template: once closed forms are found for all
+five orbits, the tower identities should again reduce to $q$-Pascal
+manipulations.
+
+\end{document}

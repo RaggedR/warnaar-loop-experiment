@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newcommand{\EMD}{\mathrm{EMD}}
+
+\title{Positivity of $h_m$ for $3\mid d$, and an Orbit--Product Formula for $h_m$ when $\gcd(d,3)=1$}
+\author{Seed 2, Layer 2, Round 2}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $c=(c_0,c_1,c_2)$ be a profile with $d=c_0+c_1+c_2$, let $F_{c,m}(q)$ be the generating
+function of cylindric partitions of profile $c$ with maximum entry at most $m$, let
+$g_m = F_{c,m}-F_{c,m-1}$ and $h_m = (q^\ell;q^\ell)_m\, g_m$ with $\ell=\gcd(d,3)$.
+We prove two results. (1) For $3\mid d$, $h_m$ has nonnegative coefficients; this settles the
+$\ell=3$ half of the core bottleneck identified in the Layer-1 synthesis. (2) For
+$\gcd(d,3)=1$ we prove an exact \emph{orbit--product formula}: $h_m$ (and also
+$P_m := (q;q)_m F_{c,m}$) is a finite sum, over sequences of $C_3$-orbits of profiles, of
+products $\prod_{j=1}^m U^{(j)}(q^j)$ of explicit integer polynomials $U^{(j)}$ with
+coefficients in $\{0,\pm 1\}$. In particular $(q;q)_m F_{c,m} \in \mathbb{Z}[q]$, and
+$h_m(1)=K^m$ with $K = \binom{d+2}{2}/3$. The remaining obstacle to $h_m\ge 0$ for
+$\gcd(d,3)=1$ is isolated as the positivity of this signed orbit-path sum.
+Both results take as input only the Adjugate Monomial Theorem
+$\operatorname{adj}(I-A(x))[c,c'] = x^{\EMD(c,c')}$ and $\det(I-A(x)) = -(x^3-1)$,
+which were proved in Layer 1 (Seed 4).
+\end{abstract}
+
+\section{Setup and inputs}
+
+Profiles of weight $d$ are triples $c=(c_0,c_1,c_2)\in\mathbb{Z}_{\ge0}^3$ with $\sum c_i = d$.
+The Corteel--Welsh recursion for the bounded generating functions $F_{c,m}$ is encoded by the
+matrix $A(x)$ with entries indexed by profiles, and Layer 1 (Seed 4) proved:
+
+\medskip
+\noindent\textbf{Input 1 (Adjugate Monomial Theorem, GREEN).}
+$\operatorname{adj}(I-A(x))[c,c'] = x^{\EMD(c,c')}$, where
+\begin{equation}\label{eq:emd}
+\EMD(c,c') \;=\; 3\max\bigl(0,\; c'_1-c_1,\; c_0-c'_0\bigr) + (c'_0-c_0) - (c'_1-c_1),
+\end{equation}
+and $\det(I-A(x)) = -(x^3-1)$. Consequently, for every $m\ge 1$,
+\begin{equation}\label{eq:inversion}
+(1-q^{3m})\, F_{c,m} \;=\; \sum_{c'} q^{m\,\EMD(c,c')}\, F_{c',m-1},
+\qquad F_{c,0}=1 .
+\end{equation}
+
+\noindent $\EMD$ is the minimum-cost clockwise transport distance on $\mathbb{Z}/3$:
+writing $f=(f_0,f_1,f_2)$ for a clockwise flow ($f_i$ units crossing edge $i\to i+1$),
+the transport equations are $c_i - c'_i = f_i - f_{i-1}$, whose solutions form the line
+$f = f^\ast + t(1,1,1)$; then $\EMD(c,c') = \min\{\,f_0+f_1+f_2 : f\ge 0\,\}$, and
+\eqref{eq:emd} is the closed form. Note $\EMD(c,c)=0$.
+
+\section{Symmetry lemmas}
+
+Let $\sigma$ denote the cyclic rotation $\sigma(c_0,c_1,c_2)=(c_2,c_0,c_1)$.
+
+\begin{lemma}[Profile-rotation invariance of $F$]\label{lem:Finv}
+$F_{\sigma c, m} = F_{c,m}$ for all $c$ and all $m\ge 0$ (as power series in $q$).
+\end{lemma}
+
+\begin{proof}
+A cylindric partition of profile $(c_1,\dots,c_k)$ is a tuple $(\lambda^{(1)},\dots,\lambda^{(k)})$
+with $\lambda^{(i)}_j \ge \lambda^{(i+1)}_{j+c_{i+1}}$ ($1\le i\le k-1$) and
+$\lambda^{(k)}_j \ge \lambda^{(1)}_{j+c_1}$. The relabelling
+$\Lambda=(\lambda^{(1)},\dots,\lambda^{(k)})\mapsto
+\Lambda'=(\lambda^{(2)},\dots,\lambda^{(k)},\lambda^{(1)})$
+is a bijection from cylindric partitions of profile $(c_1,\dots,c_k)$ to those of profile
+$(c_2,\dots,c_k,c_1)$: each defining inequality of $\Lambda'$ is one of the defining
+inequalities of $\Lambda$ (the interior ones shift the index by one; the two boundary
+inequalities swap roles). The bijection preserves total size and maximum entry, hence
+preserves $F_{\cdot,m}$. Iterating gives invariance under the full rotation group $C_3$,
+in particular under $\sigma$.
+\end{proof}
+
+\begin{lemma}[Rotation invariance of $\EMD$]\label{lem:emdinv}
+$\EMD(\sigma c, \sigma c') = \EMD(c,c')$.
+\end{lemma}
+
+\begin{proof}
+Let $a = c'_0-c_0$, $b = c'_1-c_1$, so $\EMD(c,c') = 3\max(0,b,-a)+a-b$ by \eqref{eq:emd}.
+For the rotated pair, $(\sigma c')_0-(\sigma c)_0 = c'_2-c_2 = -(a+b)$ (since the coordinate
+differences sum to $0$) and $(\sigma c')_1-(\sigma c)_1 = c'_0-c_0 = a$. Hence
+\[
+\EMD(\sigma c,\sigma c') = 3\max\bigl(0,\, a,\, a+b\bigr) - (a+b) - a
+= 3\bigl(a + \max(-a, 0, b)\bigr) - 2a - b
+= 3\max(0,b,-a) + a - b,
+\]
+which is $\EMD(c,c')$.
+\end{proof}
+
+\begin{lemma}[Mod-3 shift]\label{lem:mod3}
+$\EMD(c,\sigma c') \equiv \EMD(c,c') + d \pmod 3$. Consequently, if $\gcd(d,3)=1$ the three
+values $\EMD(c,c'), \EMD(c,\sigma c'), \EMD(c,\sigma^2 c')$ are pairwise distinct mod $3$
+and represent all residues $\{0,1,2\}$; if $3\mid d$ they are all congruent mod $3$.
+\end{lemma}
+
+\begin{proof}
+Modulo 3, \eqref{eq:emd} gives $\EMD(c,c') \equiv (c'_0-c_0)-(c'_1-c_1)$. Hence
+\[
+\EMD(c,\sigma c') - \EMD(c,c') \equiv \bigl[(c'_2-c_0)-(c'_0-c_1)\bigr]
+- \bigl[(c'_0-c_0)-(c'_1-c_1)\bigr]
+= c'_1+c'_2-2c'_0 \equiv d - 3c'_0 \equiv d \pmod 3. \qedhere
+\]
+\end{proof}
+
+(Lemmas \ref{lem:emdinv} and \ref{lem:mod3} were additionally verified numerically for all
+pairs of profiles with $d\le 20$.)
+
+\section{Theorem 1: $h_m \ge 0$ for $3 \mid d$}
+
+Define, for any $d$, $\widetilde P_m(c) := (q^3;q^3)_m\, F_{c,m}$.
+
+\begin{lemma}\label{lem:Ptilde}
+For all $d$ and all $m \ge 0$, $\widetilde P_m(c)$ has nonnegative coefficients; indeed
+\begin{equation}\label{eq:Ptilderec}
+\widetilde P_m(c) = \sum_{c'} q^{m\,\EMD(c,c')}\, \widetilde P_{m-1}(c'), \qquad \widetilde P_0 = 1 .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Multiply \eqref{eq:inversion} by $(q^3;q^3)_{m-1}$ and use
+$(q^3;q^3)_m = (1-q^{3m})(q^3;q^3)_{m-1}$. Nonnegativity follows by induction on $m$,
+since \eqref{eq:Ptilderec} has nonnegative coefficients on the right-hand side.
+(Unfolding \eqref{eq:Ptilderec} recovers the manifestly positive EMD path formula of
+Round 1, Agent B.)
+\end{proof}
+
+\begin{theorem}\label{thm:div3}
+Let $3\mid d$, so $\ell=\gcd(d,3)=3$ and $h_m = (q^3;q^3)_m\,(F_{c,m}-F_{c,m-1})$. Then for
+all profiles $c$ and all $m\ge 1$, $h_m$ has nonnegative coefficients. Explicitly,
+\begin{equation}\label{eq:hdiv3}
+h_m(c) \;=\; \sum_{c'\ne c} q^{m\,\EMD(c,c')}\, \widetilde P_{m-1}(c') \;+\; q^{3m}\, \widetilde P_{m-1}(c).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By definition and Lemma~\ref{lem:Ptilde},
+\[
+h_m = (q^3;q^3)_m F_{c,m} - (q^3;q^3)_m F_{c,m-1}
+= \widetilde P_m(c) - (1-q^{3m})\,\widetilde P_{m-1}(c).
+\]
+Substitute \eqref{eq:Ptilderec} for $\widetilde P_m(c)$; the $c'=c$ term equals
+$q^{m\,\EMD(c,c)}\widetilde P_{m-1}(c) = \widetilde P_{m-1}(c)$, and
+$\widetilde P_{m-1}(c) - (1-q^{3m})\widetilde P_{m-1}(c) = q^{3m}\widetilde P_{m-1}(c)$,
+giving \eqref{eq:hdiv3}. Every term on the right of \eqref{eq:hdiv3} is a nonnegative
+series by Lemma~\ref{lem:Ptilde}.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:div3} upgrades the $3\mid d$ half of the Layer-1 core bottleneck
+(``$(q^\ell;q^\ell)_m g_m \ge 0$ for all $d$'') from YELLOW to GREEN. It is a strictly
+one-line consequence of the Adjugate Monomial Theorem; the difficulty of the conjectural
+case $\gcd(d,3)=1$ is therefore *entirely* concentrated in the division by
+$\prod_{j=1}^m (1+q^j+q^{2j}) = (q^3;q^3)_m/(q;q)_m$.
+\end{remark}
+
+\section{Theorem 2: the orbit--product formula for $\gcd(d,3)=1$}
+
+Assume now $\gcd(d,3)=1$ and set $P_m(c) := (q;q)_m F_{c,m}$, so $h_m = P_m - (1-q^m)P_{m-1}$.
+Since $d\not\equiv 0 \pmod 3$, no profile satisfies $\sigma c = c$, so $\sigma$ acts freely
+and the $\binom{d+2}{2}$ profiles fall into $K := \binom{d+2}{2}/3$ orbits
+$O = \{c',\sigma c',\sigma^2 c'\}$.
+
+\begin{lemma}[Local divisibility]\label{lem:localdiv}
+For profiles $c, c'$ define
+$T_{c,[c']}(x) := \sum_{r=0}^{2} x^{\EMD(c,\sigma^r c')}$, and the top-modified version
+$T^{\mathrm{top}}_{c,[c']}(x)$, which is defined as $T$ except that when $c \in [c']$
+the term $x^{\EMD(c,c)} = x^0$ is replaced by $x^3$. Then $T$ and $T^{\mathrm{top}}$ depend
+only on $c$ and the orbit $[c']$, and both are divisible by $1+x+x^2$ in $\mathbb{Z}[x]$.
+We write $U_{c,[c']} := T_{c,[c']}/(1+x+x^2)$ and
+$U^{\mathrm{top}}_{c,[c']} := T^{\mathrm{top}}_{c,[c']}/(1+x+x^2)$.
+\end{lemma}
+
+\begin{proof}
+Independence of the representative $c'$ is clear ($\sigma^r c'$ runs over the orbit).
+By Lemma~\ref{lem:mod3} the three exponents represent all residues mod 3.
+Since $x^k \equiv x^{k \bmod 3} \pmod{1+x+x^2}$ and $1+x+x^2 \equiv 0$, any sum of three
+monomials whose exponents cover all residues mod 3 is divisible by $1+x+x^2$. The top
+modification replaces the exponent $0$ by $3$, preserving the residue, so divisibility
+persists. (Independence of representative in the top case: the modified term is attached to
+the unique representative equal to $c$ itself.)
+\end{proof}
+
+\begin{theorem}[Orbit--product formula]\label{thm:orbit}
+Let $\gcd(d,3)=1$ and let $\mathcal{O}$ be the set of $\sigma$-orbits of profiles of weight
+$d$. Then for all $m\ge 0$ and all profiles $c$,
+\begin{equation}\label{eq:orbitP}
+P_m(c) \;=\; \sum_{(O_{m-1},\dots,O_0)\,\in\,\mathcal{O}^m}\;
+\prod_{j=1}^{m} U_{\,o_j,\,O_{j-1}}(q^j),
+\end{equation}
+where $o_m := c$ and $o_j$ denotes any representative of $O_j$ for $j<m$ (the product is
+well defined by Lemma~\ref{lem:localdiv} and Lemma~\ref{lem:emdinv}); and
+\begin{equation}\label{eq:orbith}
+h_m(c) \;=\; \sum_{(O_{m-1},\dots,O_0)\,\in\,\mathcal{O}^m}\;
+U^{\mathrm{top}}_{\,c,\,O_{m-1}}(q^m)\,
+\prod_{j=1}^{m-1} U_{\,o_j,\,O_{j-1}}(q^j).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+First, one level. By Lemma~\ref{lem:Finv}, $P_{m-1}(\sigma c')=P_{m-1}(c')$, so grouping the
+right side of \eqref{eq:inversion} (multiplied by $(q;q)_{m-1}$) into orbits,
+\[
+(1-q^{3m})\,(q;q)_{m-1} F_{c,m} \;=\; \sum_{O\in\mathcal{O}} T_{c,O}(q^m)\, P_{m-1}(O).
+\]
+The left side equals $(1+q^m+q^{2m})\,P_m(c)$, and by Lemma~\ref{lem:localdiv}
+$T_{c,O}(q^m) = (1+q^m+q^{2m})\,U_{c,O}(q^m)$. Since $\mathbb{Z}[[q]]$ is an integral domain
+and $1+q^m+q^{2m}\neq 0$, we may cancel:
+\begin{equation}\label{eq:onelevel}
+P_m(c) \;=\; \sum_{O\in\mathcal{O}} U_{c,O}(q^m)\, P_{m-1}(O).
+\end{equation}
+Well-definedness in $O$ of the coefficient uses Lemma~\ref{lem:emdinv}: replacing the
+representative of an intermediate orbit rotates both arguments of the relevant $\EMD$'s
+simultaneously and changes nothing. Iterating \eqref{eq:onelevel} down to $P_0=1$ gives
+\eqref{eq:orbitP}.
+
+For \eqref{eq:orbith}: $h_m = P_m(c) - (1-q^m)P_{m-1}(c)$. Multiply by $1+q^m+q^{2m}$:
+\[
+(1+q^m+q^{2m})\,h_m = \sum_{O} T_{c,O}(q^m) P_{m-1}(O) - (1-q^{3m}) P_{m-1}(c).
+\]
+In the orbit $O_c$ of $c$, the term $q^{\EMD(c,c)\,m}P_{m-1}(c) = P_{m-1}(c)$ combines with
+$-(1-q^{3m})P_{m-1}(c)$ to give $q^{3m}P_{m-1}(c)$: this is exactly the replacement
+$x^0 \mapsto x^3$ defining $T^{\mathrm{top}}$. Hence
+\[
+(1+q^m+q^{2m})\,h_m = \sum_{O} T^{\mathrm{top}}_{c,O}(q^m)\, P_{m-1}(O),
+\]
+and cancelling $1+q^m+q^{2m}$ (Lemma~\ref{lem:localdiv}) and expanding $P_{m-1}$ by
+\eqref{eq:orbitP} gives \eqref{eq:orbith}.
+\end{proof}
+
+\begin{corollary}\label{cor:poly}
+For $\gcd(d,3)=1$: $P_m = (q;q)_m F_{c,m}$ and $h_m$ lie in $\mathbb{Z}[q]$ (they are honest
+polynomials), and $P_m(1) = h_m(1) = K^m$ where $K=\binom{d+2}{2}/3 = (d+1)(d+2)/6$.
+\end{corollary}
+
+\begin{proof}
+Each $U$, $U^{\mathrm{top}}$ is an integer polynomial and the sums in
+Theorem~\ref{thm:orbit} are finite. At $q=1$: $T_{c,O}(1)=3$ and $T^{\mathrm{top}}_{c,O}(1)=3$,
+so every $U(1) = U^{\mathrm{top}}(1) = 1$, and each of the $K^m$ orbit sequences contributes
+exactly $1$.
+\end{proof}
+
+\begin{remark}[Computed structure of the $U$'s]
+Numerically (all $d\le 14$ with $\gcd(d,3)=1$, all pairs $(c,O)$, both plain and top):
+every $U_{c,O}$ has coefficients in $\{0,\pm1\}$, and its nonzero coefficients alternate in
+sign, beginning and ending with $+1$ (so $U = x^{a_0}-x^{a_1}+\cdots+x^{a_{2t}}$ with
+$a_0<a_1<\cdots<a_{2t}$ and $U(1)=1$). Also verified: \eqref{eq:orbitP} and \eqref{eq:orbith}
+reproduce the transfer-matrix values of $P_m$ and $h_m$ exactly for $d\in\{1,2,4,5\}$,
+all orbits, $m\le 3$ ($m\le 2$ for $d=5$), and the resulting $h$-values agree with Seed 8's
+independently computed tables (e.g.\ $d=4$, $c=(2,1,1)$: $h_2 = [0,0,3,4,5,3,3,2,2,1,1,0,1]$).
+\end{remark}
+
+\begin{remark}[What remains]
+The single remaining obstacle to the core bottleneck ($h_m\ge0$, hence
+$Q_n\ge 0$ via the $D_k^m$ tower) is the positivity of the signed sum \eqref{eq:orbith}.
+Three natural strengthenings FAIL and should not be retried na\"ively:
+(i) individual orbit-sequence products $\prod_j U(q^j)$ can have negative coefficients;
+(ii) Abel summation along a domination chain fails because the orbit values
+$P_{m-1}(O)$ are pairwise incomparable coefficientwise for $m\ge 2$;
+(iii) shifted domination $q^\delta P(O) \le P(O')$ fails for all $\delta$ (the $P$'s are
+polynomials of comparable degree). What is promising: the $U$'s are $\{0,\pm1\}$
+alternating with $U(1)=1$, evaluated at distinct scales $q^j$ --- the sum \eqref{eq:orbith}
+is a signed lattice-path model begging for a sign-reversing involution that fixes exactly
+$K^m$ monomials (one per orbit sequence).
+\end{remark}
+
+\end{document}

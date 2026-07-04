@@ -1,0 +1,261 @@
+\documentclass[11pt]{article}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newcommand{\qbin}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\poch}[1]{(q;q)_{#1}}
+\newcommand{\Ferm}{\mathrm{Ferm}}
+\title{A two-term fermionic representation of the entire positivity core at $d=8$:\\
+Warnaar's finite forms land verbatim on Uncu's $S_{11}$ series}
+\author{Seed 2, Layer 4, Round 2 (loop experiment 2026-07-04)}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove that for \emph{every} profile $c$ in the $d=8$ positivity core
+$\{(6,1,1),(5,2,1),(5,1,2),(4,3,1),(4,1,3),(4,2,2)\}$ (and also for the
+already-settled balanced profile $(3,3,2)$), the generating function
+$G_c(z,q)=(zq;q)_\infty F_c(z,q)$ equals an explicit \emph{difference of two
+manifestly nonnegative fermionic multisums},
+$G_c=\Ferm_{c_2+1,c_3+1}-q\,\Ferm_{c_2,c_3}$, where the $\Ferm_{s,t}$ are the
+$n_0,m_0\to\infty$ limits of Warnaar's proved finite-form family
+$F^{(-1)}_{n_0,m_0;3,s,t}$. The key observation is that these limits coincide
+\emph{verbatim} with Uncu's series $S_{11}(z;e_{s-1}|e_{t-1})$ --- including
+the $\poch{r_3+s_3+1}$ denominator --- so no Kanade--Russell contiguous
+relation and no Pochhammer merge is needed. Consequently
+$Q_{n,c}(q)=\poch{n}[z^n]G_c$ is, for each core profile, an explicit finite
+$q$-binomial two-term difference, and Warnaar's positivity conjecture at the
+entire $d=8$ core is reduced to six explicit polynomial inequalities. This
+covers in particular $(4,2,2)$, which appears in no $R$-relation at $d=8$ and
+was previously unreachable by any known route.
+\end{abstract}
+
+\section{Setup}
+
+Notation as in the Layer-3 write-up (prove-seed2-layer3.tex): $F_c(z,q)$ is
+the Corteel--Welsh cylindric-partition generating function of profile
+$c=(c_1,c_2,c_3)$, $c_1+c_2+c_3=d=8$ (modulus $m=3k-1=11$, $k=4$),
+\[
+G_c=(zq;q)_\infty F_c,\qquad H_c=G_c/(q;q)_\infty,\qquad
+Q_{n,c}=\poch{n}\,[z^n]G_c,
+\]
+and for $\rho,\sigma\in\mathbb{Z}^3$,
+\begin{equation}\label{eq:S11}
+S_{11}(z;\rho|\sigma)=
+\sum_{\substack{r_1\ge r_2\ge r_3\ge 0\\ s_1\ge s_2\ge s_3\ge 0}}
+z^{r_1}\,
+\frac{q^{\sum_{i=1}^{3}(r_i^2-r_is_i+s_i^2+\rho_ir_i+\sigma_is_i)+2r_3s_3}}
+{\poch{r_1-r_2}\poch{r_2-r_3}\poch{r_3}\,
+ \poch{s_1-s_2}\poch{s_2-s_3}\poch{s_3}\,\poch{r_3+s_3+1}},
+\end{equation}
+with $e_3=(0,0,0)$, $e_2=(0,0,1)$, $e_1=(0,1,1)$, $e_0=(1,1,1)$.
+Uncu's modulo-$11$ list (2024, eq.\ mod11list; each row proved by his
+Theorem m11, itself computer-assisted via the $N=6$ finite verification of
+thm:n6m11) states, for each of the seven listed profiles
+$(3,3,2)$, $(6,1,1)$, $(5,2,1)$, $(5,1,2)$, $(4,3,1)$, $(4,1,3)$, $(4,2,2)$,
+\begin{equation}\label{eq:uncu}
+H_{(c_1,c_2,c_3)}(z,q)=S_{11}(e_{c_2}|e_{c_3})-q\,S_{11}(e_{c_2-1}|e_{c_3-1}).
+\end{equation}
+
+Warnaar ($\mathrm{A}_2$ Andrews--Gordon paper, eq.\ (F2) of Section 7)
+defines, for $1\le s,t\le k+1$ and $\sigma=(1,\dots,1,a)$,
+\begin{equation}\label{eq:F2}
+F_{n_0,m_0;k,s,t}^{(a)}(z,q):=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_k\ge 0}}
+\frac{z^{n_1}q^{\sum_{i=s}^k n_i+\sum_{i=t}^k m_i}}{\poch{n_k+m_k+1}}
+\prod_{i=1}^k q^{n_i^2-\sigma_in_im_i+m_i^2}
+\qbin{n_{i-1}}{n_i}\qbin{m_{i-1}}{m_i},
+\end{equation}
+and \emph{proves} (his Proposition on the second finite form, via his Lemma
+on the $\mathcal{F}$-transformation; this is unconditional --- the separate
+conjecture on missing ASW theta-evaluations is not used here) the polynomial
+identities: for $a=-1$, $1\le s\le k+1$, $1\le t\le k$, with $m_k:=2n_k$,
+\begin{align}\label{eq:mineen}
+F_{n_0,m_0;k,s,t}^{(-1)}(z,q)&=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1} q^{n_k^2+\sum_{i=s}^k n_i+\sum_{i=t}^{k-1} m_i}}
+{\poch{m_0-n_1+m_1+\delta_{t,1}}}\, \qbin{n_0}{n_1}\\
+&\qquad\times\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2}
+\qbin{n_i}{n_{i+1}}
+\qbin{n_i-n_{i+1}+m_{i+1}+\delta_{i,t-1}}{m_i},\notag
+\end{align}
+and for $a=-1$, $1\le s\le k$, $t=k+1$, $k\ge 2$,
+\begin{align}\label{eq:mineen2}
+F_{n_0,m_0;k,s,k+1}^{(-1)}(z,q)&=
+\sum_{\substack{n_1,\dots,n_k\ge 0\\ m_1,\dots,m_{k-1}\ge 0}}
+\frac{z^{n_1} q^{n_k^2-n_k+\sum_{i=s}^k n_i}}{\poch{m_0-n_1+m_1}}\,
+\qbin{n_0}{n_1}\\
+&\qquad\times\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2}
+\qbin{n_i+\delta_{i,k-1}}{n_{i+1}}\qbin{n_i-n_{i+1}+m_{i+1}}{m_i}.\notag
+\end{align}
+
+\section{The verbatim limit}
+
+\begin{lemma}[Verbatim match]\label{lem:verbatim}
+Fix $k=3$, $a=-1$, $1\le s\le 4$, $1\le t\le 4$, $(s,t)\ne(4,4)$. Then,
+coefficientwise in $z$ and $q$,
+\[
+\lim_{n_0,m_0\to\infty}F^{(-1)}_{n_0,m_0;3,s,t}(z,q)
+=S_{11}(z;e_{s-1}|e_{t-1}),
+\]
+where $e_{s-1},e_{t-1}$ are as above (i.e.\ $(e_{j})_i=1$ iff $i>j$).
+\end{lemma}
+
+\begin{proof}
+In \eqref{eq:F2} the binomial chains force
+$n_1\ge n_2\ge n_3$ and $m_1\ge m_2\ge m_3$, and as $n_0,m_0\to\infty$,
+\[
+\qbin{n_0}{n_1}\qbin{n_1}{n_2}\qbin{n_2}{n_3}\longrightarrow
+\frac{1}{\poch{n_1-n_2}\poch{n_2-n_3}\poch{n_3}},
+\]
+coefficientwise (each coefficient stabilizes), and likewise for the
+$m$-chain. The quadratic exponent with $\sigma=(1,1,-1)$ is
+$\sum_i(n_i^2-n_im_i+m_i^2)+2n_3m_3$, the linear exponent is
+$\sum_{i\ge s}n_i+\sum_{i\ge t}m_i=e_{s-1}\cdot n+e_{t-1}\cdot m$, and the
+denominator $\poch{n_3+m_3+1}$ is precisely the $\poch{r_3+s_3+1}$ of
+\eqref{eq:S11}. Renaming $(n,m)\mapsto(r,s)$ gives the claim.
+\end{proof}
+
+\begin{lemma}[Fermionic form of a single $S_{11}$ term]\label{lem:ferm}
+For $1\le s\le 4$, $1\le t\le 3$, define the manifestly nonnegative sum
+\begin{align}\label{eq:Fermst}
+\Ferm_{s,t}(z,q)&:=
+\sum_{\substack{n_1\ge n_2\ge n_3\ge 0\\ m_1,m_2\ge 0}}
+\frac{z^{n_1}}{\poch{n_1}}\,
+q^{\,n_3^2+\sum_{i=s}^3 n_i+\sum_{i=t}^{2} m_i
++\sum_{i=1}^{2}(n_i^2-n_im_i+m_i^2)}\\
+&\qquad\times
+\qbin{n_1}{n_2}\qbin{n_1-n_2+m_2+\delta_{t,2}}{m_1}
+\qbin{n_2}{n_3}\qbin{n_2+n_3+\delta_{t,3}}{m_2},\notag
+\end{align}
+and for $t=4$ (with $1\le s\le 3$)
+\begin{align}\label{eq:Fermst2}
+\Ferm_{s,4}(z,q)&:=
+\sum_{\substack{n_1\ge n_2\ge 0,\;0\le n_3\le n_2+1\\ m_1,m_2\ge 0}}
+\frac{z^{n_1}}{\poch{n_1}}\,
+q^{\,n_3^2-n_3+\sum_{i=s}^3 n_i
++\sum_{i=1}^{2}(n_i^2-n_im_i+m_i^2)}\\
+&\qquad\times
+\qbin{n_1}{n_2}\qbin{n_1-n_2+m_2}{m_1}
+\qbin{n_2+1}{n_3}\qbin{n_2+n_3}{m_2}.\notag
+\end{align}
+Then $S_{11}(z;e_{s-1}|e_{t-1})=\Ferm_{s,t}(z,q)/(q;q)_\infty$.
+\end{lemma}
+
+\begin{proof}
+Take $n_0,m_0\to\infty$ in \eqref{eq:mineen} (resp.\ \eqref{eq:mineen2}) at
+$k=3$: $\qbin{n_0}{n_1}\to1/\poch{n_1}$ and
+$1/\poch{m_0-n_1+m_1+\delta_{t,1}}\to1/(q;q)_\infty$ coefficientwise (the
+sums over $m_2$, $m_1$ are finite for each fixed $(n_1,n_2,n_3)$, so the
+limit may be taken termwise), with $m_3:=2n_3$ substituted in the $i=2$
+binomial, $\qbin{n_2-n_3+m_3+\delta_{2,t-1}}{m_2}
+=\qbin{n_2+n_3+\delta_{t,3}}{m_2}$. Combine with
+Lemma~\ref{lem:verbatim}.
+\end{proof}
+
+\section{Main theorem}
+
+\begin{theorem}[Two-term fermionic representation of the $d=8$ core]
+\label{thm:main}
+For each of the seven profiles
+$(6,1,1),(5,2,1),(5,1,2),(4,3,1),(4,1,3),(4,2,2)$ and $(3,3,2)$ --- i.e.\
+cyclic representatives of all six remaining core orbits together with the
+settled balanced orbit ---
+\[
+G_c(z,q)=\Ferm_{c_2+1,\,c_3+1}(z,q)-q\,\Ferm_{c_2,\,c_3}(z,q).
+\]
+Consequently, for all $n\ge 0$,
+\[
+Q_{n,c}(q)=\mathrm{ferm}_{c_2+1,c_3+1}(n)-q\,\mathrm{ferm}_{c_2,c_3}(n),
+\]
+where $\mathrm{ferm}_{s,t}(n):=\poch{n}[z^n]\Ferm_{s,t}$ is the finite
+nonnegative $q$-binomial multisum obtained from
+\eqref{eq:Fermst}--\eqref{eq:Fermst2} by setting $n_1=n$ and cancelling
+$\poch{n}$ against the denominator.
+\end{theorem}
+
+\begin{proof}
+By Lemmas \ref{lem:verbatim} and \ref{lem:ferm},
+$S_{11}(e_{c_2}|e_{c_3})=\Ferm_{c_2+1,c_3+1}/(q;q)_\infty$ and
+$S_{11}(e_{c_2-1}|e_{c_3-1})=\Ferm_{c_2,c_3}/(q;q)_\infty$ (the parameter
+ranges are admissible for each of the seven listed profiles: all thirteen
+$(s,t)$ instances that occur satisfy $1\le s\le4$, $1\le t\le4$,
+$(s,t)\ne(4,4)$; the only $t=4$ instance is $S(e_1|e_3)$ for $c=(4,1,3)$,
+with $s=2\le 3$. Note the restriction to the listed profiles is necessary:
+e.g.\ $(2,3,3)$ would require $(s,t)=(4,4)$, covered by neither
+\eqref{eq:mineen} nor \eqref{eq:mineen2}, and $(1,6,1)$ would require the
+undefined $\Ferm_{7,2}$).
+Multiply Uncu's proved identity \eqref{eq:uncu} by $(q;q)_\infty$ and use
+$G_c=(q;q)_\infty H_c$. The $Q$-level statement follows because the
+$z^n$-coefficient of $\Ferm_{s,t}$ carries the single denominator
+$\poch{n}$.
+\end{proof}
+
+\begin{corollary}\label{cor:reduction}
+Warnaar's positivity conjecture at the entire $d=8$ core is equivalent to
+the six families of explicit polynomial inequalities
+\[
+\mathrm{ferm}_{c_2+1,c_3+1}(n)\;\ge\;q\,\mathrm{ferm}_{c_2,c_3}(n)
+\qquad(n\ge0)
+\]
+for the six core orbits. In particular this includes $(4,2,2)$, which
+appears in no Kanade--Russell $R$-relation at $d=8$.
+\end{corollary}
+
+\begin{remark}[Numerical verification]
+All links were verified in exact arithmetic
+(\texttt{seed2\_R2L4\_verify.sage}):
+(i) the transcription of \eqref{eq:F2}--\eqref{eq:mineen2} as an exact
+$z$-graded power-series identity at $k=3$, $a=-1$, for all fifteen
+admissible $(s,t)$ and all $n_0,m_0\in\{0,\dots,3\}$ (to $q^{150}$);
+(ii) Lemmas \ref{lem:verbatim}/\ref{lem:ferm} at $z$-orders $n\le3$ for six
+spot pairs $(s,t)$ including a $t=4$ case;
+(iii) Theorem~\ref{thm:main} at the $Q$-level: the two-term difference
+equals the raw-validated reference engine's $Q_{n,c}$ (target-first kernel,
+Gauss inversion) \emph{exactly in} $\mathbb{Z}[q]$ for all seven profiles
+and all $n\le 12$, and is coefficientwise nonnegative throughout that range.
+\end{remark}
+
+\begin{remark}[Structure of the remaining inequalities]
+Write $Q_{\mathrm{F}}=n^2+n_2^2+n_3^2-nm_1-n_2m_2+m_1^2+m_2^2$,
+$N=n-n_2+m_2$, $M=n_2+n_3$. For the three orbits with $c_3=1$ the
+difference collapses to a \emph{single-row} shape
+\[
+Q_{n,c}=\sum_{n_2,n_3,m_2}q^{Q_{\mathrm{F}}+w}
+\qbin{n}{n_2}\qbin{n_2}{n_3}\qbin{M}{m_2}
+\sum_{m_1}q^{0}\Bigl(\qbin{N+1}{m_1}-q^{1+n_{c_2}+m_1}\qbin{N}{m_1}\Bigr),
+\]
+with penalty exponent $1+n_{c_2}+m_1$ (where $n_1:=n$) and
+$w=n_2+n_3+m_2,\;n_3+m_2,\;m_2$ for $c=(6,1,1),(5,2,1),(4,3,1)$
+respectively. Since $\qbin{N+1}{m_1}=q^{m_1}\qbin{N}{m_1}+\qbin{N}{m_1-1}$,
+the $(6,1,1)$ case (where $n_{c_2}=n$ is constant in the sum) takes the
+exact $d=4$ wall shape $Q_n=(1-q^{n+1})A_n+B_n$ with $A_n,B_n$ manifestly
+nonnegative. Slice experiments (exact, $n\le7$) show: for $(4,3,1)$ every
+fixed-$(n_2,n_3)$ partial sum is already nonnegative; for $(5,2,1)$ every
+fixed-$n_2$ partial sum is nonnegative; for $(6,1,1)$ only the full sum is.
+A one-round absorption residual $B-q^{1+n_3}A$ is \emph{not} nonnegative
+for $(4,3,1)$, so the required absorption lemma is genuinely multi-row;
+proving these six inequalities is the remaining open step for $d=8$.
+\end{remark}
+
+\begin{remark}[Relation to the Layer-3/Seed-1 chains]
+The $(3,3,2)$ theorem (Layer 3) used the \emph{first} finite-form family
+($\Ferm$ without linear terms), one Pochhammer split and one
+Kanade--Russell relation $R_3$; the $d=10$ balanced theorem (Seed 1,
+Layer 4) found that at modulus 13 the split lands verbatim on Uncu's pair.
+The present result completes the pattern in a stronger form: at modulus 11
+Warnaar's \emph{second} finite-form family $F^{(-1)}_{3,s,t}$ hits every
+single $S_{11}(e_a|e_b)$ term verbatim (the $+1$ in its
+$\poch{n_k+m_k+1}$ denominator is exactly Uncu's $\poch{r_3+s_3+1}$), so
+the entire modulo-11 list of Uncu S-pairs --- hence the entire $d=8$ core
+--- acquires proved two-term fermionic representations with no bridging
+relations at all. The depth-$\le4$ $R_1/R_2$ word search that was Mission
+2's stated mechanism is thereby superseded for representation purposes.
+\end{remark}
+
+\end{document}

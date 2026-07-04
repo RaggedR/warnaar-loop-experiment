@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newcommand{\EMD}{\mathrm{EMD}}
+\title{The Level-2 Harnack Reduction and Sphere Absorption:\\
+localizing all $N_2$ negativity to two ball-absorbed coefficients\\
+{\large (Seed 4, Round 2, Layer 3)}}
+\author{Loop Experiment}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We reduce the Numerator Positivity target $N_2 := (1+q^2+q^4)Q_2 \geq 0$
+(rank $3$, $\gcd(d,3)=1$) to a discrete Harnack inequality for the
+level-1 polynomial $Q_1$ on profile space, and show that \emph{all}
+negativity of the Harnack form is concentrated at the two exponents $2$
+and $4$, where it is absorbed \emph{exactly} by EMD-sphere counts. In
+particular $[q^2]N_2(c)=0$ identically. Everything becomes lattice point
+counting for a polygonal quasi-norm on the profile triangle. We prove a
+Cap-Compression Lemma making each fixed coefficient of the Harnack form a
+finite problem, and deduce $[q^j]N_2 \geq 0$ for all $j\leq 11$ and all
+$d$ (modulo a sharp cap constant verified for $d\leq 35$; unconditionally
+for $j \le 5$). The same structure is verified at level 3, yielding a
+uniform Sphere Absorption Conjecture for all levels~$n$.
+\end{abstract}
+
+\section{Setup and inherited results}
+
+Standing notation of the Layer-2 synthesis: profiles $c=(c_0,c_1,c_2)$,
+$c_i\geq 0$, $\sum c_i = d$, $\gcd(d,3)=1$;
+$\EMD(c,c') = 3\max(0,\,c'_1-c_1,\,c_0-c'_0) + (c'_0-c_0) - (c'_1-c_1)$;
+$H_{c,m} = (q;q)_m F_{c,m}$. We use as GREEN inputs: the $H$-recursion
+$(1+q^m+q^{2m})H_{c,m} = \sum_{c'} q^{m\,\EMD(c',c)} H_{c',m-1}$ with
+$H_{c,0}=1$ (Layer 2, Seeds 2/3/4); the $Q$-transform
+$Q_n = \sum_{m\leq n} (-1)^{n-m} q^{\binom{n-m}{2}} \genfrac{[}{]}{0pt}{}{n}{m} H_{c,m}$
+(Seed 3); and $Q_1 \geq 0$ (Layer 1).
+
+Throughout, $e' := \EMD(c',c)$ (distance \emph{into} $c$), and
+$b_e(c) := \#\{c' : \EMD(c',c) = e\}$ are the \emph{sphere counts};
+$n_1 := b_1$, $n_2 := b_2$. The \emph{ball generating function} is
+$B_c(q) := \sum_{c'} q^{\EMD(c',c)} = (1+q+q^2)\,H_{c,1}$ (the $m=1$
+recursion), so $H_1(c) = B_c(q)/(1+q+q^2)$ and
+$Q_1(c) = H_1(c) - 1$.
+
+\section{The Harnack reduction}
+
+\begin{theorem}[Identities T1/T2]\label{thm:T}
+For every profile $c$,
+\begin{align}
+N_2(c) &= \sum_{c'\neq c} q^{2e'} H_1(c') \;+\; (q+q^3+q^5)
+        \;-\; (q+q^2+q^3+q^4+q^5)\, H_1(c), \tag{T1}\\
+N_2(c) &= \underbrace{\bigl[\,B_c(q^2) - 1 - q^2 - q^4\,\bigr]}_{\text{ball term}}
+        \;+\; \underbrace{\Bigl[\sum_{c'\neq c} q^{2e'} Q_1(c')
+        - q(1+q+q^2+q^3+q^4)\,Q_1(c)\Bigr]}_{=:~\mathrm{har}(c)}. \tag{T2}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+The $Q$-transform at $n=2$ reads $Q_2 = H_2 - (1+q)H_1 + q$. Multiply by
+$1+q^2+q^4$ and substitute the $m=2$ recursion
+$(1+q^2+q^4)H_2(c) = \sum_{c'} q^{2\,\EMD(c',c)}H_1(c')$:
+\[
+N_2(c) = \sum_{c'} q^{2e'} H_1(c') - (1+q)(1+q^2+q^4)H_1(c) + q(1+q^2+q^4).
+\]
+Since $(1+q)(1+q^2+q^4) = 1+q+q^2+q^3+q^4+q^5$ and the $c'=c$ term of the
+sum is $H_1(c)$ (as $\EMD(c,c)=0$), the constant-$1$ part cancels, giving
+(T1). Substituting $H_1 = 1 + Q_1$ into (T1): the ``$1$'' parts contribute
+$\sum_{c'\neq c} q^{2e'} = B_c(q^2)-1$ from the sum and
+$-(q+\dots+q^5) + (q+q^3+q^5) = -q^2-q^4$ from the remaining terms,
+giving (T2). Both identities were verified exactly for $d=4,5,7$, all
+profiles (\texttt{seed4\_R2L3\_engine.py}).
+\end{proof}
+
+\section{Sphere geometry}
+
+In deviation coordinates $s = c'_0 - c_0$, $t = c'_1 - c_1$, the distance
+into $c$ is the polygonal quasi-norm $f(s,t) = 3\max(0,-t,s) - s + t$;
+the profile constraints are $s\geq -c_0$, $t \geq -c_1$, $s+t \leq c_2$.
+By the mod-3 EMD lemma (Layer 2, GREEN), $f(s,t) \equiv t-s \pmod 3$: the
+residue of $f$ is determined by the position class
+$\Lambda_j = \{t-s \equiv j \bmod 3\}$.
+
+\begin{proposition}[Spheres of radius 1 and 2]\label{prop:spheres}
+(i) $\{f=1\} = \{(0,1),\,(-1,0),\,(1,-1)\}$, valid in the triangle iff
+$c_2\geq 1$, $c_0 \geq 1$, $c_1 \geq 1$ respectively. Hence
+$n_1(c) = \operatorname{rank}(c) := \#\{i : c_i \geq 1\}$.
+(ii) $\{f=2\} = \{(0,2),(-1,1),(-2,0),(1,0),(0,-1),(2,-2)\}$ with validity
+thresholds $c_2\geq2$, $c_0\geq1$, $c_0\geq2$, $c_2\geq1$, $c_1\geq1$,
+$c_1\geq2$; a short case analysis on $(c_2,c_0,c_1)$ gives $n_2(c)\geq 2$
+for all $d\geq 2$.
+\end{proposition}
+
+\begin{proof}
+(i) Solve $f(s,t)=1$ on the three linearity sectors: sector $s\leq 0$,
+$t\geq0$: $t-s=1$ gives $(0,1),(-1,0)$; sector $s\geq\max(0,-t)$:
+$2s+t=1$ gives $(1,-1)$ (and $(0,1)$ again); sector $t\leq0$, $s\leq-t$:
+$-2t-s=1$ gives no new points. Validity: $(0,1)$ means
+$c'=c+(0,1,-1)$, needing $c_2\geq1$; similarly for the others.
+(ii) Same enumeration at $f=2$. For the count: if $c_2\geq2$ then
+$(0,2),(1,0)$ are valid; if $c_2=1$ then $(1,0)$ plus one of
+$(-1,1),(0,-1)$ (as $c_0+c_1 \geq 1$); if $c_2=0$ then $d\geq2$ forces
+two valid points among $(-1,1),(-2,0),(0,-1),(2,-2)$ in each of the cases
+$c_0\geq2$; $c_0=1,c_1\geq1$; $c_0=0,c_1\geq2$.
+\end{proof}
+
+\begin{proposition}[Low coefficients of $Q_1$]\label{prop:lowQ1}
+Writing $A_j(c) := \#\{c' : f \leq j,\ f\equiv j \bmod 3\}$, we have
+$H_1 = B_c\,\frac{1-q}{1-q^3}$, hence $[q^j]H_1 = A_j - A_{j-1}$ and in
+particular
+\[
+[q^0]Q_1 = 0,\quad [q^1]Q_1 = n_1 - 1,\quad [q^2]Q_1 = b_2 - b_1,\quad
+[q^3]Q_1 = 1 + b_3 - b_2 .
+\]
+\end{proposition}
+
+\begin{proof}
+$B_c/(1-q^3)$ has $j$-th coefficient $\sum_{k\geq0} b_{j-3k} =
+\#\{f\leq j,\ f\equiv j\ (3)\} = A_j$ because $f$-values in a fixed
+residue class below $j$ are exactly $j, j-3, j-6,\dots$; multiplying by
+$1-q$ gives $A_j - A_{j-1}$. Then $A_0=b_0=1$, $A_1=b_1$, $A_2=b_2$,
+$A_3 = b_0+b_3$.
+\end{proof}
+
+\section{Exact absorption at $q^2$ and $q^4$}
+
+\begin{theorem}[Vanishing at $q^2$]\label{thm:q2}
+$\mathrm{har}_2(c) = -(n_1(c)-1)$ identically; since the ball term has
+$[q^2] = n_1 - 1$, we get $[q^2]N_2(c) = 0$ for every profile and every
+$d$.
+\end{theorem}
+
+\begin{proof}
+$[q^2]\sum_{c'\neq c} q^{2e'}Q_1(c') = \sum_{e'=1}[q^0]Q_1(c') = 0$, and
+$[q^2]\,q(1+\dots+q^4)Q_1(c) = [q^1]Q_1 + [q^0]Q_1 = n_1-1$ by
+Proposition~\ref{prop:lowQ1}.
+\end{proof}
+
+\begin{theorem}[Absorption at $q^4$]\label{thm:q4}
+$\mathrm{har}_4(c) = \sum_{c':\,e'=1}\bigl(b_2(c') - b_1(c')\bigr) - b_3(c)$,
+and $\mathrm{har}_4(c) \geq -(n_2(c)-1)$; hence $[q^4]N_2(c) \geq 0$.
+\end{theorem}
+
+\begin{proof}
+The formula: $[q^4]\sum_{c'\neq c}q^{2e'}Q_1(c') = \sum_{e'=1}[q^2]Q_1(c')
++ \sum_{e'=2}[q^0]Q_1(c') = \sum_{e'=1}(b_2-b_1)(c')$, while
+$[q^4]\,q(1+\dots+q^4)Q_1(c) = \sum_{i=1}^{3}[q^i]Q_1(c) = b_3(c)$
+(telescoping, Proposition~\ref{prop:lowQ1}). All quantities depend on $c$
+only through $(\min(c_i,3))_i$ (all validity thresholds are $\leq 3$;
+neighbours shift coordinates by $\leq 1$, absorbed in the cap), so the
+inequality for all $d$ follows from its verification on every capped
+class, which is contained in the exact sweep $d \leq 35$
+(\texttt{seed4\_R2L3\_bigsweep.py}: no failures).
+\end{proof}
+
+\section{Cap-Compression and the low band}
+
+\begin{lemma}[Cap-Compression]\label{lem:cap}
+For every fixed $j$, $\mathrm{har}_j(c)$ depends on $c$ only through the
+capped triple $(\min(c_i, M_j))_{i}$ with $M_j = 2j$. Empirically the
+sharp value is $M_j = j$ (verified for $j\leq 12$, all $d\leq 35$,
+$3\nmid d$).
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+$\mathrm{har}_j$ involves $[q^{j-2e'}]Q_1(c')$ for $2e' \leq j$ and
+$[q^{j-i}]Q_1(c)$, $i\leq 5$. Since $f \geq \max(|s|,|t|,|s+t|)/1$ on
+each sector, profiles with $e' \leq j/2$ have coordinates within $j$ of
+$c$'s, and $[q^k]Q_1(c') = A_k - A_{k-1}$ counts points within
+$f$-distance $k \leq j$ of $c'$, whose triangle-validity thresholds are
+$\min(c'_i, k)$. All thresholds appearing are therefore at most $2j$ in
+terms of $c$'s coordinates.
+\end{proof}
+
+\begin{theorem}[Low band]\label{thm:lowband}
+For all $d$ with $\gcd(d,3)=1$ and all profiles $c$:
+$[q^j] N_2(c) \geq 0$ for $j \leq 5$ unconditionally, and for $j\leq 11$
+modulo the sharp cap constant $M_j=j$ of Lemma~\ref{lem:cap}. Moreover
+$\mathrm{har}_j(c)\geq 0$ for $j \le 11$, $j\notin\{2,4\}$ (same caveat).
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:cap} each statement at fixed $j$ is a function of the
+capped class; every capped class with caps $\leq M$ is realized by a
+profile with $d \leq 3M+1$, $\gcd(d,3)=1$. The exact sweep over all
+$d\leq 35$, $3\nmid d$ (24 values, all profiles, exact $\mathbb{Z}[q]$
+arithmetic) found no violation. For $M_j = 2j$ this covers $j\leq 5$;
+for the sharp $M_j = j$ it covers $j \leq 11$.
+\end{proof}
+
+\section{The remaining wall and the level-$n$ lift}
+
+\begin{conjecture}[S1/S2, level 2]\label{conj:S}
+For all $c$ and $j\notin\{2,4\}$: $\mathrm{har}_j(c) \geq 0$.
+(Together with Theorems~\ref{thm:q2}--\ref{thm:q4} and the ball term this
+implies $N_2 \geq 0$.) Verified exactly for all $d \leq 35$ with
+$3\nmid d$, all profiles, all $j$.
+\end{conjecture}
+
+Tightness data: $\mathrm{har}_j = 0$ occurs at $j\in\{0,1,3,5,6\}$ and in
+a wide top band (e.g.\ odd $j \in [27,39]$ at $d=7$); no coarse bound can
+work there. Reciprocity fails: $q^{\deg}X(1/q)$ for
+$X\in\{Q_1,\mathrm{har},N_2\}$ matches no profile transform, so the top
+band is not a dual low band. The involution substrate: each unit move
+$(0,1),(-1,0),(1,-1)$ on the triangle shifts the position class
+$t-s \bmod 3$ by $+1$ while changing $f$ by $+1$ or $-2$ (the Preimage
+EMD Dichotomy in geometric form).
+
+\begin{conjecture}[Sphere Absorption, all levels]\label{conj:SA}
+In the level-$n$ analogue of (T2) (proved as an identity at $n=3$:
+$N_3(c) = \sum_{c'\neq c} q^{3e'}H_2(c') + q(1+q+q^2)(1+q^3+q^6)H_1(c) -
+(q+\dots+q^8)H_2(c) - (q^3+q^6+q^9)$, then split off constants), the
+Harnack form $\mathrm{har}^{(n)}(c)$ has negative coefficients only at
+the exponents $n\cdot e$ for small $e$, each bounded below by
+$-(b_e(c)-1)$ and absorbed exactly by the ball term $B_c(q^n)-1-q^n-\dots$;
+moreover $\mathrm{har}^{(n)}_{n} = -(n_1(c)-1)$ exactly, so
+$[q^n]N_n(c) = 0$. Verified at $n=2$ ($d\leq35$) and $n=3$ ($d=4,5$).
+\end{conjecture}
+
+\section*{Status}
+GREEN: Theorems~\ref{thm:T}, \ref{thm:q2}, Propositions
+\ref{prop:spheres}, \ref{prop:lowQ1}; Theorem~\ref{thm:q4} and the
+$j\leq5$ part of Theorem~\ref{thm:lowband} are GREEN modulo writing out
+the finite cap case lists (machine-checked exhaustively).
+YELLOW: sharp cap $M_j = j$; Conjectures~\ref{conj:S}, \ref{conj:SA}.
+OPEN WALL: $\mathrm{har}_j \geq 0$ for unbounded $j$ (middle/top band) —
+a lattice point-counting inequality for the polygonal quasi-norm $f$ on
+the triangle, quasi-polynomial in $(j,c)$, hence in principle decidable
+by finite region-by-region verification (Ehrhart route).
+\end{document}

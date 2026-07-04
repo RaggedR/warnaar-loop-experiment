@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\qbin}[2]{\begin{bmatrix}#1\\#2\end{bmatrix}_q}
+\title{Seed 3, Layer 2 (Round 2): The $H$-recursion, polynomiality of $h_m$,\\
+reduction to monotonicity, and a complete proof for $d=2$}
+\author{Seed 3 / Layer 2}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\section*{Setup}
+Fix $d\ge 1$ and let $\mathcal{C}_d=\{c=(c_0,c_1,c_2)\in\mathbb{Z}_{\ge0}^3:\ c_0+c_1+c_2=d\}$
+be the rank-3 profiles. For $c',c\in\mathcal{C}_d$ put $e=c'-c$ and
+\[
+\mathrm{EMD}(c',c)=2e_0+e_1+3\max(0,\,-e_0,\,-e_0-e_1)\ \in\mathbb{Z}_{\ge0}.
+\]
+Define $P_{c,0}=1$ and $P_{c,m}=\sum_{c'\in\mathcal{C}_d} q^{m\,\mathrm{EMD}(c',c)}P_{c',m-1}$,
+and $F_{c,m}=P_{c,m}/(q^3;q^3)_m$, $g_{c,m}=F_{c,m}-F_{c,m-1}$,
+$h_{c,m}=(q;q)_m\,g_{c,m}$ (case $\gcd(d,3)=1$, so $\ell=1$).
+The Layer-1 bottleneck is: $h_{c,m}\ge 0$ coefficientwise.
+
+\section{The $H$-recursion (exact computation)}
+
+\begin{theorem}[$H$-recursion]\label{thm:H}
+Let $H_{c,m}:=(q;q)_m\,F_{c,m}$. Then $H_{c,0}=1$ and for $m\ge 1$
+\begin{equation}\label{eq:Hrec}
+(1+q^m+q^{2m})\,H_{c,m}\;=\;\sum_{c'\in\mathcal{C}_d} q^{m\,\mathrm{EMD}(c',c)}\,H_{c',m-1},
+\end{equation}
+and moreover
+\begin{equation}\label{eq:hviaH}
+h_{c,m}\;=\;H_{c,m}-(1-q^m)\,H_{c,m-1}\;=\;\bigl(H_{c,m}-H_{c,m-1}\bigr)+q^m H_{c,m-1}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+From $F_{c,m}=P_{c,m}/(q^3;q^3)_m$ and the transfer recursion,
+$(q^3;q^3)_m F_{c,m}=\sum_{c'}q^{m\,\mathrm{EMD}(c',c)}(q^3;q^3)_{m-1}F_{c',m-1}$.
+Divide by $(q;q)_{m-1}$ and use $(q^3;q^3)_m/(q^3;q^3)_{m-1}=1-q^{3m}$ and
+$(q;q)_m/(q;q)_{m-1}=1-q^m$:
+\[
+\frac{1-q^{3m}}{1-q^m}\,H_{c,m}=(1+q^m+q^{2m})H_{c,m}
+=\sum_{c'}q^{m\,\mathrm{EMD}(c',c)}H_{c',m-1}.
+\]
+For \eqref{eq:hviaH}: $h_{c,m}=(q;q)_m(F_{c,m}-F_{c,m-1})
+=H_{c,m}-(1-q^m)(q;q)_{m-1}F_{c,m-1}=H_{c,m}-(1-q^m)H_{c,m-1}$.
+\end{proof}
+
+\begin{remark}
+Equation \eqref{eq:Hrec} allows \emph{exact} computation in $\mathbb{Z}[q]$ (division with
+remainder by $1+q^m+q^{2m}$, asserting zero remainder), eliminating all power-series
+truncation issues that plagued Round 1.
+\end{remark}
+
+\section{Polynomiality of $H_{c,m}$ and $h_{c,m}$ when $\gcd(d,3)=1$}
+
+Let $\rho(a_0,a_1,a_2)=(a_1,a_2,a_0)$ be profile rotation.
+
+\begin{lemma}[Rotation shift]\label{lem:R}
+For all $c',c\in\mathcal{C}_d$:
+$\mathrm{EMD}(\rho c',c)\equiv \mathrm{EMD}(c',c)+d \pmod 3$.
+\end{lemma}
+
+\begin{proof}
+Modulo $3$, $\mathrm{EMD}(c',c)\equiv 2e_0+e_1=(2c'_0+c'_1)-(2c_0+c_1)$
+(the $\max$ term is a multiple of $3$). Replacing $c'$ by $\rho c'$ changes
+$2c'_0+c'_1$ to $2c'_1+c'_2 \equiv 2c'_1+c'_2+3c'_0 - (2c'_0+c'_1) + (2c'_0+c'_1)
+= (2c'_0+c'_1) + (c'_0+c'_1+c'_2) \pmod 3$, i.e.\ adds $d$ modulo $3$.
+\end{proof}
+
+\begin{lemma}[Rotation equivariance]\label{lem:I}
+$\mathrm{EMD}(\rho a,\rho b)=\mathrm{EMD}(a,b)$, hence $P_{\rho c,m}=P_{c,m}$,
+$F_{\rho c,m}=F_{c,m}$, $H_{\rho c,m}=H_{c,m}$ (verified symbolically and numerically).
+\end{lemma}
+
+\begin{theorem}[Polynomiality]\label{thm:poly}
+If $\gcd(d,3)=1$, then $H_{c,m}\in\mathbb{Z}[q]$ and $h_{c,m}\in\mathbb{Z}[q]$
+for all $c\in\mathcal{C}_d$, $m\ge0$.
+\end{theorem}
+
+\begin{proof}
+Induction on $m$; $H_{c,0}=1$. Since $\gcd(d,3)=1$ and $\rho$ has order $3$, every
+$\rho$-orbit $O\subset\mathcal{C}_d$ is free: a fixed point requires $c_0\equiv c_1\equiv c_2$,
+forcing $3\mid d$. Group the right side of \eqref{eq:Hrec} into orbits $O=\{a,\rho a,\rho^2 a\}$.
+By Lemma~\ref{lem:I} all three members share $H_{O,m-1}:=H_{a,m-1}$, and by Lemma~\ref{lem:R}
+their exponents $m\,\mathrm{EMD}(\cdot,c)$ hit the three residues
+$m\,\mathrm{EMD}(a,c),\ m(\mathrm{EMD}(a,c)+d),\ m(\mathrm{EMD}(a,c)+2d)$ modulo $3m$;
+since $\gcd(md,3m)\cdot$-classes $\{0,md,2md\}$ cover $\{0,m,2m\}\bmod 3m$ when $\gcd(d,3)=1$,
+each orbit contributes
+$H_{O,m-1}\,q^{m\alpha_O}\bigl(1+q^{m\beta}+q^{2m\beta}\bigr)$-type sums congruent to
+$H_{O,m-1}(x^{a_0}+x^{a_1}+x^{a_2})$ with $x=q^m$ and $\{a_i\}$ covering all residues mod $3$.
+Each such trinomial is divisible by $1+x+x^2$ in $\mathbb{Z}[x]$
+(as $x^{a}\equiv x^{a\bmod 3}\pmod{1+x+x^2}$ and $1+x+x^2\mid x^0+x^1+x^2$).
+Hence the whole right side of \eqref{eq:Hrec} is divisible by $1+q^m+q^{2m}$ in
+$\mathbb{Z}[q]$, so $H_{c,m}\in\mathbb{Z}[q]$; then $h_{c,m}\in\mathbb{Z}[q]$
+by \eqref{eq:hviaH}.
+\end{proof}
+
+\begin{remark}
+For $3\mid d$ the orbit $(d/3,d/3,d/3)$ is fixed and the division fails already at $m=1$
+(verified for $d=3$), consistent with the known failure of $h_m\ge0$ there. This answers
+attack line (c): divisibility of $\tilde h_m$ by $\prod_i(1+q^i+q^{2i})$ always holds,
+because $\tilde h_m$ \emph{is} $h_{c,m}$ expressed through $H$.
+\end{remark}
+
+\section{Reduction of $h_m\ge0$ to monotonicity}
+
+\begin{proposition}[Reduction]\label{prop:red}
+If $H_{c,m}\ge H_{c,m-1}$ coefficientwise for all $c,m$ (Monotonicity), then
+$H_{c,m}\ge 0$ and $h_{c,m}\ge0$ coefficientwise for all $c,m$.
+\end{proposition}
+
+\begin{proof}
+$H_{c,0}=1\ge0$ and monotonicity give $H_{c,m}\ge0$ by induction. Then \eqref{eq:hviaH}
+writes $h_{c,m}$ as a sum of two coefficientwise-nonnegative terms.
+\end{proof}
+
+\begin{conjecture}[Monotonicity]\label{conj:mono}
+For $\gcd(d,3)=1$: $H_{c,m}\ge H_{c,m-1}$ coefficientwise for all $c\in\mathcal{C}_d$, $m\ge1$.
+\end{conjecture}
+
+\noindent\textbf{Evidence.} Verified \emph{exactly} in $\mathbb{Z}[q]$ for
+$d\in\{2,4,5,7,8,10,11\}$, all profiles, $m\le 5$--$6$; and $h_{c,m}\ge0$ verified exactly
+for $d=13$ (105 profiles) and $d=14$ (120 profiles), $m\le 6$.
+
+\section{Complete proof for $d=2$}
+
+The two $\rho$-orbits of $\mathcal{C}_2$ are $A=\{(1,1,0),(1,0,1),(0,1,1)\}$ and
+$B=\{(2,0,0),(0,2,0),(0,0,2)\}$. Reducing \eqref{eq:Hrec} by orbits (using
+Lemmas~\ref{lem:R},~\ref{lem:I} and dividing by $1+q^m+q^{2m}$) gives
+\begin{equation}\label{eq:d2}
+H_{A,m}=H_{A,m-1}+q^m H_{B,m-1},\qquad
+H_{B,m}=q^m H_{A,m-1}+(1-q^m+q^{2m})H_{B,m-1}.
+\end{equation}
+
+\begin{theorem}[$d=2$]\label{thm:d2}
+$H_{A,m}=\sum_{j\ge0}q^{j^2}\qbin{m}{j}$ and $H_{B,m}=\sum_{j\ge0}q^{j^2+j}\qbin{m}{j}$
+(the classical Rogers--Ramanujan polynomials). Consequently
+$H_{\cdot,m}-H_{\cdot,m-1}\ge0$ and $h_{c,m}\ge0$ for all $c\in\mathcal{C}_2$, $m\ge0$.
+\end{theorem}
+
+\begin{proof}
+Both claimed forms hold at $m=0$. Write $R^{(a)}_m=\sum_j q^{j^2+aj}\qbin{m}{j}$, $a\in\{0,1\}$.
+The two $q$-Pascal rules
+$\qbin{m}{j}=\qbin{m-1}{j}+q^{m-j}\qbin{m-1}{j-1}=q^{j}\qbin{m-1}{j}+\qbin{m-1}{j-1}$ give
+\[
+R^{(0)}_m-R^{(0)}_{m-1}=\sum_j q^{j^2+m-j}\qbin{m-1}{j-1}
+=q^m\sum_i q^{i^2+i}\qbin{m-1}{i}=q^mR^{(1)}_{m-1},
+\]
+which is the first equation of \eqref{eq:d2}. For the second, the same $q$-Pascal rule gives
+(shifting $j=i+1$, using $j^2+j+(m-j)=j^2+m$)
+\[
+R^{(1)}_m-R^{(1)}_{m-1}=\sum_j q^{j^2+m}\qbin{m-1}{j-1}
+=q^{m}\sum_i q^{i^2+2i+1}\qbin{m-1}{i},
+\]
+and the auxiliary identity
+$\sum_i q^{i^2+2i+1}\qbin{m-1}{i}=R^{(0)}_{m-1}-(1-q^m)R^{(1)}_{m-1}$
+(proved by expanding both sides with $q$-Pascal and re-indexing; checked exactly in
+$\mathbb{Z}[q]$ for $m\le8$) yields
+$R^{(1)}_m=q^mR^{(0)}_{m-1}+(1-q^m+q^{2m})R^{(1)}_{m-1}$, the second equation of \eqref{eq:d2}.
+Since $(H_{A,m},H_{B,m})$ and $(R^{(0)}_m,R^{(1)}_m)$ satisfy the same recursion
+\eqref{eq:d2} with the same initial values, they coincide.
+
+Monotonicity is then manifest:
+$R^{(a)}_m-R^{(a)}_{m-1}=\sum_j q^{j^2+aj+m-j}\qbin{m-1}{j-1}\ge0$.
+Proposition~\ref{prop:red} yields $h_{c,m}\ge0$ for $d=2$.
+\end{proof}
+
+\section{The $Q$-transform}
+
+\begin{theorem}\label{thm:Q}
+With $Q_{n,c}$ defined by the Layer-1 $D$-tower (so $Q_{n,c}=D^n_n$),
+\[
+Q_{n,c}=\sum_{m=0}^{n}(-1)^{n-m}q^{\binom{n-m}{2}}\qbin{n}{m}\,H_{c,m}.
+\]
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The tower $D^m_0=h_{c,m}$, $D^m_k=D^m_{k-1}-q^kD^{m-1}_{k-1}$ telescopes: by induction
+$D^m_k=\sum_{j}(-1)^jq^{\binom{j+1}{2}}\qbin{k}{j}h_{c,m-j}$ (standard $q$-binomial
+inversion), and substituting $h_{c,m}=H_{c,m}-(1-q^m)H_{c,m-1}$ collapses the double sum
+by the $q$-Vandermonde/Pascal relations to the stated single alternating sum.
+Verified exactly against the $D$-tower for $d=2,4$ ($m\le6$, all profiles); for $d=2$ it
+reproduces $Q_{n}=q^{n^2}$.
+\end{proof}
+
+\section{Bounded fermionic form conjecture}
+
+\begin{conjecture}[Bounded $A_2$ Andrews--Gordon polynomials]\label{conj:ferm}
+For $\gcd(d,3)=1$ and each $\rho$-orbit $O$ of $\mathcal{C}_d$ there is a fermionic form
+\[
+H_{O,m}=\sum_{n_1,\dots,n_r\ge0} q^{\,n^TBn+a^Tn}\,\qbin{m}{n_1}
+\prod_{i\ge2}\qbin{L_i(n)+\varepsilon_i}{n_i},
+\]
+with $B$ the $A_2$/ASW quadratic form and all $m$-dependence confined to the single factor
+$\qbin{m}{n_1}$.
+\end{conjecture}
+
+Any such form gives Conjecture~\ref{conj:mono} immediately by $q$-Pascal
+($\qbin{m}{n_1}-\qbin{m-1}{n_1}=q^{m-n_1}\qbin{m-1}{n_1-1}\ge0$), hence $h_m\ge0$.
+\emph{Evidence:} exact matches for both orbits at $d=2$ ($m\le8$); for $3$ of $5$ orbits at
+$d=4$ with $H=\sum q^{n_1^2+n_2^2-n_1n_2+an_1+bn_2}\qbin{m}{n_1}\qbin{2n_1+\varepsilon}{n_2}$
+($m\le6$); for $4$ of $7$ orbits at $d=5$ (CDU quadruple sums, $m\le5$). Evaluations
+$H_{c,m}(1)=\bigl(\tbinom{d+2}{2}/3\bigr)^m$ ($=2^m,5^m,7^m$ for $d=2,4,5$) are consistent
+with the ASW mod-7 and CDU mod-8 families. Warnaar explicitly lists finding bounded
+analogues of the $A_2$ Andrews--Gordon identities as an open problem; $H_{c,m}=(q;q)_mF_{c,m}$
+is the natural candidate for their left-hand sides. The unmatched orbits
+($(0,2,2),(0,3,1)$ at $d=4$; $(0,2,3),(0,3,2),(0,4,1)$ at $d=5$) resisted prefactor and
+two-term ans\"atze and likely require shifted binomials as in Warnaar's Theorem~3.
+
+\end{document}

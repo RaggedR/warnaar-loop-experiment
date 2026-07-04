@@ -1,0 +1,333 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8051.73it/s]
+--- 1/20 (sim=0.704) dousse_konan_capparelli_primc_crystals/chunk_003.tex ---
+Summary: Introduces crystal base theory as the paper's main framework, motivating it through the problem of finding character formulas with positive coefficients, and explaining why the Weyl-Kac formula does not immediately exhibit positivity.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Introduction and statement of results > Background
+
+[Summary: Introduces crystal base theory as the paper's main framework, motivating it through the problem of finding character formulas with positive coefficients, and explaining why the Weyl-Kac formula does not immediately exhibit positivity.]
+
+\medskip
+In the present paper, we focus on the interaction between partition identities and crystal base theory. Crystal bases were introduced independently by Kashiwara \cite{Kas90} and Lusztig \cite{Lusz90} to study representations of quantum algebras, which are $q$-deformations of universal enveloping algebras of classical Lie algebras. They have a nice combinatorial structure, and admit particularly simple tensor products.
+
+One of the most important questions in representation theory is finding nice explicit formulas for characters of representations.
+If $\hat{\mathfrak{g}}$ is an affine Lie algebra, and $V$ an irreducible module of $\hat{\mathfrak{g}}$ with highest weight $\Lambda$, then by definition, the character $\mathrm{ch}(V)$ of $V$ multiplied by $e^{-\Lambda}$ can be expressed as a power series in $e^{-\alpha_0}, \dots, e^{-\alpha_{n-1}}$ with positive coefficients, where $\alpha_0, \dots , \alpha_{n-1}$ are the simple roots of $\hat{\mathfrak{g}}$. However, finding explicit expressions for characters is not easy. The most famous example, the \textit{Weyl-Kac character formula} \cite{Kac}, gives a beautiful factorized expression for the character, but the coefficients of the monomials in $e^{-\alpha_i}$ in this expression are not obviously positive.
+
+
+--- 2/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_286.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+For an affine crystal graph $\widehat{B}(\varkappa)$ we define its \emph{Demazure subgraph} $\widetilde{B}(\varkappa)$. Its set of vertices is $B^\varkappa$, while its edges, called \emph{Demazure arrows}, are defined next.
+
+
+--- 3/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_288.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{fig_Demazure_subgraph.pdf}
+    \caption{The affine crystal graph $\widehat{B}(\varkappa)$, for $\varkappa=(2,1,1)$. Edges $\xrightarrow[]{i}$ are defined by the action of $\widetilde{f}_{i}$. Black arrows define the classical crystal graph $B(\varkappa)$. Blue arrows denote 0-Demazure arrows, so that the Demazure subgraph $\widetilde{B}(\varkappa)$ consists in black and blue edges. Red arrows are 0-arrows that are not Demazure arrows. Notice the defining property of 0-Demazure arrows, that always originate from vertices $b$ that are endpoints of $0$-arrows.}
+    \label{fig:demazure_subgraph}
+\end{figure}
+
+An example of a Demazure subgraph is shown in \cref{fig:demazure_subgraph}. Notice that the Demazure subgraph is not a crystal graph as in the definition given in \cref{subs:crystals_and_bi_crystals}. In fact $\widetilde{B}(\varkappa)$ is the image under a canonical isomorphsm, denoted by $j$ in \cite{schilling_tingley}, of the corresponding \emph{Demazure crystal} \cite[Chapter 13]{BumpSchilling_crystal_book}. For this reason, $\widetilde{B}(\varkappa)$, just as the affine crystal graph $\widehat{B}(\varkappa)$, is connected, as stated next.
+
+
+--- 4/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_295.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+Result of \cref{prop:Demazure_energy} implies that $\mathscr{H}(b)$ is the difference between the number of $\widetilde{e}_{0}$ and $\widetilde{f}_{0}$ in any leading map $\mathcal{L}_b$. A more precise version of this statement is given by the next proposition, for which we need to prepare some notation. For any $b \in B^\varkappa$, consider a leading map $\mathcal{L}_b = h_m \circ \cdots \circ h_1$, where $h_j$ are Demazure arrows. Denote by $b^{(j)}=h_j \circ \cdots \circ h_1 (b)$ the partial evaluations of $\mathcal{L}_b$ for $j=1,\dots ,m$. Let $u_k(\mathcal{L}_b)$ be the number of 0-Demazure arrows $h_j=\widetilde{f}_{0}$ in $\mathcal{L}_b$ such that
+    \begin{equation}
+        h_j:b^{(j-1)} \mapsto b_1^{(j-1)} \otimes \cdots \otimes \widetilde{f}_{0}(b_k^{(j-1)}) \otimes \cdots \otimes b_N^{(j-1)}.
+    \end{equation}
+    Analogously define $d_k(\mathcal{L}_b)$ as the number of 0-Demazure arrows $h_j=\widetilde{e}_{0}$ such that
+    \begin{equation}
+        h_j:b^{(j-1)} \mapsto b_1^{(j-1)} \otimes \cdots \otimes \widetilde{e}_{0}(b_k^{(j-1)}) \otimes \cdots \otimes b_N^{(j-1)}.
+    \end{equation}
+In other words $u_k(\mathcal{L}_b)$ (resp. $d_k(\mathcal{L}_b)$) counts the number of $\widetilde{f}_{0}$ Demazure arrows in $\mathcal{L}_b$ that during the evaluation of $\mathcal{L}_b$ act as $\widetilde{f}_{0}$ (resp $\widetilde{e}_{0}$) on the $k$-th tensor factor of the argument. The next proposition relates $u_k$ and $d_k$ with the local energy $\mathscr{H}_k$.
+
+
+--- 5/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_294.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+\begin{remark} \label{rem:non_uniqueness_leading_map}
+     When there are multiple walks from $b$ to $\varkappa^{\mathrm{lv}}$ on $\widetilde{B}(\varkappa)$, the leading map $\mathcal{L}_b$ does not admit a unique expansion in terms of Kashiwara operators.
+     However, following the convention on inverse maps established in \cref{subs:crystals_and_bi_crystals}, given $b \in B^{\varkappa}$ and a leading map $\mathcal{L}_b$ it is always true that $b=\mathcal{L}_b^{-1} (\varkappa^{\mathrm{lv}})$.
+\end{remark}
+
+
+--- 6/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_293.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+\noindent
+The fact that for any element $b \in B^\varkappa$ a leading map $\mathcal{L}_b$ exists is a consequence of connectedness of Demazure subgraph stated in \cref{prop:Demazure_connected}.
+Leading maps can be visualized as walks on the Demazure subgraph $\widetilde{B}(\varkappa)$ starting at $b$ and terminating at $\varkappa^{\mathrm{lv}}$. For instance, from \cref{fig:demazure_subgraph} we see that a leading map for $b=\begin{ytableau} 2 & 1 & 3 \\ 3 \end{ytableau}$ is given by
+\begin{equation} \label{eq:leading_map_example}
+    \mathcal{L}_b = \widetilde{f}_{0} \circ \widetilde{e}_{1} \circ \widetilde{e}_{2}.
+\end{equation}
+
+
+--- 7/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_297.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+One can verify \cref{prop:local_energies_demazure} looking at \cref{fig:demazure_subgraph}. Setting $b=\begin{ytableau} 2 & 2 & 1 \\ 3 \end{ytableau}$, local energies can be computed as
+\begin{equation}
+    \mathscr{H}_1(b) = 1,
+    \qquad
+    \mathscr{H}_2(b) = 1,
+    \qquad
+    \mathscr{H}_3(b) = 0,
+\end{equation}
+either following \cref{def:energy} or checking the action of 0-Demazure arrows throughout any path on the Demazure subgraph connecting $b$ to $\begin{ytableau} 1 & 1 & 1 \\ 2 \end{ytableau}$.
+
+
+--- 8/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_298.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+\begin{remark}
+    It is not true that for any $b\in B^\varkappa$ there always exist a choice of a leading map $\mathcal{L}_b$ that does not contain $\widetilde{e}_{0}$ Demazure arrows. For example, taking
+    \begin{equation}
+        b=
+        \begin{ytableau}
+            1
+            \\
+            2
+        \end{ytableau}
+        \otimes
+        \begin{ytableau}
+            1
+            \\
+            3
+        \end{ytableau}
+        \otimes
+        \begin{ytableau}
+            1
+            \\
+            2
+        \end{ytableau}
+        \otimes
+        \begin{ytableau}
+            1
+            \\
+            2
+        \end{ytableau}
+        \,
+        ,
+    \end{equation}
+    one can verify that in the classical connected component of $b$ there does not exist $b'$ such that $\varepsilon_0(b')\neq 0$ and $\varphi_0(b') \neq 0$.  Hence in this case $\mathcal{L}_b$ must contain at least one $\widetilde{e}_{0}$ operator.
+\end{remark}
+
+
+--- 9/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_299.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+Given a pair of vertically strict tableaux $(V,W)$ we define the leading map of the pair $\mathcal{L}_{V,W}$ as
+\begin{equation} \label{eq:leading_map_pair_VST}
+    \mathcal{L}_{V,W} : (V',W') \mapsto (\mathcal{L}_V(V') , \mathcal{L}_{W}(W')),
+\end{equation}
+whenever the operation is defined. Clearly maps $\mathcal{L}_V$ and $\mathcal{L}_W$ are defined through the usual identification of vertically strict tableaux with crystals.
+
+
+--- 10/20 (sim=0.653) imamura_skew_rsk_dynamics/chunk_290.tex ---
+Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Demazure subgraph
+[Summary: Studies the Demazure crystal subgraph structure that restricts the affine bicrystal to the component relevant for the dynamics.]
+
+Result of \cref{prop:Demazure_connected} follows from the general result \cite[Theorem 4.4]{Fourier_Schilling_Shimozono_demazure}, \cite[Theorem 6.1]{schilling_tingley}. The structure of subgraph $\widetilde{B}(\varkappa)$ defines a grading function $D:B^{\varkappa}\to \mathbb{Z}$ that associates to any element $b\in B^\varkappa$ the difference between 0-Demazure arrows $\#\widetilde{f}_{0} - \#\widetilde{e}_{0}$ found in any map $h$ such that $h$ is composition of only Demazure arrows and $h(b)=\varkappa^{\mathrm{lv}}$.
+It was found in \cite{schilling_tingley} that such grading function $D(B)$ equals, at least in $A^{(1)}_{n}$ type, the intrinsic energy function $\mathscr{H}(b)$. This is a consequence of the following proposition, which again is a particular case of \cite[Lemma 7.3]{schilling_tingley}
+
+
+--- 11/20 (sim=0.652) butorac_lepowsky_wakimoto_cl_affine/chunk_001.tex ---
+Summary: Title and abstract: the paper reformulates Lepowsky's and Wakimoto's infinite product character formulas for affine Lie algebras of types C_l^{(1)}, D_{l+1}^{(2)}, and A_{2l}^{(2)} using specialized weighted crystal arrays, framing these products as one side of conjectured Rogers–Ramanujan-type identities.
+
+% Paper: butorac_lepowsky_wakimoto_cl_affine
+
+[Summary: Title and abstract: the paper reformulates Lepowsky's and Wakimoto's infinite product character formulas for affine Lie algebras of types C_l^{(1)}, D_{l+1}^{(2)}, and A_{2l}^{(2)} using specialized weighted crystal arrays, framing these products as one side of conjectured Rogers–Ramanujan-type identities.]
+
+\title[Lepowsky's and Wakimoto's product   formulas for $C_l^{(1)}$]
+{Lepowsky's and Wakimoto's product formulas for the affine Lie algebras $C_l^{(1)}$}
+
+
+
+\begin{abstract} 
+In this paper, we  recall Lepowsky's and Wakimoto's product character formulas formulated in a new way by using arrays of specialized weighted crystals of negative roots for affine Lie algebras of type $C_l^{(1)}$,  $D_{l+1}^{(2)}$ and $A_{2l}^{(2)}$.
+Lepowsky--Wakimoto's infinite periodic products appear as one side of (conjectured) Rogers--Ramanujan-type combinatorial identities for affine Lie algebras of type $C_l^{(1)}$.
+\end{abstract}
+
+
+ 
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+--- 12/20 (sim=0.642) dousse_konan_capparelli_primc_crystals/chunk_004.tex ---
+Summary: Introduces the (KMN)² crystal base character formula as the tool linking perfect crystals to partition generating functions, and announces that the paper will prove a non-specialised character formula for all level-1 irreducible highest weight A_{n-1}^{(1)}-modules.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Introduction and statement of results > Background
+
+[Summary: Introduces the (KMN)² crystal base character formula as the tool linking perfect crystals to partition generating functions, and announces that the paper will prove a non-specialised character formula for all level-1 irreducible highest weight A_{n-1}^{(1)}-modules.]
+
+Kang, Kashiwara, Misra, Miwa, Nakashima, and Nakayashiki \cite{KMN2a,KMN2b} introduced the theory of perfect crystals to find such nice expressions for characters via the so-called \textit{(KMN)$^2$ crystal base character formula}.
+It allows one to construct crystals of irreducible highest weight modules for all classical weights of the same level. 
+Then the crystal base character formula allows one to identify these perfect crystals with partitions satisfying certain difference conditions, which in certain cases gives rise to character formulas as partition generating functions. However, these formulas are in general obtained after doing a specialisation, for example replacing all the $e^{-\alpha_i}$'s by $q$ (which is the principal specialisation). In this paper, we will prove a non-specialised character formula, with obviously positive coefficients, for all the irreducible highest weight $A_{n-1}^{(1)}$-modules of level $1$.
+
+
+--- 13/20 (sim=0.640) butorac_lepowsky_wakimoto_cl_affine/chunk_034.tex ---
+Summary: Clarifies that ℬ_{C_l^{(1)}} is the affinization of ℬ_{C_l} in crystal base terminology, but the paper deliberately uses the more elementary language of "array of root vectors" since only the colored directed graph structure and Chevalley generator actions are needed.
+
+% Paper: butorac_lepowsky_wakimoto_cl_affine
+% Section: Arrays of negative root vectors for $C_l^{(1) > The array of negative root vectors for $C_l^{(1)
+
+\begin{remark}
+[Summary: Clarifies that ℬ_{C_l^{(1)}} is the affinization of ℬ_{C_l} in crystal base terminology, but the paper deliberately uses the more elementary language of "array of root vectors" since only the colored directed graph structure and Chevalley generator actions are needed.]
+
+In the theory of crystal bases, the previous construction is called the affinization of ${\mathcal B}_{C_l}$ with the notation ${\mathcal B}_{C_l^{(1)}}=\bar {\mathcal B}_{C_l} = {\mathcal B}_{C_l}^\text{aff}$ (cf. \cite{HK}). Since the notion of a crystal has many layers, from a simple combinatorial notion of colored directed graph to the notion of crystal basis for a quantum group $U_q(\mathfrak g)$, for ${\mathcal B}_{C_l}$ we prefer the term {\em the array of root vectors for $C_l^{(1)}$} or {\em the arrangement of root vectors for $C_l^{(1)}$}. For us, ${\mathcal B}_{C_l^{(1)}}$ is a part of the basis $\{c, d\}\cup {\mathcal B}_{C_l^{(1)}}$ of ${\mathfrak g}(C_l^{(1)})$ and the $i$-arrows, $i=0, 1, \dots, l$, indicate how the action of Chevalley's generators $f_i$ changes the weight of a basis element, i.e.
+$$
+{\normalfont \textrm{wt}}(f_i b)={\normalfont \textrm{wt}}(b)-\alpha_i,\qquad i=0, 1, \dots, l, \quad b\in{\mathcal B}_{C_l^{(1)}}.
+$$ 
+\end{remark}
+
+
+--- 14/20 (sim=0.635) butorac_lepowsky_wakimoto_cl_affine/chunk_003.tex ---
+Summary: States the main goal: to write all Lepowsky–Wakimoto product formulas for C_l^{(1)} explicitly using arrays of specialized weighted crystals of negative roots for C_l^{(1)}, D_{l+1}^{(2)}, and A_{2l}^{(2)}, emphasizing that the approach uses only combinatorial crystal data, not full quantum group theory.
+
+% Paper: butorac_lepowsky_wakimoto_cl_affine
+% Section: Introduction
+
+[Summary: States the main goal: to write all Lepowsky–Wakimoto product formulas for C_l^{(1)} explicitly using arrays of specialized weighted crystals of negative roots for C_l^{(1)}, D_{l+1}^{(2)}, and A_{2l}^{(2)}, emphasizing that the approach uses only combinatorial crystal data, not full quantum group theory.]
+
+J. Lepowsky proved that the principally specialized characters of standard modules for affine Lie algebras can be written as infinite periodic products. M. Wakimoto extended Lepowsky's argument for some other specializations of characters. The aim of this paper is to write explicitly all Lepowsky--Wakimoto's product formulas for affine Lie algebras of types $C_l^{(1)}$, $l\geq 2$, by using arrays of specialized weighted crystals of negative roots for  affine Lie algebras of type $C_l^{(1)}$,  $D_{l+1}^{(2)}$ and $A_{2l}^{(2)}$. These weighted crystals parametrize root vectors for negative roots in terms of crystal bases of adjoint representations of $C_l$ and $B_l$, and  $B_l$-modules $L_{B_l}(\omega_1)$ and $L_{B_l}(2\omega_1)$. Although inspired by the crystal bases theory, we use only the combinatorial notion of weighted crystals for Cartan matrices, and the realization of affine Kac--Moody Lie algebras.
+
+
+--- 15/20 (sim=0.635) dousse_konan_multi-grounded_partitions/chunk_003.tex ---
+Summary: This transitional paragraph explains that the Weyl–Kac formula is impractical and non-manifestly positive, then previews the paper's strategy: use perfect crystals and multi-grounded partitions to obtain simple, non-specialised character formulas with obviously positive coefficients.
+
+% Paper: dousse_konan_multi-grounded_partitions
+% Section: Introduction and statement of results
+
+[Summary: This transitional paragraph explains that the Weyl–Kac formula is impractical and non-manifestly positive, then previews the paper's strategy: use perfect crystals and multi-grounded partitions to obtain simple, non-specialised character formulas with obviously positive coefficients.]
+
+Equation \eqref{eq:weylkac} is beautiful, but it is not so well suited to compute characters in practice. Moreover, even though by definition $e^{-\lambda}\mathrm{ch} (L(\lambda))$ is a series with positive coefficients in the $e^{-\alpha_i}$'s, this positivity is not explicit from the formulation in \eqref{eq:weylkac}. We now briefly explain what solutions have been given to work around these issues, and present a new method which allows us to give simple non-specialised character formulas using perfect crystals and a new generalisation of integer partitions.
+
+
+--- 16/20 (sim=0.633) dousse_konan_capparelli_primc_crystals/chunk_040.tex ---
+Summary: Defines the quantum affine algebra U_q(ĝ) via its generators e_i, f_i, q^h and the quantum Serre relations, which is the algebraic framework within which crystal bases and irreducible highest weight modules are studied.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Basics on Crystals > Cartan datum and quantum affine algebras
+
+[Summary: Defines the quantum affine algebra U_q(ĝ) via its generators e_i, f_i, q^h and the quantum Serre relations, which is the algebraic framework within which crystal bases and irreducible highest weight modules are studied.]
+
+\begin{defn}\label{defn:qalg}\cite[Definition 3.1.1]{HK}
+The {\it quantum affine algebra} $U_q(\widehat \mathfrak g)$ associated with the Cartan datum $(A,\Pi,\Pi^\vee, P, P^\vee)$
+is the associative algebra with unit element over $\mathbb C(q)$ (where $q$ is an indeterminate)
+with generators $e_i,\,f_i \ (i \in \{0, \dots , n-1\})$, and $q^h \ (h \in P^\vee)$,  satisfying the defining relations:
+\begin{itemize}
+\item[\rm{(1)}] $ q^0 = 1, \ q^hq^{h'} = q^{h+h'}$  \ \ \  for $h,h' \in P^\vee$,
+\item[\rm{(2)}] $q^h e_i q^{-h} = q^{\alpha_i(h)}e_i$ \ \ \ for $h \in P^\vee$, $i \in \{0, \dots , n-1\}$,
+\item[\rm{(3)}] $q^h f_i q^{-h} = q^{-\alpha_i(h)}f_i$ \ \ \  for $h \in P^\vee$, $i \in \{0, \dots , n-1\}$,
+\item[\rm{(4)}] $e_if_j - f_je_i = \displaystyle{\delta_{i,j}\frac{K_i-K_i^{-1}}{q_i-q_i^{-1}}}$ \ \ \  for $i,j \in \{0, \dots , n-1\}$,
+\item[\rm{(5)}] $\displaystyle{\sum_{k=0}^{1-a_{i,j}} \left\langle\begin{array}{c} 1-a_{i,j} \\ k \end{array}\right\rangle_{q_i}
+e_i^{1-a_{i,j}-k} e_j e_i^k = 0}$  \ \ \  for  $i \neq j$,
+\item[\rm{(6)}] $\displaystyle{\sum_{k=0}^{1-a_{i,j}} \left\langle\begin{array}{c} 1-a_{i,j} \\ k \end{array}\right\rangle_{q_i}
+f_i^{1-a_{i,j}-k} f_j f_i^k = 0}$  \ \ \ for  $i \neq j$.
+ \end{itemize}
+Here $q_i = q^{s_i}$ and $K_i = q^{s_i h_i}$, where $D=diag(s_i : i \in \{0, \dots, n-1\})$ is a symmetrising matrix of $A$.
+\end{defn}
+
+
+--- 17/20 (sim=0.632) imamura_skew_rsk_dynamics/chunk_280.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{remark}
+The combinatorial $R$-matrix, as the name suggests, satisfies the Yang-Baxter equation
+\begin{equation}
+    (R \otimes \mathbf{1}) (\mathbf{1} \otimes R) (R \otimes \mathbf{1}) = (\mathbf{1} \otimes R) (R \otimes \mathbf{1}) (\mathbf{1} \otimes R)
+\end{equation}
+and can be also defined as the $q \to 0$ limit of the fused $R$-matrix of $\mathcal{U}_q(\widehat{sl}_{n})$. We will not make use of this fact in this paper, but the interested reader can consult \cite{Kang_Kashiwara_et_al,shimozono_affine}.
+\end{remark}
+
+
+--- 18/20 (sim=0.632) imamura_skew_rsk_dynamics/chunk_278.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+We also define the \emph{energy function} 
+\begin{equation}
+    H(b_1 \otimes b_2) = \text{number of winding pairs of }b_1 \otimes b_2.
+\end{equation}
+
+To have a better understanding of the algorithm for $R$ consider the following example.
+
+
+--- 19/20 (sim=0.632) imamura_skew_rsk_dynamics/chunk_276.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+For any $r_1,r_2 \in \mathbb{N}$, crystal graphs $\widehat{B}(r_1,r_2)$ and $\widehat{B}(r_2,r_1)$ are isomorphic, via a unique isomorphism of crystal graphs called \emph{combinatorial $R$-matrix} 
+\begin{equation}
+    R:B^{r_1,1} \otimes B^{r_2,1} \to B^{r_2,1} \otimes B^{r_1,1}.
+\end{equation}
+There exists a number of equivalent definitions of $R$ (see \cite{Kang_Kashiwara_et_al,Nakayashiki_Yamada,shimozono_affine}) and the one reported below is a reformulation of the original algorithm by Nakayashiki and Yamada as in Rule 3.10 of \cite{Nakayashiki_Yamada}. Consider $b_i \in B^{r_i,1}$ for $i=1,2$ and we want to find $\tilde{b}_i \in B^{r_i,1}$ such that 
+\begin{equation}
+    R(b_1 \otimes b_2) = \tilde{b}_2 \otimes \tilde{b}_1,
+\end{equation}
+by shifting cells from one column to the other. The procedure goes as follows.
+
+
+--- 20/20 (sim=0.632) imamura_skew_rsk_dynamics/chunk_285.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+The intrinsic energy $\mathscr{H}$ is, as all the local energies $\mathscr{H}_i$ are, constant on classical connected components of $\widehat{B}(\varkappa)$. This is a consequence of \eqref{eq:energy_and_kashiwara} and of the fact that the combinatorial $R$-matrix commutes with Kashiwara operators.
+
+

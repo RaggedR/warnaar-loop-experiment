@@ -1,0 +1,17 @@
+# Lean build artifacts (reproducible via lake build; source is mirrored at RaggedR/warnaar-glue)
+lean/.lake/
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# macOS
+.DS_Store

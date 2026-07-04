@@ -1,0 +1,433 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 25463.45it/s]
+--- 1/20 (sim=0.709) corteel_welsh_A2_RR/chunk_004.tex ---
+Summary: Announces the paper's main goal: extend the cylindric partition method to prove the A2 Rogers-Ramanujan identities of Andrews-Schilling-Warnaar.
+
+% Paper: corteel_welsh_A2_RR
+% Section: Introduction
+
+[Summary: Announces the paper's main goal: extend the cylindric partition method to prove the A2 Rogers-Ramanujan identities of Andrews-Schilling-Warnaar.]
+
+In this note, we take the idea of applying cylindric partitions to
+Rogers-Ramanujan type identities a step further,
+by using them to give an alternative proof of the $A_2$ Rogers-Ramanujan
+identities due to Andrews, Schilling and Warnaar \cite{ASW}.
+%
+
+
+--- 2/20 (sim=0.702) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_031.tex ---
+Summary: Main results (3k+1): discusses lifting the modulus-3k+1 results to two-variable cylindric partition generating functions.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures > The modulus-$(3k+1)$ case
+[Summary: Main results (3k+1): discusses lifting the modulus-3k+1 results to two-variable cylindric partition generating functions.]
+
+The lifting of \eqref{Eq_A2-vac-b} and \eqref{Eq_A2-two-b} to the 
+two-variable generating function for cylindric partitions results 
+in our final conjecture.
+
+
+--- 3/20 (sim=0.690) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_014.tex ---
+Summary: Explains the two key challenges (guessing sum sides via cylindric partition generating functions, then proving them via Corteel-Welsh with computer algebra), and gives the paper's section outline.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and statement of results
+
+[Summary: Explains the two key challenges (guessing sum sides via cylindric partition generating functions, then proving them via Corteel-Welsh with computer algebra), and gives the paper's section outline.]
+
+The first equation of our theorem gives an expression of the product in Theorem \ref{th:ASW500} as a sum with obviously positive coefficients, and we give a combinatorial interpretation in terms of cylindric partitions. More generally, our full main result, Theorem \ref{th:main}, gives a positive sum expression for all the products in the case $k=3$ in Theorem 5.3 of Andrews, Schilling, and Warnaar's paper \cite{AndrewsSchillingWarnaar}.
+
+
+The two challenges in proving Theorem \ref{th:main} were the following: first, we ``guessed" the sum-side by guessing the generating
+functions for certain cylindric partitions with bounded entries. Second, we proved these identities simultaneously by using a result of Corteel and Welsh (see Theorem \ref{th:CW}). As it is quite intricate to handle quadruple sums,
+we used a recent computer algebra implementation of Ablinger and Uncu \cite{qFunctions} and we give an automated proof of the main result.
+
+
+
+\medskip
+
+This paper is organized as follows. In Section \ref{sec:next} we introduce cylindric partitions and the methodology.
+To give a simple example on how to use cylindric partitions to prove partitions identities, we prove the classical Rogers--Ramanujan identities. In Section \ref{sec:proof}, we prove Theorem \ref{th:main}.
+
+
+--- 4/20 (sim=0.686) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_018.tex ---
+Summary: Defines the size and largest-part statistics of a cylindric partition, introduces the bivariate generating function F_c(z,q), and invokes Borodin's 2007 theorem that F_c(1,q) is an explicit infinite product — the product side of the identities.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+% Section: Introduction and methodology
+
+[Summary: Defines the size and largest-part statistics of a cylindric partition, introduces the bivariate generating function F_c(z,q), and invokes Borodin's 2007 theorem that F_c(1,q) is an explicit infinite product — the product side of the identities.]
+
+We define the size $|\Lambda|$ of a cylindric partition $\Lambda = (\lambda^{(1)},\lambda^{(2)},\dots,\lambda^{(k)})$ to be the sum of all the parts in the partitions $\lambda^{(1)},\lambda^{(2)},\dots,\lambda^{(k)}$.
+%Note that, by definition, cylindric partitions with profile $c$ are in bijection with cylindric partitions of any cyclic shift of $c$.
+%, and denote this by: \[|\Lambda|=|(\lambda^{(1)},\lambda^{(2)},\dots,\lambda^{(k)})|:= \sum_{i=1}^k \sum_{j\geq 0} \lambda^{(i)}_j.\]  
+We also define the largest part of a cylindric partition $\Lambda$ to be the maximum part among all the partitions in $\Lambda$, and denote it by $\max(\Lambda)$. 
+We now define the bivariate generating function for cylindric partitions 
+$$F_c(z,q):=\sum_{\Lambda\in \mathcal{P}_c} z^{\max{(\Lambda)}}q^{|\Lambda |},$$
+where $\mathcal{P}_c$ denotes the set of all cylindric partitions with profile $c$. 
+
+In 2007, Borodin \cite{Borodin} showed that when one sets $z=1$ in this bivariate generating function, it becomes a beautiful infinite product.
+
+
+--- 5/20 (sim=0.686) bridges_uncu_weighted_cylindric_partitions/chunk_022.tex ---
+Summary: Definitions: states Borodin's theorem that cylindric partition generating functions are always infinite products.
+
+% Paper: bridges_uncu_weighted_cylindric_partitions
+% Section: Definitions and product sides
+[Summary: Definitions: states Borodin's theorem that cylindric partition generating functions are always infinite products.]
+
+Graphically, a profile $\delta$ starts on the top left corner of the starting diagonal $\lambda^0$ and ends on the top left corner of the last diagonal $\lambda^h$.
+
+ Borodin proved that the generating function for cylindric partitions of any profile is always an infinite product.  We use the formulation in \cite{HX}.
+
+
+--- 6/20 (sim=0.686) li_uncu_macmahon_analysis_cylindric_partitions/chunk_013.tex ---
+Summary: States Theorem 3 (Li-Uncu Andrews-Gordon): proves the companion hierarchy for k=2,3,4 and gives the explicit cylindric partition interpretation.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: Introduction
+
+[Summary: States Theorem 3 (Li-Uncu Andrews-Gordon): proves the companion hierarchy for k=2,3,4 and gives the explicit cylindric partition interpretation.]
+\begin{theorem}\label{thm:LiUncu_AndrewsGordon_Thm} The equation \eqref{eq:LiUncu_FinAndrewsGordon} holds for every $n\geq0$, where, $ k=2,3$, and $4$, $ k\geq i\geq 1$. Furthermore, for $k=2,3$ and $i=1,2$, we have
+\[CP_{(2k-i,i-1)}(n) := \frac{1}{(q;q)_{2n}} \sum_{r=-\infty}^{\infty} (-1)^r q^{\frac{r( (2k+1)r + 2k-2i +1)}{2}} {2n\brack n - \frac{(2k+1)r}{2} + (2k-2i+1)\frac{(-1)^r-1}{4}}_q.\]
+\end{theorem}
+
+
+--- 7/20 (sim=0.685) warnaar_A2_andrews_gordon/chunk_100.tex ---
+Summary: Opens the proof of Theorem 4 (cylindric partition conjecture for k=1,2): handles k=1 via level-rank duality and a rank-2 Rogers--Ramanujan identity, announcing an alternative bounded proof.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Proofs of the main results > Proof of Theorem~\ref{Thm_k12
+
+[Summary: Opens the proof of Theorem 4 (cylindric partition conjecture for k=1,2): handles k=1 via level-rank duality and a rank-2 Rogers--Ramanujan identity, announcing an alternative bounded proof.]
+
+
+To shorten some of our expressions, throughout this section
+we write $\mathscr{C}_{\lambda/\mu/d}$, $\operatorname{GK}_{\lambda/\mu/d}(z,q)$ 
+and $\operatorname{GK}_{\lambda/\mu/d;n}(q)$ 
+instead of $\mathscr{C}_{\lambda/\mu/d}(\mathbb{N}_0)$,
+$\operatorname{GK}_{\lambda/\mu/d}(z,q;\mathbb{N}_0)$ and
+$\operatorname{GK}_{\lambda/\mu/d;n}(q;\mathbb{N}_0)$.
+
+\medskip
+
+The $k=1$ case of Theorem~\ref{Thm_k12} is given by
+\begin{equation}\label{Eq_RR-rank3-unbounded}
+\operatorname{GK}_{(a+1,1-a,0)}(z,q)=\frac{1}{(zq)_{\infty}}\,
+\sum_{n=0}^{\infty} \frac{z^n q^{n(n+a)}}{(q)_n}
+\end{equation}
+for $a\in\{0,1\}$.
+This is an immediate consequence of the level-rank duality 
+\eqref{Eq_RR-rank3} and the rank-$2$ identity \cite[page 6]{CDU20}
+\begin{equation}\label{Eq_RR-rank2-unbounded}
+\operatorname{GK}_{(a+2,1-a)}(z,q)=\frac{1}{(zq)_{\infty}}\,
+\sum_{n=0}^{\infty} \frac{z^n q^{n(n+a)}}{(q)_n}.
+\end{equation}
+Below we present an alternative proof based on a bounded analogue
+of \eqref{Eq_RR-rank3-unbounded}.
+
+
+--- 8/20 (sim=0.679) li_uncu_macmahon_analysis_cylindric_partitions/chunk_025.tex ---
+Summary: Explains how Corteel-Welsh's recurrence for refined generating functions motivated recent cylindric partition study, then introduces the Omega operator.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+% Section: Background
+
+[Summary: Explains how Corteel-Welsh's recurrence for refined generating functions motivated recent cylindric partition study, then introduces the Omega operator.]
+Corteel--Welsh's recurrence relations \cite{CW} for the refined generating functions for cylindric partitions, where a new parameter keeps track of the largest part among the cylindric partitions, led to many studies of these objects and some groundbreaking discoveries in the recent years. Here, continuing this trend, we study these combinatorial objects with small profiles using partition analysis.
+
+The partition analysis is a method to study the generating functions introduced by MacMahon in his Combinatorial Analysis \cite{MacMahon}. It relies on the Omega operator which was defined as follows.
+
+
+--- 9/20 (sim=0.679) warnaar_affine_jacobi-trudi_identities/chunk_069.tex ---
+Summary: States the Corollary: a q-hypergeometric summation formula involving Gaussian polynomials and products, related to the A_{k-1} Bailey lemma, derived from Theorem 1's principal specialization.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proof, special cases and generalisations of Theorem~\ref{Thm_GLn
+[Summary: States the Corollary: a q-hypergeometric summation formula involving Gaussian polynomials and products, related to the A_{k-1} Bailey lemma, derived from Theorem 1's principal specialization.]
+
+\begin{Corollary}
+For $k\geqslant 1$ and $0\leqslant r\leqslant n$ integers,
+\begin{gather*}
+\sum_{y\in Q} \prod_{1\leqslant i<j\leqslant k}\! \bigl(1-t^{k(y_i-y_j)-i+j}\bigr)
+\!\prod_{i=1}^k t^{k(k+1)\binom{y_i}{2}-iy_i}
+\genfrac{[}{]}{0pt}{}{n+k-1}{n-r-ky_i+i-1}_t\!
+ =\genfrac{[}{]}{0pt}{}{n}{r}_t \prod_{i=1}^k (t^{n+i};t)_{k-i}.
+\end{gather*}
+\end{Corollary}
+
+
+--- 10/20 (sim=0.678) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_016.tex ---
+Summary: States the Corteel–Dousse–Uncu modulo 10 identity as a manifestly positive sum-product formula from the cylindric partitions paradigm, demonstrating the success of the approach that this paper extends to moduli 11 and 13.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Introduction
+
+[Summary: States the Corteel–Dousse–Uncu modulo 10 identity as a manifestly positive sum-product formula from the cylindric partitions paradigm, demonstrating the success of the approach that this paper extends to moduli 11 and 13.]
+
+\begin{theorem}[Corteel--Dousse--U., 2021]
+\label{th:CDU500}
+\begin{equation}\label{eq:CDU500}\sum_{\substack{r_1\geq s_1\geq r_2\geq 0\\r_1\geq s_2\geq 0}} \frac{q^{r_1^2 -r_1 s_1 + s_1^2 + r_2^2 + s_2^2  +s_1 s_2 + r_1 + r_2 + s_1 + s_2}}{(q;q)_{r_1}}{r_1\brack s_1}_q{r_1\brack s_2}_q{s_1\brack r_2}_q =\frac{1}{\theta(q^2,q^3,q^3,q^4,q^4,q^5;q^{10})}\end{equation}
+\end{theorem}
+
+
+--- 11/20 (sim=0.678) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_060.tex ---
+Summary: Discusses the open problem of finding manifestly positive sum representations for the identities proved here, critiques the Andrews–Schilling–Warnaar hypergeometric approach as insufficient for under-the-line cases, and raises questions about symmetric cylindric partitions and affine Lie algebra connections.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Future Directions
+
+[Summary: Discusses the open problem of finding manifestly positive sum representations for the identities proved here, critiques the Andrews–Schilling–Warnaar hypergeometric approach as insufficient for under-the-line cases, and raises questions about symmetric cylindric partitions and affine Lie algebra connections.]
+
+It is still highly relevant to find manifestly positive sum representations for any one of the identities mentioned here. We are looking for ways to see the positivity of the series coefficients. In \cite{ASW99}, Andrews--Schilling--Warnaar suggests applying hypergeometric transformations to eliminate the $(q;q)_\infty$ factor that appear in the identities (such as \eqref{eq:ASW500}) to get a manifestly positive representation. That suggestion is limited and might not be widely applicable, especially for the under-the-line identities. 
+
+In the study of symmetric cylindric partitions \cite{BU} another two fundamental modulo 8 partition theoretic identity families, namely G\"ollnitz--Gordon and little G\"ollnitz identities, showed up. The G\"ollnitz--Gordon identities are known to be related to the level 2 modules of affine Lie algebra $A_5^{(2)}$ \cite{KGG}. This raises new questions of whether,  similar to the symmetric partitions paradigm, we can also relate symmetric cylindric partitions to character formulas of some affine Lie algebras. The product formula analogous to \eqref{BorodinProd} for the count of symmetric cylindric partitions' is present in \cite{BU}. At the moment, the relation of these products' to affine Lie algebra character formulas are fuzzy, and there are no general conjectural series representations for symmetric cylindric partitions either. We plan to study these objects further.
+
+
+--- 12/20 (sim=0.677) corteel_welsh_A2_RR/chunk_005.tex ---
+Summary: States the main theorem (Theorem 1): the five A2 Rogers-Ramanujan identities as sum-product equalities involving Gaussian polynomials and modulus-7 infinite products; this is the paper's central target.
+
+% Paper: corteel_welsh_A2_RR
+% Section: Introduction
+
+[Summary: States the main theorem (Theorem 1): the five A2 Rogers-Ramanujan identities as sum-product equalities involving Gaussian polynomials and modulus-7 infinite products; this is the paper's central target.]
+
+\begin{thm} We have
+\begin{equation*}
+\begin{split}
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1} 
+\frac{q^{n_1^2+n_2^2-n_1n_2+n_1+n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1\\ n_2\end{array}\right]
+	\genfrac{[}{]}{0pt}{}{2n_1}{n_2}
+	&=\frac{1}{(q^2,q^3,q^3,q^4,q^4,q^5;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1}  \frac{q^{n_1^2+n_2^2-n_1n_2+n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1}{n_2}
+	&=\frac{1}{(q,q^2,q^3,q^4,q^5,q^6;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1+1}  \frac{q^{n_1^2+n_2^2-n_1n_2+n_1}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1+1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1+1}{n_2}
+	&=\frac{1}{(q,q^2,q^3,q^4,q^5,q^6;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1+1} \frac{q^{n_1^2+n_2^2-n_1n_2+n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1+1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1+1}{n_2}
+	&=\frac{1} {(q,q^2,q^2,q^5,q^5,q^6;q^7)_\infty},\\
+\sum_{n_1=0}^\infty\sum_{n_2=0}^{2n_1}
+\frac{q^{n_1^2+n_2^2-n_1n_2}}{(q;q)_{n_1}}
+%\left[\begin{array}{c} 2n_1\\ n_2\end{array}\right]
+\genfrac{[}{]}{0pt}{}{2n_1}{n_2}
+	&=\frac{1}{(q,q,q^3,q^4,q^6,q^6;q^7)_\infty},\\
+\end{split}
+\end{equation*}
+where the Gaussian polynomial $\genfrac{[}{]}{0pt}{}{n}{k}$ is defined by
+$$
+\genfrac{[}{]}{0pt}{}{n}{k}
+%\left[\begin{array}{c} n\\ k\end{array}\right]
+	=\frac{(q;q)_n} {(q;q)_k(q;q)_{n-k}}.$$
+\label{main}
+\end{thm}
+
+
+--- 13/20 (sim=0.676) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_013.tex ---
+Summary: Main results section: summarizes all A2 Andrews-Gordon identities and associated cylindric partition GF conjectures.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: Main results and conjectures
+[Summary: Main results section: summarizes all A2 Andrews-Gordon identities and associated cylindric partition GF conjectures.]
+
+In this section we give a summary of the $\mathrm{A}_2$ Andrews--Gordon 
+identities for $\operatorname{AG}_{\lambda;3}(q)$ as well as some closely related, manifestly 
+positive multisum expressions for the two-variable generating function of 
+cylindric partitions $\operatorname{GK}_{(c_0,c_1,c_2)}(z,q)$ for
+$c_0+c_1+c_2\not\equiv 0\pmod{3}$.
+
+
+--- 14/20 (sim=0.676) corteel_dousse_uncu_cylindric_partitions_a2_rr/chunk_001.tex ---
+Summary: Abstract stating the paper's central goal: prove seven new A2 Rogers-Ramanujan identities mod 8 via cylindric partitions with profile summing to 5.
+
+% Paper: corteel_dousse_uncu_cylindric_partitions_a2_rr
+
+[Summary: Abstract stating the paper's central goal: prove seven new A2 Rogers-Ramanujan identities mod 8 via cylindric partitions with profile summing to 5.]
+
+\begin{abstract}
+We study the generating functions for cylindric partitions with profile $(c_1,c_2,c_3)$ for all $c_1,c_2,c_3$ such that $c_1+c_2+c_3=5$. This allows us to discover and prove seven new $A_2$ Rogers--Ramanujan identities modulo $8$ with quadruple sums, related with
+work of Andrews, Schilling, and Warnaar.
+\end{abstract}
+
+
+--- 15/20 (sim=0.668) russell_companions_andrews_gordon/chunk_063.tex ---
+Summary: States the Göllnitz--Gordon--Andrews bivariate multisum identity with the (-q,q²)_{N₁} factor and (q²;q²) denominators, providing the specific formula for the open question of whether a z^{N₁} companion exists for this family.
+
+% Paper: russell_companions_andrews_gordon
+% Section: Conclusion
+
+[Summary: States the Göllnitz--Gordon--Andrews bivariate multisum identity with the (-q,q²)_{N₁} factor and (q²;q²) denominators, providing the specific formula for the open question of whether a z^{N₁} companion exists for this family.]
+
+\begin{Theorem}
+Fix $\ell\ge 1$, and let $0\le i\le \ell$. Let $G_{\ell,i,m}(n)$ denote the number of partitions of $n$ with exactly $m$ parts satisfying, for all $j\ge1$, $f_{2j-1}\le 1$ and
+$f_{2j}+f_{2j+1}+f_{2j+2}\le\ell$, and also satisfying $f_1+f_2\le i$. Then,
+\begin{gather*}
+\sum_{m,n \ge 0} G_{\ell,i,m}(n) x^m q^n = \sum_{n_1,n_2,\dots,n_{\ell}\ge 0} \frac{x^{N_1+\cdots+N_\ell} \bigl(-q,q^2\bigr)_{N_1}q^{N_1^2+2(N_2^2+\cdots+N_{\ell}^2+N_{i+1}+N_{i+2}+\cdots+N_{\ell})}}{\bigl(q^2;q^2\bigr)_{n_1}\bigl(q^2;q^2\bigr)_{n_2}\cdots\bigl(q^2;q^2\bigr)_{n_{\ell}}}
+\end{gather*}
+and, if $x=1$ in the above equation, we have the infinite product
+\begin{align*}
+&\sum_{n_1,n_2,\dots,n_{\ell}\ge 0} \frac{ \bigl(-q,q^2\bigr)_{N_1}q^{N_1^2+2(N_2^2+\cdots+N_{\ell}^2+N_{i+1}+N_{i+2}+\cdots+N_{\ell})}}{\bigl(q^2;q^2\bigr)_{n_1}\bigl(q^2;q^2\bigr)_{n_2}\cdots\bigl(q^2;q^2\bigr)_{n_{\ell}}} \\
+&\qquad= \frac{\bigl(q^2;q^4\bigr)_\infty\bigl(q^{2i+1},q^{4\ell-2i+3},q^{4\ell+4};q^{4\ell+4}\bigr)_\infty}{(q;q)_\infty}.
+\end{align*}
+\end{Theorem}
+
+
+--- 16/20 (sim=0.667) corteel_welsh_A2_RR/chunk_003.tex ---
+Summary: Surveys the cylindric partition approach to RR-type identities (Corteel's RSK bijection, Foda-Welsh Andrews-Gordon work), establishing the lineage and motivation for the A2 extension in this paper.
+
+% Paper: corteel_welsh_A2_RR
+% Section: Introduction
+
+[Summary: Surveys the cylindric partition approach to RR-type identities (Corteel's RSK bijection, Foda-Welsh Andrews-Gordon work), establishing the lineage and motivation for the A2 extension in this paper.]
+
+There have been
+many attempts to give combinatorial proofs of these identities
+and the first one is due to Garsia and Milne \cite{GM}.
+Unfortunately, it is not simple, and
+no simple combinatorial proof is known.
+Recently in \cite{C}, the first
+author presented a new bijective approach to the proofs
+of the Rogers-Ramanujan identities via the
+Robinson-Schensted-Knuth correspondence as presented in \cite{Pak}. 
+The bijection does not give the Rogers-Ramanujan identities but
+the Rogers-Ramanujan identities divided by $(q;q)_\infty$; namely
+\begin{equation}
+\label{RR2}
+\frac{1}{(q;q)_\infty}\sum_{n\ge 0} \frac{q^{n(n+1)}}{(q;q)_n}=\frac{1}{(q,q^2,q^2,q^3,q^3,q^4,q^5;q^5)_\infty}
+\end{equation}
+where $(a_1,\ldots , a_k;q)_\infty=\prod_{i=1}^k (a_i;q)_\infty$.
+This proof uses the combinatorics of cylindric partitions \cite{GK}. We interpret both sides as the generating function of cylindric partitions of profile $(3,0)$ and the bijection is a polynomial algorithm in the size of the cylindric partition.
+The idea to use cylindric partitions is due to Foda and  Welsh \cite{FW} in a more general setting:
+the Andrews-Gordon identities  \cite{And}. For $k>0$ and  $0\le i\le k$,
+these identities divided by $(q;q)_\infty$ are
+$$
+\frac{1}{(q;q)_\infty}\sum_{n_1,\ldots, n_k} \frac{q^{\sum_{j=1}^k n_j^2+\sum_{j=i}^k n_j}}
+{(q)_{n_1-n_2}\ldots (q)_{n_{k-1}-n_k}(q)_{n_k}}=
+\frac{(q^i,q^{2k+3-i},q^{2k+3};q^{2k+3})_\infty}{(q;q)_\infty^2}.
+$$
+Foda and Welsh  interpret the sum side as a generating function for
+(what they call) decorated Bressoud paths and the product side is
+interpreted as the generating function of cylindric partitions
+of profile $(2k+1-i,i)$,and they provide a bijection between the two objects.
+See \cite{FW} for more details.
+
+
+--- 17/20 (sim=0.660) warnaar_A2_andrews_gordon/chunk_010.tex ---
+Summary: States Theorem 1 (A2 Andrews--Gordon identities, I): two explicit multisum-to-infinite-product identities for moduli 3k+2 and 3k+1 corresponding to vacuum weights.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Introduction
+
+[Summary: States Theorem 1 (A2 Andrews--Gordon identities, I): two explicit multisum-to-infinite-product identities for moduli 3k+2 and 3k+1 corresponding to vacuum weights.]
+
+
+\begin{theorem}[$\mathrm{A}_2$ Andrews--Gordon identities, I]
+\label{Thm_A2-vac-bothmoduli}
+For $k$ a positive integer, the following identity for 
+$\operatorname{AG}_{k\Lambda_0+k\Lambda_1+(k-1)\Lambda_2;3}(q)$ holds:
+\begin{align}\label{Eq_A2-vac}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}} 
+&\frac{q^{n_k^2}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} \\[2mm]
+&=\frac{(q^{3k+2};q^{3k+2})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q^k,q^{k+1},q^{k+1};q^{3k+2}), \notag
+\end{align}
+where $m_k:=2n_k$.
+Similarly, for $\operatorname{AG}_{k\Lambda_0+(k-1)\Lambda_1+(k-1)\Lambda_2;3}(q)$
+there holds $\operatorname{AG}_{\Lambda_0;3}(q)=1$ and
+\begin{align}
+\label{Eq_A2-vac-b}
+\sum_{\substack{n_1,\dots,n_{k-1}\geqslant 0 \\[1pt] 
+m_1,\dots,m_{k-1}\geqslant 0}} 
+&\frac{q^{\sum_{i=1}^{k-1} (n_i^2-n_im_i+m_i^2)}}{(q)_{n_1}}\,
+\genfrac{[}{]}{0pt}{}{2n_{k-1}}{m_{k-1}} 
+\prod_{i=1}^{k-2} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}}\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i} 
+\\[2mm]
+&=\frac{(q^{3k+1};q^{3k+1})_{\infty}^2}{(q)_{\infty}^2}\,
+\theta(q^k,q^k,q^{k+1};q^{3k+1}) \notag
+\end{align}
+for $k\geqslant 2$.
+\end{theorem}
+
+
+--- 18/20 (sim=0.657) warnaar_A2_andrews_gordon/chunk_021.tex ---
+Summary: States Conjecture 2 on two-variable cylindric partition generating functions GK_{(k,k,k-1)}(z,q) and GK_{(3k-s,s-1,0)}(z,q), lifting the A2 Andrews--Gordon identities to the z-variable level.
+
+% Paper: warnaar_A2_andrews_gordon
+% Section: Main results and conjectures > The modulus-$(3k+2)$ case
+
+[Summary: States Conjecture 2 on two-variable cylindric partition generating functions GK_{(k,k,k-1)}(z,q) and GK_{(3k-s,s-1,0)}(z,q), lifting the A2 Andrews--Gordon identities to the z-variable level.]
+
+
+\begin{conjecture}\label{Con_cylindric}
+For a positive integer $k$, 
+\[
+\operatorname{GK}_{(k,k,k-1)}(z,q) 
+=\frac{1}{(zq)_{\infty}}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+\frac{z^{n_1} q^{n_k^2}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} 
+q^{n_i^2-n_im_i+m_i^2}\genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}}\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i}
+\]
+and, for integers $k,s$ such that $1\leqslant s\leqslant k+1$,
+\begin{align*}
+&\operatorname{GK}_{(3k-s,s-1,0)}(z,q) \\
+&\quad=\frac{1}{(zq)_{\infty}}
+\sum_{\substack{n_1,\dots,n_k\geqslant 0 \\[1pt] m_1,\dots,m_{k-1}\geqslant 0}}
+\frac{z^{n_1} q^{n_k^2+\sum_{i=s}^k n_i}}{(q)_{n_1}} 
+\prod_{i=1}^{k-1} q^{n_i^2-n_im_i+m_i^2+m_i} \genfrac{[}{]}{0pt}{}{n_i}{n_{i+1}} 
+\genfrac{[}{]}{0pt}{}{n_i-n_{i+1}+m_{i+1}}{m_i},
+\end{align*}
+where $m_k:=2n_k$ in both identities.
+\end{conjecture}
+
+
+--- 19/20 (sim=0.656) li_uncu_macmahon_analysis_cylindric_partitions/chunk_001.tex ---
+Summary: Abstract: paper uses MacMahon partition analysis to find generating functions for 2-element-profile cylindric partitions, proving polynomial refinements of Andrews-Gordon and Bressoud identities and new Bailey-lemma hierarchies.
+
+% Paper: li_uncu_macmahon_analysis_cylindric_partitions
+
+[Summary: Abstract: paper uses MacMahon partition analysis to find generating functions for 2-element-profile cylindric partitions, proving polynomial refinements of Andrews-Gordon and Bressoud identities and new Bailey-lemma hierarchies.]
+\begin{abstract}
+    We study cylindric partitions with two-element profiles using MacMahon's partition analysis. We find explicit formulas for the generating functions of the number of cylindric partitions by first finding the recurrences using partition analysis and then solving them. We also note some $q$-series identities related to these objects that show the manifestly positive nature of some alternating series. We generalize the proven identities and conjecture new polynomial refinements of Andrews-Gordon and Bressoud identities, which are companions to Foda--Quano's refinements. Finally, using a variant of the Bailey lemma, we present many new infinite hierarchies of polynomial identities.
+\end{abstract}
+
+\dedicatory{Commemorating the 85th birthdays of George E. Andrews and Bruce C. Berndt}
+
+
+--- 20/20 (sim=0.656) warnaar_a2_andrews_gordon_cylindric_partitions/chunk_082.tex ---
+Summary: Modulus-8: proves Proposition remainingcases for the three difficult profiles using the cylindric GF approach.
+
+% Paper: warnaar_a2_andrews_gordon_cylindric_partitions
+% Section: The modulus-$8$ case
+[Summary: Modulus-8: proves Proposition remainingcases for the three difficult profiles using the cylindric GF approach.]
+
+\begin{proof}[Proof of Proposition~\ref{Prop_remainingcases}]
+We can either proceed as in the proof of Theorem~\ref{Thm_GK-mod8}
+or, more simply, use
+the three functional equations \cite[Equations (3.17)--(3.19)]{CDU20}
+\begin{subequations}\label{Eq_functional-eqn}
+\begin{align}
+\operatorname{\operatorname{gk}}_{(4,0,1)}(z,q)&=\operatorname{\operatorname{gk}}_{(3,1,1)}(zq;q)+zq\operatorname{\operatorname{gk}}_{(4,1,0)}(zq^2;q) \\
+\operatorname{\operatorname{gk}}_{(3,0,2)}(z,q)&=\operatorname{\operatorname{gk}}_{(2,2,1)}(zq;q)+zq\operatorname{\operatorname{gk}}_{(3,1,1)}(zq^2;q)
++zq^2 \operatorname{\operatorname{gk}}_{(4,1,0)}(zq^3;q) \\
+\operatorname{\operatorname{gk}}_{(3,2,0)}(z,q)&=\operatorname{\operatorname{gk}}_{(3,1,1)}(zq;q)+zq\operatorname{\operatorname{gk}}_{(2,2,1)}(zq^2;q) \\
+&\quad +zq^2\operatorname{\operatorname{gk}}_{(3,1,1)}(zq^3;q)+zq^3\operatorname{\operatorname{gk}}_{(4,1,0)}(zq^4;q). \notag
+\end{align}
+\end{subequations}
+Given $\operatorname{\operatorname{gk}}_{(4,1,0)}(z,q)$, $\operatorname{\operatorname{gk}}_{(3,2,0)}(z,q)$ and
+$\operatorname{\operatorname{gk}}_{(2,2,1)}(z,q)$, these three equations uniquely determine
+$\operatorname{\operatorname{gk}}_{(4,0,1)}(z,q)$, $\operatorname{\operatorname{gk}}_{(3,0,2)}(z,q)$ and
+$\operatorname{\operatorname{gk}}_{(3,1,1)}(z,q)$.
+Substituting the expressions for the six generating functions in question,
+as given by Theorem~\ref{Thm_GK-mod8} and (the as yet to be proven) 
+Proposition~\ref{Prop_remainingcases}, it immediately follows that
+\eqref{Eq_functional-eqn} holds, thus proving the proposition.
+\end{proof}
+
+

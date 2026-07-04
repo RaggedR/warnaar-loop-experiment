@@ -1,0 +1,672 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 25370.57it/s]
+--- 1/20 (sim=0.814) imamura_skew_rsk_dynamics/chunk_284.tex ---
+Summary: Defines the combinatorial R-matrix (crystal transposition) and the intrinsic energy function H on crystal tensor products.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Defines the combinatorial R-matrix (crystal transposition) and the intrinsic energy function H on crystal tensor products.]
+
+\begin{definition}[Intrinsic energy] \label{def:energy}
+    Consider a composition $\varkappa=(\varkappa_1,\dots, \varkappa_N)$. For any $b=b_1 \otimes \cdots \otimes b_N \in B^\varkappa$, the \emph{local energies} $\mathscr{H}_i$ and the \emph{intrinsic energy} $\mathscr{H}$ are the functions
+    \begin{gather}
+        \mathscr{H}_i (b) = \sum_{j=i+1}^N H (b_i^{(j-1)} \otimes b_j),
+        \\
+        \mathscr{H}(b) = \sum_{i=1}^{N-1} \mathscr{H}_i (b),
+    \end{gather}
+    where $b^{(i)}_i=b_i$ and $b_i^{(j-1)}$ is defined recursively by 
+    \begin{equation}
+        R(b_i^{(j-2)} \otimes b_{j-2}) = \tilde{b}_{j-2} \otimes b_i^{(j-1)}.
+    \end{equation}
+\end{definition}
+
+
+--- 2/20 (sim=0.793) dousse_konan_capparelli_primc_crystals/chunk_056.tex ---
+Summary: Notes that every crystal base gives an abstract crystal, defines crystal morphisms and strictness, states the tensor product theorem (Theorem 4.4.1) giving explicit formulas for ẽ_i, f̃_i, ε_i, φ_i on ℬ_1 ⊗ ℬ_2 via the max rule.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Basics on Crystals > Crystal bases
+
+[Summary: Notes that every crystal base gives an abstract crystal, defines crystal morphisms and strictness, states the tensor product theorem (Theorem 4.4.1) giving explicit formulas for ẽ_i, f̃_i, ε_i, φ_i on ℬ_1 ⊗ ℬ_2 via the max rule.]
+
+In particular, if $(\mathcal L, \mathcal{B})$  is a crystal base, then $\mathcal{B}$ is a crystal.
+
+\medskip
+Let $\mathcal{B}_1$  and 
+$\mathcal{B}_2$  be two crystals. % of  $U_q(\widehat \mathfrak g)$.
+A \textit{crystal morphism} between $\mathcal{B}_1$ and $\mathcal{B}_2$ is a map 
+$\Psi: \mathcal{B}_1 \cup \{0\} \rightarrow \mathcal{B}_2 \cup
+\{0\}$ 
+such that 
+\begin{itemize}
+\item $\Psi(0) = 0$;
+\item $\Psi$ commutes with $\mathrm{wt},\varepsilon_i,\varphi_i$ for all $i \in \{0, \dots , n-1\}$;
+\item for $b, b' \in \mathcal{B}_1$ such that
+$\tilde f_i b = b'$ and $\Psi(b), \Psi(b') \in \mathcal{B}_2$, we have $\tilde
+f_i \Psi(b)= \Psi(b')$, $\tilde e_i \Psi(b')=\Psi(b)$.
+\end{itemize}
+ A morphism $\Psi$ is said to be {\it strict} if it commutes with $\tilde e_i$, $\tilde f_i$ for all $i\in \{0, \dots , n-1\}$.
+
+\medskip
+
+The theory of crystal bases behaves very nicely with respect to the tensor product of $\mathcal O^q_{\hbox {\rm \small  int}}$-modules, as can be seen in the next theorem.
+
+
+--- 3/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_278.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+We also define the \emph{energy function} 
+\begin{equation}
+    H(b_1 \otimes b_2) = \text{number of winding pairs of }b_1 \otimes b_2.
+\end{equation}
+
+To have a better understanding of the algorithm for $R$ consider the following example.
+
+
+--- 4/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_280.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{remark}
+The combinatorial $R$-matrix, as the name suggests, satisfies the Yang-Baxter equation
+\begin{equation}
+    (R \otimes \mathbf{1}) (\mathbf{1} \otimes R) (R \otimes \mathbf{1}) = (\mathbf{1} \otimes R) (R \otimes \mathbf{1}) (\mathbf{1} \otimes R)
+\end{equation}
+and can be also defined as the $q \to 0$ limit of the fused $R$-matrix of $\mathcal{U}_q(\widehat{sl}_{n})$. We will not make use of this fact in this paper, but the interested reader can consult \cite{Kang_Kashiwara_et_al,shimozono_affine}.
+\end{remark}
+
+
+--- 5/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_277.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{equation} \label{eq:combinatorial_R_def}
+    \begin{minipage}{.9\linewidth}
+        \begin{enumerate}
+            \item Prepare the word $w = 1^{m_1(b_1)} 1^{m_1(b_2)} 2^{m_2(b_1)} 2^{m_2(b_2)} \cdots $ writing in increasing order all entries, with multiplicities, appearing in $b_1$ and $b_2$. Associate to each entry of $b_1$ an opening parenthesis ``(" and to each entry of $b_2$ a closing parenthesis ``)". In case a letter $i$ appears twice in $w$ we follow the convention that the leftmost one belongs to $b_1$.
+            \item Sequentially match all pairs of consecutive symbols ``(", ``)". At the end of this process the subword made of unmatched parentheses will have the form $)\cdots ) ( \cdots ($. 
+            \item Assuming periodic boundary conditions sequentially match all leftmost unmatched symbols ``)" with rightmost unmatched ``(". Call these \emph{winding pairs} of $b_1 \otimes b_2$.
+            \item After matching winding pairs, the list of unmatched parentheses will form a sequence of $r_1 - r_2$ symbols ``(" or $r_2 - r_1$ symbols ``)", depending on whether $r_1 \ge r_2$ or viceversa. Either way swap the orientation of all remaining unmatched parentheses.
+            \item Construct $\tilde{b}_1$ from letters of $w$ associated with ``(" symbols and $\tilde{b}_2$ from those associated with ``)".
+        \end{enumerate}
+    \end{minipage}
+\end{equation}
+
+
+--- 6/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_281.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+We use the notation $R_i$ to denote the $R$-matrix acting only on the $i$-th and $(i+1)$-th component of a tensor product $b_1\otimes \cdots \otimes b_N$ 
+\begin{equation} \label{eq:R_matrix_local}
+    R_i = \mathbf{1}^{\otimes (i-1)}  \otimes R \otimes \mathbf{1}^{\otimes (N-i)}.
+\end{equation}
+
+
+--- 7/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_283.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\medskip
+
+A theorem in \cite{Kang_Kashiwara_et_al} describes how the energy function changes under the action of crystal operators. Assuming that $R(b_1 \otimes b_2)= \tilde{b}_2 \otimes \tilde{b}_1$, we have
+\begin{equation} \label{eq:energy_and_kashiwara}
+    H(\widetilde{e}_{i}(b_1 \otimes b_2))
+    =
+    \begin{cases}
+         H(b_1 \otimes b_2) - 1
+        \qquad 
+        & \text{if } i=0, \,\varphi_0(b_1) \ge \varepsilon_0(b_2)  \text{ and } \varphi_0(\tilde{b}_2) \ge \varepsilon_0(\tilde{b}_1),
+        \\
+        H(b_1 \otimes b_2) + 1
+        \qquad 
+        & \text{if } i=0, \,\varphi_0(b_1) < \varepsilon_0(b_2)  \text{ and } \varphi_0(\tilde{b}_2) < \varepsilon_0(\tilde{b}_1),
+        \\
+        H(b_1 \otimes b_2) 
+        & \text{else}.
+    \end{cases}
+\end{equation}
+
+Just as we associate an energy function to a tensor product of two elements $b_1 \otimes b_2$, there exists a canonical way of defining an energy on arbitrary finite products $b_1 \otimes \cdots \otimes b_N$.
+
+
+--- 8/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_276.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+For any $r_1,r_2 \in \mathbb{N}$, crystal graphs $\widehat{B}(r_1,r_2)$ and $\widehat{B}(r_2,r_1)$ are isomorphic, via a unique isomorphism of crystal graphs called \emph{combinatorial $R$-matrix} 
+\begin{equation}
+    R:B^{r_1,1} \otimes B^{r_2,1} \to B^{r_2,1} \otimes B^{r_1,1}.
+\end{equation}
+There exists a number of equivalent definitions of $R$ (see \cite{Kang_Kashiwara_et_al,Nakayashiki_Yamada,shimozono_affine}) and the one reported below is a reformulation of the original algorithm by Nakayashiki and Yamada as in Rule 3.10 of \cite{Nakayashiki_Yamada}. Consider $b_i \in B^{r_i,1}$ for $i=1,2$ and we want to find $\tilde{b}_i \in B^{r_i,1}$ such that 
+\begin{equation}
+    R(b_1 \otimes b_2) = \tilde{b}_2 \otimes \tilde{b}_1,
+\end{equation}
+by shifting cells from one column to the other. The procedure goes as follows.
+
+
+--- 9/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_285.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+The intrinsic energy $\mathscr{H}$ is, as all the local energies $\mathscr{H}_i$ are, constant on classical connected components of $\widehat{B}(\varkappa)$. This is a consequence of \eqref{eq:energy_and_kashiwara} and of the fact that the combinatorial $R$-matrix commutes with Kashiwara operators.
+
+
+--- 10/20 (sim=0.783) imamura_skew_rsk_dynamics/chunk_279.tex ---
+Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Energy function, Demazure crystals and linearization of dynamics > Combinatorial $R$ matrix and energy function
+[Summary: Develops the combinatorial R-matrix and energy function on affine crystals, the algebraic tools for linearizing the dynamics.]
+
+\begin{example}\label{example:combinatorial_R}
+    In the evaluation below we have $r_1=3$ and $r_2=4$:
+\begin{equation} \label{eq:example_combinatorial_R}
+    \begin{ytableau}
+        2\\3\\6
+    \end{ytableau} 
+    \,\,
+    \otimes
+    \,\,
+    \begin{ytableau}
+        1\\2\\4\\5
+    \end{ytableau}
+    \xrightarrow[]{\hspace{.3cm} R \hspace{.3cm}}
+    \begin{ytableau}
+        2\\3\\5\\6
+    \end{ytableau} 
+    \,\,
+    \otimes
+    \,\,
+    \begin{ytableau}
+        1\\2\\4
+    \end{ytableau}
+    \,\,\,,
+\end{equation}
+This follows from the construction
+    \begin{equation} \label{eq:combinatorial_R_example}
+        \begin{matrix}
+         1 & 2 & 2 & 3 & 4 & 5 & 6
+        \\
+         \boldsymbol{)} & \boldsymbol{(} & \boldsymbol{)} & 
+         \boldsymbol{(} & \boldsymbol{)} & \boldsymbol{)} &
+         \boldsymbol{(}
+         \\
+         \boldsymbol{)} & \textcolor{gray}{(} & \textcolor{gray}{)} & 
+         \textcolor{gray}{(} & \textcolor{gray}{)} & \boldsymbol{)} &
+         \boldsymbol{(}
+         \\
+         \textcolor{gray}{)} & \textcolor{gray}{(} & \textcolor{gray}{)} & 
+         \textcolor{gray}{(} & \textcolor{gray}{)} & \boldsymbol{)} &
+         \textcolor{gray}{(}
+         \\
+         \textcolor{gray}{)} & \textcolor{gray}{(} & \textcolor{gray}{)} & 
+         \textcolor{gray}{(} & \textcolor{gray}{)} & \boldsymbol{(} &
+         \textcolor{gray}{(}
+         \\
+         \boldsymbol{)} & \boldsymbol{(} & \boldsymbol{)} & 
+         \boldsymbol{(} & \boldsymbol{)} & \boldsymbol{(} &
+         \boldsymbol{(}
+        \end{matrix}
+        \,\,\,.
+    \end{equation}
+Notice that in the forth line we matched the only winding pair of parenthesis as for (3) of \eqref{eq:combinatorial_R_def}. This in particular implies that in this case we have $H(b_1\otimes b_2)=1$.
+\end{example}
+
+
+--- 11/20 (sim=0.773) dousse_konan_capparelli_primc_crystals/chunk_022.tex ---
+Summary: States Theorem 1.4 (the energy theorem): ℬ = ℬ⊗ℬ∨ is a perfect crystal of level 1 and H((v_ℓ'⊗v∨_k')⊗(v_ℓ⊗v∨_k)) = Δ(a_k b_ℓ; a_{k'} b_{ℓ'}), the central result linking crystal theory to the combinatorial difference conditions.
+
+% Paper: dousse_konan_capparelli_primc_crystals
+% Section: Introduction and statement of results > Statement of Results
+
+[Summary: States Theorem 1.4 (the energy theorem): ℬ = ℬ⊗ℬ∨ is a perfect crystal of level 1 and H((v_ℓ'⊗v∨_k')⊗(v_ℓ⊗v∨_k)) = Δ(a_k b_ℓ; a_{k'} b_{ℓ'}), the central result linking crystal theory to the combinatorial difference conditions.]
+
+\begin{theorem}\label{theorem:perfcrys}
+Let $n$ be a positive integer, and let $\mathcal{B}$ denote the crystal of the vector representation  of $A_{n-1}^{(1)}$.
+ The crystal $\mathbb{B}=\mathcal{B}\otimes\mathcal{B}^\vee$ is a perfect crystal of level 1. 
+ Furthermore, the energy function
+ on $\mathbb{B}\otimes\mathbb{B}$ such that $H((v_0\otv^\vee_0)\otimes(v_0\otv^\vee_0))=0$
+ satisfies for all $k, \ell , k', \ell' \in \{0, \dots, n-1\},$
+ \begin{equation}\label{eq:equality}
+  H((v_{\ell'}\otv^\vee_{k'})\otimes(v_{\ell}\otv^\vee_{k})) = \Delta(a_kb_{\ell};a_{k'}b_{\ell'}),
+ \end{equation}
+where $\Delta$ is the minimal difference for generalised Primc partitions defined in \eqref{eq:Delta}. 
+\end{theorem}
+
+
+--- 12/20 (sim=0.763) dousse_konan_multi-grounded_partitions/chunk_037.tex ---
+Summary: This chunk introduces the D_{n+1}^{(2)} crystal and computes its energy matrix H — noting it extends the A_{2n}^{(2)} matrix by one extra row/column for 0̄ — and identifies the two ground state paths (constant at 0 and 0̄ respectively), setting up the proof of both parts of Theorem 1.3.
+
+% Paper: dousse_konan_multi-grounded_partitions
+% Section: Examples of application: character formulas for several classical affine Lie algebras > The Lie algebra $D_{n+1
+
+[Summary: This chunk introduces the D_{n+1}^{(2)} crystal and computes its energy matrix H — noting it extends the A_{2n}^{(2)} matrix by one extra row/column for 0̄ — and identifies the two ground state paths (constant at 0 and 0̄ respectively), setting up the proof of both parts of Theorem 1.3.]
+
+\label{sec:D2}
+We now turn to the algebra $D_{n+1}^{(2)}$ for $n\geq 2$ and prove Theorem \ref{theo:chardn2}.
+The crystal $\mathcal{B}$ of the vector representation of $D_{n+1}^{(2)} (n\geq 2)$ is given by the crystal graph in Figure \ref{fig3} with the weights
+\begin{align*}
+\overline{\mathrm{wt}} (0)&= \overline{\mathrm{wt}}(\overline{0})= 0,\\
+\overline{\mathrm{wt}} (u) &= -\overline{\mathrm{wt}} (\overline{u}) = \sum_{i=u}^{n} \alpha_i \text{ for all $u\in \{1,\ldots,n\}$.}
+\end{align*}
+Here, the null root is $\delta = \sum_{i=0}^n \alpha_i$.
+
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+%%crystal graph B
+\draw (-4,0) node{$\mathcal{B}$ :};
+\draw (-4,-0.75) node{$\mathfrak p_{\Lambda_0}=(\cdots0\,0\,0\,0) $};
+\draw (-4,-1.5) node{$\mathfrak p_{\Lambda_n}=(\cdots\overline{0}\,\overline{0}\,\overline{0}\,\overline{0})$};
+\draw (-1.5,-0.75) node {$0$};
+\draw (8.25,-0.75) node {$\overline{0}$};
+\draw (0,0) node {$1$};
+\draw (1.5,0) node {$2$};
+\draw (5,0) node {$n-1$};
+\draw (6.75,0) node {$n$};
+\draw (3.15,0) node {$\cdots$};
+\draw (0,-1.5) node {$\overline{1}$};
+\draw (1.5,-1.5) node {$\overline{2}$};
+\draw (5,-1.5) node {$\overline{n-1}$};
+\draw (6.75,-1.5) node {$\overline{n}$};
+\draw (3.15,-1.5) node {$\cdots$};
+\draw (-0.2-1.5,0.2-0.75)--(0.2-1.5,0.2-0.75)--(0.2-1.5,-0.2-0.75)--(-0.2-1.5,-0.2-0.75)--(-0.2-1.5,0.2-0.75);
+\draw (-0.2+8.25,0.2-0.75)--(0.2+8.25,0.2-0.75)--(0.2+8.25,-0.2-0.75)--(-0.2+8.25,-0.2-0.75)--(-0.2+8.25,0.2-0.75);
+\foreach \x in {0,1,4.5} 
+\foreach \y in {0,1}
+\draw (-0.2+1.5*\x,0.2-1.5*\y)--(0.2+1.5*\x,0.2-1.5*\y)--(0.2+1.5*\x,-0.2-1.5*\y)--(-0.2+1.5*\x,-0.2-1.5*\y)--(-0.2+1.5*\x,0.2-1.5*\y);
+\foreach \x in {0} 
+\foreach \y  in {0,1}
+\draw (-0.45+5+2*\x,0.2-1.5*\y)--(0.45+5+2*\x,0.2-1.5*\y)--(0.45+5+2*\x,-0.2-1.5*\y)--(-0.45+5+2*\x,-0.2-1.5*\y)--(-0.45+5+2*\x,0.2-1.5*\y);
+
+\draw [thick, ->] (-1.45,-0.5)--(-0.3,-0.05);
+\draw [thick, <-] (-1.45,-1)--(-0.3,-1.45);
+\draw (-0.8,-0.1) node {\footnotesize{$0$}};
+\draw (-0.8,-1.4) node {\footnotesize{$0$}};
+\draw [thick, ->] (0.3,0)--(1.2,0);
+\draw [thick, <-] (0.3,-1.5)--(1.2,-1.5);
+\draw (0.75,0.15) node {\footnotesize{$1$}};
+\draw (0.75,-1.67) node {\footnotesize{$1$}};
+\draw [thick, ->] (1.8,0)--(2.7,0);
+\draw [thick, <-] (1.8,-1.5)--(2.7,-1.5);
+\draw (2.25,0.15) node {\footnotesize{$2$}};
+\draw (2.25,-1.67) node {\footnotesize{$2$}};
+\draw [thick, ->] (3.6,0)--(4.5,0);
+\draw [thick, <-] (3.6,-1.5)--(4.5,-1.5);
+\draw (4.05,0.15) node {\footnotesize{$n-2$}};
+\draw (4.05,-1.67) node {\footnotesize{$n-2$}};
+\draw [thick, ->] (5.6,0)--(6.4,0);
+\draw [thick, <-] (5.6,-1.5)--(6.4,-1.5);
+\draw (6,0.15) node {\footnotesize{$n-1$}};
+\draw (6,-1.67) node {\footnotesize{$n-1$}};
+\draw [thick, ->] (7.05,-0.05)--(8.2,-0.5);
+\draw [thick, <-] (7.05,-1.45)--(8.2,-1);
+\draw (7.6,-0.1) node {\footnotesize{$n$}};
+\draw (7.6,-1.4) node {\footnotesize{$n$}};
+\end{tikzpicture}
+\end{center}
+\caption{Crystal graph $\mathcal{B}$  of the vector representation for the Lie algebra $D_{n+1}^{(2)}(n\geq 2)$}
+\label{fig3}
+\end{figure}
+
+
+Again, we compute the energy function $H$ on $\mathcal{B}\otimes \mathcal{B}$ such that $H(0\otimes 0)=0$ with the help of the crystal graph of $\mathcal{B}\otimes \mathcal{B}$ given in Figure \ref{fig4}.
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[scale=0.5, every node/.style={scale=0.5}]
+\draw [thick,->] (-10,0)--(-9,0);
+\draw (-8.8,0) node[right] {: $0$-arrow};
+\draw [->] (-10,-1)--(-9,-1);
+\draw (-8.8,-1) node[right] {: $n$-arrow};
+\draw [->] (-10,-2)--(-9,-2);
+\filldraw (-9.5,-2) circle(2pt);
+\draw (-8.8,-2) node[right] {: chains of two $n$-arrows};
+\filldraw (-9.5,-3) circle(2pt);
+\draw (-8.8,-3) node[right] {: vertex of the form $\overline{0}\otimes \cdot$ or $\cdot\otimes\overline{0}$};
+\draw [dashed,->] (-10,-4)--(-9,-4);
+\draw (-8.8,-4) node[right] {: paths of $i$-arrows, for consecutive $i\neq 0,n$};
+\draw (-10,-4.6)--(-9,-4.6)--(-9,-5.4)--(-10,-5.4)--(-10,-4.6);
+\draw (-8.8,-5) node[right] {: connected components without $0$-arrows};
+%%crystal graph B
+%%crystal graph B
+\foreach \x in {0,...,7} 
+\foreach \y in {0,...,7}
+\draw (-0.2-0.4+3*\x,0.2-1.5*\y)--(0.2-0.4+3*\x,0.2-1.5*\y)--(0.2-0.4+3*\x,-0.2-1.5*\y)--(-0.2-0.4+3*\x,-0.2-1.5*\y)--(-0.2-0.4+3*\x,0.2-1.5*\y);
+\foreach \x in {0,...,7} 
+\foreach \y in {0,...,7}
+\draw (-0.2+0.4+3*\x,0.2-1.5*\y)--(0.2+0.4+3*\x,0.2-1.5*\y)--(0.2+0.4+3*\x,-0.2-1.5*\y)--(-0.2+0.4+3*\x,-0.2-1.5*\y)--(-0.2+0.4+3*\x,0.2-1.5*\y);
+
+
+\foreach \x in {0,...,7} 
+\foreach \y in {0,...,7}
+\draw (3*\x,-1.5*\y) node {$\otimes$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,0) node {$0$};
+\foreach \y in {0,...,7} 
+\draw (-0.4,-1.5*\y) node {$0$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-1.5) node {$1$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+3,-1.5*\y) node {$1$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-3) node {$u$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+6,-1.5*\y) node {$u$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-4.5) node {$n$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+9,-1.5*\y) node {$n$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-6) node {$\overline{n}$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+12,-1.5*\y) node {$\overline{n}$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-7.5) node {$\overline{u}$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+15,-1.5*\y) node {$\overline{u}$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-9) node {$\overline{1}$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+18,-1.5*\y) node {$\overline{1}$};
+
+\foreach \x in {0,...,7} 
+\draw (0.4+3*\x,-10.5) node {$0$};
+\foreach \y in {0,...,7} 
+\draw (-0.4+21,-1.5*\y) node {$0$};
+
+\foreach \x in {0,...,5,7} 
+\draw [thick, ->] (3*\x,-0.25)--(3*\x,-1.25);
+\draw [thick, ->] (3*3.5,-0.25)--(3*3.5,-1.25);
+\foreach \y in {0,2,3,4,5,6,7} 
+\draw [thick, ->] (18.9,-1.5*\y)--(20.1,-1.5*\y);
+\draw [thick, ->] (18.9,-1.5*3.5)--(20.1,-1.5*3.5);
+
+\foreach \x in {0,2,3,4,6,7} 
+\draw [dashed, ->] (3*\x,-1.75)--(3*\x,-2.75);
+\draw [dashed, ->] (3*3.5,-1.75)--(3*3.5,-2.75);
+\foreach \y in {0,1,3,4,5,7} 
+\draw [dashed, ->] (15.9,-1.5*\y)--(17.1,-1.5*\y);
+\draw [dashed, ->] (15.9,-1.5*3.5)--(17.1,-1.5*3.5);
+
+\foreach \x in {0,1,3,5,6,7} 
+\draw [dashed, ->] (3*\x,-3.25)--(3*\x,-4.25);
+\draw [dashed, ->] (3*3.5,-3.25)--(3*3.5,-4.25);
+\foreach \y in {0,1,2,4,6,7} 
+\draw [dashed, ->] (12.9,-1.5*\y)--(14.1,-1.5*\y);
+\draw [dashed, ->] (12.9,-1.5*3.5)--(14.1,-1.5*3.5);
+
+
+\foreach \x in {0,1,2,4,5,6,7} 
+\draw [->] (3*\x,-4.75)--(3*\x,-5.75);
+\foreach \y in {0,1,2,3,5,6,7} 
+\draw [->] (9.9,-1.5*\y)--(11.1,-1.5*\y);
+
+\foreach \x in {0,2,3,4,6,7}
+\draw [dashed, ->] (3*\x,-7.75)--(3*\x,-8.75);
+\draw [dashed, ->] (3*3.5,-7.75)--(3*3.5,-8.75);
+\foreach \y in {0,1,2,4,6,7} 
+\draw [dashed, ->] (6.9,-1.5*\y)--(8.1,-1.5*\y);
+\draw [dashed, ->] (6.9,-1.5*3.5)--(8.1,-1.5*3.5);
+
+\foreach \x in {0,1,3,5,6,7} 
+\draw [dashed, ->] (3*\x,-6.25)--(3*\x,-7.25);
+\draw [dashed, ->] (3*3.5,-6.25)--(3*3.5,-7.25);
+\foreach \y in {0,1,3,4,5,7} 
+\draw [dashed, ->] (3.9,-1.5*\y)--(5.1,-1.5*\y);
+\draw [dashed, ->] (3.9,-1.5*3.5)--(5.1,-1.5*3.5);
+
+\foreach \x in {1,...,5} 
+\draw [thick, ->] (3*\x,-9.25)--(3*\x,-10.25);
+\draw [thick, ->] (3*3.5,-9.25)--(3*3.5,-10.25);
+\foreach \y in {2,...,6} 
+\draw [thick, ->] (0.9,-1.5*\y)--(2.1,-1.5*\y);
+\draw [thick, ->] (0.9,-1.5*3.5)--(2.1,-1.5*3.5);
+
+\draw [->] (9.2,-5.25)--(10.3,-5.25); 
+\draw [->] (10.5,-5.35)--(10.5,-5.9);
+
+\foreach \x in {21}
+\foreach \y in {10.5}
+\draw [red] (-0.7+\x,0.25-\y)--(0.7+\x,0.25-\y)--(0.7+\x,-0.25-\y)--(-0.7+\x,-0.25-\y)--(-0.7+\x,0.25-\y);
+
+\foreach  \x in {21}
+\draw [blue](-0.7+\x,0.25-1.5)--(0.7+\x,0.25-1.5)--(0.7+\x,-0.25-9)--(-0.7+\x,-0.25-9)--(-0.7+\x,0.25-1.5);
+
+\foreach \y in {10.5}
+\draw [blue](-0.7+3,0.25-\y)--(0.7+18,0.25-\y)--(0.7+18,-0.25-\y)--(-0.7+3,-0.25-\y)--(-0.7+3,0.25-\y);
+
+\draw [red] (-0.7+3,1-3)--(-0.7+3,-0.25-9)--(0.25+16.5,-0.25-9)--(0.25+10.5,-0.25-6)--(0.25+10.5,0.25-5.25)--(-0.7+9,0.25-5.25)--(-0.7+3,1-3);
+
+\draw [foge] (-0.7+3,0.25-1.5)--(0.7+18,0.25-1.5)--(0.7+18,-0.25-9)--(-0.7+18,-0.25-9)--(-0.7+12,-0.25-6)--(-0.7+12,-0.25-4.5)--(-0.7+9,-0.25-4.5)--(-0.7+3,-0.25-1.5)--(-0.7+3,0.25-1.5);
+
+
+\foreach \x in {0,...,7} 
+\filldraw (3*\x,-5.25) circle(2pt);
+\foreach \y in {0,1,2,3,3.5,4,5,6,7} 
+\filldraw (10.5,-1.5*\y) circle(2pt);
+
+\end{tikzpicture}
+\end{center}
+\caption{Crystal graph of $\mathcal{B}\otimes \mathcal{B}$ for the Lie algebra $D_{n+1}^{(2)} (n\geq 2)$}
+\label{fig4}
+\end{figure}
+
+
+We obtain the following energy matrix:
+\begin{equation}\label{eq:energyD}
+H= \bordermatrix{
+\text{}&1&2&\cdots&n&\overline{0}&\overline{n}&\cdots&\overline{2}&\overline{1}&0
+\cr 1 &2&\cdots &\cdots&2&2&2&\cdots & \cdots &2&1
+\cr 2& 0 &\ddots&2^*&\vdots&\vdots&\vdots&&&\vdots&\vdots
+\cr \vdots&\vdots&\ddots&\ddots &\vdots&\vdots&\vdots&2^*&&\vdots&\vdots
+\cr n&\vdots&&\ddots&2&2&2&\cdots&\cdots&2&1
+\cr \overline{0}&\vdots&&&\ddots&0&2&\cdots&\cdots&2&1
+\cr \overline{n}&\vdots&&&&\ddots&2&\cdots&\cdots&2&\vdots
+\cr \vdots&\vdots&&0^*&&&\ddots&\ddots&2^*&\vdots&\vdots
+\cr \overline{2}&\vdots&&&&& &\ddots &\ddots &\vdots &\vdots
+\cr \overline{1}&0&\cdots&\cdots&\cdots&\cdots&\cdots&\cdots& 0&2 &1
+\cr 0&1&\cdots&\cdots&\cdots&\cdots& \cdots & \cdots& \cdots&1&0
+} .
+\end{equation}
+
+In this case, there are two irreducible highest weight modules of level $1$: $L(\Lambda_0)$ and $L(\Lambda_n)$, and the corresponding ground state paths are $\mathfrak p_{\Lambda_0}=\cdots000$ and $\mathfrak p_{\Lambda_{n}}=\cdots\overline{0}\overline{0}\overline{0}$, respectively. Again, though both ground state paths are constant, we make use of the additional variable $d$ of Theorem \ref{theo:formchar2} to simplify our computations.
+
+
+--- 13/20 (sim=0.758) imamura_skew_rsk_dynamics/chunk_213.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+The action of Kashiwara operators endows the set $\mathcal{A}_n^*$ with an $\mathfrak{sl}_n$ crystal graph structure, the content $\gamma$ being defined as in \cref{subs:biwords}. For any word $\pi$, $\varphi_i(\pi)$ counts the number of unmatched $``)"$ parentheses we find while computing the action of $i$-th Kashiwara operators on $\pi$ and $\varepsilon_i(\pi)$ is the number of unmatched $``("$ parenteses. For instance in \eqref{eq:example_Kashiwara}, $\varphi_2(\pi) = \varepsilon_2(\pi) =2$.
+    
+    \medskip
+    
+The action of Kashiwara operators extends to the set of semi-standard tableaux. If $P\in SST(\lambda/ \mu, n)$, denoting $\pi_P$ its column reading word, we define $\widetilde{e}_{i}(P)$ as the tableaux with shape $\lambda/\mu$ and reading word $\widetilde{e}_{i}(\pi_P)$. The action of $\widetilde{f}_{i}$ is defined equivalently. For example we have
+\begin{equation}
+    \begin{ytableau} 
+    \, & & & 1 & 2 \\ 
+     & 1 & 2 & 2 \\
+     2 & 3 & 3
+    \end{ytableau}
+    \xrightarrow[]{ \hspace{1cm} {\LARGE \widetilde{e}_{1}} \hspace{1cm} }
+    \begin{ytableau} 
+    \, & & & 1 & 2 \\ 
+     & 1 & \textcolor{red}{1} & 2 \\
+     2 & 3 & 3
+    \end{ytableau},
+\end{equation}
+where we highlighted in red the cell that changed its label.
+    
+\medskip
+
+
+--- 14/20 (sim=0.758) imamura_skew_rsk_dynamics/chunk_217.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+\begin{corollary} \label{prop:commutation_kashiwara_int_ins}
+    Let $h$ be anyone between $\widetilde{e}_{i},\widetilde{f}_{i},i=1,\dots,n-1$ and $P$ be a semi-standard tableau. Then for all $r\in \mathbb{Z}$ we have $h \circ \mathcal{R}_{[r]}(P) = \mathcal{R}_{[r]} \circ h (P)$.
+\end{corollary}
+\begin{proof}
+    Internal insertion transformation $P\mapsto \mathcal{R}_{[r]}(P)$ can be realized through jeu de taquin moves, as a consequence of \cref{prop:Knuth_eq_int_ins}, \cref{thm:Knuth_equiv_jdt} and hence it commutes with $\widetilde{e}_{i},\widetilde{f}_{i}, i=1,\dots, n-1$ by \cref{prop:commutation_jdt_kashiwara}.
+\end{proof}
+
+
+--- 15/20 (sim=0.758) imamura_skew_rsk_dynamics/chunk_216.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+We will utilize result of \cref{prop:commutation_jdt_kashiwara} in a slightly weaker form reported next. Recall that $\mathcal{R}_{[r]}$ denotes the internal insertion.
+
+
+--- 16/20 (sim=0.758) imamura_skew_rsk_dynamics/chunk_214.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+The study of $\mathfrak{sl}_n$ crystal structure of the set of semi-standard tableaux has a long history rooted in the seminal paper \cite{robinson1938representations}. In fact, as recalled in \cite{Shimozono_dummies}, the first instance of the RSK correspondence, was realized by Robinson imposing that map $\pi \mapsto P$ would commute with the action of $\widetilde{e}_{i},\widetilde{f}_{i}$. 
+In general, Kashiwara operators are \emph{coplactic} transformations, which means that they commute with \emph{jeu de taquin} moves; see \cref{subs:jdt}. This known result is stated in the following proposition. In order to make the text self-contained all ingredients necessary to its proof, along with a short review of theory of Knuth relations, are reported in \cref{app:Knuth_rel}.
+
+
+--- 17/20 (sim=0.758) imamura_skew_rsk_dynamics/chunk_211.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+On the set of words $\mathcal{A}_n^*$ we can define the action of Kashiwara operators $\widetilde{e}_{i}, \widetilde{f}_{i}$ for $i=1,\dots , n-1$. The raising operator $\widetilde{e}_{i}$ acts replacing an entry $i+1$ with $i$ following the so-called \emph{signature rule}. It goes as follows
+    \begin{equation} \label{alg:e_i}
+        \begin{minipage}{.9\linewidth}
+            \begin{enumerate}
+                \item Replace every $i$ in $\pi$ with the $``)"$ symbol and every $i+1$ with $``("$;.
+                \item Sequentially match all pairs of consecutive symbols $``("$, $``)"$. At the end of this procedure the subword made of unmatched parenteses will have the form $) \cdots ) ( \cdots ($.
+                \item Replace the leftmost unmatched $``("$ parenthesis with $``)"$.
+                \item Substitute back $``)"$ with $i$'s and $``("$ with $i+1$. 
+            \end{enumerate}
+        \end{minipage}
+    \end{equation}
+Sometimes this operation is impossible (eg. when $\pi\in\mathcal{A}_n^*$ has no $(i+1)$'s) and in that case we impose $\widetilde{e}_{i}(\pi) = \varnothing$.
+
+
+--- 18/20 (sim=0.758) imamura_skew_rsk_dynamics/chunk_212.tex ---
+Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.
+
+% Paper: imamura_skew_rsk_dynamics
+% Section: Affine crystal structures > Classical Kashiwara operators
+[Summary: Reviews classical Kashiwara crystal operators and their action on words and tableaux, setting up the novel affine (0th) extension.]
+
+The lowering operator $\widetilde{f}_{i}$ is defined analogously to $\widetilde{e}_{i}$ with the difference that the third step of \eqref{alg:e_i} becomes
+    \begin{equation}
+        \begin{minipage}{.9\linewidth}
+            \begin{enumerate}
+                \item[(3')]  Replace the rightmost unmatched $``)"$ parenthesis with $``("$.
+            \end{enumerate}
+        \end{minipage}
+    \end{equation}
+As before when the procedure is impossible we set $\widetilde{f}_{i}(\pi)=\varnothing$. It is easy to see that $\widetilde{e}_{i}$ and $\widetilde{f}_{i}$ are mutual inverses, when both their operations are defined. We illustrate the action of Kashiwara operators with an example. Here $i=2$:
+    \begin{equation} \label{eq:example_Kashiwara}
+        \begin{matrix}
+        \pi = & 4 & 2 & 3 & 2 & 1 & 2 & 3 & 1 & 4 & 3 & 3 & 2 & 1 & 2 & 4 & 1 & 2 & 3 & 3
+        \\
+         && \boldsymbol{)} & \boldsymbol{(} & \boldsymbol{)} &  & \boldsymbol{)} & \boldsymbol{(} &  &  & \boldsymbol{(} & \boldsymbol{(} & \boldsymbol{)} &  & \boldsymbol{)} &  &  & \boldsymbol{)} & \boldsymbol{(} & \boldsymbol{(}
+         \\
+         && \boldsymbol{)} & \textcolor{gray!60}{(} & \textcolor{gray!60}{)} &  & \boldsymbol{)} & \textcolor{gray!60}{(} &  &  & \textcolor{gray!60}{(} & \textcolor{gray!60}{(} & \textcolor{gray!60}{)} &  & \textcolor{gray!60}{)} &  &  & \textcolor{gray!60}{)} & \boldsymbol{(} & \boldsymbol{(}
+         \\
+         \widetilde{e}_{2} (\pi) = & 4 & 2 & 3 & 2 & 1 & 2 & 3 & 1 & 4 & 3 & 3 & 2 & 1 & 2 & 4 & 1 & 2 & \textcolor{red}{2} & 3
+         \\
+         \widetilde{f}_{2} (\pi) = & 4 & 2 & 3 & 2 & 1 & \textcolor{red}{3} & 3 & 1 & 4 & 3 & 3 & 2 & 1 & 2 & 4 & 1 & 2 & 3 & 3
+        \end{matrix}
+    \end{equation}
+    In the third line matched parentheses were drawn in light gray, while in the last two lines we highlighted in red the letters of $\pi$ that were changed by $\widetilde{e}_{2}$ and $\widetilde{f}_{2}$.
+
+
+--- 19/20 (sim=0.751) dousse_konan_multi-grounded_partitions/chunk_028.tex ---
+Summary: This chunk gives the five-condition definition of a perfect crystal of level ℓ — finiteness, connectedness of ℬ⊗ℬ, weight constraints, a level condition on ε, and unique vectors b^λ, b_λ for each dominant classical weight — which are the structural properties guaranteeing the existence of ground state paths and the crystal isomorphism ℬ(λ) ≅ 𝒫(λ).
+
+% Paper: dousse_konan_multi-grounded_partitions
+% Section: Perfect crystals and grounded partitions > Perfect crystals
+
+[Summary: This chunk gives the five-condition definition of a perfect crystal of level ℓ — finiteness, connectedness of ℬ⊗ℬ, weight constraints, a level condition on ε, and unique vectors b^λ, b_λ for each dominant classical weight — which are the structural properties guaranteeing the existence of ground state paths and the crystal isomorphism ℬ(λ) ≅ 𝒫(λ).]
+
+\begin{deff}\label{deff:pc}(\cite[Definition 10.5.1]{HK})   For a positive integer $\ell$, a finite
+classical crystal $\mathcal{B}$ is said to be a {\it perfect crystal of
+level $\ell$}  for the quantum affine algebra $U_q(\mathfrak g)$ if
+\begin{itemize}
+\item[{\rm (1)}]  there is a finite-dimensional $U_q'(\mathfrak g)$-module
+with a crystal base whose crystal graph is isomorphic to
+$\mathcal{B}$ (when the $0$-arrows are removed);
+\item[{\rm (2)}]  $\mathcal{B} \otimes \mathcal{B}$ \,  is connected;
+\item[{\rm (3)}]  there exists a classical weight \,$\lambda_0$\,
+such that
+
+$$\mathrm{wt}(\mathcal{B}) \subset \lambda_0 + \frac{1}{d_0}\sum_{i \neq 0} \mathbb{Z}_{\leq 0} \alpha_i
+\quad \hbox{\rm and} \quad  |\mathcal{B}_{\lambda_0}| = 1;$$
+
+\item[{\rm (4)}]  for any $b \in \mathcal{B}$, we have
+$$\langle c,\varepsilon(b)\rangle
+= \sum_{i=0}^{n-1} \varepsilon_i(b) \Lambda_i(c)  \geq \ell;$$
+
+\item[{\rm (5)}]   for each $\lambda \in \bar P_\ell^+ := \{ \mu \in \bar P^+  \mid \langle c, \mu \rangle = \ell\}$, there exist unique
+vectors $b^\lambda$ and $b_\lambda$  in $\mathcal{B}$ such that
+$\varepsilon(b^\lambda) = \lambda$ and $\varphi(b_\lambda) = \lambda$.
+\end{itemize}
+\end{deff}
+
+
+--- 20/20 (sim=0.748) dousse_konan_multi-grounded_partitions/chunk_025.tex ---
+Summary: This chunk opens the perfect crystals subsection, defining crystal bases (ℒ, ℬ) and their graph structure with Kashiwara operators ẽᵢ and f̃ᵢ — the combinatorial data whose energy function will encode the weight of a λ-path and link crystals to partitions.
+
+% Paper: dousse_konan_multi-grounded_partitions
+% Section: Perfect crystals and grounded partitions > Perfect crystals
+
+[Summary: This chunk opens the perfect crystals subsection, defining crystal bases (ℒ, ℬ) and their graph structure with Kashiwara operators ẽᵢ and f̃ᵢ — the combinatorial data whose energy function will encode the weight of a λ-path and link crystals to partitions.]
+
+\label{sec:crystal}
+We now briefly recall notions on perfect crystals which are necessary to state the (KMN)$^2$ crystal base character formula. We assume that the reader is somewhat familiar with the basic definitions of crystal bases and quantum algebras, or can quickly catch up by reading Chapters $4$ and $10$ of \cite{HK} or our thorough introduction in \cite{DK19-2}.
+
+
+Let $\mathcal O^q_{\hbox {\rm \small  int}}$ denote the category of integrable $U_q(\mathfrak g)$-modules. To each module $M = \bigoplus_{\lambda \in P} M_\lambda \in \mathcal O^q_{\hbox {\rm \small  int}}$, one can associate a corresponding crystal base $(\mathcal L, \mathcal{B})$, which is unique up to isomorphism. There is a crystal graph associated to $\mathcal{B}$, which has vertex set $\mathcal{B}$, and oriented edges
+$$ b \xrightarrow[]{\,\,\, i \,\,\,} b' \quad \text{if and only if}\quad \tilde f_i b = b' \text{ (or equivalently } \tilde e_i b' = b),$$
+where $\tilde e_i$ and $\tilde f_i$ are the Kashiwara operators.
+
+

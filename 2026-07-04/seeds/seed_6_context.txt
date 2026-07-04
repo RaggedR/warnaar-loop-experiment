@@ -1,0 +1,592 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 41764.65it/s]
+--- 1/20 (sim=0.660) bounded_littlewood/chunk_231.tex ---
+Summary: Discusses Dyson--Macdonald-type identities arising from the basic specialisation of affine Lie algebra characters.
+
+% Paper: bounded_littlewood
+% Section: Open problems > Dyson--Macdonald-type identities
+[Summary: Discusses Dyson--Macdonald-type identities arising from the basic specialisation of affine Lie algebra characters.]
+
+Let $\mathfrak{g}$ be an affine Lie algebra 
+with simple roots $\{\alpha_0,\dots,\alpha_n\}$.
+The map $\operatorname{e}^{-\alpha_1},\dots,\operatorname{e}^{-\alpha_n}\mapsto 1$
+(so that $\operatorname{e}^{-\delta}\mapsto \operatorname{e}^{-a_0\alpha_0}$)
+is known as the basic specialisation \cite{Kac90}.
+When applied to character formulas for affine Lie algebras,
+the basic specialisation results in (generalised) Dyson--Macdonald 
+type expansions for powers of the Dedekind eta-function, see e.g., 
+\cite{BW13,Dyson72,Kac90,Milas04,Stoyanovsky98,WZ12}.
+For example, taking the basic specialisation 
+of the $\mathrm{B}_n^{(1)\dagger}$ identity \eqref{Eq_Bndagger-character} 
+(and replacing $t$ by $q$) yields
+the following generalisation of \cite[p. 135, (6c)]{Macdonald72}:
+\begin{multline}\label{Eq_1356c}
+\frac{1}{\eta(\tau/2)^{2n}\eta(\tau)^{2n^2-3n}} 
+\sum (-1)^{\frac{\lvertv\rvert-\lvert\rho\rvert}{m+2n-1}} 
+\chi_{\mathrm{D}}(v/\rho) \hspace{1pt}
+q^{\frac{\|v\|^2-\|\rho\|^2}{2(m+2n-1)}+\frac{\|\rho\|^2}{2(2n-1)}} \\[-1mm]
+=\sum_{\substack{\lambda\\[1pt] \lambda_1\leqslant m}} q^{\lvert\lambda\rvert/2} 
+P'_{\lambda}(\underbrace{1,\dots,1}_{2n-1 \textup{ times}};q)
+\prod_{i=0}^{m-1} (-q^{1/2};q^{1/2})_{m_i(\lambda)}.
+\end{multline}
+Here $q=\exp(2\pi\hspace{0.5pt}\mathrm{i}\hspace{0.5pt}\tau)$, $\rho=(n-1,\dots,1,0)$, 
+\[
+\chi_{\mathrm{D}}(v/w):=\prod_{i<j}(v_i^2-v_j^2)/(w_i^2-w_j^2),
+\]
+and the sum is over $v\in\mathbb Z^n$ such that $v_i\equiv \rho_i \pmod{m+2n-1}$.
+
+
+--- 2/20 (sim=0.634) foda_zhu_fermionic_macdonald_index/chunk_004.tex ---
+Summary: Opens the introduction by reviewing how Schur indices of Argyres-Douglas theories equal 𝒲_N minimal model characters (Beem et al.), and how Song extended this to Macdonald indices as t-refined characters of Virasoro (2,2k+3) minimal models.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Introduction
+
+[Summary: Opens the introduction by reviewing how Schur indices of Argyres-Douglas theories equal 𝒲_N minimal model characters (Beem et al.), and how Song extended this to Macdonald indices as t-refined characters of Virasoro (2,2k+3) minimal models.]
+
+\label{section.01}
+
+\subsection{Schur and Macdonald indices in Argyres-Douglas theories 
+as vacuum and \texorpdfstring{$t$}{t}-refined vacuum \texorpdfstring{$W_N$}{wn} characters}
+In \cite{beem.01, beem.02,cordova.shao}, Beem \textit{et al.} showed 
+that the Schur indices in certain Argyres-Douglas theories are 
+characters of irreducible highest-weight vacuum modules in a class of non-unitary 
+$W_N$ minimal models.
+In \cite{song.01}, Song proposed a method to compute the Macdonald 
+indices that generalizes the Schur indices of \cite{beem.01, beem.02} 
+as $q, t$-series expansions of $t$-refined 
+irreducible highest-weight vacuum modules in the non-unitary Virasoro 
+minimal models $\mathcal{M}^{\, 2, \, 2 k + 3}$, $k = 1, 2, \cdots$.
+
+
+--- 3/20 (sim=0.633) pascadi_product_identities_two_variable_rr/chunk_148.tex ---
+Summary: Transition: notes that specializing the twisted identity at x=i yields imaginary Rogers--Ramanujan identities.
+
+% Paper: pascadi_product_identities_two_variable_rr
+% Section: Rogers--Ramanujan type identities and mock theta functions > Two-variable generalizations of Rogers--Ramanujan-type identities
+[Summary: Transition: notes that specializing the twisted identity at x=i yields imaginary Rogers--Ramanujan identities.]
+
+Taking $x = i$ in \cref{thm:twisted-rog-ram} yields two relatives of the Rogers--Ramanujan identities:
+
+
+--- 4/20 (sim=0.627) foda_zhu_fermionic_macdonald_index/chunk_031.tex ---
+Summary: States the Andrews-Gordon identities equating the fermionic sum expressions to infinite products mod 2k+3, with k=1 giving the Rogers-Ramanujan identities; these product formulas confirm the fermionic sums are genuine character expressions.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Definitions. The statistical mechanics/combinatorics side > Product expressions of the Virasoro characters
+
+[Summary: States the Andrews-Gordon identities equating the fermionic sum expressions to infinite products mod 2k+3, with k=1 giving the Rogers-Ramanujan identities; these product formulas confirm the fermionic sums are genuine character expressions.]
+
+The above fermionic character expressions (\ref{AG-1}) satisfy the Andrews-Gordon 
+identities \cite{andrews.01,gordon} 
+
+\begin{equation}
+\label{AG}
+\sum_{N_1 \ge \cdots \ge N_{k} \ge 0}
+\frac{ 
+q^{ N_{1}^2 + \cdots + N_{k}^2 + N_{a} + \cdots + N_{k} }
+}{
+(q)_{N_{1}-N_{2}} \cdots (q)_{N_{k-1}-N_{k}} (q)_{N_{k}}
+}
+=
+\prod_{\begin{subarray}{c}
+  n=1
+  \\
+  n \not \equiv0, \pm i \, (\textup{mod}\, 2 k + 3) 
+  \end{subarray}}^{\infty}
+\frac{1}{1-q^n}
+\end{equation}
+
+The $k=1$ cases are the Rogers-Ramanujan identities
+\cite{rogers,rogers-ramanujan}.
+
+
+--- 5/20 (sim=0.625) huh_bounded_littlewood_cylindric/chunk_040.tex ---
+Summary: Theorem 3.2 (symplectic/type C case): affine bounded Littlewood identity for sums of cylindric Schur functions with a symplectic character weighting.
+
+% Paper: huh_bounded_littlewood_cylindric
+% Section: Affine bounded Littlewood identities
+[Summary: Theorem 3.2 (symplectic/type C case): affine bounded Littlewood identity for sums of cylindric Schur functions with a symplectic character weighting.]
+
+\begin{thm}[\sc Two affine bounded Littlewood identities: symplectic case]
+\label{thm:C}
+Let $h$ and $w$ be positive integers.
+For a partition $\lambda$ with length $\le 2h$ and $\lambda_1 - \lambda_{2h} \le w$, we define
+\begin{equation}
+\label{eq:wt_C}
+c^\pm_{2h,w}(\lambda)
+ =
+\begin{cases}
+ 1,
+ &\text{if $\lambda_{2i-1} = \lambda_{2i}$ for all $1 \le i \le h$,}
+\\
+ \pm 1,
+ &\text{if $\lambda_1 - \lambda_{2h} = w$ and $\lambda_{2i} = \lambda_{2i+1}$ for all $1 \le i \le h-1$,}
+\\
+ 0,
+ &\text{otherwise.}
+\end{cases}
+\end{equation}
+Then we have
+\begin{align}
+  \label{eq:C+}
+%  \sum_{\lambda \in \operatorname{Par}(2h,w)}
+%  \sum_{k\in Q^\vee_{2h}}
+%  c^+_{2h,w}(\lambda)
+%  \det_{1 \le i, j \le 2h} \left(
+%  e_{\lambda_i - i + j + (2h+w) k_i}
+%  \right)
+%  &= \det_{1\le i,j\le h}\left(
+%  \overline{F}_{-i+j,2h+w} - \overline{F}_{i+j,2h+w}
+%  \right),\\
+  \sum_{\lambda \in \operatorname{Par}(2h,w)}
+  c^+_{2h,w}(\lambda)\,
+  s_{\lambda[2h,w]'}(\mathbf{x})
+  &= \det_{1\le i,j\le h}\left(
+  \overline{F}_{-i+j,2h+w}(\mathbf{x}) - \overline{F}_{i+j,2h+w}(\mathbf{x})
+  \right),\\
+%  \label{eq:C-}
+%  \sum_{\lambda \in \operatorname{Par}(2h,w)}
+%  \sum_{k\in Q^\vee_{2h}}
+%  c^-_{2h,w}(\lambda)
+%  \det_{1 \le i, j \le 2h} \left(
+%  e_{\lambda_i - i + j + (2h+w) k_i}
+%  \right)
+%  &= \det_{1\le i,j\le h}\left(
+%  F_{-i+j,2h+w} - F_{i+j,2h+w}
+%  \right).\\
+  \label{eq:C-}
+  \sum_{\lambda \in \operatorname{Par}(2h,w)}
+  c^-_{2h,w}(\lambda)\,
+s_{\lambda[2h,w]'}(\mathbf{x})
+  &= \det_{1\le i,j\le h}\left(
+  F_{-i+j,2h+w}(\mathbf{x}) - F_{i+j,2h+w}(\mathbf{x})
+  \right),
+\end{align}
+where $F_{r,N}(\mathbf{x})$ and $\overline F_{r,N}(\mathbf{x})$ are defined
+in Theorem~\ref{thm:affine_BK_intro}.
+\end{thm}
+
+
+--- 6/20 (sim=0.621) warnaar_affine_jacobi-trudi_identities/chunk_066.tex ---
+Summary: Gives the explicit Schilling-Shimozono formula for level-ell restricted Kostka polynomials and records the ell=1 special case, illustrating the higher-level generalization.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proof, special cases and generalisations of Theorem~\ref{Thm_GLn
+[Summary: Gives the explicit Schilling-Shimozono formula for level-ell restricted Kostka polynomials and records the ell=1 special case, illustrating the higher-level generalization.]
+
+By \cite[equation~(6.7)]{SS01},
+\[
+K_{(k^r),\mu}^{\ell}(t)=t^{k\binom{r}{2}}
+\sum t^{\frac{1}{2}\sum_{a,b=1}^{k-1}\sum_{i,j=1}^{\ell-1}
+C_{a,b} C^{-1}_{i,j} \tau_i^{(a)}\tau_j^{(b)}}
+\prod_{a=1}^{k-1}\prod_{i=1}^{\ell-1}
+\Bigg[\genfrac{}{}{0pt}{}{\nu_i^{(a)}+\tau_i^{(a)}}{\tau_i^{(a)}}\Bigg]_t,
+\]
+where the sum is over \smash{$\tau_i^{(a)}\in\mathbb{N}_0$} for
+$1\leqslant a\leqslant k-1$ and $1\leqslant i\leqslant \ell-1$ such that
+\[
+\nu_i^{(a)}:=m_a(\mu) C^{-1}_{i,1}-
+\sum_{b=1}^{k-1} \sum_{j=1}^{\ell-1}
+C_{a,b} C^{-1}_{i,j} \tau_j^{(b)}\in\mathbb{N}_0.
+\]
+In particular,
+\begin{equation*}%\label{Eq_elliseen}
+S_{(k^r)}^{k,1}(t)=
+\sum_{y\in Q} \det_{1\leqslant i,j\leqslant k}
+\bigl(t^{(k+1)\binom{y_i}{2}+iy_i} e_{r-i+j-(k+1)y_i} \bigr)=
+\sum_{\substack{\mu\vdash kr\\[1pt] \mu_1\leqslant k}} t^{\varphi_{\ell}(\mu)}
+P_{\mu}(t).
+\end{equation*}
+
+
+--- 7/20 (sim=0.620) foda_zhu_fermionic_macdonald_index/chunk_017.tex ---
+Summary: Introduces the new terminology of "primary" vs. "descendant" Schur operators: primary Schur operators are not descendants of others under the 4d superconformal algebra, and the paper argues there are finitely many in the Argyres-Douglas theories studied.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Definitions. The gauge theory side > Primary and descendant Schur and \texorpdfstring{$W_N$
+
+\label{primary.schur}
+
+[Summary: Introduces the new terminology of "primary" vs. "descendant" Schur operators: primary Schur operators are not descendants of others under the 4d superconformal algebra, and the paper argues there are finitely many in the Argyres-Douglas theories studied.]
+
+In this work, we study isomorphisms between the Schur sector in 4d superconformal 
+field theories and irreducible highest weight modules in 2d chiral algebras. 
+
+Elements in the Schur sector (the set of all Schur operators) 
+can be classified (as we show in the sequel) into a set of
+finitely-many Schur operators that are not descendants of 
+other Schur operators under the action of the 4d superconformal algebra
+\footnote{\,
+The property that there are finitely-many such operators may 
+be true only in the Argyres-Douglas theories/minimal models 
+studied in this work. It is possible that the Schur sectors 
+of more general models have infinitely many primary Schur 
+operators.
+}, 
+and a set of Schur operators that are descendants of other 
+Schur operators under the action of the 4d superconformal 
+algebra (that is, the action with derivatives on the first 
+set of Schur operators).
+In the sequel, we call the first type 
+\textit{primary Schur operators}, and the second type
+\textit{descendant Schur operators}
+\footnote{\,
+Note that this terminology is new, we introduce it for 
+the purposes of this work.
+}.
+
+
+--- 8/20 (sim=0.613) foda_zhu_fermionic_macdonald_index/chunk_090.tex ---
+Summary: Comment on Bourdier-Drukker-Felix's fermion-gas representation of the Schur index; notes the open question of whether their fermions are related to the statistical-mechanics particles in this paper, and speculates their formulas may also admit a t-refinement to Macdonald indices.
+
+% Paper: foda_zhu_fermionic_macdonald_index
+% Section: Comments > The works of Bourdier, Drukker and Felix
+
+[Summary: Comment on Bourdier-Drukker-Felix's fermion-gas representation of the Schur index; notes the open question of whether their fermions are related to the statistical-mechanics particles in this paper, and speculates their formulas may also admit a t-refinement to Macdonald indices.]
+
+In \cite{bourdier.drukker.felix.01, bourdier.drukker.felix.02}, 
+Bourdier, Drukker and Felix observed that the Schur index of certain theories 
+can be written in terms of the partition function of a gas of fermions on 
+a circle. 
+It is not clear to us at this stage whether the latter fermions are related to 
+ours. However, it is also entirely possible that the results of 
+\cite{bourdier.drukker.felix.01, bourdier.drukker.felix.02} can be t-refined to 
+obtain Macdonald indices. Further discussion of this is beyond the scope of this
+work.
+
+
+--- 9/20 (sim=0.611) bisi_zygouras_classical_groups_lpp/chunk_027.tex ---
+Summary: States the Weyl character formula for type A Schur polynomials as ratio of determinants; establishes symmetry and references Jacobi-Trudi identities.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: States the Weyl character formula for type A Schur polynomials as ratio of determinants; establishes symmetry and references Jacobi-Trudi identities.]
+
+Schur polynomials are characters of $\operatorname{GL}_n(\mathbb{C})$ and as such they are invariant under the action of the associated Weyl group $S_n$: namely, they are invariant under permutation of the variables $x_1,\dots,x_n$.
+Schur polynomials are \emph{determinantal}, in the sense that they can be expressed as ratios of determinants via the Weyl character formula:
+\begin{equation}
+\label{eq:schurWeyl}
+\operatorname{s}^{(n)}_{\lambda}(x)
+= \frac{\underset{1\leq i,j\leq n}{\det} \big( x_j^{\lambda_i + n-i} \big)}
+{\underset{1\leq i,j\leq n}{\det}\big( x_j^{n-i} \big)} \, ,
+\end{equation}
+where the denominator is the Vandermonde product $\prod_{1\leq i<j\leq n}(x_i-x_j)$.
+An elementary proof of the equivalence of~\eqref{eq:schur} and~\eqref{eq:schurWeyl}, which does not resort to representation theoretic techniques, can be found in~\cite{Pro89a}.
+The symmetry property is immediate from~\eqref{eq:schurWeyl}, while it is not obvious from their combinatorial definition~\eqref{eq:schur}.
+Schur polynomials can also be expressed as single determinants of elementary or complete homogeneous symmetric polynomials via the so-called Jacobi-Trudi identities \cite{FK97}.
+
+
+--- 10/20 (sim=0.610) warnaar_affine_jacobi-trudi_identities/chunk_089.tex ---
+Summary: Notes small-rank isomorphisms between affine Lie algebras that require care in interpreting some corollaries, then signals the start of the list of Rogers-Ramanujan corollaries.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proofs of special cases of Conjectures~\ref{Con_JTB
+[Summary: Notes small-rank isomorphisms between affine Lie algebras that require care in interpreting some corollaries, then signals the start of the list of Rogers-Ramanujan corollaries.]
+
+After these Lie algebraic preliminaries, we are ready to give our list of
+Rogers--Ramanujan identities, together with an interpretation in terms of
+specialised characters of standard modules.
+In many cases, this identification needs a minor modification when
+$n$ is small.
+For example, \smash{$\mathrm{C}_1^{(1)}\cong \mathrm{A}_1^{(1)}$},
+\smash{$\mathrm{A}_1^{(2)}\cong \mathrm{A}_1^{(1)}$},
+\smash{$\mathrm{A}_3^{(2)}\cong \mathrm{D}_3^{(2)}$}, and so on.
+In some but not all cases, this also means that for small $n$ the
+highest weight indexing the character and/or the specialisation
+$\phi_{a,b;q}$ are not correct as stated.
+For example, in Corollary~\ref{Cor_17} for $n=1$ the correct
+affine Lie algebra, standard module and specialisation are
+\smash{$\mathrm{A}_1^{(1)}$}, \smash{$L(k\Lambda_0+k\Lambda_1)$} and \smash{$\phi_{q^3,q}$}, instead of
+the stated~\smash{$\mathrm{A}_1^{(2)}$},~{$L(k\Lambda_1)$} and $\phi_{q^2,q}$.
+Similar such modifications apply to other corollaries.
+
+We start with three applications of Theorem~\ref{Thm_qtRR}.
+
+
+--- 11/20 (sim=0.609) bounded_littlewood/chunk_007.tex ---
+Summary: Explains the notation in Theorem 1 and introduces the A_{2n}^{(2)} affine Lie algebra character formula as a further application.
+
+% Paper: bounded_littlewood
+% Section: Introduction > Littlewood identities
+[Summary: Explains the notation in Theorem 1 and introduces the A_{2n}^{(2)} affine Lie algebra character formula as a further application.]
+
+On the left, $P_{\lambda}(x;q,t)$ is a Macdonald polynomial and 
+$a(s),l(s),a'(s),l'(s)$ are the arm-length, leg-length, arm-colength
+and leg-colength of the square $s\in\lambda$.
+The (Laurent) polynomial
+$P^{(\mathrm{B}_n,\mathrm{B}_n)}_{(\hspace{-0.7pt}\frac{m}{2}\hspace{-0.7pt})^{n}}(x;q,t,t)$ on the right
+is a Macdonald polynomial attached to the pair of root systems
+$(\mathrm{B}_n,\mathrm{B}_n)$, indexed by the rectangular partition 
+or `half-partition' $(\frac{m}{2},\dots,\frac{m}{2})$ of length $n$.
+
+Our method also leads to alternative proofs, as well as further 
+examples, of Littlewood identities for the characters of irreducible 
+highest-weight modules of affine Lie algebras, first discovered 
+in \cite{BW13}. 
+In particular we find that such characters arise by taking 
+suitable limits of Hall--Littlewood polynomials of type $R$.
+For example, for the twisted affine Lie algebra $\mathrm{A}_{2n}^{(2)}$
+we obtain the following formula for the character of the
+highest-weight module $V(m\varpi_0)$ in terms of
+modified Hall--Littlewood polynomials $P'_{\lambda}(x;t)$ and
+the large-$r$ limit of the Hall--Littlewood polynomial 
+$P_{(\hspace{-0.7pt}\frac{m}{2}\hspace{-0.7pt})^{n}}^{(\mathrm{B}_r)}(x;t,t_2)$.
+
+
+--- 12/20 (sim=0.608) butorac_lepowsky_wakimoto_cl_affine/chunk_007.tex ---
+Summary: Defines the untwisted affine Lie algebra g(X_l^{(1)}) as a loop algebra g⊗ℂ[t,t⁻¹
+
+% Paper: butorac_lepowsky_wakimoto_cl_affine
+% Section: Affine Lie algebras of type $C_l^{(1) > Realization of affine Lie algebras
+
+[Summary: Defines the untwisted affine Lie algebra g(X_l^{(1)}) as a loop algebra g⊗ℂ[t,t⁻¹] ⊕ ℂc ⊕ ℂd with the standard commutation relations, which is the ambient algebraic setting for all subsequent character computations.]
+
+Let $\mathfrak{g}$ be a complex simple Lie algebra of type $X_{l}$ and let $\mu$ be a diagram automorphism  of $\mathfrak{g}$ of order $r \  (= 1,2,\text{or\ }3)$,
+see \cite[Section 7.9]{Kac}.
+Let $\langle\cdot,\cdot\rangle$ be an invariant symmetric bilinear form on $\mathfrak{g}$, normalized so that the square length of a long root is 2.
+The untwisted affine Lie algebra of type $X_l^{(1)}$ can then be realized as
+$$
+\mathfrak{g}(X_l^{(1)}) = \mathfrak{g}\otimes\mathbb{C}[t,t^{-1}] \oplus \mathbb{C}c \oplus \mathbb{C}d
+$$
+with the following commutation relations: denote by $x(n):=x\otimes t^n$ for $x\in\mathfrak{g}, n\in\mathbb{Z}$, then define 
+\begin{equation*}
+	\begin{aligned}
+&[x(m), y(n)] = [x,y](m+n) + m\delta_{m+n,0}\langle x,y \rangle c,\cr
+&c\in\operatorname{center}(\mathfrak{g}(X_l^{(1)})),\cr
+&[d,x(n)] = nx(n),
+\end{aligned}
+\end{equation*}
+for $x,y \in\mathfrak{g}$, $m,n\in\mathbb{Z}$.
+
+
+--- 13/20 (sim=0.607) bounded_littlewood/chunk_012.tex ---
+Summary: Continues the outline: Chapter 5 (applications to plane partitions, affine Lie algebra characters, Rogers--Ramanujan identities, and Kaneko--Macdonald hypergeometric series).
+
+% Paper: bounded_littlewood
+% Section: Introduction > Outline
+[Summary: Continues the outline: Chapter 5 (applications to plane partitions, affine Lie algebra characters, Rogers--Ramanujan identities, and Kaneko--Macdonald hypergeometric series).]
+
+Chapter~\ref{Ch_Apps} contains applications of the main results of 
+Chapter~\ref{Ch_Bounded}. 
+First, in Section~\ref{Sec_Plane-partitions}, we show that in the 
+classical limit our approach to bounded Littlewood identities 
+implies that MacMahon's formula \eqref{Eq_MacMahon} is a consequence
+of the well-known fact that 
+$\big(\mathrm{GL}(n,\mathbb{R}),\mathrm{O}(n)\big)$ forms a Gelfand pair.
+Then, in Section~\ref{Sec_char}, we show how our bounded Littlewood 
+identities for Hall--Littlewood polynomials 
+give rise to combinatorial formulas for
+characters of affine Lie algebras, such as Theorem~\ref{Thm_twistedA}.
+This provides an alternative to the recent approach of
+Bartlett and the second author based on the 
+$\mathrm{C}_n$ Bailey lemma \cite{BW13}. 
+In Section~\ref{Sec_RR} we follow recent ideas of Griffin et al.~\cite{GOW14}
+and apply the combinatorial character identities to prove new 
+Rogers--Ramanujan identities for the affine Lie algebras
+$\mathrm{B}_n^{(1)},\mathrm{A}_{2n-1}^{(2)},\mathrm{A}_{2n}^{(2)}$ 
+and $\mathrm{D}_{n+1}^{(2)}$.
+The Rogers--Ramanujan identities for $\mathrm{B}_n^{(1)}$,
+given in Theorem~\ref{Thm_RR-B} and Remark~\ref{Remark_Bressoud},
+generalise Bressoud's well-known Rogers--Ramanujan identities 
+for even moduli \cite{Bressoud80a,Bressoud80b} to arbitrary rank $n$.
+As a final application, in Section~\ref{Sec_KM} we show that after
+principal specialisation our bounded $q,t$-Littlewood identities give
+rise to new transformation formulas for basic hypergeometric 
+series of Kaneko--Macdonald-type \cite{Kaneko96,Macdonald13}.
+
+
+--- 14/20 (sim=0.606) bounded_littlewood/chunk_169.tex ---
+Summary: Theorem: D_{n+1}^{(2)} Rogers--Ramanujan identities; principal specialisation of the D-type character formula.
+
+% Paper: bounded_littlewood
+% Section: Applications > Rogers--Ramanujan identities
+[Summary: Theorem: D_{n+1}^{(2)} Rogers--Ramanujan identities; principal specialisation of the D-type character formula.]
+
+\begin{theorem}[$\mathrm{D}_{n+1}^{(2)}$ Rogers--Ramanujan identities]
+For $m,n$ positive integers and $\kappa:=m+2n$,
+\begin{multline}\label{Eq_RR2}
+\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant m}}
+q^{\lvert\lambda\rvert/2} P_{\lambda}(1,q,q^2,\dots;q^{2n-1}) \\[-1mm]
+=\frac{(q^{\kappa};q^{\kappa})_{\infty}^n} 
+{(q;q)_{\infty}^{n-1} (q^{1/2};q)_{\infty}(q^2;q^2)_{\infty}}
+\prod_{i=1}^n \theta(q^{i+(m-1)/2};q^{\kappa})
+\prod_{1\leqslant i<j\leqslant n}\theta(q^{j-i},q^{i+j-1};q^{\kappa}),
+\end{multline}
+and
+\begin{multline}\label{Eq_RR3}
+\sum_{\substack{\lambda \\[1pt] \lambda_1\leqslant m}}
+q^{\lvert\lambda\rvert/2} 
+\bigg( \prod_{i=1}^{m-1} (-q^n;q^n)_{
+m_i(\lambda)} \bigg)
+P_{\lambda}(1,q,q^2,\dots;q^{2n}) \\
+=\frac{(q^{\kappa};q^{\kappa})_{\infty}^{n-1} 
+(q^{\kappa/2};q^{\kappa/2})_{\infty}}
+{(q;q)_{\infty}^{n-1} (q^{1/2};q)_{\infty}^2 (q^2;q^2)_{\infty}}
+\prod_{i=1}^n \theta(q^{i-1/2};q^{\kappa/2})
+\prod_{1\leqslant i<j\leqslant n}\theta(q^{j-i},q^{i+j-1};q^{\kappa}).
+\end{multline}
+\end{theorem}
+
+For $n=1$ the first of these identities is the second equation 
+on page 235 of \cite{W03}.
+
+
+--- 15/20 (sim=0.605) butorac_lepowsky_wakimoto_cl_affine/chunk_002.tex ---
+Summary: Opens the introduction by situating the paper within the long history connecting Rogers–Ramanujan identities to representation theory of affine Lie algebras, tracing the lineage from Lepowsky–Milne through Lepowsky–Wilson to the discovery of vertex operators and PBW bases.
+
+% Paper: butorac_lepowsky_wakimoto_cl_affine
+% Section: Introduction
+
+[Summary: Opens the introduction by situating the paper within the long history connecting Rogers–Ramanujan identities to representation theory of affine Lie algebras, tracing the lineage from Lepowsky–Milne through Lepowsky–Wilson to the discovery of vertex operators and PBW bases.]
+
+In the last several decades, numerous applications of Rogers--Ramanujan-type identities have been extensively studied. For example, in the early eighties,  they emerged  in the areas of statistical mechanics \cite{ABF,Bax} and orthogonal polynomials \cite{AI,Br}.  On the other hand, in the last decade,  in addition to their well-known role in combinatorics and number theory (see, e.g., \cite{DK,GOW,W}), their close connections with modular forms \cite{BCFK}, algebraic geometry \cite{BMS,GOR} and double affine Hecke algebras \cite{CF}  were investigated. In this paper, we are interested in a line of research going back to Lepowsky and Milne \cite{LM}, which connected the  product sides
+of
+Gordon--Andrews--Bressoud's generalization \cite{Go,A1,A2,Br1,Br2}
+of the Rogers--Ramanujan identities
+ with principally specialized characters of
+integrable highest weight modules for the affine Lie algebra $\widehat{\mathfrak{sl}}_2$. Their seminal paper \cite{LM} motivated a    research   of Lepowsky and Wilson \cite{LW1}--\cite{LW4}, which led to  discovery of vertex operators in the principal picture of  integrable highest weight  $\widehat{\mathfrak{sl}}_2$-modules and   bases of vacuum spaces for the
+principal Heisenberg subalgebra which are parametrized by partitions satisfying certain difference  conditions.
+
+
+--- 16/20 (sim=0.599) takigiku_tsuchioka_nandi_partition/chunk_006.tex ---
+Summary: This chunk provides the Lie-algebraic motivation: Rogers-Ramanujan identities arise from A⁽¹⁾₁ standard modules via Z-operators, and it is natural to expect analogues for other affine Lie types, leading to Capparelli's work on A⁽²⁾₂ at level 3 and then Nandi's at level 4.
+
+% Paper: takigiku_tsuchioka_nandi_partition
+% Section: Introduction > Nandi's conjectures
+
+[Summary: This chunk provides the Lie-algebraic motivation: Rogers-Ramanujan identities arise from A⁽¹⁾₁ standard modules via Z-operators, and it is natural to expect analogues for other affine Lie types, leading to Capparelli's work on A⁽²⁾₂ at level 3 and then Nandi's at level 4.]
+
+\label{sect:intro:statement}
+
+
+The Rogers--Ramanujan{} identities 
+was one of the motivations for inventing
+vertex operators;
+it started from Lepowsky--Milne's observation \cite{MR501091},
+which led to Lepowsky--Wilson's proof for Rogers--Ramanujan{} identities
+\cites{MR638674,MR663415,MR752821}
+by constructing
+bases of
+the vacuum spaces $\Omega(V(\lambda))$ for
+the standard modules $V(\lambda)$ of
+the affine Lie algebra $A^{(1)}_{1}$
+associated with the level 3 dominant integral weights $\lambda$,
+using certain vertex operators called \emph{$Z$-operators}.
+Moreover, 
+Andrews--Gordon's \cites{MR351985,MR123484}
+and Andrews--Bressoud's \cites{MR541344,MR556608}
+generalizations of the Rogers--Ramanujan{} identities
+can be interpreted and proved 
+via similar constructions for the level $\ge4$ standard modules 
+of $A^{(1)}_{1}$\cites{MR752821,MR782227,MR888628}.
+
+
+--- 17/20 (sim=0.599) uncu_proofs_modulo11_13_cylindric_kanade_russell/chunk_012.tex ---
+Summary: Explains that Andrews–Schilling–Warnaar identities are W₃-algebra characters up to a (q;q)_∞ factor that destroys manifest positivity, and introduces their modulo 10 identity as a motivating example of why manifestly positive representations are needed.
+
+% Paper: uncu_proofs_modulo11_13_cylindric_kanade_russell
+% Section: Introduction
+
+[Summary: Explains that Andrews–Schilling–Warnaar identities are W₃-algebra characters up to a (q;q)_∞ factor that destroys manifest positivity, and introduces their modulo 10 identity as a motivating example of why manifestly positive representations are needed.]
+
+Andrews--Schilling--Warnaar found several very general families of sum-product identities. Of particular interest to representation theory, the product-sides of these identities are character formulas of the $W_3$ algebra multiplied by an extra factor $(q;q)^{-1}_\infty$ \cite{FW16}. These formulas do not yield manifestly positive sum-sides for the character formulas because of this extra factor. 
+
+For example, one of Andrews--Schilling--Warnaar's modulo 10 identities after clearing the extra factor $(q;q)^{-1}_\infty$ is as follows.
+
+
+--- 18/20 (sim=0.598) bounded_littlewood/chunk_002.tex ---
+Summary: Abstract: a Macdonald--Koornwinder approach to bounded Littlewood identities, with applications to plane partitions, Lie algebra characters, and Rogers--Ramanujan identities.
+
+% Paper: bounded_littlewood
+[Summary: Abstract: a Macdonald--Koornwinder approach to bounded Littlewood identities, with applications to plane partitions, Lie algebra characters, and Rogers--Ramanujan identities.]
+
+\begin{abstract}
+We describe a method, based on the theory of Macdonald--Koorn\-win\-der 
+polynomials, for proving bounded Littlewood identities.
+Our approach provides an alternative to Macdonald's partial fraction
+technique and results in the first examples of bounded Littlewood identities 
+for Macdonald polynomials.
+These identities, which take the form of decomposition formulas for 
+Macdonald polynomials of type $(R,S)$ in terms of ordinary Macdonald 
+polynomials, are $q,t$-analogues of known branching formulas for 
+characters of the symplectic, orthogonal and special orthogonal groups.
+In the classical limit, our method implies that
+MacMahon's famous ex-conjecture for the generating function of symmetric 
+plane partitions in a box follows from the identification of 
+$\big(\mathrm{GL}(n,\mathbb{R}),\mathrm{O}(n)\big)$ as a Gelfand pair.
+As further applications, we obtain combinatorial formulas for 
+characters of affine Lie algebras; 
+Rogers--Ramanujan identities for affine Lie algebras, 
+complementing recent results of Griffin et al.; and
+quadratic transformation formulas for Kaneko--Macdonald-type basic 
+hypergeometric series.
+\end{abstract}
+
+
+--- 19/20 (sim=0.598) bartlett_warnaar_hall-littlewood_affine/chunk_025.tex ---
+Summary: States the D_{n+1}^(2) character formula as an odd orthogonal Schur-function theta series with q^2 shifts, completing the set of three Weyl-Kac rewritings that Section 5 will convert into P'_λ identities.
+
+% Paper: bartlett_warnaar_hall-littlewood_affine
+% Section: Affine Kac--Moody algebras > The Weyl--Kac formula
+
+[Summary: States the D_{n+1}^(2) character formula as an odd orthogonal Schur-function theta series with q^2 shifts, completing the set of three Weyl-Kac rewritings that Section 5 will convert into P'_λ identities.]
+
+\begin{lemma}[$\mathrm D_{n+1}^{(2)}$ character formula]\label{Lem_Dn2-WK}
+For $q=\exp(-\delta)$, $\lambda=(\lambda_1,\dots,\lambda_n)$ a partition 
+or half-partition, and
+\begin{subequations}\label{Eq_Bn-char}
+\begin{gather}
+\Lambda=c_0\Lambda_0+(\lambda_1-\lambda_2)\Lambda_1+\cdots+(\lambda_{n-1}-\lambda_n)\Lambda_{n-1}+2\lambda_n\Lambda_n
+\in P_+, \\[2mm]
+x_i=\operatorname{e}^{-\alpha_i-\cdots-\alpha_n},
+\end{gather}
+\end{subequations}
+we have
+\begin{multline*}
+\operatorname{e}^{-\Lambda} \operatorname{ch} V(\Lambda)=
+\frac{1}{(q^2;q^2)_{\infty}^{n-1}(q)_{\infty}
+\prod_{i=1}^n (qx_i^{\pm})_{\infty}
+\prod_{1\leq i<j\leq n} (q^2x_i^{\pm}x_j^{\pm};q^2)_{\infty}} \\[2mm]
+\times \sum_{r\in\mathbb Z^n} \frac{\Delta_{\mathrm B}(xq^{2r})}{\Delta_{\mathrm B}(x)}
+\prod_{i=1}^n q^{\kappa r_i^2-(2n-1)r_i} 
+x_i^{\kappa r_i+\lambda_i} \operatorname{so}_{2n+1,\lambda}\big(xq^{2r}\big),
+\end{multline*}
+where $\kappa=2n+c_0+2\lambda_1$.
+\end{lemma}
+
+
+--- 20/20 (sim=0.598) warnaar_affine_jacobi-trudi_identities/chunk_085.tex ---
+Summary: Attributes the Lie-theoretic framework (standard modules and Rogers-Ramanujan) to Lepowsky et al., introduces level-rank duality theta identity, and lists which GOW/RW21 identities appear plus 8 new ones.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proofs of special cases of Conjectures~\ref{Con_JTB
+[Summary: Attributes the Lie-theoretic framework (standard modules and Rogers-Ramanujan) to Lepowsky et al., introduces level-rank duality theta identity, and lists which GOW/RW21 identities appear plus 8 new ones.]
+
+Thanks to the groundbreaking work of Lepowsky together with his
+students and collaborators
+\cite{BM94,Capparelli93,Capparelli96,CLM06,CMPP22,Kanade18,KR15,Lepowsky82,
+LM78b,LM78a,LP85,LW81b,LW81a,LW82,LW84,MP87,MP99,Misra84,Nandi14},
+it is well known that many Rogers--Ramanujan identities admit an
+interpretation as identities for principal characters of standard modules
+of affine Lie algebras, see also \cite[Section~5]{Sills18}.
+In a beautiful manifestation of level-rank duality \cite{Frenkel82},
+the $q,t$-Rogers--Ramanujan identities of
+Theorems~\ref{Thm_qtRR}--\ref{Thm_qtRR4} imply many
+Rogers--Ramanujan identities for the characters of
+standard modules of affine Lie algebras, albeit typically not principal
+ones.
+Most of these were previously found, such as the GOW identities
+for~\smash{$\mathrm{A}_{2n}^{(2)}$},~\smash{$\mathrm{C}_n^{(1)}$} and
+\smash{$\mathrm{D}_{n+1}^{(2)}$} \cite{GOW16} or the identities from \cite{RW21},
+with a total of eight new identities.
+Below~we will show how all these Rogers--Ramanujan arise via
+transformations for theta functions of level-rank duality type,
+such as
+\begin{equation}\label{Eq_theta-duality}
+\frac{(p;p)_{\infty}^k}{(q;q)_{\infty}^k}
+\prod_{1\leqslant i<j\leqslant k} \theta\bigl(q^{j-i},q^{i+j-1};p\bigr)
+=\frac{(p;p)_{\infty}^n}{(q;q)_{\infty}^n}
+\prod_{1\leqslant i<j\leqslant n} \theta\bigl(q^{j-i},q^{i+j-1};p\bigr),
+\end{equation}
+for $p=q^{2k+2n-1}$.
+
+

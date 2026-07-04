@@ -1,0 +1,94 @@
+Subject: Two proved cases of your cylindric fermionic-form conjectures, and a bounded refinement at d=4
+
+Dear Professor Warnaar,
+
+I have been working on the conjectures in your paper on the A2
+Andrews-Gordon identities and cylindric partitions -- Conjecture 2.7
+(nonnegativity of Q_{n,c}(q)) and the cylindric fermionic-form
+Conjectures 2.5 and 2.11 -- and would like to share some results, in
+case they are of interest. To be clear at the outset: these are
+partial results -- isolated cases -- and the general conjectures
+remain wide open. Everything builds directly on published work of
+Corteel-Welsh, Kanade-Russell and Uncu; the new content is mainly the
+glue, and the key connecting identities have been formally verified in
+Lean 4 (details below).
+
+1. The first two cases of the fermionic-form conjectures beyond k=2.
+
+(a) Conjecture 2.5 at k=3: for the balanced profile (3,3,2) at d=8
+(modulus 11), G_{(3,3,2)} equals the k=3 fermionic sum, so
+Q_{n,(3,3,2)} is a manifestly positive finite sum. The proof is a
+short chain of established results: your finite form (the a=-1 case of
+Proposition 7.1), a coefficientwise limit, an exact Pochhammer split,
+one of the Kanade-Russell contiguous relations, and Uncu's 2024
+modulus-11 theorem.
+
+(b) Conjecture 2.11 at k=4: the same template settles the balanced
+profile (4,3,3) at d=10 (modulus 13), and the chain is in fact
+SHORTER: the a=+1 case of your finite form, in the same limit, after
+the same Pochhammer split, lands verbatim on the pair of series in
+Uncu's proved modulus-13 expression for H_{(4,3,3)} -- no contiguous
+relation is needed. (Structurally: at modulus 3k-1 the finite form
+and the Kanade-Russell list differ by one contiguous relation; at
+modulus 3k+1 they coincide.) So the template appears to scale to
+whichever moduli acquire proved Kanade-Russell expressions.
+
+As far as we know these are the first proved cases of either cylindric
+conjecture beyond k=2. In fairness of attribution: Uncu's modulus-11
+and modulus-13 theorems are computer-assisted proofs (ideal-membership
+certificates in the ancillary files of arXiv:2301.01359), so both
+cases inherit that dependency.
+
+2. Bounded analogues at d=4. Since d=4 lies in your proved set, the
+positivity itself is not new; what may be of interest is the bounded
+refinement. Writing H_{c,m} = (q;q)_m F_{c,m} for the max-part <= m
+truncation, we show, for every profile at d=4,
+
+    H_{c,m} = sum_{n <= m} [m,n]_q Q_{n,c},
+
+i.e. the bounded generating functions have a nonnegative q-binomial
+expansion whose coefficients are exactly the Q_{n,c}, with explicit
+manifestly positive forms for all five orbits (obtained from the
+bounded fermionic forms in Corteel-Welsh's "The A2 Rogers-Ramanujan
+identities revisited"). Two of the five orbits require what we call
+absorption identities to make positivity manifest; these are exact
+identities in Z[q] proved by q-Pascal manipulations. Monotonicity
+F_{c,m} >= F_{c,m-1} at d=4 follows.
+
+Underlying both is a simple general observation that may already be
+known to you: for gcd(d,3)=1, Conjecture 2.7 at a profile c is
+equivalent to the statement that the sequence (H_{c,m})_m admits a
+coefficientwise-nonnegative q-binomial expansion -- and the expansion
+coefficients are then necessarily Q_{n,c}. So the bounded and
+unbounded positivity questions coincide exactly.
+
+The connecting arguments (the q-binomial inversion, the absorption
+identities, and the assembly of the modulus-11 and d=4 proofs from
+their literature inputs as named hypotheses) are formalized sorry-free
+in Lean 4 over Mathlib; since Mathlib currently has no Gaussian
+binomials, this included building a small reusable q-binomial library.
+The modulus-13 chain has not yet been formalized (its hypotheses would
+mirror the modulus-11 ones). The code is at
+https://github.com/RaggedR/warnaar-glue (the attached note includes a
+table mapping each statement to its Lean theorem). Separately, we
+have verified Conjecture 2.7 exactly (in Z[q], no truncation) for
+d up to 31 in various ranges of n, with no counterexample and no
+shrinking of margins.
+
+I attach short writeups. I would be very glad to know whether either
+case is already known to you, whether the results are of interest, and
+whether you see obstructions to pushing the template to the
+non-balanced orbits.
+
+I should mention that this work was carried out in close collaboration
+with AI systems (Claude), with the mathematics independently and
+adversarially recomputed, and the key connecting steps machine-checked
+in Lean. I am happy to give more detail on the methodology if useful.
+
+With best regards,
+Robin Langer
+
+Attachments: warnaar-note.pdf (consolidated note),
+prove-seed2-layer3.pdf (Conjecture 2.5 at (3,3,2), d=8),
+prove-seed1-layer4.pdf (Conjecture 2.11 at (4,3,3), d=10),
+prove-seed6-layer3.pdf (bounded forms and absorption at d=4)

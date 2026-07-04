@@ -1,0 +1,15 @@
+name = "WarnaarGlue"
+version = "0.1.0"
+defaultTargets = ["WarnaarGlue"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "c4dcaea34b868f94d96388665b31f462154726b7"
+
+[[lean_lib]]
+name = "WarnaarGlue"

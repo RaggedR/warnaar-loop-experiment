@@ -1,0 +1,2208 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 27316.85it/s]
+--- 1/20 (sim=0.600) bisi_zygouras_classical_groups_lpp/chunk_120.tex ---
+Summary: Key geometric reduction: antidiag symmetric LPP = 2 × point-to-line LPP with halved antidiagonal weights — the reformulation enabling triangular array RSK.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: Key geometric reduction: antidiag symmetric LPP = 2 × point-to-line LPP with halved antidiagonal weights — the reformulation enabling triangular array RSK.]
+
+We first see the connection between the point-to-point LPP with symmetry about the antidiagonal and the point-to-line LPP, defined in~\eqref{eq:pointToLineLPP} below.
+Let us consider the point-to-point LPP $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}(N,N)$ associated with a square weight array symmetric about the antidiagonal $i+j=N+1$ (let us not specify the distribution of the weights for the moment).
+Because of the symmetry constraint, at least one of the maximal paths\footnote{By maximal path we mean any of the allowed paths that maximize the passage time, see~\eqref{eq:LPP}. Notice that such a path does not need to be unique.} from $(1,1)$ to $(N,N)$ is symmetric about the antidiagonal; the weights collected along such a path will be all counted twice (once above and once below the antidiagonal), except the one on the antidiagonal itself.
+Let us now consider the \emph{point-to-line} LPP time $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}(N)$ for directed paths starting at $(1,1)$ and ending at any point of the antidiagonal line $i+j=N+1$, which can be expressed in terms of point-to-point LPP times as
+\begin{equation}
+\label{eq:pointToLineLPP}
+L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}(N)
+= \max_{i+j=N+1} L(i,j) \, .
+\end{equation}
+We then have that the $%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+$-symmetric LPP coincides with twice the point-to-line LPP, i.e.\ $L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}(N,N) = 2 \cdot L^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (0,1) -- (1,1) -- cycle;
+\end{tikzpicture}
+}(N)$, assuming that \emph{the weights of the point-to-line LPP are halved on the antidiagonal}.
+
+
+--- 2/20 (sim=0.587) fomin_zelevinsky/chunk_041.tex ---
+Summary: States and proves Theorem 3.1 (1D Laurent property) then applies it to the generalized Somos-3 and Somos-4 sequences via explicit G-polynomial computations verifying G_0 = F; closes the section with a remark connecting back to the multi-dimensional proofs in Section 4.
+
+% Paper: fomin_zelevinsky
+% Section: One-dimensional recurrences
+
+[Summary: States and proves Theorem 3.1 (1D Laurent property) then applies it to the generalized Somos-3 and Somos-4 sequences via explicit G-polynomial computations verifying G_0 = F; closes the section with a remark connecting back to the multi-dimensional proofs in Section 4.]
+
+%%% }
+
+
+
+\begin{theorem} 
+\label{th:laurent-cyclic} 
+Let $F$ be a polynomial in the variables $x_1,\dots,x_{n-1}$ with 
+coefficients in a unique factorization domain~$\mathbb{A}$  
+satisfying conditions {\rm (\ref{eq:GEP1a}), (\ref{eq:GEP2a}),  
+and (\ref{eq:GEP3a})}. 
+Then every term of the sequence $(y_i)$ defined by the 
+recurrence 
+\begin{equation*} 
+%\label{eq:laurent-cyclic} 
+y_{m+n} = \frac{F(y_{m+1},\dots,y_{m+n-1})}{y_m} 
+\end{equation*} 
+%{\rm(\ref{eq:one-dim-recursion})} 
+is a Laurent polynomial in the initial $n$ terms, 
+with coefficients in~$\mathbb{A}$. 
+\end{theorem} 
+  
+\smallskip\noindent {\bf Proof. }  
+%%% The proof reduces to a careful verification of the conditions in  
+%%% Theorem~\ref{th:laurent-gcd} for a caterpillar pattern defined by a  
+%%% right-to-left recursive procedure sketched above. 
+%%% The exchange polynomials assigned to the legs of the pattern will be  
+%%% cyclic shifts of the polynomials $G_m$, which were devised with the  
+%%% express purpose of satisfying {\rm  
+%%% (\ref{eq:GEP1})--(\ref{eq:GEP3})}. 
+%%% Now, let us make this precise. 
+To prove the Laurentness of some $y_N$,  
+we will apply Theorem~\ref{th:laurent-gcd} 
+to the caterpillar tree constructed as follows. 
+We set $t_{\rm head}=t_{N-n+1}$;  
+this corresponds to the first cluster containing~$y_N$. 
+As a path from $t_0$ to $t_{\rm head}$, 
+we take a finite segment of (\ref{eq:cyclic1}): 
+\begin{equation} 
+\label{eq:t0-tN-n}  
+t_0  
+\!\begin{array}{c} 
+\scriptstyle{\left\langle0\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langle0\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_1  
+\!\begin{array}{c} 
+\scriptstyle{\left\langle1\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langle1\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_2  
+\!\begin{array}{c} 
+\scriptstyle{\left\langle2\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langle2\right\rangle}} 
+\end{array} 
+\! 
+ 
+\cdots  
+ 
+\!\begin{array}{c} 
+\scriptstyle{\left\langleN-1\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langleN-1\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_{N-n}  
+ 
+\!\begin{array}{c} 
+\scriptstyle{\left\langleN\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langleN\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_{N-n+1}\,. 
+\end{equation} 
+We then define the exchange polynomial $G_{j,k-1}$ 
+associated with the leg labeled $j$ attached  
+to a vertex $t_k$ on the spine (see Figure~\ref{fig:leg})  
+by 
+\[  
+G_{j,k-1}=G_{\left\langlek-j-1\right\rangle}(x_{\left\langlej+1\right\rangle},\dots,x_n,x_1,\dots,x_{\left\langlej-1\right\rangle}),  
+\]  
+where in the right-hand side, we use the polynomials  
+$G_1,\dots,G_{n-2}$ constructed in  
+(\ref{eq:G-step1})--(\ref{eq:G-step3}) above. 
+  
+\begin{figure}[ht]  
+\vspace{-.5in}  
+\begin{center}  
+$  
+\bullet  
+ 
+\!\begin{array}{c} 
+\scriptstyle{\left\langlek-1\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langlek-1\right\rangle}} 
+\end{array} 
+\! 
+ 
+\hspace{-.35in} 
+\begin{array}{c}\\[.43in] t_k\\ \hspace{.28in} {\scriptstyle j} \Biggl| {\scriptstyle G_{j,k-1}}\\ 
+\bullet\end{array} 
+ \hspace{-.4in} 
+ 
+\!\begin{array}{c} 
+\scriptstyle{\left\langlek\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{F_{\left\langlek\right\rangle}} 
+\end{array} 
+\! 
+ 
+\bullet 
+$  
+\end{center}  
+\caption{}  
+\label{fig:leg}  
+\end{figure}  
+  
+It remains to verify that this exchange pattern satisfies  
+(\ref{eq:GEP1}), (\ref{eq:GEP2}), and (\ref{eq:GEP3}). 
+Condition (\ref{eq:GEP1}) for the edges appearing in  
+(\ref{eq:t0-tN-n}) is immediate from (\ref{eq:GEP1a}),  
+while for the rest of the edges, it follows from the definition of  
+$\stackrel{\approx}{G}_{m-1}\,$ in (\ref{eq:G-step2}). 
+  
+Turning to (\ref{eq:GEP2}), we first note that we may assume  
+$i=\left\langle0\right\rangle=n$ (otherwise apply a cyclic shift of indices). 
+Under this assumption, we can identify the polynomials $P$ and $Q_0$ in  
+(\ref{eq:GEP2}) with the polynomials $G_{m-1}$ and $Q_m$ in  
+(\ref{eq:G-step3}), for some value of~$m$. 
+(The special case of $P$ attached to one of the edges in  
+(\ref{eq:t0-tN-n}) corresponds to $m=1$, and its validity requires  
+(\ref{eq:GEP3a}).) 
+Then the condition $\gcd(G_{m-1},Q_m)=1$ follows from (\ref{eq:GEP2a})  
+and the choice of the exponent $b$ in (\ref{eq:G-step3}). 
+  
+Finally, (\ref{eq:GEP3}) is ensured by the construction 
+(\ref{eq:G-step1})--(\ref{eq:G-step3}), which was designed expressly for  
+this purpose. As before, the special case 
+of $P$ attached to one of the edges in (\ref{eq:t0-tN-n}) holds due to 
+(\ref{eq:GEP3a}). 
+\hfill$\square$\medskip  
+ 
+%%% In this diagram, the polynomial $G_2$ is constructed from 
+%%% $F_{\left\langle0\right\rangle}$ and $F_{\left\langle3\right\rangle}$ using~(c); 
+%%% then $G_1$ is constructed from 
+%%% $G_2$ and $F_{\left\langle2\right\rangle}$, again using~(c); 
+%%% finally, we apply the same construction to $G_1$ and $F_{\left\langle1\right\rangle}$, 
+%%% and if we are lucky enough to recover $F_{\left\langle0\right\rangle}$, 
+%%% then Theorem~\ref{th:laurent-gcd} applies, and the Laurent phenomenon 
+%%% follows. 
+%%% Note that we will not have to repeat the argument for the legs 
+%%% carrying labels other than $\left\langle0\right\rangle$, since those cases can be 
+%%% obtained from the $\left\langle0\right\rangle$ case by a shift of index. 
+%%% (Remember that the polynomials $F_{\left\langlem\right\rangle}$ differ from each other by 
+%%% cyclic permutation of the variables.) 
+  
+In the rest of this section, we give a few applications of  
+Theorem~\ref{th:laurent-cyclic}. 
+In all of them, conditions (\ref{eq:GEP1a}) and  
+(\ref{eq:GEP2a}) are immediate, so we concentrate on the verification  
+of (\ref{eq:GEP3a}). 
+ 
+\begin{example} 
+\label{example:somos3}  
+{\rm 
+Let $a$ and $b$ be positive integers, 
+and let the sequence $y_0,y_1,\dots$ satisfy the recurrence 
+\begin{equation*} 
+y_{k}=\frac{y_{k-2}^{a}y_{k-1}^{b}+1}{y_{k-3}}\,. 
+\end{equation*} 
+%(This is a generalization of the ordinary Somos-3 sequence, 
+%which arises in the special case $a=b=1$.) 
+We claim that every term of the sequence is a Laurent polynomial over 
+$\mathbb{Z}$ in $y_0$, $y_1$, and~$y_2$. 
+%(This example can be further generalized by adding coefficients, 
+%and by making the exponents dependent on $k\bmod 3$.) 
+To prove this, we set $n=3$ and construct the polynomials  
+$G_2$, $G_1$, and $G_0$ using (\ref{eq:G-step1})--(\ref{eq:G-step3}). 
+Initializing $G_2=F(x_1,x_2)=x_1^a x_2^b+1$, we obtain: 
+\[ 
+\begin{array}{lll} 
+Q_2=F(0,x_1)=1,\quad 
+& \stackrel{\sim}{G}_{1}=F\bigl|_{x_2\leftarrow\frac{Q_2}{x_2}} 
+=x_1^a x_2^{-b}+1, \quad 
+& G_1=\stackrel{\approx}{G}_{1}=x_1^a+x_2^b,\\[.1in] 
+Q_1=F(x_2,0)=1, 
+& \stackrel{\sim}{G}_{0}=G_1\bigl|_{x_1\leftarrow\frac{Q_1}{x_1}} 
+=x_1^{-a}+x_2^b, \quad 
+& G_0=\stackrel{\approx}{G}_{0}=1+x_1^a x_2^b=F, 
+\end{array} 
+\] 
+as desired. 
+} 
+\end{example} 
+ 
+\begin{example} 
+\label{example:somos4}  
+(Generalized Somos-4 sequence) 
+{\rm 
+Let $a$, $b$, and $c$ be positive integers, 
+and let the sequence $y_0,y_1,\dots$ satisfy the recurrence 
+\begin{equation*} 
+y_{k}=\frac{y_{k-3}^{a}y_{k-1}^{c}+y_{k-2}^b}{y_{k-4}}\,. 
+\end{equation*} 
+(The Somos-4 sequence~\cite{gale-intelligencer}, introduced by Michael Somos,  
+is the special case $a=c=1$, $b=2$.) 
+Again, each $y_i$ is a Laurent polynomial in the initial terms  
+$y_0$, $y_1$, $y_2$, and~$y_3$. 
+To prove this, we set $n=4$ and compute 
+$G_3,\dots,G_0$ using (\ref{eq:G-step1})--(\ref{eq:G-step3}) and 
+beginning with  
+$G_3=F=x_1^a x_3^c+x_2^b$: 
+\[ 
+\begin{array}{lll} 
+\!\!Q_3\!=\!F(0,x_1,x_2)\!=\!x_1^b, 
+ & G_3\bigl|_{x_3\leftarrow\frac{Q_3}{x_3}} 
+ \!=\!x_1^{a+bc}x_3^{-c}+x_2^b, 
+   & G_2\!=\!x_1^{a+bc} +x_2^b x_3^c,\\[.1in] 
+\!\!Q_2\!=\!F(x_3,0,x_1)\!=\!x_1^c x_3^a,~~ 
+ & G_2\bigl|_{x_2\leftarrow\frac{Q_2}{x_2}} 
+ \!=\!x_1^{a+bc} \!+\!x_1^{bc}x_2^{-b} x_3^{ab+c}\!, ~~ 
+   & G_1\!=\!x_1^a x_2^b + x_3^{ab+c},\\[.1in] 
+\!\!Q_1\!=\!F(x_2,x_3,0)\!=\!x_3^b, 
+ & G_1\bigl|_{x_1\leftarrow\frac{Q_1}{x_1}} 
+ \!=\!x_1^{-a} x_2^b x_3^{ab} + x_3^{ab+c}, 
+   & G_0\!=\!x_2^b \!+\! x_1^a x_3^c \!=\!F, 
+\end{array} 
+\] 
+and the claim follows. 
+} 
+\end{example} 
+
+\begin{remark}
+\label{rem:GR-stuff}
+{\rm The Laurent phenomena in Theorems~\ref{th:gale-robinson} 
+and \ref{th:two-term-gale-robinson} 
+can also be proved by applying Theorem~\ref{th:laurent-cyclic}: 
+in the former (resp., latter) case, the polynomial $F$ is given by
+$F=\alpha x_{p}x_{n-p}+\beta x_{q}x_{n-q} +\gamma x_{r}x_{n-r}$
+(resp., 
+$F=\alpha x_{p}x_{n-p}+\beta x_{q}x_{n-q}$).
+The proofs are straightforward but rather long.
+Shorter proofs, based on J.~Propp's idea of viewing one-dimensional
+recurrences as ``projections'' of multi-dimensional ones, 
+are given in Section~\ref{sec:lattice-based} below.
+}
+\end{remark}
+
+
+ 
+  
+\section{%Number walls, frieze patterns, and other  
+Two- and three-dimensional recurrences} 
+\label{sec:lattice-based} 
+ 
+In this section, we use the strategy of  
+Section~\ref{sec:gale-robinson} 
+% Theorem~\ref{th:laurent-gcd} 
+to establish the Laurent phenomenon for several recurrences  
+involving two- and three-dimensional arrays. 
+Our first example generalizes a construction (and the corresponding Laurentness  
+conjecture) suggested by Noam Elkies and communicated by James Propp. 
+Even though the Laurent phenomenon in this example can be deduced 
+from Theorem~\ref{th:oct}, 
+we choose to give a self-contained treatment, for the sake of exposition. 
+%We will discuss this example in considerable detail, for it will serve as a 
+%prototype for the subsequent applications. 
+%Those will not be treated nearly as meticulously, 
+%as we will trust the reader with filling out the details.  
+ 
+\begin{example} %(Elkies' recurrence) 
+\label{example:elkies} 
+(The knight recurrence) 
+{\rm 
+Consider a two-dimensional array  
+$(y_{ij})_{i,j\geq 0}$ 
+whose entries satisfy the recurrence 
+\begin{equation} 
+\label{eq:elkies} 
+y_{i,j}y_{i-2,j-1}=\alpha y_{i,j-1}y_{i-2,j} +\beta y_{i-1,j} y_{i-1,j-1}\,.  
+\end{equation} 
+We will prove that every $y_{ij}$ is a 
+Laurent polynomial in the initial entries  
+\[ 
+Y_{\rm init} = \{y_{ab}\,:\,a<2\text{~or~} b<1\},  
+\]  
+with coefficients in the ring $\mathbb{A}=\mathbb{Z}[\alpha,\beta]$. 
+} 
+\end{example} 
+  
+We will refer to $Y_{\rm init}$ as the \emph{initial cluster,}  
+even though it is an infinite set.  
+Notice, however, that each individual $y_{ij}$ only depends on  
+finitely many variables $\{y_{ab}\in Y_{\rm init}\,:\,a\leq i, \ b\leq j\}$. 
+  
+Similarly to Section~\ref{sec:gale-robinson}, we will use the exchange 
+relations (\ref{eq:elkies}) to create a sequence of 
+clusters satisfying the Caterpillar Lemma 
+(Theorem~\ref{th:laurent-gcd}). 
+  
+This is done in the following way.  
+Let us denote by 
+$\mathcal{H}=\mathbb{Z}_{\geq 0}^2$ the underlying set of indices; 
+for $h=(i,j)\in \mathcal{H}$, we will write $y_h=y_{ij}\,$.  
+The variables of the initial cluster have labels in the set  
+\[ 
+H_{\rm init} = \{(i,j)\in\mathcal{H}\,:\,i<2 \text{~or~} j<1\}.  
+\] 
+In Figure~\ref{fig:elkies}, the elements of $H_{\rm init}$ are marked 
+by~$\bullet$'s.  
+ 
+\begin{figure}[ht] 
+\setlength{\unitlength}{4pt} 
+ 
+\centering 
+\begin{picture}(60,35)(0,7) 
+\linethickness{0.05pt}  
+\multiput(0,15)(0,5){5}{\line(1,0){60}} 
+\multiput(0,10)(5,0){13}{\line(0,1){30}} 
+\multiput(0,10)(0,30){2}{\line(1,0){60}} 
+\thicklines  
+\put(0,10){\line(2,1){60}}  
+\put(0,15){\line(2,1){50}}  
+\put(0,20){\line(2,1){40}}  
+\put(0,25){\line(2,1){30}}  
+\put(0,30){\line(2,1){20}}  
+\put(0,35){\line(2,1){10}}  
+  
+\put(5,10){\line(2,1){55}}  
+\put(5,15){\line(2,1){50}}  
+\put(5,20){\line(2,1){40}}  
+\put(5,25){\line(2,1){30}}  
+\put(5,30){\line(2,1){20}}  
+\put(5,35){\line(2,1){10}}  
+  
+\put(10,10){\line(2,1){50}}  
+\put(15,10){\line(2,1){45}}  
+\put(20,10){\line(2,1){40}}  
+\put(25,10){\line(2,1){35}}  
+\put(30,10){\line(2,1){30}}  
+\put(35,10){\line(2,1){25}}  
+\put(40,10){\line(2,1){20}}  
+\put(45,10){\line(2,1){15}}  
+\put(50,10){\line(2,1){10}}  
+\put(55,10){\line(2,1){5}}  
+  
+%\thinlines 
+\multiput(10,15)(5,0){11}{\circle{1}} 
+\multiput(10,20)(5,0){11}{\circle{1}} 
+\multiput(10,25)(5,0){11}{\circle{1}} 
+\multiput(10,30)(5,0){11}{\circle{1}} 
+\multiput(10,35)(5,0){11}{\circle{1}} 
+\multiput(10,40)(5,0){11}{\circle{1}} 
+  
+\multiput(0,10)(5,0){13}{\circle*{1}} 
+\multiput(0,15)(0,5){6}{\circle*{1}} 
+\multiput(5,15)(0,5){6}{\circle*{1}} 
+\put(0,7){\makebox(0,0){$0$}} 
+%\put(60,7){\makebox(0,0){$N$}} 
+\put(64,30){\makebox(0,0){$\mathcal{H}$}} 
+\put(-3,10){\makebox(0,0){$0$}} 
+%\put(-3,40){\makebox(0,0){$M$}} 
+  
+ 
+\end{picture} 
+ 
+\caption{The initial cluster and the equivalence classes $\left\langleh\right\rangle$} 
+\label{fig:elkies} 
+\end{figure} 
+ 
+We introduce the product partial order on $\mathcal{H}$: 
+\begin{equation}  
+\label{eq:product-order} 
+(i_1,j_1)\leq (i_2,j_2) \stackrel{\rm def}{\Leftrightarrow} 
+(i_1\leq i_2)\text{~and~} (j_1\leq j_2).  
+\end{equation}  
+For an element $h=(i,j)\in \mathcal{H} - H_{\rm init}\,$,  
+let us denote $h^-=(i-2,j-1)$; 
+in this notation, the exchange relation (\ref{eq:elkies})  
+expresses the product $y_h\cdot y_{h^-}$ as a polynomial in the 
+variables $y_{h'}\,$, for $h^-< h'< h$. 
+ 
+We write $h^-\sim h$, and extend this to an equivalence relation  
+$\sim$ on $\mathcal{H}$. The equivalence class of $h$ is denoted  
+by~$\left\langleh\right\rangle$. 
+These classes are shown as slanted lines in Figure~\ref{fig:elkies}. 
+All our exchange polynomials will belong to the ring 
+$\mathbb{A}[x_a : a \in\mathcal{H}/\!\!\sim\,]$.  
+  
+Note that $H_{\rm init}$ has exactly one representative from each  
+equivalence class. 
+We will now construct a sequence of subsets  
+$H_0=H_{\rm init}, H_1,H_2,\dots$, each having this property, 
+using the following recursive rule. 
+Let us fix a particular linear extension of the partial order  
+(\ref{eq:product-order}), say, 
+\[ 
+(i_1,j_1)\preceq (i_2,j_2) \stackrel{\rm def}{\Leftrightarrow} 
+(i_1+j_1<i_2+j_2)\text{~or~} (i_1+j_1= i_2+j_2 \text{~and~} i_1\leq i_2). 
+\] 
+Restricting this linear ordering to the complement $\mathcal{H}-H_{\rm  
+init}$ of the initial cluster, we obtain a numbering of the elements  
+of this complement by positive integers:  
+\[  
+\begin{array}{l}  
+h_0=(2,1),~h_1=(2,2),~h_2=(3,1),~h_3=(2,3),~h_4=(3,2),\\  
+h_5=(4,1),~h_6=(2,4),~h_7=(3,3),~h_8=(4,2),  
+\end{array}  
+\]  
+and so on. 
+Having constructed $H_{m}$, we let $H_{m+1}=H_{m}\cup\{h_m\}-\{h_m^-\}$.  
+To illustrate, the set $H_9$ is shown in Figure~\ref{fig:elkies-H9}.  
+ 
+\begin{figure}[ht] 
+\setlength{\unitlength}{4pt} 
+ 
+\centering 
+  \begin{picture}(60,35)(0,7) 
+%\thicklines 
+\multiput(0,15)(0,5){5}{\line(1,0){60}} 
+\multiput(0,10)(5,0){13}{\line(0,1){30}} 
+\multiput(0,10)(0,30){2}{\line(1,0){60}} 
+%\thinlines 
+\multiput(15,10)(5,0){10}{\circle*{1}} 
+\multiput(0,30)(0,5){3}{\circle*{1}} 
+\multiput(5,25)(0,5){4}{\circle*{1}} 
+\multiput(10,20)(0,5){3}{\circle*{1}} 
+\multiput(15,15)(0,5){3}{\circle*{1}} 
+\multiput(20,15)(0,5){2}{\circle*{1}} 
+\put(0,7){\makebox(0,0){$0$}} 
+%\put(60,7){\makebox(0,0){$M$}} 
+%\put(64,30){\makebox(0,0){$\mathcal{H}$}} 
+\put(-3,10){\makebox(0,0){$0$}} 
+%\put(-3,40){\makebox(0,0){$N$}} 
+\end{picture} 
+ 
+\caption{Indexing set $H_9$} 
+\label{fig:elkies-H9} 
+\end{figure} 
+ 
+We next create the infinite exchange pattern  
+\begin{equation} 
+\label{eq:knight-spine} 
+t_0  
+\!\begin{array}{c} 
+\scriptstyle{\left\langleh_0\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{P_{\left\langleh_0\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_1  
+\!\begin{array}{c} 
+\scriptstyle{\left\langleh_1\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{P_{\left\langleh_1\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_2  
+\!\begin{array}{c} 
+\scriptstyle{\left\langleh_2\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{P_{\left\langleh_2\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_3  
+\!\begin{array}{c} 
+\scriptstyle{\left\langleh_3\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{P_{\left\langleh_3\right\rangle}} 
+\end{array} 
+\! 
+ 
+t_4  
+\!\begin{array}{c} 
+\scriptstyle{}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\cdots \,. 
+\end{equation} 
+(cf.\ (\ref{eq:cyclic1}))  
+The cluster at each point $t_m$ is given by  
+$\textbf{x}(t_m)=\{y_h\,:\,h\in H_m\}$; 
+as before, each cluster variable $y_h$ corresponds to the variable 
+$x_{\left\langleh\right\rangle}$. 
+The exchange polynomial $P_{\left\langleh\right\rangle}$ for an edge  
+$~\bullet 
+\!\begin{array}{c} 
+\scriptstyle{\left\langleh\right\rangle}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ \bullet~$ with $h=(i,j)$ is given by 
+\begin{equation}  
+\label{eq:Ph-knight} 
+P_{\left\langleh\right\rangle}=\alpha x_{\left\langle(i,j-1)\right\rangle}x_{\left\langle(i-2,j)\right\rangle} 
++\beta x_{\left\langle(i-1,j)\right\rangle} x_{\left\langle(i-1,j-1)\right\rangle}.  
+\end{equation}  
+Then equations (\ref{eq:elkies}) become 
+the exchange relations associated with this pattern.  
+ 
+To establish the Laurent phenomenon, we will  
+complete the caterpillar pattern by attaching 
+``legs'' to each vertex $t_m$  
+and assigning exchange polynomials to these legs so that  
+the appropriate analogues of conditions (\ref{eq:GEP1a}),  
+(\ref{eq:GEP2a}) and (\ref{eq:GEP3a}) are satisfied.  
+Since we now work over the polynomial ring  
+$\mathbb{A}[x_a : a \in\mathcal{H}/\!\!\sim\,]$ 
+in infinitely many indeterminates,  
+the number of legs attached to every vertex $t_m$ will also be infinite 
+(one for every label  
+$a$ different from $\left\langleh_{m-1}\right\rangle$ and $\left\langleh_{m}\right\rangle$).  
+This will not matter much for our argument though: to prove the Laurentness 
+for any $y_{h_m}$, we will simply restrict our attention to the finite part  
+of the infinite caterpillar tree lying between $t_0$ and  
+$t_{\rm head} = t_{m+1}$, and to the legs labeled by $\left\langleh_k\right\rangle$  
+for $0 \leq k \leq m$.  
+ 
+ 
+The role of conditions (\ref{eq:GEP1a}) and (\ref{eq:GEP2a}) 
+is now played by the observation that each exchange  
+polynomial $P_{\left\langleh\right\rangle}$ is not divisible by any variable~$x_a\,$,  
+and furthermore every specialization 
+$P_{\left\langleh\right\rangle}\bigl|_{x_a\leftarrow 0}$  
+is an irreducible element of the Laurent polynomial ring. 
+  
+%We then complete the caterpillar pattern by attaching 
+%(infinitely many) ``legs'' to each vertex $t_m$  
+%and assigning exchange polynomials to these legs so that  
+%the appropriate analogue of condition (\ref{eq:GEP3a}) is satisfied.  
+%This will be done with the 
+%help of a recursive procedure analogous to 
+%(\ref{eq:G-step1})--(\ref{eq:G-step3}). 
+ 
+To formulate the analogue of (\ref{eq:GEP3a}),  
+let us fix an equivalence class $a\in\mathcal{H}/\!\!\sim\,$  
+and concentrate on defining the exchange polynomials for the legs  
+labeled by~$a$ and attached to the vertices squeezed between two  
+consecutive occurrences of the label $a$ on the spine: 
+ \vspace{-.5in} 
+\begin{equation} 
+\label{eq:knight-s} 
+\bullet 
+ 
+\!\begin{array}{c} 
+\scriptstyle{a}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{P_a} 
+\end{array} 
+\! 
+ 
+\bullet 
+ 
+\!\begin{array}{c} 
+\scriptstyle{a_1}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+\hspace{-.2in} 
+\begin{array}{c}\\[.43in] \bullet\\ 
+ \hspace{.12in}{\scriptstyle a} \Biggl| \scriptstyle G_1\ \\ 
+\bullet\end{array} 
+ \hspace{-.2in} 
+\!\begin{array}{c} 
+\scriptstyle{a_2}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\hspace{-.2in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.08in}{\scriptstyle a} \Biggl|  
+{\scriptstyle G_2}\\ 
+\bullet\end{array} 
+ \hspace{-.2in} 
+\!\begin{array}{c} 
+\scriptstyle{}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\hspace{-.2in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.08in}{\scriptstyle a}  
+\Biggl| {\hspace{.1in}\ }\\ 
+\bullet\end{array} 
+ \hspace{-.2in} 
+\!\begin{array}{c} 
+\scriptstyle{}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\hspace{-.2in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.08in}{\scriptstyle a} \Biggl| {\hspace{.1in}\ }\\ 
+\bullet\end{array} 
+ \hspace{-.2in} 
+\!\begin{array}{c} 
+\scriptstyle{a_{N-2}}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\hspace{-.35in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.22in}{\scriptstyle a} \Biggl|  
+{\scriptstyle G_{N-2}}\\ 
+\bullet\end{array} 
+ \hspace{-.35in} 
+ 
+\!\begin{array}{c} 
+\scriptstyle{a_{N-1}}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\bullet 
+ 
+\!\begin{array}{c} 
+\scriptstyle{a}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{P_a} 
+\end{array} 
+\! 
+ 
+\bullet 
+. 
+\end{equation} 
+We note that the labels $a_1,\dots,a_{N-1}\in\mathcal{H}/\!\!\sim\,$  
+appearing on the spine between these two  
+occurrences of $a$ are distinct. 
+%It is convenient to set $a_0=a_N=a$. 
+For $m=N-2,N-3,\dots,1$, we denote by  
+$G_m$ the exchange polynomial to be associated with the $a$-labeled leg attached  
+between the edges labeled $a_m$ and $a_{m+1}$  
+(cf.~(\ref{eq:knight-s})). 
+  
+  
+  
+The polynomials $G_m$ are defined with the 
+help of a recursive procedure analogous to 
+(\ref{eq:G-step1})--(\ref{eq:G-step3}).  
+We initialize $G_{N-1}=P_a$, 
+and obtain each $G_{m-1}$ from $G_m$, as follows. 
+The step (\ref{eq:G-step1}) is replaced by  
+\begin{equation*}  
+%\label{eq:G-step1}  
+\stackrel{\sim}{G}_{m-1} = G_m\bigl|_{x_{a_m}\leftarrow \frac{Q_m}{x_{a_m}}}  
+\end{equation*}  
+with  
+\begin{equation}  
+\label{eq:Qm-knight}  
+Q_m=P_{a_m}\bigl|_{x_a\leftarrow 0} \,.  
+\end{equation}  
+We then compute $\stackrel{\approx}{G}_{m-1}$ and $G_{m-1}$  
+exactly as in (\ref{eq:G-step2})--(\ref{eq:G-step3}). 
+By the argument given in the proof of Theorem~\ref{th:laurent-cyclic},  
+the equality $G_0=P_a$ would imply the desired Laurentness 
+(cf.~(\ref{eq:GEP3a})). 
+  
+%[address the issue of infinite number of legs]  
+  
+To simplify %explicit  
+computations, we denote the equivalence classes  
+``surrounding'' $a$, as shown below: 
+\begin{equation} 
+\label{eq:elkies-table} 
+\begin{array}{ccccccc} 
+\cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots \\ 
+\cdots & q & p & f & c & a & \cdots \\[.05in] 
+\cdots & f & c & a & e & b & \cdots \\[.05in] 
+\cdots & a & e & b & g & d& \cdots \\[.03in] 
+\cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots  
+\end{array} 
+. 
+\end{equation} 
+In other words, if $a=\left\langle(i,j)\right\rangle$, then $b=\left\langle(i,j-1)\right\rangle$, 
+$c=\left\langle(i-1,j)\right\rangle$, etc.  
+With this notation, we can redraw the pattern (\ref{eq:knight-s}) as  
+follows: 
+\vspace{-.6in} 
+\begin{equation} 
+\label{eq:elkies-6steps} 
+\bullet 
+ 
+\!\begin{array}{c} 
+\scriptstyle{a}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\bullet 
+ 
+\!\begin{array}{c} 
+\scriptstyle{g}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+\cdots\hspace{-.25in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.2in}{}_{a} \Biggl| {}_{G_{k-1}}\\ 
+\bullet\end{array} 
+ \hspace{-.25in} 
+\!\begin{array}{c} 
+\scriptstyle{f}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\hspace{-.2in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.08in}{}_{a} \Biggl| {}_{G_{k}}\\ 
+\bullet\end{array} 
+ \hspace{-.2in} 
+\!\begin{array}{c} 
+\scriptstyle{e}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+%\hspace{-.25in} 
+\bullet 
+% \hspace{-.25in} 
+ 
+\!\begin{array}{c} 
+\scriptstyle{d}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+%\hspace{-.2in} 
+%\begin{array}{c}\\[.43in] \bullet\\ \hspace{.08in}{}_{a} \Biggl| {}_{G_{k+2}}\\ 
+%\bullet\end{array} 
+%\bullet  
+% \hspace{-.2in}  
+\cdots\hspace{-.25in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.2in}{}_{a} \Biggl| {}_{G_{\ell-1}}\\ 
+\bullet\end{array} 
+ \hspace{-.25in} 
+ 
+\!\begin{array}{c} 
+\scriptstyle{c}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\hspace{-.2in} 
+\begin{array}{c}\\[.43in] \bullet\\ \hspace{.08in}{}_{a} \Biggl| {}_{G_\ell}\\ 
+\bullet\end{array} 
+ \hspace{-.2in} 
+ 
+\!\begin{array}{c} 
+\scriptstyle{b}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\bullet 
+\cdots 
+\!\begin{array}{c} 
+\scriptstyle{a}\\[-.1in] 
+-\!\!\!-\!\!\!-\\[-.1in] 
+\scriptstyle{} 
+\end{array} 
+\! 
+ 
+\bullet 
+,  
+\end{equation} 
+for appropriate values of $k$ and~$\ell$. 
+  
+  
+ 
+We will call a value of $m$ \emph{essential} if $G_{m-1}\neq G_m\,$.  
+We are going to see that the essential values of $m$ 
+%(i.e., those with $G_{m-1}\!\neq\! G_m$)  
+are those for which $a_m\in\{b,c,e,f\}$;  
+in the notation of (\ref{eq:elkies-6steps}), these values are  
+$\ell+1$, $\ell$, $k+1$, and~$k$. 
+%With this in mind, we compute (cf.\ (\ref{eq:Ph-knight})  
+%and (\ref{eq:elkies-table}):  
+% and (\ref{eq:Qm-knight})):  
+%\begin{eqnarray} 
+%\label{eq:elkies-a} 
+%P_a &=& \alpha x_b x_f + \beta x_c x_e \,, \\ 
+%\label{eq:elkies-b} 
+%P_b &=& \alpha x_a x_d + \beta x_e x_g \,, \\ 
+%\label{eq:elkies-c} 
+%P_c &=& \alpha x_e x_p + \beta x_a x_f \,, \\ 
+%\label{eq:elkies-e} 
+%P_e &=& \alpha x_c x_g + \beta x_a x_b \,, \\ 
+%\label{eq:elkies-f} 
+%P_f &=& \alpha x_a x_q + \beta x_c x_p \,.  
+%\end{eqnarray} 
+  
+We initialize $G_{N-1}=P_a=\alpha x_b x_f + \beta x_c x_e\,$.  
+The values of $m$ in the interval $\ell<m<N$ are not essential since  
+the variable $x_{a_m}$ does not enter $P_a$, which is furthermore  
+not divisible by~$Q_m$ (because the latter involves variables absent  
+in~$P_a$). 
+  
+The first essential value is $m=\ell+1$, with $a_m=b$:  
+\[  
+\begin{array}{l}  
+Q_{\ell+1}=P_b|_{x_a\leftarrow 0}  
+=(\alpha x_a x_d + \beta x_e x_g)|_{x_a\leftarrow 0}  
+=\beta x_e x_g\,,\\[.1in]  
+\stackrel{\sim}{G}_\ell 
+= P_a\bigl|_{x_b\leftarrow \frac{Q_{\ell+1}}{x_b}} 
+=\alpha \frac{\beta x_e x_g}{x_b} x_f + \beta x_c x_e\,,  
+\\[.1in]  
+{G}_\ell = \alpha x_g x_f + x_b x_c\,. 
+\end{array}  
+\] 
+  
+Step $m=\ell$ (here $a_m=c$):  
+\[  
+\begin{array}{l}  
+Q_\ell=P_c|_{x_a\leftarrow 0}=(\alpha x_e x_p + \beta x_a x_f)|_{x_a\leftarrow 0}=  
+\alpha x_e x_p \,,\\[.1in]  
+\stackrel{\sim}{G}_{\ell-1}  
+=G_\ell \bigl|_{x_c\leftarrow \frac{Q_\ell}{x_c}} 
+=\alpha x_g x_f + x_b \frac{\alpha x_e x_p}{x_c} \,,\\[.1in]  
+{G}_{\ell-1}=x_c x_g x_f + x_b x_e x_p \,. 
+\end{array}  
+\] 
+Notice that ${G}_{\ell-1}$ does not involve $x_d$, so 
+the value $m=k+2$ is not essential, as are the rest of the values in the interval  
+$k+1<m<\ell$. 
+  
+Step $m=k+1$, with $a_m=e$:  
+\[  
+\begin{array}{l}  
+Q_{k+1}=P_e|_{x_a\leftarrow 0}  
+=(\alpha x_c x_g + \beta x_a x_b)|_{x_a\leftarrow 0}=\alpha x_c  
+x_g\,,\\[.1in]  
+\stackrel{\sim}{G}_k  
+%=G_{k+1}\bigl|_{x_e\leftarrow \frac{Q_0}{x_e}} 
+=x_c x_g x_f + x_b x_p \frac{\alpha x_c x_g}{x_e}\,, \\[.1in]  
+{G}_k=x_f x_e + \alpha x_b x_p\,. 
+\end{array}  
+\] 
+  
+Step $m=k$, with $a_m=f$:  
+\[  
+\begin{array}{l}  
+Q_k=P_f|_{x_a\leftarrow 0}=(\alpha x_a x_q + \beta x_c  
+x_p)|_{x_a\leftarrow 0}=\beta x_c x_p \,,\\[.1in]  
+\stackrel{\sim}{G}_{k-1}  
+=\frac{\beta x_c x_p}{x_f} x_e + \alpha x_b x_p\,, \\[.1in]  
+{G}_{k-1}=\beta x_c x_e + \alpha x_b x_f\,. 
+\end{array}  
+\] 
+The values of $m$ in the interval $0<m<k$ are not essential  
+since none of the corresponding variables $x_{a_m}$ appears in 
+${G}_{k-1}$; in particular, $m=1$ is not essential,  
+since ${G}_{k-1}$ does not involve~$x_g\,$. 
+Hence 
+\[  
+G_0={G}_{k-1}=\beta x_c x_e + \alpha x_b x_f=P_a\,,  
+\]  
+as desired. The Laurentness is proved.  
+ 
+ 
+\begin{remark} 
+\label{remark:initial-conditions}
+{\rm  
+The Laurent phenomenon for the recurrence (\ref{eq:elkies}) 
+actually holds in greater generality. 
+Specifically, one can replace $\mathcal{H}$ by any subset 
+of $\mathbb{Z}^2$  
+which satisfies the following analogues of conditions
+(\ref{eq:cube-h1})--(\ref{eq:cube-h2}) and (\ref{eq:oct-h1})--(\ref{eq:oct-h2}): 
+\begin{eqnarray} 
+\label{eq:h-axiom1} 
+&&\text{if $h\in\mathcal{H}$, then $h'\in\mathcal{H}$ 
+whenever $h\leq h'$;} 
+\\ 
+\label{eq:h-axiom2} 
+&&\text{for any $h'\in\mathcal{H}$, the set 
+$\{h\in\mathcal{H}:h\leq h'\}$ is finite.} \hspace{1.3in}
+\end{eqnarray}  
+Then take %$H_{\rm init}$ by the set  
+$
+H_{\rm init} =\{h\in\mathcal{H}\,:\,h^-\notin\mathcal{H}\}$.  
+
+The proof of Laurentness only needs one adjustment,
+concerning the choice of a linear extension~$\prec\,$.
+Specifically, while proving that $y_h$ is given by a Laurent polynomial,
+take a finite set $\mathcal{H}^{(h)}\subset \mathcal{H}$ 
+containing $h$ and satisfying the conditions
+\begin{eqnarray} 
+&&\text{if $h'\in\mathcal{H}^{(h)}$, then $h''\in\mathcal{H}^{(h)}$ 
+whenever $h''\leq h'$ and $h''\in\mathcal{H}$;} 
+\\ 
+&&\text{for any $h'\in\mathcal{H}$ such that $h'\leq h$, there
+exists $h''\in\mathcal{H}^{(h)}$ such that}\\
+\nonumber
+&&\text{$h''\geq h$ and $h''\sim h$.}
+\end{eqnarray} 
+(The existence of $\mathcal{H}^{(h)}$ follows from
+(\ref{eq:h-axiom1})--(\ref{eq:h-axiom2}).) 
+Then define $\preceq$ exactly as before on the set 
+$\mathcal{H}^{(h)}$;
+set $h'\prec h''$ for any $h'\in \mathcal{H}^{(h)}$
+and $h''\in \mathcal{H}-\mathcal{H}^{(h)}$;
+and define $\preceq$ on the complement $\mathcal{H}-\mathcal{H}^{(h)}$ 
+by an arbitrary linear extension of~$\leq$. 
+These conditions ensure that the sets $H_m$ needed in the proof of
+Laurentness of the given $y_h$ are well defined,
+and that the rest of the proof proceeds smoothly. 
+%The rest of the examples in this section can also be generalized in this 
+%fashion.  
+} 
+\end{remark} 
+
+Armed with the techniques developed above in this section,
+we will now prove the main theorems stated in the introduction. 
+
+\medskip
+ 
+\noindent
+\textbf{Proof of Theorem~\ref{th:kleber}.}
+Our argument is parallel to that in Example~\ref{example:elkies}, 
+so we skip the steps which are identical in both proofs.  
+For simplicity of exposition, we present the proof in the special case
+$\mathcal{H}=\mathbb{Z}_{\geq 0}^3$;
+the case of general $\mathcal{H}$ requires the same adjustments
+as those described in Remark~\ref{remark:initial-conditions}. 
+ 
+We define the product partial order $\leq$ and a compatible linear 
+order $\preceq$ on $\mathcal{H}$ by  
+\begin{eqnarray*} 
+(i_1,j_1,k_1)\leq (i_2,j_2,k_2)  
+&\!\stackrel{\rm def}{\Leftrightarrow}\!& 
+(i_1\leq i_2)\text{~and~} (j_1\leq j_2)\text{~and~} (k_1\leq k_2),\\ 
+(i_1,j_1,k_1)\preceq (i_2,j_2,k_2) &\!\stackrel{\rm def}{\Leftrightarrow}\!& 
+(i_1+j_1+k_1<i_2+j_2+k_2)\\ 
+&&\text{~or~}  
+(i_1+j_1+k_1= i_2+j_2+k_2 \text{~and~} i_1+j_1< i_2+j_2)\\ 
+&&\text{~or~}  
+(i_1+j_1= i_2+j_2 \text{~and~} k_1=k_2 \text{~and~} i_1\leq i_2).  
+\end{eqnarray*} 
+For $h=(i,j,k)$, we set $h^-=(i-1,j-1,k-1)$; thus,  
+the exchange relation (\ref{eq:cube-frac})  
+expresses the product $y_h\cdot y_{h^-}$ as a polynomial in the 
+variables $y_{h'}\,$, for $h^-< h'< h$. 
+ 
+All the steps in Example~\ref{example:elkies} leading to the creation of the  
+infinite exchange pattern (\ref{eq:knight-spine})  
+are repeated verbatim.  
+Instead of (\ref{eq:Ph-knight}), the exchange polynomials  
+$P_{\left\langleh\right\rangle}$ along the spine are now given by 
+\[ 
+\begin{array}{l} 
+\!\!P_{\left\langle(i,j,k)\right\rangle}\\[.1in] 
+\!\!=\alpha x_{\left\langle(i-1,j,k)\right\rangle}x_{\left\langle(i,j-1,k-1)\right\rangle} 
+\!+\!\beta x_{\left\langle(i,j-1,k)\right\rangle}x_{\left\langle(i-1,j,k-1)\right\rangle} 
+\!+\!\gamma x_{\left\langle(i,j,k-1)\right\rangle}x_{\left\langle(i-1,j-1,k)\right\rangle}. 
+\end{array} 
+\] 
+%Referring to Figure~\ref{fig:kleber-classes} and assuming 
+%$[(i,j,k)]=r$,  
+%this would give, for example, 
+%\[ 
+%P_r=x_g x_s + x_m x_q + x_v x_l\,.  
+%\] 
+%The rest of the argument follows the footsteps of Example~\ref{example:elkies}.  
+The role of (\ref{eq:elkies-table}) is now played by
+Figure~\ref{fig:kleber-classes}, 
+which shows the ``vicinity'' of an equivalence class~$a$.
+This figure displays the orthogonal projection of $\mathcal{H}$ along 
+the vector $(1,1,1)$. 
+Thus the vertices represent equivalence classes in 
+$\mathcal{H}/\!\!\sim\,$. 
+For example, if $a=\left\langle(i,j,k)\right\rangle$, then 
+\begin{equation*} 
+\begin{array}{lll} 
+b=\left\langle(i,j,k-1)\right\rangle, &c=\left\langle(i,j-1,k)\right\rangle, &d=\left\langle(i-1,j,k)\right\rangle,\\[.1in] 
+e=\left\langle(i,j-1,k-1)\right\rangle, &f=\left\langle(i-1,j,k-1)\right\rangle, &g=\left\langle(i-1,j-1,k)\right\rangle.  
+\end{array} 
+\end{equation*} 
+With this notation, we have:  
+\[ 
+P_a=\alpha x_d x_e + \beta x_c x_f + \gamma x_b x_g\,.  
+\] 
+ 
+\begin{figure}[ht] 
+\setlength{\unitlength}{4pt} 
+ 
+\centering 
+\begin{picture}(40,45)(0,-4) 
+%\thicklines 
+%\setlength{\linewidth}{3pt} 
+\multiput(0,30)(10,5){3}{\circle*{1}} 
+\multiput(0,20)(10,5){4}{\circle*{1}} 
+\multiput(0,10)(10,5){5}{\circle*{1}} 
+\multiput(10,5)(10,5){4}{\circle*{1}} 
+\multiput(20,0)(10,5){3}{\circle*{1}} 
+ 
+\put(0,30){\line(2,1){20}} 
+\put(0,20){\line(2,1){30}} 
+\put(0,10){\line(2,1){40}} 
+\put(10,5){\line(2,1){30}} 
+\put(20,0){\line(2,1){20}} 
+\put(10,5){\line(2,1){10}} 
+\put(30,5){\line(2,1){10}} 
+ 
+\put(0,10){\line(0,1){20}} 
+\put(10,5){\line(0,1){30}} 
+\put(20,0){\line(0,1){40}} 
+\put(30,5){\line(0,1){30}} 
+\put(40,10){\line(0,1){20}} 
+ 
+\put(0,10){\line(2,-1){20}} 
+\put(0,20){\line(2,-1){30}} 
+\put(0,30){\line(2,-1){40}} 
+\put(10,35){\line(2,-1){30}} 
+\put(20,40){\line(2,-1){20}} 
+ 
+\put(40,30){\vector(2,1){5}} 
+\put(0,30){\vector(-2,1){5}} 
+\put(20,0){\vector(0,-1){5}} 
+ 
+\put(-2,29){\makebox(0,0){}} 
+\put(-2,20){\makebox(0,0){$v$}} 
+\put(-2,10){\makebox(0,0){}} 
+\put(8,36){\makebox(0,0){$u$}} 
+\put(7,25){\makebox(0,0){$d$}} 
+\put(7,15){\makebox(0,0){$f$}} 
+\put(8,4){\makebox(0,0){$p$}} 
+\put(20,42){\makebox(0,0){}} 
+\put(17,30){\makebox(0,0){$g$}} 
+\put(23,20){\makebox(0,0){$a$}} 
+\put(17,10){\makebox(0,0){$b$}} 
+\put(18,-1){\makebox(0,0){}} 
+\put(32,36){\makebox(0,0){$s$}} 
+\put(33,25){\makebox(0,0){$c$}} 
+\put(33,15){\makebox(0,0){$e$}} 
+\put(32,4){\makebox(0,0){$q$}} 
+\put(42,29){\makebox(0,0){}} 
+\put(42,20){\makebox(0,0){$r$}} 
+\put(42,10){\makebox(0,0){}} 
+ 
+\put(-8,34){\makebox(0,0){$\boxed{\scriptstyle 1}$}} 
+\put(48,34){\makebox(0,0){$\boxed{\scriptstyle 2}$}} 
+\put(23,-4){\makebox(0,0){$\boxed{\scriptstyle 3}$}} 
+ 
+\end{picture} 
+ 
+\caption{The cube recurrence} 
+\label{fig:kleber-classes} 
+\end{figure} 
+ 
+With the polynomials $G_1,G_2,\dots$ defined as in 
+(\ref{eq:knight-s}),  
+the essential values of $m$ are now those for which 
+$a_m\in\{b,c,d,e,f,g\}$.  
+(The verification that the rest of the values are not essential is 
+left to the reader.)  
+We denote these values by $m_1,\dots,m_6\,$, respectively.  
+ 
+The computation of the polynomials $G_m$ begins by initializing 
+\[ 
+G_{N-1}=P_a=\alpha x_d x_e + \beta x_c x_f + \gamma x_b x_g\,. 
+\] 
+Step $m=m_1$, $a_m=b$: 
+\[ 
+\begin{array}{rl} 
+Q_{m_1}=&\!\!\!P_{b}|_{x_a\leftarrow 0} 
+=\alpha x_f x_q + \beta x_e x_p\,; 
+\\[.09in] 
+\stackrel{\sim}{G}_{m_1-1}=&\!\!\!G_{m_1}\bigl|_{x_{b}\leftarrow 
+ \frac{Q_{m_1}}{b}} 
+=\alpha x_d x_e + \beta x_c x_f + \gamma \frac{\alpha x_f x_q + \beta x_e x_p}{x_b} x_g 
+ \,; 
+\\[.09in] 
+G_{m_1-1}=&\!\!\! 
+\alpha x_b x_d x_e + \beta x_b x_c x_f  
++ \alpha \gamma x_f x_g x_q + \beta \gamma x_e x_g x_p \,. 
+\end{array} 
+\] 
+Step $m=m_2$, $a_m=c$: 
+\[ 
+\begin{array}{rl} 
+Q_{m_2}=&\!\!\!P_c|_{x_a\leftarrow 0} 
+= \alpha x_g x_r + \gamma x_e x_s;\\[.09in] 
+\stackrel{\sim}{G}_{m_2-1}=&\!\!\! 
+\alpha x_b x_d x_e + \beta x_b \frac{\alpha x_g x_r + \gamma x_e x_s}{x_c} x_f  
++ \alpha \gamma x_f x_g x_q + \beta \gamma x_e x_g x_p 
+\,;  
+\\[.09in] 
+G_{m_2-1}=&\!\!\! 
+\alpha x_b x_c x_d x_e  
+\!+\! \alpha \beta x_b x_f x_g x_r \!+\! \beta \gamma x_b x_e x_f x_s 
+\!+\! \alpha \gamma x_c x_f x_g x_q \!+\! \beta \gamma x_c x_e x_g x_p 
+\,.  
+\end{array} 
+\] 
+Step $m=m_3$, $a_m=d$: 
+\[ 
+\begin{array}{rl} 
+Q_{m_3}=&\!\!\!P_d|_{x_a\leftarrow 0} 
+= \beta x_g x_v + \gamma x_f x_u\,; 
+\\[.09in] 
+\stackrel{\sim}{G}_{m_3-1}=&\!\!\! 
+\alpha x_b x_c \frac{\beta x_g x_v + \gamma x_f x_u}{x_d} x_e \\[.09in] 
+& 
++ \alpha \beta x_b x_f x_g x_r + \beta \gamma x_b x_e x_f x_s 
++ \alpha \gamma x_c x_f x_g x_q + \beta \gamma x_c x_e x_g x_p 
+\,; 
+\\[.09in] 
+G_{m_3-1}=&\!\!\! 
+ \alpha \beta x_b x_c x_e x_g x_v + \alpha \gamma x_b x_c x_e x_f x_u 
++ \beta \gamma x_b x_d x_e x_f x_s + \beta \gamma x_c x_d x_e x_g x_p \\[.09in] 
+& 
++ \alpha \beta x_b x_d x_f x_g x_r + \alpha \gamma x_c x_d x_f x_g x_q  
+\,. 
+\end{array} 
+\] 
+Step $m=m_4$, $a_m=e$: 
+\[ 
+\begin{array}{rl} 
+Q_{m_4}=&\!\!\!P_e|_{x_a\leftarrow 0} 
+= \beta x_b x_r + \gamma x_c x_q\,; 
+\\[.09in] 
+\stackrel{\sim}{G}_{m_4-1}=&\!\!\! 
+ \frac{Q_{m_4}}{x_e}(\alpha \beta x_b x_c x_g 
+ x_v + \alpha \gamma x_b x_c x_f x_u + \beta \gamma x_b x_d x_f x_s + 
+\beta \gamma x_c x_d x_g x_p) \\[.09in]  
+& 
++ \alpha x_d x_f x_g Q_{m_4} 
+\,;  
+\\[.09in] 
+G_{m_4-1}=&\!\!\! 
+\alpha \gamma x_b x_c x_f x_u + \beta \gamma x_b x_d x_f x_s  
++ \alpha x_d x_e x_f x_g \\[.09in] 
+& 
++\alpha \beta x_b x_c x_g x_v + \beta \gamma x_c x_d x_g x_p  
+\,. 
+\end{array} 
+\] 
+Step $m=m_5$, $a_m=f$: 
+\[ 
+\begin{array}{rl} 
+Q_{m_5}=&\!\!\!P_f|_{x_a\leftarrow 0} 
+= \alpha x_b x_v + \gamma x_d x_p \,; 
+\\[.09in] 
+\stackrel{\sim}{G}_{m_5-1}=&\!\!\! 
+\frac{Q_{m_5}}{x_f} 
+(\alpha \gamma x_b x_c x_u + \beta \gamma x_b x_d x_s  
++ \alpha x_d x_e x_g) +\beta x_c x_g Q_{m_5} 
+\,; 
+\\[.09in] 
+G_{m_5-1}=&\!\!\! 
+ \alpha x_d x_e x_g +\beta x_c x_f x_g  
++\alpha \gamma x_b x_c x_u + \beta \gamma x_b x_d x_s  
+\,. 
+\end{array} 
+\] 
+Step $m=m_6$, $a_m=g$: 
+\[ 
+\begin{array}{rl} 
+Q_{m_6}=&\!\!\!P_g|_{x_a\leftarrow 0} 
+= \alpha x_c x_u + \beta x_d x_s \,;  
+\\[.09in] 
+\stackrel{\sim}{G}_{m_6-1}=&\!\!\! 
+\frac{Q_{m_6}}{x_g}(\alpha x_d x_e +\beta x_c x_f)  
++\gamma x_b Q_{m_6} 
+\,; 
+\\[.09in] 
+G_{m_6-1}=&\!\!\! 
+\alpha x_d x_e +\beta x_c x_f +\gamma x_b x_g  
+=P_a 
+\,,  
+\end{array} 
+\] 
+%proving Theorem~\ref{th:kleber}.  
+completing the proof. 
+\hfill$\square$\medskip
+ 
+We will now deduce the Gale-Robinson conjecture from 
+Theorem~\ref{th:kleber}. 
+ 
+\medskip 
+ 
+\noindent 
+\textbf{Proof of Theorem~\ref{th:gale-robinson}.} 
+To prove the Laurentness of a given element $y_N$ of the Gale-Robinson
+sequence $(y_m)$, we define the array 
+$(z_{ijk})_{(i,j,k)\in\mathcal{H}}$ by setting
+$z_{ijk}=y_{N+pi+qj+rk}\,$,
+with the indexing set 
+\[
+\mathcal{H}=\mathcal{H}(N)=\{(i,j,k)\in\mathbb{Z}^3\,:\,N+pi+qj+rk\geq 0
+\}\,.
+\]
+Then (\ref{eq:gale-robinson}) implies 
+that the $z_{ijk}$ satisfy the cube recurrence (\ref{eq:cube-frac}).
+Note that $\mathcal{H}$ satisfies the conditions 
+(\ref{eq:cube-h1})--(\ref{eq:cube-h2}).
+Thus Theorem~\ref{th:kleber} applies to $(z_{ijk})$, with  
+%and the corresponding initial set $H_{\rm init}$ is given by
+$H_{\rm init}=\{(a,b,c)\in\mathbb{Z}^3: 0\leq N+pa+qb+rc<n \}$.
+It remains to note that $y_N=z_{000}\,$, 
+while for any $(a,b,c)\in H_{\rm init}\,$,
+we have $z_{abc}=y_m$ with $0\leq m<n$.
+\hfill$\square$\medskip 
+
+ 
+\medskip 
+ 
+\noindent 
+\textbf{Proof of Theorem~\ref{th:oct}.} 
+This theorem is proved by the same argument as
+Theorem~\ref{th:kleber}. 
+We treat the Mills-Robbins-Rumsey special case
+(\ref{eq:half-lattice-mod2}) (cf.\ also (\ref{eq:lattice-mod2})); 
+similarly to Theorem~\ref{th:kleber}, 
+the case of general $\mathcal{H}$ requires the standard adjustments
+described in Remark~\ref{remark:initial-conditions}. 
+We use the partial order on the lattice $L$ defined by
+\[
+(i,j,k)\leq (i',j',k') \,:\, 
+|i'-i|+|j'-j|\leq k'-k\,.
+\] 
+For $h=(i,j,k)\in L$, we set $h^-=(i,j,k-2)$,
+and define the equivalence relation~$\sim$ accordingly. 
+Figure~\ref{fig:octahedral} shows equivalence classes ``surrounding'' a given 
+class~$a$ (cf.\ Figure~\ref{fig:kleber-classes}).   
+
+
+\begin{figure}[ht]  
+\setlength{\unitlength}{6pt}  
+  
+\centering  
+\begin{picture}(20,11)(0,0)  
+%\thicklines  
+%\setlength{\linewidth}{3pt}  
+  
+\put(5,0){\circle*{0.7}}  
+\put(10,0){\circle{0.7}}  
+\put(15,0){\circle*{0.7}}  
+\put(5,5){\circle{0.7}}  
+\put(10,5){\circle*{0.7}}  
+\put(15,5){\circle{0.7}}  
+\put(5,10){\circle*{0.7}}  
+\put(10,10){\circle{0.7}}  
+\put(15,10){\circle*{0.7}}  
+  
+\put(5,0){\line(1,0){10}}  
+\put(5,5){\line(1,0){10}}  
+\put(5,10){\line(1,0){10}}  
+\put(5,0){\line(0,1){10}}  
+\put(10,0){\line(0,1){10}}  
+\put(15,0){\line(0,1){10}}  
+  
+\put(0,5){\vector(0,1){3}}  
+\put(20,3){\vector(1,0){3}}  
+  
+\put(6,6){\makebox(0,0){$d$}}  
+\put(11,6){\makebox(0,0){$a$}}  
+\put(16,6){\makebox(0,0){$c$}}  
+\put(11,1){\makebox(0,0){$e$}}  
+\put(6,11){\makebox(0,0){$p$}}  
+\put(11,11){\makebox(0,0){$b$}}  
+\put(16,11){\makebox(0,0){$q$}}  
+\put(6,1){\makebox(0,0){$s$}}  
+\put(16,1){\makebox(0,0){$r$}}  
+  
+\put(-1,7){\makebox(0,0){$j$}}  
+\put(22,4){\makebox(0,0){$i$}}  
+  
+\end{picture}  
+  
+\caption{}  
+\label{fig:octahedral}  
+\end{figure}  
+  
+The initialization polynomial $G_{N-1}=P_a$
+is given by  $P_a=\alpha x_c x_d + \beta x_b x_e\,$. 
+The table below displays $a_m$, $Q_m$, $\stackrel{\sim}{G}_{m-1}$, 
+and $G_{m-1}$ for all essential values of~$m$.  
+
+\[  
+\begin{array}{cccc}  
+a_m & Q_m &\stackrel{\sim}{G}_{m-1} & G_{m-1} \\[.1in] 
+\hline\\ 
+b & \alpha x_p x_q & \alpha x_c x_d +\alpha \beta \frac{x_p x_q}{x_b} x_e  
+& x_b x_c x_d + \beta x_e x_p x_q 
+\\[.1in]  
+c & \beta x_q x_r & \beta \frac{x_q x_r}{x_c} x_b x_d + \beta x_e x_p x_q 
+& x_b x_d x_r + x_c x_e x_p  
+\\[.1in]  
+d & \beta x_p x_s & \beta \frac{x_p x_s}{x_d} x_b x_r + x_c x_e x_p 
+& \beta x_b x_r x_s + x_c x_d x_e  
+\\[.1in]  
+e & \alpha x_r x_s & \beta x_b x_r x_s + \alpha \frac{x_r x_s}{x_e} x_c x_d  
+& \beta x_b x_e + \alpha x_c x_d %= P_a
+\end{array}  
+\]  
+We see that $G_0=G_{e-1}=P_a\,$, completing the proof.
+\hfill$\square$\medskip
+
+ 
+\medskip 
+ 
+\noindent 
+\textbf{Proof of Theorem~\ref{th:two-term-gale-robinson}.} 
+The proof mimics the above proof of Theorem~\ref{th:gale-robinson}.
+To prove the Laurentness of an element $y_N$ of the 
+sequence $(y_m)$ satisfying (\ref{eq:gale-robinson-two-term}), we
+define the array 
+$(z_{ijk})_{(i,j,k)\in\mathcal{H}}$ by setting
+$z_{ijk}=y_{N+\ell(i,j,k)}\,$,
+where $\ell(i,j,k)=n\frac{i+j+k}{2}-pi-qj$. 
+The indexing set $\mathcal{H}$ is now given by 
+\[
+\mathcal{H}=\mathcal{H}(N)=\{(i,j,k)\in\mathbb{Z}^3\,:\,N+\ell(i,j,k)\geq 0
+\}\,.
+\]
+Then (\ref{eq:gale-robinson-two-term}) implies 
+that the $z_{ijk}$ satisfy the octahedron recurrence (\ref{eq:oct}).
+It is easy to check that $\mathcal{H}$ satisfies the conditions 
+(\ref{eq:oct-h1})--(\ref{eq:oct-h2}).
+Thus Theorem~\ref{th:oct} applies to $(z_{ijk})$, with  
+%and the corresponding initial set $H_{\rm init}$ is given by
+$H_{\rm init}=\{(a,b,c)\in L\,:\, 0\leq N+\ell(a,b,c)<n \}$,
+and the theorem follows.
+\hfill$\square$\medskip 
+
+  
+We conclude this section by a couple of examples
+in which the Laurent phenomenon is established by the same technique
+as above.  
+In each case, we provide: 
+\begin{itemize} 
+\item  
+a picture of the equivalence classes ``surrounding'' a given 
+class~$a$, 
+which plays the role of (\ref{eq:elkies-table}) in 
+Example~\ref{example:elkies};  
+\item 
+the initialization polynomial $G_{N-1}=P_a$; 
+\item 
+a table showing $a_m$, $Q_m$, $\stackrel{\sim}{G}_{m-1}$, 
+and $G_{m-1}$ for all essential values of~$m$.  
+\end{itemize} 
+ 
+\begin{example}  
+\label{example:frieze-patterns}  
+ (Frieze patterns)  
+{\rm 
+The generalized frieze pattern recurrence 
+(cf., e.g., \cite{conway-coxeter, ec2}) is  
+\begin{equation}  
+y_{ij} y_{i-1,j-1}  
+= \varepsilon\, y_{i,j-1} y_{i-1,j} + \beta\,, 
+\end{equation}  
+where $\varepsilon\in\{1,-1\}$.  
+To prove Laurentness (over $\mathbb{Z}[\beta]$),  
+refer to Figure~\ref{fig:frieze}. 
+Then $P_a=\varepsilon\,x_b\, x_c +\beta$, and the essential steps are:  
+\[  
+\begin{array}{cccc}  
+a_m & Q_m &\stackrel{\sim}{G}_{m-1} & G_{m-1} \\[.1in] 
+\hline\\ 
+b & \beta & \frac{\varepsilon\,\beta\, x_c}{x_b} + \beta  
+&  
+\varepsilon\,x_c + x_b  
+\\[.1in]  
+c & \beta  
+&  
+\frac{\varepsilon\,\beta}{x_c}+ x_b  
+&  
+\beta+\varepsilon^{-1} x_b \,x_c %=P_a\,. 
+\end{array}  
+\]  
+  
+\begin{figure}[ht]  
+\setlength{\unitlength}{4pt}  
+  
+\centering  
+\begin{picture}(20,12)(0,0)  
+%\thicklines  
+%\setlength{\linewidth}{3pt}  
+  
+\put(10,0){\circle*{1}}  
+\put(5,5){\circle*{1}}  
+\put(15,5){\circle*{1}}  
+\put(10,10){\circle*{1}}  
+  
+\put(5,5){\line(1,1){5}}  
+\put(15,5){\line(-1,1){5}}  
+  
+\put(10,0){\vector(-1,1){10}}  
+\put(10,0){\vector(1,1){10}}  
+  
+\put(7,5){\makebox(0,0){$c$}}  
+\put(17,5){\makebox(0,0){$b$}}  
+\put(12,0){\makebox(0,0){$a$}}  
+\put(12,10){\makebox(0,0){$a$}}  
+  
+\put(-1,9){\makebox(0,0){$i$}}  
+\put(21,9){\makebox(0,0){$j$}}  
+  
+\end{picture}  
+  
+\caption{}  
+\label{fig:frieze}  
+\end{figure}  
+}  
+\end{example}  
+  
+\begin{example}  
+\label{example:number-walls}  
+ (Number walls)  
+{\rm  
+Consider the 2-dimensional recurrence  
+\begin{equation}  
+\label{eq:number-walls} 
+y_{ij}y_{i,j-2}  
+=y_{i-1,j-1}^p y_{i+1,j-1}^r + y_{i,j-1}^q\,,  
+\end{equation}  
+where $p$, $q$, and $r$ are nonnegative integers. 
+To prove Laurentness,  
+refer to Figure~\ref{fig:number-wall}. 
+Then $P_a=x_d^p x_b^r + x_c^q$, 
+and the essential steps are:  
+\[  
+\begin{array}{cccc}  
+a_m & Q_m &\stackrel{\sim}{G}_{m-1} & G_{m-1} \\[.1in] 
+\hline\\ 
+b &  
+x_f^q  
+&  
+x_d^p \bigl(\frac{x_f^q}{x_b}\bigr)^r + x_c^q  
+&  
+x_d^p x_f^{qr} +x_c^q x_b^r  
+\\[.1in]  
+c & x_g^p x_f^r  
+&  
+x_d^p x_f^{qr} 
++\bigl(\frac{x_g^p x_f^r}{x_c}\bigr)^q x_b^r  
+&  
+x_d^p x_c^q +x_g^{pq} x_b^r  
+\\[.1in]  
+d & x_g^q  
+&  
+\bigl(\frac{x_g^q}{x_d}\bigr)^p x_c^q +x_g^{pq} x_b^r  
+&  
+x_c^q +x_b^r x_d^p  
+\end{array}  
+\]  
+  
+\begin{figure}[ht]  
+\setlength{\unitlength}{6pt}  
+  
+\centering  
+\begin{picture}(20,11)(0,0)  
+%\thicklines  
+%\setlength{\linewidth}{3pt}  
+  
+\put(5,0){\circle*{0.7}}  
+\put(10,0){\circle*{0.7}}  
+\put(15,0){\circle*{0.7}}  
+\put(5,5){\circle*{0.7}}  
+\put(10,5){\circle*{0.7}}  
+\put(15,5){\circle*{0.7}}  
+\put(10,10){\circle*{0.7}}  
+  
+\put(5,0){\line(1,0){10}}  
+\put(5,5){\line(1,0){10}}  
+\put(5,0){\line(0,1){5}}  
+\put(10,0){\line(0,1){10}}  
+\put(15,0){\line(0,1){5}}  
+  
+\put(0,5){\vector(0,1){3}}  
+\put(20,3){\vector(1,0){3}}  
+  
+\put(6,6){\makebox(0,0){$d$}}  
+\put(11,6){\makebox(0,0){$c$}}  
+\put(16,6){\makebox(0,0){$b$}}  
+\put(11,1){\makebox(0,0){$a$}}  
+\put(11,10){\makebox(0,0){$a$}}  
+\put(6,1){\makebox(0,0){$g$}}  
+\put(16,1){\makebox(0,0){$f$}}  
+  
+\put(-1,7){\makebox(0,0){$j$}}  
+\put(22,4){\makebox(0,0){$i$}}  
+  
+\end{picture}  
+  
+\caption{}  
+\label{fig:number-wall}  
+\end{figure}  
+}  
+\end{example}  
+ 
+\begin{remark} 
+{\rm 
+As pointed out by J.~Propp, the Laurent phenomenon for certain 
+special cases of Examples~\ref{example:frieze-patterns} 
+and~\ref{example:number-walls} can be obtained by specialization 
+of Example~\ref{example:octahedral}. 
+} 
+\end{remark}
+
+
+--- 3/20 (sim=0.582) cohl_rogers_generating_function/chunk_042.tex ---
+Summary: Derives the Laguerre expansion of x^{-ν} as a further specialization via the Jacobi→Laguerre limit β→∞, extending the (1-x)^{-ν} family to the half-line setting and generalizing DLMF 18.18.19.
+
+% Paper: cohl_rogers_generating_function
+% Section: The continuous $q$-ultraspherical/Rogers polynomials > Expansions of $(1-x)^{-\nu
+
+[Summary: Derives the Laguerre expansion of x^{-ν} as a further specialization via the Jacobi→Laguerre limit β→∞, extending the (1-x)^{-ν} family to the half-line setting and generalizing DLMF 18.18.19.]
+
+\begin{cor}
+Let $x\in(0,\infty)$, $\alpha>-1$, $\nu\in{\mathbb C}$ such that $\Re(\alpha+1-\nu)>0$.
+Then
+\begin{equation}
+\frac{1}{x^\nu}
+=\Gamma(\alpha+1-\nu)
+\sum_{n=0}^\infty
+\frac{
+(\nu)_n}
+{\Gamma(\alpha+1+n)}
+L_n^\alpha(x).
+\label{sum1mncLag}
+\end{equation}
+\end{cor}
+\begin{proof}
+Specializing (\ref{Jacobi1mnux}) using the limit relation for Laguerre polynomials $L_n^\alpha(x)$
+with Gegenbauer polynomials, namely \cite[(9.8.16)]{Koekoeketal}
+\[
+\lim_{\beta\to\infty}P_n^{(\alpha,\beta)}\left(1-\frac{2x}{\beta}\right)=L_n^\alpha(x),
+\]
+which completes the proof.
+\end{proof}
+
+
+--- 4/20 (sim=0.576) betea_wheeler_cauchy_littlewood_asm/chunk_041.tex ---
+Summary: Derives a rectangular (m×n, m<n) specialization of Theorem 2 by setting x_{m+1}=⋯=x_n=0, obtaining a HL sum equal to the partial domain wall partition function (pDWPF) — the six-vertex model on a non-square lattice.
+
+% Paper: betea_wheeler_cauchy_littlewood_asm
+% Section: Refined Cauchy identities and alternating sign matrices > Partition functions on rectangular domains
+
+[Summary: Derives a rectangular (m×n, m<n) specialization of Theorem 2 by setting x_{m+1}=⋯=x_n=0, obtaining a HL sum equal to the partial domain wall partition function (pDWPF) — the six-vertex model on a non-square lattice.]
+
+Up until now, we restricted our attention to the case where the cardinalities of the sets 
+$\{x_1,\dots,x_n\}$ and $\{y_1,\dots,y_n\}$ in (\ref{knw-id}) are equal. Clearly we are at liberty to take a subset of either of these to be zero, choosing for example $x_{m+1} = \cdots = x_n = 0$, for some $m<n$. Due to the stability property $P_{\lambda}(x_1,\dots,x_{n-1},0;t) = P_{\lambda}(x_1,\dots,x_{n-1};t)$ of 
+Hall--Littlewood polynomials, taking this limit transforms the left hand side of (\ref{knw-id}) to the case of unequal cardinalities. To calculate the resulting right hand side, we observe that the Izergin determinant may be written in the following form:
+%
+\begin{align}
+\label{row-op-det}
+\det\left[
+\frac{(1-t)}{(1-x_i y_j)(1-tx_i y_j)}
+\right]_{1\leqslant i,j \leqslant n}
+=
+\prod_{m+1 \leqslant i<j \leqslant n} (x_i - x_j)
+\det\Big[
+\mathcal{A}_{i,j}
+\Big]_{1\leqslant i,j \leqslant n},
+\end{align}
+%
+where the entries of the final determinant are given by
+%
+\begin{align*}
+\mathcal{A}_{i,j}
+=
+\left\{
+\begin{array}{ll}
+\mathcal{A}_{i,j}(x_i;y_j)
+=
+\displaystyle{
+\frac{(1-t)}{(1-x_i y_j)(1-t x_i y_j)}
+},
+\quad
+&  
+1 \leqslant i \leqslant m,
+\\ \\ 
+\mathcal{A}_{i,j}(x_i,\dots,x_n;y_j)
+=
+\displaystyle{\sum_{k=0}^{\infty}}
+(1-t^{k+1})h_{k+i-n}(x_i,\dots,x_n) y_j^k,
+\quad
+& 
+m+1 \leqslant i \leqslant n,
+\end{array}
+\right.
+\end{align*}
+%
+with $h_{k+i-n}(x_i,\dots,x_n)$ denoting a complete symmetric function (see Section 2, Chapter I of \cite{mac}). The derivation of (\ref{row-op-det}) is by expanding the entries of the original determinant as formal power series, and using row operations in conjunction with the identity
+%
+\begin{align*} 
+h_k(x_1,\dots,x_l,x_m) 
+-
+h_k(x_1,\dots,x_l,x_n)
+=
+(x_m - x_n)
+h_{k-1}(x_1,\dots,x_l,x_m,x_n)
+\end{align*}
+%
+for complete symmetric functions. Writing the determinant in this way, $x_i \rightarrow 0$ for all 
+$m+1 \leqslant i \leqslant n$ is no longer a singular limit of equation (\ref{knw-id}). We thus obtain
+%
+\begin{multline}
+\label{knw-pdwpf}
+\sum_{\lambda}
+\prod_{j=1}^{n-\ell(\lambda)}
+(1-t^j)
+b_{\lambda}(t)
+P_{\lambda}(x_1,\dots,x_m;t)
+P_{\lambda}(y_1,\dots,y_n;t)
+=
+\\
+\frac{\prod_{i=1}^{n-m} (1-t^i) \prod_{i=1}^{m} \prod_{j=1}^{n} (1-tx_i y_j)}
+{\prod_{i=1}^{m} (x_i^{n-m}) \Delta(x)_m \Delta(y)_n}
+\det\Big[
+\mathcal{A}^{\circ}_{i,j}
+\Big]_{1 \leqslant i,j \leqslant n},
+\end{multline}
+%
+where the entries of the determinant are given by
+%
+\begin{align*}
+\mathcal{A}^{\circ}_{i,j}
+=
+\frac{(1-t)}{(1-x_i y_j)(1-t x_i y_j)},
+\ \  
+1 \leqslant i \leqslant m,
+\quad\quad\quad\quad
+\mathcal{A}^{\circ}_{i,j}
+=
+y_j^{n-i},
+\ \ 
+m+1 \leqslant i \leqslant n.
+\end{align*}
+%
+It is natural to ask whether the right hand side of the new identity (\ref{knw-pdwpf}) has an interpretation within the six-vertex model. To answer this question, we consider the form of the Boltzmann weights (\ref{boltz}) at $x=0$. They simplify to
+%
+\begin{align} 
+\label{triv-boltz}
+a_{\pm} = 1,\quad b_{+} = 1,\quad b_{-} = t,\quad c_{+} = 1-t,\quad c_{-} = 0.
+\end{align}
+%
+The vanishing of the $c_{-}$ vertex plays a crucial role in studying the DWPF in this limit. It means that when we set $x_{m+1} = \cdots = x_n = 0$, no $c_{-}$ vertices are allowed in the bottom $n-m$ rows of Figure \ref{DWPF}, and that these rows contribute only a multiplicative factor to the partition function. The bottom $n-m$ rows can effectively be deleted from the lattice, at the expense of the factor 
+$\prod_{i=1}^{n-m} (1-t^i)$, while the lower external edges of the resulting lattice are summed over all possible arrow configurations. For more details on this limiting procedure, and in particular for the derivation of the overall multiplicative factor, we refer the reader to \cite{fw2}. The resulting lattice expression was called a {\it partial} domain wall partition function (pDWPF) in \cite{fw2}, and is illustrated in Figure \ref{p-DWPF}. We denote the pDWPF by $Z_{\rm ASM}(x_1,\dots,x_m;y_1,\dots,y_n;t)$.
+
+
+--- 5/20 (sim=0.576) cohl_rogers_generating_function/chunk_045.tex ---
+Summary: Proves the key Lemma that polynomial growth bounds |p_n| ≤ K(n+1)^σ γ^n imply the same bounds on squared norms s_n, and verifies the L²-convergence condition enabling legitimate exchange of summation and integration throughout the section.
+
+% Paper: cohl_rogers_generating_function
+% Section: Definite integrals
+
+[Summary: Proves the key Lemma that polynomial growth bounds |p_n| ≤ K(n+1)^σ γ^n imply the same bounds on squared norms s_n, and verifies the L²-convergence condition enabling legitimate exchange of summation and integration throughout the section.]
+
+\begin{lemma}
+\label{lemmasum}
+Let $\bf u$ be a classical linear functional and 
+let $(p_n(x))$, $n\in\mathbb N_0$ be the sequence 
+of orthogonal polynomials associated with $\bf u$.
+%such that $s_k\ge 0$ for all $k\in \mathbb N_0$.
+If $|p_n(x)|\le K(n+1)^\sigma \gamma^n$, with $K$, 
+$\sigma$ and $\gamma$ constants independent of $n$, 
+then $|s_n|\le  K(n+1)^\sigma \gamma^n |s_0|$.
+\end{lemma}
+\begin{proof}
+Let $n\in\mathbb N_0$, then
+\[
+s_n^2=\langle {\bf u}, p^2_n\rangle \le \left(K(n+1)^\sigma 
+\gamma^n\right)^2\langle {\bf u}, 1\rangle= \left(K(n
++1)^\sigma \gamma^n\right)^2  s_0^2.
+\]
+The result follows.
+\end{proof}
+
+
+--- 6/20 (sim=0.573) fischer_littlewood_identities_fully/chunk_028.tex ---
+Summary: Defines Gelfand-Tsetlin patterns and their polynomial weight, explaining the bijection with semistandard Young tableaux and their role as an alternative combinatorial model for Schur polynomials, serving as background for the more complex monotone triangle weights that follow.
+
+% Paper: fischer_littlewood_identities_fully
+% Section: The combinatorics of the relation between fully inhomogeneous spin Hall-Littlewood symmetric rational functions and alternating sign matrices > The modified Robbins polynomials
+
+[Summary: Defines Gelfand-Tsetlin patterns and their polynomial weight, explaining the bijection with semistandard Young tableaux and their role as an alternative combinatorial model for Schur polynomials, serving as background for the more complex monotone triangle weights that follow.]
+
+A \emph{Gelfand-Tsetlin pattern} is a triangular array of integers of the following form 
+$$\begin{matrix}
+     & & & &a_{1,1}& & & &\\
+     & & &a_{2,1}& &a_{2,2}& & &\\
+     & & \dots& & \dots & & \dots& &\\
+     &a_{n-1,1}& & \dots& & \dots& &a_{n-1,n-1}&\\
+     a_{n,1}& &a_{n,2}& & \dots& &a_{n,n-1}& &a_{n,n}
+    \end{matrix},$$
+with weak increase along $\nearrow$-diagonals and $\searrow$-diagonals. The most commonly used combinatorial model for Schur polynomials is certainly \emph{semistandard Young tableaux}; however, another 
+possibility are Gelfand-Tsetlin patterns: assign the following weight to a Gelfand-Tsetlin pattern with $n$ rows 
+\begin{equation}
+\label{eq: polynomial weight of GTs} 
+    \prod_{i=1}^{n} x_i^{(\text{sum of elements in row $i$})-(\text{sum of elements in row $i-1$)}},
+\end{equation}
+then $s_{\lambda}(x_1,\ldots,x_n)$ is the generating function of Gelfand-Tsetlin patterns where the bottom row is the reversed partition $\lambda$ and we add trailing zeros to $\lambda$ if necessary to have $n$ parts in $\lambda$. The bijection between Gelfand-Tsetlin patterns and semistandard Young tableaux is simple and works as follows: the shape of the entries less than or equal to $i$ in the semistandard Young tableau is the $i$-th row of the Gelfand-Tsetlin pattern in reverse order.
+
+
+--- 7/20 (sim=0.573) bounded_littlewood/chunk_068.tex ---
+Summary: Defines semistandard Young tableaux and their weight; the combinatorial data underlying modified HL polynomials.
+
+% Paper: bounded_littlewood
+% Section: Macdonald--Koornwinder theory > Hall--Littlewood polynomials > Modified Hall--Littlewood polynomials
+[Summary: Defines semistandard Young tableaux and their weight; the combinatorial data underlying modified HL polynomials.]
+
+A filling of the Young diagram of a partition $\lambda$ with positive integers
+such that rows are weakly increasing from left to right and columns are 
+strictly increasing from top to bottom is called a semistandard Young 
+tableau of shape $\lambda$, see e.g., \cite{Fulton97,Stanley99,Macdonald95}.
+The (weak) composition $\mu=(\mu_1,\mu_2,\dots)$ such that $\mu_i$ counts the
+number of squares filled with the number $i$ is called the weight 
+(or filling/content/type) of the tableau. 
+If we denote the set of semistandard Young tableaux of shape $\lambda$ and 
+weight $\mu$ by $\operatorname{SSYT}(\lambda,\mu)$, then the Schur function $s_{\lambda}$ may be 
+expressed as
+\begin{equation}\label{Eq_Schur-T}
+s_{\lambda}(x_1,x_2,\dots)=\sum_{T\in\operatorname{SSYT}(\lambda,\cdot)} x^T.
+\end{equation}
+Here $x^T$ is shorthand for $x^{\operatorname{weight}(T)}$, so that
+$x^T=x^{\mu}=x_1^{\mu_1}x_2^{\mu_2}\cdots$ if $T\in\operatorname{SSYT}(\cdot,\mu)$.
+Lascoux and Sch\"utzenberger equipped the set of semistandard Young tableaux 
+with a statistic, called charge. For our purposes it suffices to
+consider tableaux in $\operatorname{SSYT}(\cdot,\mu)$ such that $\mu$ is a partition. 
+To compute the charge of such a tableau, we first
+form the reverse reading word, $w=w(T)$, by consecutively reading the
+rows of $T$ from right to left, starting with the top row
+and ending with the bottom row.
+For example, the reverse reading word of 
+\medskip
+
+
+--- 8/20 (sim=0.571) cohl_rogers_generating_function/chunk_018.tex ---
+Summary: Contextualizes the Ismail-Simeonov expansion as a generalization of the classical Rogers generating function for continuous q-ultraspherical polynomials, and introduces the subsection on its Wilson polynomial limit.
+
+% Paper: cohl_rogers_generating_function
+% Section: The Askey-Wilson polynomials
+
+[Summary: Contextualizes the Ismail-Simeonov expansion as a generalization of the classical Rogers generating function for continuous q-ultraspherical polynomials, and introduces the subsection on its Wilson polynomial limit.]
+
+\begin{remark}
+Note (\ref{3:15}) is a generalization of the Rogers generating function
+(the generating function where the coefficient multiplying $t^n$ is unity) 
+\cite[(14.10.27)]{Koekoeketal}
+\begin{equation}
+\frac{(t\beta e^{i\theta},t\beta e^{-i\theta};q)_\infty}
+{(te^{i\theta},te^{-i\theta};q)_\infty}
+=\sum_{n=0}^\infty C_n(x;\beta|q)t^n, \quad x=\cos\theta,
+\label{4:22}
+\end{equation}
+where $C_n(x;\beta|q)$ is the continuous $q$-ultraspherical/Rogers polynomial 
+(see Section 
+\ref{Rogerscontinuousqultrasphericalpolynomials}
+below).
+\end{remark}
+
+\begin{remark}
+Note that to compute such basic hypergeometric functions,
+it is convenient to use (\ref{2:5}).
+\end{remark}
+
+%%%% aaaa continuous q-Jacobi start
+%%%% aaaa continuous q-Jacobi end
+
+%%%% aaaa Quadratic was here start
+%%%% bbbb Quadratic was here end
+
+%%%%%%%%%%%%%%%%%%%%%%%  OPSFA14  ->
+\subsection{The Wilson limit for the 
+Ismail-Simeonov Rogers-type generalized 
+generating function}
+%\label{LimitingAskeyWilsons}
+
+In this section we obtain by starting from the generalized generating
+function given in \cite{IsmailSimeonov2015}, a new infinite series identity 
+over the Wilson polynomials. Define 
+$a_{12}:=a_1+a_2$,
+$a_{13}:=a_1+a_3$,
+$a_{23}:=a_2+a_3$,
+$a_{123}:=a_1+a_2+a_3$,
+$a_{1234}:=a_1+a_2+a_3+a_4$.
+
+
+--- 9/20 (sim=0.569) colmenarejo_c-functions_koornwinder/chunk_003.tex ---
+Summary: Explains how Cherednik's DAHA framework led to the nonsymmetric polynomials E_mu and the proof of the norm conjectures, all exposited in Macdonald's book, setting the context this paper builds on.
+
+% Paper: colmenarejo_c-functions_koornwinder
+% Section: Introduction
+
+[Summary: Explains how Cherednik's DAHA framework led to the nonsymmetric polynomials E_mu and the proof of the norm conjectures, all exposited in Macdonald's book, setting the context this paper builds on.]
+
+Cherednik introduced the double affine Hecke algebra as a tool for extending Opdam's ideas to prove the norm conjectures~\cite{C03}.
+This perspective pointed to a larger family of orthogonal polynomials $E_\mu$, from which the $P_\lambda$
+are obtained by a process of symmetrization.  All of these tools, including the proof of the norm conjectures, 
+were wonderfully exposited in the full generality of a possibly non-reduced affine root system in Macdonald's book~\cite{Mac03}.
+For a wonderful history of the exciting trajectory of these amazing developments see~\cite{HKO24}.
+
+
+--- 10/20 (sim=0.568) bisi_zygouras_classical_groups_lpp/chunk_019.tex ---
+Summary: Paper organization paragraph summarizing Sections 2-8: patterns, interpolating polynomials, LPP results, RSK, decomposition, nearly-rectangular identities, and Fredholm duality.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: Paper organization paragraph summarizing Sections 2-8: patterns, interpolating polynomials, LPP results, RSK, decomposition, nearly-rectangular identities, and Fredholm duality.]
+
+{\bf Organization of the article}.
+In Section~\ref{sec:patterns} we review the characters of classical groups, expressed both as generating functions of Gelfand-Tsetlin (and analogous) patterns and as ratios of determinants via the Weyl character formulas.
+In Section~\ref{sec:transition} we define $\mathrm{CB}$- and $\mathrm{DB}$-interpolating Schur polynomials and establish various properties, including a determinantal formula of Weyl character type for the $\mathrm{CB}$-interpolating polynomials.
+In Section~\ref{sec:results} we present in detail and discuss our results that relate three symmetric last passage percolation models to the characters of various types and to the interpolating Schur polynomials; all these results are proved in the next sections.
+In Section~\ref{sec:RSK} we show how the $\mathsf{RSK}$ correspondence applied to triangular arrays directly leads to new exact formulas for the aforementioned LPP models in terms of (interpolating) Schur polynomials of type other than A.
+In Section~\ref{sec:decomposition} we develop a method of decomposition of Gelfand-Tsetlin and related patterns, that we use to prove decomposition formulas~\eqref{eq:decompositionA_intro}-\eqref{eq:decompositionD_intro} for (interpolating) Schur polynomials of rectangular shape.
+In Section~\ref{sec:nearlyRectangular} we prove identities~\eqref{eq:CB=LittlewoodSchur}-\eqref{eq:schur=LittlewoodSp} for (interpolating) Schur polynomials of (bi-)rectangular shape.
+Finally, in Section~\ref{sec:duality} we explain how our formulas, in the scaling limit, explain the duality between Fredholm determinant and Fredholm Pfaffian structures in certain universal random matrix distributions.
+
+
+--- 11/20 (sim=0.567) bisi_zygouras_classical_groups_lpp/chunk_087.tex ---
+Summary: B=C also proved via Krattenthaler's nearly-rectangular identity; notes connection to Rains-Warnaar's Macdonald-level formula but emphasizes the new integer u case is not covered there.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: B=C also proved via Krattenthaler's nearly-rectangular identity; notes connection to Rains-Warnaar's Macdonald-level formula but emphasizes the new integer u case is not covered there.]
+
+In section~\ref{sec:nearlyRectangular} we will also give a direct proof of $B^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta = C^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta$ based on an identity established by Krattenthaler~\cite{Kra98} for a symplectic character of ``nearly rectangular'' shape.
+This proof involves classical tools from the theory of symmetric functions such as the dual Pieri rule, but also uses our formulas~\eqref{eq:CBtrans=sp1} and~\eqref{eq:CBtrans=sp2} that express CB-interpolating Schur polynomials in terms of symplectic characters.
+Identity $B^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta = C^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta$ implicitly appeared in~\cite[Theorem 4.1]{RW21} in a more general form involving Macdonald polynomials, but {\em crucially} only in the case $u$ half-integer.
+More precisely, if $(q,t)$ are the Macdonald parameters, the degeneration $q=t=0$ of Rains-Warnaar's formula coincides with $B^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta = C^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_\beta$ for $u$ half-integer.
+The latter is the ``trivial'' case when $\mathrm{CB}$-interpolating polynomials essentially reduce to symplectic characters, as the parameter $\beta$ factorizes out -- see Theorem~\ref{thm:CBtrans=sp}.
+
+
+--- 12/20 (sim=0.565) cohl_rogers_generating_function/chunk_006.tex ---
+Summary: Previews the paper's three main polynomial families (Askey-Wilson, continuous q-Jacobi, continuous q-ultraspherical/Rogers) and the accompanying definite integrals derived from orthogonality, providing a roadmap for the rest of the paper.
+
+% Paper: cohl_rogers_generating_function
+% Section: Introduction
+
+[Summary: Previews the paper's three main polynomial families (Askey-Wilson, continuous q-Jacobi, continuous q-ultraspherical/Rogers) and the accompanying definite integrals derived from orthogonality, providing a roadmap for the rest of the paper.]
+
+The coefficients of our derived generalized 
+generating functions are basic hypergometric 
+functions.  There are many known summation 
+formulae for basic hypergeometric functions 
+(see for instance, \cite[Sections 17.5--17.7]{NIST:DLMF}). 
+One could study the special combinations 
+of parameters which allow for summability of 
+our basic hypergeometric coefficients. 
+However, in these cases the affect of summability 
+for special parameter values, simply reduces to 
+a re-expression of the original generating function 
+used to generate the generalizations that we 
+present. So therefore nothing new would then 
+be learned by this study.
+
+In this paper, we apply this technique to 
+generalize generating functions for basic 
+hypergeometric orthogonal polynomials in the 
+$q$-analog of the Askey scheme 
+\cite[Chapter 14]{Koekoeketal}.
+These are the Askey-Wilson polynomials 
+(Section \ref{AskeyWilsonpolynomials}),
+the continuous $q$-Jacobi polynomials 
+(Section \ref{continuousqJacobipolynomials}),
+and the continuous  $q$-ultraspherical/Rogers polynomials
+(Section \ref{Rogerscontinuousqultrasphericalpolynomials}).
+In Section 
+\ref{Definiteintegralsinfiniteseriesandqintegrals},
+we have also computed new definite integrals 
+corresponding to our generalized generating function 
+expansions using orthogonality for the studied basic 
+hypergeometric orthogonal polynomials.
+
+
+--- 13/20 (sim=0.558) barraquand_log-gamma_polymers/chunk_051.tex ---
+Summary: Announces Corollary 1 — converting the Whittaker integral formula for E[e^{-rZ^trap}
+
+% Paper: barraquand_log-gamma_polymers
+% Section: Laplace transform of the partition function for trapezoidal log-gamma polymers > Contour integral formula
+
+[Summary: Announces Corollary 1 — converting the Whittaker integral formula for E[e^{-rZ^trap}] into a contour integral via the Plancherel theorem — which will directly match the known contour integral for Z(n,n+m+1) and complete the proof of Theorem 1 for m ≥ n-1.]
+
+We deduce from Theorem \ref{LapTrfmFl} and Proposition \ref{prop:whittransformT} a contour integral formula for the Laplace transform of $Z^{\raisebox{4pt}{\begin{tikzpicture}[scale=0.1] \draw[thick] (0,0) -- (3,0) -- (2,1) -- (1,1) -- (0,0);  \end{tikzpicture}}}(n;m)$.
+
+
+--- 14/20 (sim=0.558) fomin_zelevinsky/chunk_020.tex ---
+Summary: Roadmap of the paper's sections and further examples (Somos-4, Elkies knight recurrence, frieze patterns, number walls), plus the global nonnegativity conjecture for all Laurent coefficients established here.
+
+% Paper: fomin_zelevinsky
+% Section: Introduction
+
+[Summary: Roadmap of the paper's sections and further examples (Somos-4, Elkies knight recurrence, frieze patterns, number walls), plus the global nonnegativity conjecture for all Laurent coefficients established here.]
+
+The paper is organized as follows.  
+The Caterpillar Lemma is proved in Section~\ref{sec:caterpillar}.  
+Subsequent sections contain its applications.  
+In particular, Theorems~\ref{th:kleber}, \ref{th:gale-robinson}, 
+\ref{th:oct}, and \ref{th:two-term-gale-robinson} are  
+proved in Section~\ref{sec:lattice-based},
+while Theorem~\ref{th:conway-scott} is proved
+in Section~\ref{sec:homogeneous-exchange-patterns}.  
+Other instances of the Laurent phenomenon treated in this paper
+include generalizations of each of the following: 
+Somos-4 sequences (Example~\ref{example:somos4}),
+Elkies's ``knight recurrence'' (Example~\ref{example:elkies}), 
+frieze patterns (Example~\ref{example:frieze-patterns}) 
+and number walls (Example~\ref{example:number-walls}).  
+ 
+We conjecture that in all instances of the Laurent phenomenon 
+established in this paper, the Laurent polynomials in question  
+have \emph{nonnegative} integer coefficients.  
+In other contexts, similar nonnegativity conjectures were made earlier in  
+\cite{fz-jams, fz-intelligencer, fz-clust1}.
+ 
+\medskip 
+ 
+\vbox{\noindent \textsc{Acknowledgments.}  
+We thank Jim Propp for introducing us to a number of 
+beautiful examples of the Laurent phenomenon, 
+and for very helpful comments on the first draft of the paper. 
+In particular, it was he who showed us how to deduce 
+Theorem~\ref{th:two-term-gale-robinson} from Theorem~\ref{th:oct}.
+
+
+--- 15/20 (sim=0.557) bisi_zygouras_classical_groups_lpp/chunk_101.tex ---
+Summary: Shows antidiag β=1 and diagonal α=1 LPP have identical distributions — a high-dimensional analog of the geometric minimum identity; B and C expressions coincide exactly.
+
+% Paper: bisi_zygouras_classical_groups_lpp
+[Summary: Shows antidiag β=1 and diagonal α=1 LPP have identical distributions — a high-dimensional analog of the geometric minimum identity; B and C expressions coincide exactly.]
+
+By comparing Corollaries~\ref{coro:antisymLPP_1} and~\ref{coro:symLPP_1} one can notice that $B^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_1$ and $C^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_1$ exactly coincide, respectively, with $B^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (1,0) -- (0,1);
+\end{tikzpicture}
+}_1$ and $C^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (1,0) -- (0,1);
+\end{tikzpicture}
+}_1$.
+This implies that $A^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}_{1}$ and $A^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (1,0) -- (0,1);
+\end{tikzpicture}
+}_{1}$ are equivalent, i.e.\ the distributions of $L_1^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}(N,N)$ and $L_1^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (1,0) -- (0,1);
+\end{tikzpicture}
+}(N,N)$ are identical.
+Observe also that the distribution~\eqref{eq:antisymWeights} for $\beta=1$ equals the distribution~\eqref{eq:symWeights} for $\alpha=1$, under the row reversal $i \mapsto N-i+1$.
+However, the fact that a $%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+$-symmetric LPP model be equivalent to the $%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (1,0) -- (0,1);
+\end{tikzpicture}
+$-symmetric LPP model obtained by reversing the rows of the weights has \emph{no} reason to hold in general.
+It is rather specific to the distribution~\eqref{eq:antisymWeights} with $\beta=1$, and yields a non-trivial identity in law between piecewise linear functionals of geometric random variables, which in the special case $N=2$ reads as
+\begin{equation}
+\label{eq:equalityInLaw}
+W_{1,1} + \max(W_{1,2},W_{2,1}) + W_{1,1} \stackrel{\text{d}}{\equiv}
+W_{2,1} + \max(W_{1,1},W_{1,1}) + W_{1,2} \, .
+\end{equation}
+Using the identity $\max(a,b) = a+b-\min(a,b)$, \eqref{eq:equalityInLaw} is easily seen to be equivalent to the fact that the minimum of two independent geometric random variables, with parameters $p$ and $q$ respectively, follows a geometric distribution with parameter $pq$.
+Thus, the equality in distribution between $L_1^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (0,0) -- (1,1);
+\end{tikzpicture}
+}(N,N)$ and $L_1^{%
+\begin{tikzpicture}[scale=0.17]
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\draw (1,0) -- (0,1);
+\end{tikzpicture}
+}(N,N)$ can be viewed as a high dimensional analog of this fact.
+
+
+--- 16/20 (sim=0.557) pascadi_product_identities_two_variable_rr/chunk_006.tex ---
+Summary: Explains that spaces with negative-degree quasiperiodicity are trivial, motivating the shift to half-plane spaces T_{H^-}(qx^2-x) where Rogers--Ramanujan sums live.
+
+% Paper: pascadi_product_identities_two_variable_rr
+% Section: Introduction
+[Summary: Explains that spaces with negative-degree quasiperiodicity are trivial, motivating the shift to half-plane spaces T_{H^-}(qx^2-x) where Rogers--Ramanujan sums live.]
+
+While $\mathcal{T}_\mathbb{C}\left(\alpha x^d\right)$ is $d$-dimensional for $d \ge 1$, we have $\mathcal{T}_\mathbb{C}\left(\alpha x^{-d}\right) = \mathcal{T}_\mathbb{C}(y) = \{0\}$ for $y \not\in \left\{q^n : n \in \mathbb{Z}\right\}$; this will lead to identities for quotients of double infinite products $\left\langle x; q\right\rangle$, in \cref{prop:fractional}. Passing to spaces such as $\mathcal{T}_{\mathbb{H}^{\textnormal{-}\hspace{-0.03cm}}}\left(qx^2-x\right)$ (where ${\mathbb{H}}^- := \{\textnormal{Im}\  z < 0\}$), which is two-dimensional and corresponds to a meromorphic line bundle, we begin to encounter Rogers--Ramanujan type sums. In fact, the two renowned one-variable Rogers--Ramanujan identities \cite[p.~290]{hardy1979introduction},
+\begin{equation} \label{eq:rog-ram}
+    \sum_{n \geq 0} \frac{q^{n^2}}{(q; q)_n} = \frac{1}{\left\langle q; q^5 \right\rangle} \qquad\quad \text{ and }\qquad\quad 
+    \sum_{n \geq 0} \frac{q^{n^2+n}}{(q; q)_n} = \frac{1}{\left\langle q^2; q^5 \right\rangle},
+\end{equation}
+where $(x; q)_n := \prod_{k = 0}^{n-1} \left(1 - xq^k\right)$, are together equivalent to the following new product identity.
+
+
+--- 17/20 (sim=0.557) colmenarejo_c-functions_koornwinder/chunk_093.tex ---
+Summary: States Proposition Ebyinnerprod: E_mu is the unique polynomial that is monic (leading term x^mu in DBlex order) and satisfies (E_mu, x^nu)_+ = 0 for all nu < mu, characterizing E_mu by triangular orthogonality with respect to the inner product.
+
+% Paper: colmenarejo_c-functions_koornwinder
+% Section: Orthogonality > The inner product characterization of $E_\mu$ and $P_\lambda$
+
+[Summary: States Proposition Ebyinnerprod: E_mu is the unique polynomial that is monic (leading term x^mu in DBlex order) and satisfies (E_mu, x^nu)_+ = 0 for all nu < mu, characterizing E_mu by triangular orthogonality with respect to the inner product.]
+
+\begin{prop}  \label{Ebyinnerprod} Let $\mu \in \mathbb{Z}^n$.
+The electronic Macdonald polynomial $E_\mu$ is the unique element of
+$\mathbb{K}[x_1^{\pm1}, \ldots, x_n^{\pm1}]$ such that
+\begin{enumerate}
+\item[(a)] $E_\mu = x^\mu + (\hbox{lower terms})$;
+\item[(b)] If $\nu\in \mathbb{Z}^n$ and  $\nu<\mu$ then $(E_\mu, x^\nu)_+ = 0$.
+\end{enumerate}
+\end{prop}
+
+
+--- 18/20 (sim=0.555) warnaar_affine_jacobi-trudi_identities/chunk_065.tex ---
+Summary: States Proposition: S_{(k^r)}^{k,ell}(t) expands in Hall-Littlewood polynomials with coefficients given by level-ell restricted Kostka polynomials — the generalization of Theorem 1 to positive level.
+
+% Paper: warnaar_affine_jacobi-trudi_identities
+% Section: Proof, special cases and generalisations of Theorem~\ref{Thm_GLn
+[Summary: States Proposition: S_{(k^r)}^{k,ell}(t) expands in Hall-Littlewood polynomials with coefficients given by level-ell restricted Kostka polynomials — the generalization of Theorem 1 to positive level.]
+
+\begin{Proposition}\label{Prop_Kostka}
+Let $\mu\vdash kr$ such that $\mu_1\leqslant k$.
+Then the polynomial
+$K_{(r^k),\mu}^{\ell}(t)$
+is the level-$\ell$ restricted generalised Kostka polynomial
+$K_{\lambda R}^{\ell}(t)$
+\textup{(}see, e.g., \textup{\cite{SS00,SS01}}\textup{)}
+for $\lambda=\bigl(r^k\bigr)$ and $R$ the sequence of single-column partitions
+\[
+R=\bigl(
+\underbrace{(1),\dots,(1)}_{m_1(\mu) \text{ times}},
+\underbrace{\bigl(1^2\bigr),\dots,\bigl(1^2\bigr)}_{m_2(\mu) \text{ times}},\dots,
+\underbrace{\bigl(1^k\bigr),\dots,\bigl(1^k\bigr)}_{m_k(\mu) \text{ times}}
+\bigr).
+\]
+\end{Proposition}
+
+
+--- 19/20 (sim=0.551) betea_lpp_quarter_square_goe/chunk_012.tex ---
+Summary: States the main corollary: the rescaled p2hlr LPP time converges to F₁²(s) (Tracy–Widom GOE²) with explicit centering constant c₁ and scaling constant c₂.
+
+% Paper: betea_lpp_quarter_square_goe
+% Section: Introduction
+
+[Summary: States the main corollary: the rescaled p2hlr LPP time converges to F₁²(s) (Tracy–Widom GOE²) with explicit centering constant c₁ and scaling constant c₂.]
+
+\begin{cor} We have:
+    \label{cor:main_cor}
+    \begin{equation}
+        \lim_{n \to \infty} \mathrm{Prob}\left(\frac{L^{\mathrm{p2hlr}}_n - c_1 n}{c_2 n^{1/3}} \leq s \right) = F_1^2(s)
+    \end{equation}
+    where
+    \begin{equation}
+        \label{eq:constants}
+        c_1 = \frac{2 \sqrt{q}}{1-\sqrt{q}}, \qquad c_2 = \frac{q^{1/6} (1+\sqrt{q})^{1/3}}{1-\sqrt{q}}
+    \end{equation}
+    and where $F_1(s)$ is the Tracy--Widom GOE distribution~\cite{TW96}.
+\end{cor}
+
+
+--- 20/20 (sim=0.550) barraquand_log-gamma_polymers/chunk_036.tex ---
+Summary: Opens Section 2 by introducing the geometric RSK correspondence (gRSK) on polygonal arrays and 𝔤𝔩_n / 𝔰𝔬_{2n+1} Whittaker functions as the technical machinery needed to compute Laplace transforms and prove Theorem 1.
+
+% Paper: barraquand_log-gamma_polymers
+% Section: Geometric RSK correspondence and Whittaker functions
+
+[Summary: Opens Section 2 by introducing the geometric RSK correspondence (gRSK) on polygonal arrays and 𝔤𝔩_n / 𝔰𝔬_{2n+1} Whittaker functions as the technical machinery needed to compute Laplace transforms and prove Theorem 1.]
+
+This section provides preliminary results useful in the following sections. In particular we introduce the geometric RSK correspondence (we will denote it by $\operatorname{gRSK}$) on polygonal arrays (in particular, symmetric polygonal arrays) and Whittaker functions. We refer the reader to Elia Bisi's PhD thesis \cite{bisi2018random} for a more detailed introduction to these subjects. We will also introduce the function $\mathcal T_{\alpha_{\circ}, \bsb\beta; r}$ which appears in \eqref{eq:Laplacetrapezoidal} and state some of its properties. 
+
+\medskip 
+It was found in \cite{OSZ,COSZ}  that   Whittaker functions  arise naturally as we consider gRSK on (rectangular) domains (see also \cite{o2012directed} for an earlier occurrence of Whittaker functions in a directed polymer context). The partition functions for log-gamma polymers on such domains may be written as integrals involving  Whittaker functions.
+For log-gamma polymers on non-rectangular domains, a generalization of gRSK  to polygonal arrays \cite{NZ17} may be used 
+to derive, for example, the Laplace transform of the partition function, which is the approach adopted by  \cite{BisiZygouras} to treat half-space log-gamma polymers.
+
+

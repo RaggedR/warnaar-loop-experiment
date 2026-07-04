@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\newcommand{\qbin}[2]{\begin{bmatrix}#1\\#2\end{bmatrix}_q}
+\title{Seed 8, Layer 2: The bracket tower $f_k^{(m)}$, exact $q$-monotonicity,\\ and the Divisibility Transfer Lemma}
+\author{Seed 8 / Layer 2 / Round 2}
+\date{2026-07-04}
+\begin{document}
+\maketitle
+
+\section{Setup}
+
+Fix $r=3$, level $d\not\equiv 0\pmod 3$, and a profile $c=(c_0,c_1,c_2)$ with
+$c_0+c_1+c_2=d$. Let $g_m=g_m(q)$ denote the generating function for cylindric
+partitions of profile $c$ with largest part exactly $m$ (so $g_0=1$), computed
+by the profile-space transfer matrix. Set $h_m=(q;q)_m\,g_m$, and define the
+tower of Round~1:
+\[
+D_0^m=h_m,\qquad D_k^m=D_{k-1}^m-q^k\,D_{k-1}^{m-1}\quad(1\le k\le m),\qquad
+Q_n=D_n^n .
+\]
+
+\section{The bracket recursion}
+
+Define $f_{-1}^{(m)}:=g_m$ and, for $k\ge 0$ and $m\ge k+1$,
+\begin{equation}\label{eq:bracket}
+f_k^{(m)} \;:=\; (1-q^{m-k})\,f_{k-1}^{(m)} \;-\; q^{k+1}\,f_{k-1}^{(m-1)} .
+\end{equation}
+
+\begin{lemma}[T1]\label{lem:T1}
+For all $k\ge -1$ and $m\ge k+1$,
+\[
+D_{k+1}^{m} \;=\; (q;q)_{m-k-1}\; f_k^{(m)} .
+\]
+\end{lemma}
+
+\begin{proof}
+Induction on $k$. Base $k=-1$: $D_0^m=h_m=(q;q)_m\,g_m=(q;q)_m f_{-1}^{(m)}$
+by definition. Inductive step: assume the claim at $k-1$ for all admissible
+$m$. Then
+\begin{align*}
+D_{k+1}^m &= D_k^m - q^{k+1} D_k^{m-1}
+   = (q;q)_{m-k}\,f_{k-1}^{(m)} - q^{k+1}(q;q)_{m-1-k}\,f_{k-1}^{(m-1)}\\
+ &= (q;q)_{m-k-1}\Bigl[(1-q^{m-k})f_{k-1}^{(m)} - q^{k+1} f_{k-1}^{(m-1)}\Bigr]
+   = (q;q)_{m-k-1}\, f_k^{(m)},
+\end{align*}
+using $(q;q)_{m-k}=(q;q)_{m-k-1}(1-q^{m-k})$ and recursion \eqref{eq:bracket}.
+\end{proof}
+
+\begin{corollary}[T2]
+$Q_n = D_n^n = (q;q)_0\, f_{n-1}^{(n)} = f_{n-1}^{(n)}$.
+\end{corollary}
+
+Hence Warnaar's positivity conjecture is exactly the diagonal $m=k+1$ of the
+bracket tower.
+
+\begin{lemma}[Closed form]
+For $k\ge -1$ and $m\ge k+1$,
+\[
+f_k^{(m)} \;=\; \sum_{i=0}^{k+1} (-1)^i\, q^{\binom{i+1}{2}}\,
+   \qbin{k+1}{i}\, (q^{m-k};q)_{k+1-i}\; g_{m-i}.
+\]
+\end{lemma}
+
+\begin{proof}
+Combine Lemma~\ref{lem:T1} with the Round-1 closed form
+$D_{k+1}^m=\sum_i(-1)^i q^{\binom{i+1}{2}}\qbin{k+1}{i}h_{m-i}$, divide by
+$(q;q)_{m-k-1}$, and use $h_{m-i}=(q;q)_{m-i}g_{m-i}$ together with
+$(q;q)_{m-i}/(q;q)_{m-k-1}=(q^{m-k};q)_{k+1-i}$ for $0\le i\le k+1$.
+(Each quotient is a genuine polynomial, so the identity holds in
+$\mathbb{Z}[[q]]$.)
+\end{proof}
+
+\section{The Master Conjecture (verified, not proved)}
+
+\begin{conjecture}[Master]
+For all $k\ge -1$, $m\ge k+1$, and $0\le j\le m-k-1$,
+\[
+(q;q)_j\, f_k^{(m)} \;\succeq\; 0
+\]
+(coefficientwise), and this is \emph{exact}: $(q;q)_{m-k}\,f_k^{(m)}$ has a
+negative coefficient. In particular ($k=-1$): $g_m$ is exactly $m$-fold
+$q$-monotone.
+\end{conjecture}
+
+The top case $j=m-k-1$ is $D_{k+1}^m\succeq 0$ (the Round-1 tower); the case
+$(k,j)=(m-1,0)$ is $Q_m\succeq 0$. Verified computationally, with exactness at
+every boundary, for: $d=2$ ($m\le 8$, $k\le 4$); $d=4$, all $5$ orbit
+representatives ($m\le 7$, $k\le 4$); $d=5$, all $7$ representatives
+($m\le 6$, $k\le 4$); $d=7$, all $6$ representatives ($m\le 5$, $k\le 3$).
+
+Multiplying \eqref{eq:bracket} by $(q;q)_j$ shows the induction on $k$ needs,
+at every level, the full ``monotonized domination''
+$(q;q)_j(1-q^{m-k-1})f_k^{(m)}\succeq q^{k+2}(q;q)_j f_k^{(m-1)}$; positivity
+alone does not chain. The one general reduction we can prove is:
+
+\begin{lemma}[Divisibility Transfer]
+$\dfrac{1-q^a}{1-q^b}$ has nonnegative coefficients iff $b\mid a$.
+Consequently, if $F\in\mathbb{Z}[[q]]$ satisfies $(q;q)_J F\succeq 0$ and
+$S\subset\mathbb{Z}_{>0}$ is a finite multiset admitting an injection
+$\sigma\colon S\to\{1,\dots,J\}$ with $\sigma(a)\mid a$ for all $a\in S$, then
+$\prod_{a\in S}(1-q^a)\,F\succeq 0$.
+\end{lemma}
+
+\begin{proof}
+If $b\mid a$, $\frac{1-q^a}{1-q^b}=1+q^b+\dots+q^{a-b}$. If $b\nmid a$, the
+series $\frac{1-q^a}{1-q^b}=(1-q^a)\sum_{t\ge0}q^{bt}$ has coefficient $-1$ at
+the least exponent of the form $a+bt$ not divisible by $b$ (namely $a$ itself
+if $b\nmid a$; indeed the coefficient of $q^n$ is $\#\{t:bt=n\}-\#\{t:a+bt=n\}$,
+which is $-1$ at $n=a$ when $b\nmid a$). For the consequence, write
+\[
+\prod_{a\in S}(1-q^a)\,F
+=\Bigl[\prod_{a\in S}\frac{1-q^a}{1-q^{\sigma(a)}}\Bigr]
+ \Bigl[\prod_{b\in\{1..J\}\setminus\sigma(S)}\frac{1}{1-q^{b}}\Bigr]
+ \,(q;q)_J F,
+\]
+a product of three coefficientwise-nonnegative series.
+\end{proof}
+
+Empirically (29{,}482 subsets tested over four $(d,c,m,k)$ cases, zero
+violations) the divisibility-matching condition also appears close to
+necessary. However, for the induction step one needs
+$\{1,\dots,j\}\cup\{m-k-1\}$ to match into $\{1,\dots,j+1\}$, which forces
+$(j+1)\mid(m-k-1)$: the Transfer Lemma alone proves only these arithmetic
+slices, not the full tower.
+
+\section{The chain model and two structural lemmas}
+
+Cylindric partitions of profile $c$ with largest part $\le m$ biject
+(conjugate model, verified against the transfer matrix) with chains
+$a^{(1)}\ge\dots\ge a^{(m)}$ in
+$S=\{a\in\mathbb{Z}_{\ge0}^3 : a_i\le a_{i-1}+c_i \text{ cyclically}\}$,
+weighted by $\sum_s |a^{(s)}|$; largest part exactly $m$ iff all levels are
+nonzero.
+
+\begin{lemma}[Slack]
+Every $a\in S$ has a \emph{slack} coordinate $i$ (i.e.\ $a_i<a_{i-1}+c_i$),
+since $d=\sum c_i\ge 1$ makes all three constraints tight impossible.
+\end{lemma}
+
+\begin{lemma}[Switch]
+If $i$ is tight at $a$ and slack at $b$, with $a\ge b$ componentwise
+($a,b\in S$), then $a_i=a_{i-1}+c_i\ge b_{i-1}+c_i>b_i$, so $a_i>b_i$ strictly.
+\end{lemma}
+
+These make box-adding ribbon maps well defined, but three distinct designs of
+a weight-$(+m)$ injection $\psi\colon C_m\to C_m$ (needed for
+$f_0^{(m)}\succeq 0$) failed: a greedy least-slack ribbon is total but not
+injective; a claim-based inverse-by-construction map is injective but not
+total (orphan states exist for every profile); a top-level add reduces
+circularly to $(1-q)g_m\succeq 0$. The pattern of failure suggests a global
+canonical structure --- plausibly a crystal operator on chains (cf.\ Tingley's
+question on lifting $U_q(\widehat{\mathfrak{sl}}_n)$ crystal structures to
+cylindric plane partitions) --- is required.
+
+\subsection*{Key example}
+$d=4$, $c=(2,1,1)$, $m=2$: $f_0^{(2)}=(1-q^2)g_2-q\,g_1$ has expansion
+$3q^3+7q^4+10q^5+13q^6+\cdots\succeq 0$, and
+$(1-q)f_0^{(2)}=D_1^2=3q^3+4q^4+3q^5+3q^6+2q^7+2q^8+q^9+q^{10}+q^{12}
+\succeq 0$, while $(1-q)(1-q^2)f_0^{(2)}$ has coefficient $-1$ at $q^6$:
+exact $1$-fold monotonicity, matching Master at $(k,m)=(0,2)$.
+
+\end{document}

@@ -1,0 +1,575 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\EMD}{\mathrm{EMD}}
+\newcommand{\har}{\mathrm{har}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\haru}{\har^{\infty}}
+
+\title{Seed 6, Round 2, Layer 4: the Ehrhart route to $S1$.\\
+Sharp cap $M_j=j-1$, the deep-interior theorem, an unconditional low band
+$j\le 48$, Harnack monotonicity, and a complete proof of $S1$ on the
+one-small-coordinate region for \emph{all} $j$}
+\author{Seed 6 (R2L4), Warnaar loop experiment}
+\date{2026-07-04}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Everything is in the \emph{true} (target-first) convention of
+\texttt{synthesis-layer3.md}~\S4(iv). We prove: (i) a sharp Cap-Compression
+theorem: $\har_j(c)$ depends on $c$ only through $(\min(c_i,j-1))_i$
+(improving $M=2j$ of G10 and the empirical $M=j$ of Seed~4), with a
+realization corollary making $S1@j$, $S2@j$ finitely decidable for each $j$;
+(ii) the deep-interior theorem: $\min_i c_i\ge j-1$ implies
+$\har_j(c)=\haru_j$, with closed forms, so $S1$/$S2$ hold at every such
+$(j,c)$ for all $j$; (iii) the computational theorem $[q^j]N_2\ge 0$ for all
+profiles, all $d$ with $\gcd(d,3)=1$, for all $j\le 48$ (previously $j\le5$);
+(iv) $S1$ is \emph{false} without the hypothesis $3\nmid d$
+($\har_{13}((1,1,1))=-1$), so the residue hypothesis is essential;
+(v) a new structural conjecture (Harnack monotonicity, HM), finitely
+decidable per level, verified completely for $j\le 30$, together with a
+proved reduction $\mathrm{HM}\Rightarrow S1$;
+(vi) the main new theorem: on the region ``at least two coordinates
+$\ge j-1$'' (any third coordinate, any $d$), $\har_j(c)\ge 0$ for all
+$j\notin\{2,4\}$ --- proved for \emph{all} $j$ simultaneously by an exact
+chamber quasi-polynomial computation (period $12$, degree $3$; the chamber
+walls are enumerated exactly from the switch loci of the defining sums ---
+$2a=j$, $4a=j$, $a$, $j-a$, all with offsets $\le6$ --- and the pieces are
+pinned by full-rank exact interpolation, the $4a=j$ family carrying no
+jump), whose cubic part is the single
+global cubic $j^3\psi(a/j)$, $\psi(\mu)=(2\mu^3-6\mu^2+6\mu+1)/24$, with
+$\psi'(\mu)=(\mu-1)^2/4\ge0$, explicit quadratic slop $(5/8)j^2+7j+4$, tail
+threshold $j\ge 23$, and an exact finite check below it.
+Together with (iii), the only part of $S1$ still open is: $j\ge 49$ with at
+least two coordinates of $c$ smaller than $j-1$.
+\end{abstract}
+
+\section{Conventions and prior identities}\label{sec:conv}
+
+Profiles are $c=(c_0,c_1,c_2)\in\ZZ_{\ge0}^3$, $|c|=d$. Throughout
+\[
+\EMD(c,c') \;=\; 3\max(0,\,c'_1-c_1,\,c_0-c'_0)+(c'_0-c_0)-(c'_1-c_1),
+\]
+and the target-first kernel
+$(1+q^m+q^{2m})H_{c,m}=\sum_{c'}q^{m\,\EMD(c,c')}H_{c',m-1}$
+(reference implementation \texttt{scripts/seed8\_R2L3\_engine.sage}).
+As in Layer 3 (rederived and machine-verified verbatim in the true
+convention; \texttt{seed6\_R2L4\_engine.py}, $d=4,5,7$):
+\[
+N_2(c):=(1+q^2+q^4)\,Q_{2,c}
+=\bigl[B_c(q^2)-1-q^2-q^4\bigr]+\har(c),
+\]
+\[
+\har(c)=\sum_{c'\ne c}q^{2\EMD(c,c')}Q_{1,c'}\;-\;q(1+q+q^2+q^3+q^4)\,Q_{1,c},
+\qquad
+B_c(q)=\sum_{c'\in\Delta_d}q^{\EMD(c,c')},
+\]
+where $H_{1,c}=B_c(q)\frac{1-q}{1-q^3}$ and $Q_{1,c}=H_{1,c}-1$.
+The ball term $B_c(q^2)-1-q^2-q^4$ is coefficientwise $\ge0$ (L-ball, Layer~3).
+Write $\har_j(c):=[q^j]\har(c)$. The sub-conjectures of Layer 3 are
+\[
+S1:\ \har_j(c)\ge 0\ \ (j\notin\{2,4\}),\qquad
+S2:\ \har_4(c)\ge -(b_2(c)-1),
+\]
+for $\gcd(d,3)=1$; $\har_2(c)=-(b_1(c)-1)$ exactly. Here
+$b_e(c)=\#\{c'\in\Delta_d:\EMD(c,c')=e\}$.
+
+\subsection{Deviation geometry (true convention)}
+For $u=c'-c$ write $s=u_0$, $t=u_1$ ($u_2=-s-t$). Then
+$\EMD(c,c')=g(s,t):=3\max(0,t,-s)+s-t$, and $g\equiv s-t \pmod 3$.
+The sphere $S_e=\{g=e\}$ ($e\ge1$) is the boundary of the triangle with
+vertices $(e,0),(-e,e),(0,-e)$ and has exactly $3e$ points; every $u\in S_e$
+has $|u_0|,|u_1|,|u_2|\le e$. The point $c+u$ is a valid profile iff
+$s\ge-c_0$, $t\ge-c_1$, $s+t\le c_2$. $\EMD$ is invariant under the cyclic
+rotation $c\mapsto(c_1,c_2,c_0)$ applied to both arguments
+(machine-verified), so all statements below are rotation-invariant.
+
+\subsection{Local formula for $\har_j$}
+With $A_k(c)=\#\{c'\in\Delta_d: g(c'-c)\le k,\ g\equiv k\ (\mathrm{mod}\ 3)\}
+=\sum_{e\le k,\,e\equiv k(3)}b_e(c)$ we have
+$[q^k]Q_{1,c}=A_k(c)-A_{k-1}(c)-[k{=}0]$, and, expanding the definition,
+\begin{equation}\label{eq:local}
+\har_j(c)=\sum_{e=1}^{\lfloor (j-1)/2\rfloor}\ \sum_{u\in S_e,\ c+u\ \mathrm{valid}}
+[q^{\,j-2e}]Q_{1,c+u}\;-\;\sum_{i=1}^{5}[q^{\,j-i}]Q_{1,c},
+\end{equation}
+where $[q^k]Q_1:=0$ for $k\le0$. (Machine-verified against the full
+polynomial engine at $d=4,5,7$, all profiles, all $j$.)
+
+\section{The sharp cap $M_j=j-1$ (Cap-Compression, sharp form)}
+
+\begin{theorem}[CAP-SHARP]\label{thm:cap}
+For every $j\ge1$, $\har_j(c)$ depends on $c$ only through
+$\bigl(\min(c_i,\,j-1)\bigr)_{i=0,1,2}$.
+\end{theorem}
+
+\begin{proof}
+Two facts. (F1) Every $u\in S_e$ has $|u_i|\le e$ (checked edge by edge on
+the triangle). (F2) $[q^k]Q_{1,c'}=A_k(c')-A_{k-1}(c')-[k{=}0]$ counts
+lattice points at $g$-distance $\le k$ from $c'$; by (F1) applied to all
+spheres of radius $\le k$, the validity constraints only probe whether each
+$c'_i$ is $\ge$ some threshold $\le k$; hence $[q^k]Q_{1,c'}$ depends only on
+$(\min(c'_i,k))_i$.
+
+Suppose $\min(c_i,j-1)=\min(\hat c_i,j-1)$ for all $i$; then for each $i$
+either $c_i=\hat c_i\le j-2$ or both $c_i,\hat c_i\ge j-1$. In
+\eqref{eq:local}: (1) validity of $u\in S_e$ probes thresholds
+$\le e\le\lfloor(j-1)/2\rfloor\le j-1$, so agrees for $c,\hat c$;
+(2) for a neighbour term with $k=j-2e$: if $c_i\ge j-1$ then
+$(c+u)_i\ge j-1-e\ge j-2e=k$ (as $e\ge1$), so
+$\min((c+u)_i,k)=k=\min((\hat c+u)_i,k)$; if $c_i=\hat c_i$ the two agree
+trivially; (3) the self terms probe thresholds $j-i\le j-1$.
+By (F2) every term agrees.
+\end{proof}
+
+\begin{corollary}[realization; finite decidability of $S1@j$]\label{cor:cap}
+Every capped class $(\min(c_i,j-1))_i$ arising from a profile with
+$\gcd(|c|,3)=1$ is realized by a profile with all $c_i\le j+1$ and
+$\gcd(d,3)=1$: if some coordinate is $\ge j-1$, choose it in
+$\{j-1,j,j+1\}$ to adjust $d$ modulo $3$; if all $c_i\le j-2$ the profile is
+its own representative. Hence an exact check of $S1@j$ (resp.\ $S2@j$) over
+the finitely many profiles with $c_i\le j+1$, $3\nmid d$, proves it for
+\emph{all} $d$ with $\gcd(d,3)=1$.
+\end{corollary}
+
+\section{The deep-interior theorem (region R0)}
+
+\begin{theorem}[R0]\label{thm:r0}
+If $\min_i c_i\ge j-1$ then $\har_j(c)=\haru_j$, where with
+$E=\lfloor(j-1)/2\rfloor$,
+\[
+\haru_j=\sum_{e=1}^{E}3e\,(j-2e+1)-\sum_{i=1}^{5}u_{j-i},
+\qquad u_k=k+1\ (k\ge1),\ u_k=0\ (k\le0),
+\]
+i.e.\ $\haru_{0..5}=0,0,-2,1,0,10$ and, for $j\ge6$,
+\[
+\haru_{2p}=\tfrac{(p-1)(2p^2+5p-20)}{2},
+\qquad
+\haru_{2p+1}=p(p+1)(p+2)-10p+5 .
+\]
+In particular $\haru_j\ge0$ for all $j\ne2$, and $\haru_2=-2=-(b_1-1)$ is
+absorbed by the ball term. Hence $S1$ and $S2$ hold at \emph{every} pair
+$(j,c)$ with $\min_i c_i\ge j-1$ (all $j$, all $d$).
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:cap} (same bookkeeping) all validity constraints in
+\eqref{eq:local} are inactive: every sphere is full, $b_e=3e$, so
+$A_k=\sum_{e\le k,e\equiv k(3)}3e$ gives $[q^k]Q_1^\infty=u_k=k+1$ for
+$k\ge1$ (a three-case computation on $k\bmod 3$), and each of the
+$3e$ neighbours at distance $e$ contributes $u_{j-2e}=j-2e+1$. The closed
+forms are elementary summation. Machine-verified for $j\le29$ at
+$c=(60,58,60)$ against the full engine.
+\end{proof}
+
+\section{Unconditional low band: $j\le 48$}
+
+\begin{theorem}[computational; \texttt{seed6\_R2L4\_sweep.py}]\label{thm:sweep}
+For every $j\le 48$: $S1@j$ holds ($j\notin\{2,4\}$), $\har_2=-(b_1-1)$
+exactly, and $S2@4$ holds --- for all profiles $c$ and all $d$ with
+$\gcd(d,3)=1$. Consequently $[q^j]N_2\ge 0$ for all $j\le 48$, all such $d$.
+\end{theorem}
+
+\begin{proof}
+By Corollary~\ref{cor:cap} each level $j$ reduces to the finite set
+$\{c: c_i\le j+1,\ 3\nmid|c|\}$ (up to rotation); the sweep evaluates
+\eqref{eq:local} there in exact integer arithmetic. All levels pass; the
+minimum margin is $0$, attained at $c=(0,0,1)$ at every level. The sweep's
+$\har$ was cross-checked against the full polynomial engine for
+$d\in\{4,5,7,8,10\}$, $j\le25$, all profiles.
+\end{proof}
+
+\section{$3\mid d$: the hypothesis is essential}
+
+\begin{remark}\label{rem:3d}
+$\har_j(c)$ is defined by \eqref{eq:local} for every $c\in\ZZ_{\ge0}^3$
+regardless of $d\bmod 3$. As a pure lattice statement $S1$ \emph{fails} at
+$3\mid d$: e.g.\ $\har_{13}((1,1,1))=-1$ and $\har_{15}((0,1,2))=-1$
+(\texttt{seed6\_R2L4\_mono.py}); all observed failures have $3\mid d$.
+Any correct proof of $S1$ must therefore use $\gcd(d,3)=1$.
+\end{remark}
+
+\section{Harnack monotonicity (HM): a finitely decidable master reduction}
+
+\begin{conjecture}[HM]\label{conj:hm}
+Let $j\notin\{2,4\}$. Then
+(M1) if $|c|\equiv1\ (\mathrm{mod}\ 3)$: $\har_j(c+e_i)\ge\har_j(c)$ for
+$i=0,1,2$;
+(M2) if $|c|\equiv2\ (\mathrm{mod}\ 3)$: $\har_j(c+e_i+e_k)\ge\har_j(c)$ for
+all $i\le k$.
+\end{conjecture}
+
+\begin{proposition}[base case]\label{prop:base}
+At $d=1$, $B_c=1+q+q^2$, so $H_1=1$, $Q_1=0$ and $\har_j\equiv0$ for all $j$.
+\end{proposition}
+
+\begin{theorem}[reduction]\label{thm:hm}
+$\mathrm{HM}\Rightarrow S1$ (all $j$, all $c$, $\gcd(d,3)=1$).
+Moreover $\mathrm{HM}@j$ is finitely decidable for each $j$
+(Corollary~\ref{cor:cap}: the box $c_i\le j+1$ suffices, steps above the cap
+being automatically tight), and has been verified completely for all
+$j\le 30$ ($0$ failures; $j\le18$: $158{,}652$ steps, $38{,}295$ tight;
+$j=19..30$: \texttt{seed6\_R2L4\_mono\_hi.py}).
+\end{theorem}
+
+\begin{proof}
+Any $c$ with $3\nmid d$ walks down to $d=1$ by residue-respecting steps
+($d\equiv2$: remove one box; $d\equiv1$, $d\ge4$: remove two), staying in
+$3\nmid d$. By HM, $\har_j$ is non-increasing along the reversed walk and
+vanishes at $d=1$ by Proposition~\ref{prop:base}.
+\end{proof}
+
+\begin{remark}
+HM is the recommended structural target: it is local (one or two boxes), all
+failures of its naive (non-residue-respecting) form occur exactly on steps
+touching $3\mid d$ --- it ``knows'' where the hypothesis enters
+(Remark~\ref{rem:3d}).
+\end{remark}
+
+\section{Main theorem: $S1$ on the one-small-coordinate region, all $j$}
+\label{sec:r1}
+
+By rotation invariance assume $c=(c_0,c_1,a)$ with $c_0,c_1\ge j-1$,
+$a\ge 0$ arbitrary. By Theorem~\ref{thm:cap}, $\har_j(c)$ depends only on
+$\min(a,j-1)$; for $a\ge j-1$ Theorem~\ref{thm:r0} applies. So fix
+$0\le a\le j-2$ and set $\varphi_j(a):=\har_j(c)$ (any $d$, no residue
+condition).
+
+\subsection{The exact formula for $\varphi$}
+
+\begin{lemma}[ingredients; also machine-verified in
+\texttt{seed6\_R2L4\_r1.py}]\label{lem:ingr}
+Let $e\ge1$, $y(m)=\lceil m/2\rceil$ for $m\ge1$ ($0$ else). Then:
+\begin{enumerate}
+\item $\mu_e(v):=\#\{u\in S_e: u_0+u_1=v\}
+=1+[v\equiv e\ (2)]-[|v|=e]$ for $|v|\le e$, $0$ otherwise.
+\item $\#\{u\in S_e: u_0+u_1>\beta\}=\lfloor(3\delta-1)/2\rfloor$ for
+$\delta=e-\beta\ge1$ ($0$ else), $\beta\ge0$.
+\item $x(m):=\sum_{r=0}^{\lfloor(m-1)/3\rfloor}
+\lfloor(3(m-3r)-1)/2\rfloor=\lfloor(m+1)^2/4\rfloor$ and
+$y(m)=x(m)-x(m-1)=\lceil m/2\rceil$.
+\item $[q^k]Q_1$ of a profile $(\infty,\infty,\beta)$ (only the third
+constraint active) equals $w_k(\beta)=(k+1)-y(k-\beta)$ for $k\ge1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Parametrize the three edges of $S_e$ (in the $(s,t)=(u_0,u_1)$ plane,
+\S\ref{sec:conv}) explicitly:
+$\mathcal{E}_1=\{(s,\,s-e):0\le s\le e\}$ (the branch $\max=0$ of $g$),
+$\mathcal{E}_2=\{(e-2t,\,t):0\le t\le e\}$ ($\max=t$), and
+$\mathcal{E}_3=\{(s,\,-2s-e):-e\le s\le 0\}$ ($\max=-s$), overlapping
+exactly at the three vertices $(e,0)$, $(-e,e)$, $(0,-e)$.
+
+(1) The height $v=u_0+u_1$ equals $2s-e$ on $\mathcal{E}_1$ (each value
+$v\equiv e\pmod 2$ with $|v|\le e$, exactly once), $e-t$ on $\mathcal{E}_2$
+(each $0\le v\le e$ once), and $-s-e$ on $\mathcal{E}_3$ (each
+$-e\le v\le0$ once); the shared vertices are double-counted at $v=e$,
+$v=0$, $v=-e$ respectively. Hence, for $|v|\le e$,
+\[
+\mu_e(v)=[v\equiv e\ (2)]+[v\ge0]+[v\le0]-[v{=}0]-[|v|{=}e]
+=1+[v\equiv e\ (2)]-[|v|{=}e].
+\]
+
+(2) Sum (1) over $v=\beta+1,\dots,e$ (since $\beta\ge0$, the correction at
+$v=-e$ is not met): with $\delta=e-\beta\ge1$ the sum is
+$\delta+\#\{\beta<v\le e:\ v\equiv e\ (2)\}-1
+=\delta+\lceil\delta/2\rceil-1=\lfloor(3\delta-1)/2\rfloor$
+(check the two parities of $\delta$).
+
+(3) The shift identity $x(m)-x(m-6)=3(m-2)$ for $m\ge7$, plus six base
+cases.
+
+(4) With the single constraint $u_0+u_1\le\beta$, part (2) gives
+$b_e=3e-\lfloor(3(e-\beta)-1)/2\rfloor$, so $A_k-A_{k-1}$ differs from the
+free value $u_k=k+1$ of Theorem~\ref{thm:r0} by
+$\sum_{e\le k,\,e\equiv k(3)}\lfloor\tfrac{3(e-\beta)-1}{2}\rfloor
+-\sum_{e\le k-1,\,e\equiv k-1(3)}\lfloor\tfrac{3(e-\beta)-1}{2}\rfloor
+=x(k-\beta)-x(k-1-\beta)=y(k-\beta)$ by (3).
+\end{proof}
+
+\begin{proposition}[$\varphi$ formula; proved by the CAP-SHARP bookkeeping,
+machine-verified against the engine for $j\le33$, all $a$]\label{prop:phi}
+With $E=\lfloor(j-1)/2\rfloor$ and $n_e=j-2e-a$,
+\[
+\varphi_j(a)=\haru_j-C_1-C_2+C_3,
+\]
+\[
+C_1=\sum_{e=a+1}^{E}(j-2e+1)\Bigl\lfloor\tfrac{3(e-a)-1}{2}\Bigr\rfloor,\quad
+C_2=\sum_{e=1}^{E}\ \sum_{v=\max(-e,\,1-n_e)}^{\min(e,a)}\mu_e(v)\,
+y(n_e+v),\quad
+C_3=\sum_{i=1}^{5}y(j-a-i).
+\]
+($C_1$: neighbours pushed outside the half-space $u_0+u_1\le a$ lose their
+entire contribution $u_{j-2e}=j-2e+1$; $C_2$: surviving neighbours at
+signed height $v$ have their own count reduced by
+$y(n_e+v)$ by Lemma~\ref{lem:ingr}(4); $C_3$: the self terms.)
+\end{proposition}
+
+The inner $v$-sum of $C_2$ closes in $O(1)$ using
+$\sum_{m=1}^{M}\lceil m/2\rceil=\lfloor(M+1)^2/4\rfloor$ and its parity
+refinements, giving an $O(j)$ exact evaluator
+(\texttt{seed6\_R2L4\_r1poly.py}; verified identical to the double sum for
+$j\le60$, all $a$).
+
+\subsection{Chamber quasi-polynomials}
+
+\begin{lemma}[structure]\label{lem:struct}
+Define the wall list
+\[
+\mathcal{W}=\bigl\{2a=j+t:\ |t|\le2\bigr\}\cup\bigl\{4a=j+t:\ |t|\le2\bigr\}
+\cup\bigl\{a=t:\ 0\le t\le2\bigr\}\cup\bigl\{a=j-t:\ 2\le t\le6\bigr\}.
+\]
+All pairwise intersections of distinct walls of $\mathcal{W}$ have
+$j\le14$. Every integer point of $\{j\ge15,\ 0\le a\le j-2\}$ lies on a
+wall of $\mathcal{W}$ or in one of the three convex, wall-free regions
+\[
+\mathrm{LOW}_A=\{4a<j-2,\ a>2\},\quad
+\mathrm{LOW}_B=\{4a>j+2,\ 2a<j-2\},\quad
+\mathrm{HIGH}'=\{2a>j+2,\ a<j-6\},
+\]
+and, restricted to a residue class $(j,a)\bmod 12$:
+\begin{enumerate}
+\item on each of $\mathrm{LOW}_A$, $\mathrm{LOW}_B$, $\mathrm{HIGH}'$,
+$\varphi$ agrees with a polynomial in $(j,a)$ of degree $\le3$;
+\item on each wall line of $\mathcal{W}$, $\varphi$ agrees with a
+quasi-polynomial of degree $\le3$ and period $12$ in the line parameter.
+\end{enumerate}
+($\mathcal{W}$ is an over-approximation: a listed line need not carry an
+actual jump. Theorem~\ref{thm:chamber} shows that the $4a=j+t$ family, the
+lines $a=t$, and $a=j-t$ with $4\le t\le6$ carry none.)
+\end{lemma}
+
+\begin{proof}
+We enumerate the switch loci of the four constituents of
+Proposition~\ref{prop:phi} exactly.
+
+\emph{$\haru_j$} is a quasi-polynomial in $j$ of degree $3$, period $2$:
+no walls.
+
+\emph{$C_3$.} Since $\lceil m/2\rceil=0$ for $m\in\{0,-1\}$, the truncation
+in $y$ is invisible whenever $m\ge-1$; and $j-a-i\ge-1$ for all
+$1\le i\le5$ iff $a\le j-4$. So $C_3=\sum_{i=1}^5\lceil(j-a-i)/2\rceil$
+(degree $1$, period $2$) on $a\le j-4$; the only switch loci are
+$a=j-2,\ j-3$.
+
+\emph{$C_1$.} Substituting $e=a+\delta$,
+$C_1=\sum_{\delta=1}^{E-a}(j-2a-2\delta+1)\lfloor(3\delta-1)/2\rfloor$:
+the summand is a quasi-polynomial of degree $2$, period $2$ in $\delta$,
+and the sum is empty iff $a\ge E$. On a residue class mod $12$ the upper
+limit $E-a$ is a linear form of fixed parity, so closed-form summation
+gives a polynomial of degree $\le3$; the only switch locus is $a=E$, i.e.\
+$2a=j+t$, $t\in\{-1,-2\}$.
+
+\emph{$C_2$.} Write $n=n_e$, $U=\min(e,a)$, $m_1=\max(1,\,n-e)$,
+$m_2=n+U$, $p=(n+e)\bmod2$, $G(M)=\sum_{m=1}^{M}\lceil m/2\rceil
+=\lfloor(M+1)^2/4\rfloor$, and $G_p$ its restriction to
+$m\equiv p\ (2)$. Every surviving $m=n_e+v$ satisfies $m\ge m_1\ge1$, so
+expanding $\mu_e(v)=1+[v\equiv e\ (2)]-[v{=}e]-[v{=}-e]$
+(Lemma~\ref{lem:ingr}(1)) closes the inner sum:
+\[
+\sum_{v}\mu_e(v)\,y(n+v)
+=G(m_2)-G(m_1{-}1)+G_p(m_2)-G_p(m_1{-}1)
+-[n-e\ge1]\,y(n-e)-[e\le a]\,y(n+e).
+\]
+As a function of $e\in[1,E]$ this is a quasi-polynomial of degree $\le2$,
+period $2$, on each interval cut out by the breakpoints
+\[
+B_1:\ e=a\ \ (\text{from }U\text{ and }[e\le a]),\qquad
+B_2:\ 3e=j-a+t,\ t\in\{0,-1\}\ \ (\text{from }m_1\text{ and }[n-e\ge1]),
+\]
+\[
+B_3:\ e=j-a-1\ \ (\text{emptiness of the branch }e\le a\text{, where }
+m_2=j-a-e;\ \text{for }e>a,\ m_2=j-2e\ge1\text{ automatically}),
+\]
+together with the range ends $B_4:\ e=E$ and $B_5:\ e=1$. On a fixed
+residue class mod $12$ every breakpoint is a linear form in $(j,a)$
+(denominators dividing $6$), so summation over $e$ yields a polynomial of
+degree $\le3$ in $(j,a)$ on every region where the order of the
+breakpoints, clamped to $[1,E]$, is constant. That order changes exactly
+on the pairwise collision loci:
+$B_1{=}B_2$: $4a=j+t$, $t\in\{0,-1\}$;\ \
+$B_1{=}B_3$, $B_1{=}B_4$, $B_3{=}B_4$: $2a=j+t$, $-2\le t\le0$;\ \
+$B_2{=}B_5$: $a=j-t$, $t\in\{3,4\}$;\ \
+$B_3{=}B_5$: $a=j-2$;\ \
+$B_1{=}B_5$, and emptiness of the branch $e\le a$: $a\in\{0,1\}$;\ \
+$B_2{=}B_4$: $a\le 3-\lfloor j/2\rfloor<0$ for $j\ge8$, outside the
+domain;\ \ $B_4{=}B_5$: $j\le4$.
+
+Collecting all loci gives a subset of $\mathcal{W}$; the degree bound is
+the counting just performed, and the period divides $12$
+($\mathrm{lcm}$ of the endpoint denominators $2,3$ with the parity
+period $2$). Every pairwise intersection of distinct walls of
+$\mathcal{W}$ has $j\le14$ (largest case: $2a=j+t$ meets $a=j-t'$ at
+$j=t+2t'\le14$), and one checks directly that none of the walls of
+$\mathcal{W}$ meets $\mathrm{LOW}_A$, $\mathrm{LOW}_B$ or $\mathrm{HIGH}'$
+in $\{j\ge15\}$; the three regions are convex, hence each is contained in
+a single order-pattern region, proving (1). For (2), substitute the line
+parametrizations ($a=s,\,j=2s-t$; $a=s,\,j=4s-t$; $a=t,\,j=s$;
+$a=s,\,j=s+t$) into the same enumeration: all breakpoints become linear
+forms in $s$ with denominators dividing $6$, and their collisions occur
+only at wall--wall intersections, i.e.\ at $j\le14$; hence for $j\ge15$
+the restriction of $\varphi$ to each wall line is a quasi-polynomial of
+degree $\le3$ and period $12$ in $s$.
+\end{proof}
+
+\begin{theorem}[chamber polynomials; \texttt{seed6\_R2L4\_r1poly.py} and
+\texttt{repair6L4\_walls.py}, exact rational arithmetic]\label{thm:chamber}
+There are polynomials $P^{\mathrm{LOW}}_{r},P^{\mathrm{HIGH}}_{r}$
+($r=(j,a)\bmod 12$, $144$ classes each, degree $\le3$) and
+$P^{(n)}_{j\bmod 12}$ ($n=2,3$, cubics in $j$) such that for all $j\ge6$,
+$0\le a\le j-2$,
+\[
+\varphi_j(a)=
+\begin{cases}
+P^{(j-a)}_{j\bmod12}(j), & a\in\{j-2,\,j-3\},\\[2pt]
+P^{\mathrm{LOW}}_{(j,a)\bmod12}(j,a), & 2a<j,\\[2pt]
+P^{\mathrm{HIGH}}_{(j,a)\bmod12}(j,a), & 2a\ge j,\ a\le j-4.
+\end{cases}
+\]
+In particular the candidate walls $4a=j+t$ of Lemma~\ref{lem:struct} carry
+no polynomial jump. Moreover:
+\begin{enumerate}
+\item $P^{\mathrm{LOW}}_r=P^{\mathrm{HIGH}}_r$ whenever $j$ is odd (the
+jump across $2a=j$ exists only for even $j$);
+\item \emph{every} one of the $288$ chamber polynomials has cubic part
+\[
+\frac{j^3+6j^2a-6ja^2+2a^3}{24}\;=\;j^3\,\psi(a/j),
+\qquad \psi(\mu)=\frac{2\mu^3-6\mu^2+6\mu+1}{24},
+\]
+and both strip families have leading coefficient $\tfrac18=\psi(1)$;
+\item the total absolute size of the sub-cubic coefficients is bounded, over
+all classes and chambers, by $K_2=\tfrac58$ (degree $2$), $K_1=7$ (degree
+$1$), $K_0=4$ (constants).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:struct} it suffices to identify the polynomial on each
+region and each wall line: a polynomial of degree $\le3$ in $(j,a)$ is
+determined by any full-rank set of $10$ interpolation conditions, and a
+cubic on a line by $4$ points. All of the following is exact
+(integer/rational arithmetic), with $0$ mismatches.
+\begin{itemize}
+\item \emph{Regions} (\texttt{repair6L4\_walls.py}, step 2): for each
+residue class, the point sets
+$\{4a\le j-8,\ a\ge3\}\subset\mathrm{LOW}_A$,
+$\{4a\ge j+8,\ 2a\le j-8\}\subset\mathrm{LOW}_B$, and
+$\{2a\ge j+8,\ a\le j-9\}\subset\mathrm{HIGH}'$, with $15\le j<620$
+($45{,}300$ / $44{,}551$ / $88{,}506$ points), give full-rank
+(rank~$10$), consistent linear systems whose unique solutions equal
+$P^{\mathrm{LOW}}$, $P^{\mathrm{LOW}}$, $P^{\mathrm{HIGH}}$ respectively;
+in particular the two sides of the $4a=j$ family carry the \emph{same}
+polynomial.
+\item \emph{Wall lines} (\texttt{repair6L4\_walls.py}, step 3): on every
+line $2a-j=t$, $4a-j=t$ ($|t|\le8$), $a=t$ ($0\le t\le8$), $j-a=t$
+($2\le t\le8$) --- a superset of $\mathcal{W}$ --- and every residue class
+of the line parameter mod $12$, the displayed formula matches
+$\varphi$ at $10$ points with $j\ge15$ ($6{,}000$ points in all; $4$ per
+class already pin the quasi-polynomial of Lemma~\ref{lem:struct}(2)).
+\item \emph{Head and safety net} (\texttt{seed6\_R2L4\_r1poly.py}
+\texttt{pipeline}): dense band $6\le j<150$, all $0\le a\le j-2$
+($11{,}016$ points --- covering in particular every $j\le14$); strips
+$6\le j<400$; sparse band to $j=610$; sliver lines $|2a-j|\le30$,
+$j-a\le30$, $a\le30$ for $j$ up to $800$ ($19{,}639$ points).
+\end{itemize}
+By Lemma~\ref{lem:struct}, every integer point with $j\ge15$ lies in one
+of the three regions or on a wall line of $\mathcal{W}$; in either case
+$\varphi$ agrees there with a (quasi-)polynomial that the verified points
+pin to the displayed one. Points with $6\le j\le14$ are verified directly
+in the dense band. Items (1)--(3) are read off the exact fitted
+coefficients.
+\end{proof}
+
+\begin{theorem}[R1: main]\label{thm:r1}
+Let $j\notin\{2,4\}$ and let $c$ be any profile with at least two
+coordinates $\ge j-1$ (the third arbitrary, any $d$). Then
+$\har_j(c)\ge0$; indeed $>0$ for $j\ge5$.
+\end{theorem}
+
+\begin{proof}
+By the reductions above it suffices that $\varphi_j(a)\ge0$ for
+$0\le a\le j-2$. \emph{Tail.} $\psi'(\mu)=(\mu-1)^2/4\ge0$, so
+$\psi\ge\psi(0)=\tfrac1{24}$ on $[0,1]$. By
+Theorem~\ref{thm:chamber}(2,3), for $(j,a)$ in LOW/HIGH,
+\[
+\varphi_j(a)\;\ge\;\frac{j^3}{24}-\Bigl(\frac58 j^2+7j+4\Bigr)\;>\;0
+\qquad(j\ge23),
+\]
+using $0\le a\le j$. The strip cubics are positive for $j\ge11$ (same
+comparison with leading coefficient $\tfrac18$; they are in fact positive
+from $j=10$ by direct evaluation, and the head check covers $j\le22$). \emph{Head.} Exact
+evaluation for $j\le22$, $j\notin\{2,4\}$, all $0\le a\le j-2$:
+\[
+\min_a\varphi_j(a)=0,0,0\ (j=0,1,3);\quad
+3,4,12,17,31,41,61,76,104,126,162,191,237,275,331,378,446,504\ (j=5..22).
+\]
+All $\ge0$. (For the excluded exponents, on the domain
+$0\le a\le j-2$: $\min_a\varphi_2=\varphi_2(0)=-1$ and
+$\min_a\varphi_4=-1$, exactly the known ball-absorbed cases; the value
+$\haru_2=-2$ is $\varphi_2$ at $a=j-1$, which belongs to R0.)
+\end{proof}
+
+\begin{corollary}\label{cor:status}
+$S1$ holds (all $j$ simultaneously) on all profiles with at most one
+coordinate $<j-1$. Combined with Theorem~\ref{thm:sweep}, the only remaining
+open part of $S1$ is: $j\ge49$ \emph{and} at least two coordinates of $c$
+less than $j-1$.
+\end{corollary}
+
+\section{Status, lift to level $n$, and open regions}
+
+\textbf{Proved here (all $d$, $\gcd(d,3)=1$ where relevant).}
+Theorem~\ref{thm:cap} (sharp cap $M_j=j-1$) and Corollary~\ref{cor:cap}
+(finite decidability per level --- the explicit $J_0\to\infty$ mechanism);
+Theorem~\ref{thm:r0} (R0, all $j$); Theorem~\ref{thm:sweep} ($j\le48$
+unconditional); Proposition~\ref{prop:base} and Theorem~\ref{thm:hm}
+($\mathrm{HM}\Rightarrow S1$; $\mathrm{HM}@j$ proved for $j\le30$);
+Theorem~\ref{thm:r1} (R1, all $j$). Since $S2$ concerns only the single
+exponent $j=4\le 48$, Theorem~\ref{thm:sweep} makes \emph{$S2$ fully
+proved, unconditionally}.
+
+\textbf{Verified (not yet proved).} Conjecture~\ref{conj:hm} (HM) for
+$j\ge31$: open (finitely decidable per level). The remaining open region of
+$S1$ (Corollary~\ref{cor:status}) is R2/R3: two or three coordinates
+$<j-1$ with $j\ge49$; by Theorem~\ref{thm:cap} it is, per level, a finite
+question in the box $c_i\le j+1$.
+
+\textbf{Lift to $n$.} Unchanged from Layer 3 (Y4): the Sphere Absorption
+pattern is verified at $n=2$ for $d\le35$ (now superseded on the low band by
+Theorem~\ref{thm:sweep}) and at $n=3$ for $d=4,5$. The natural
+generalization of the present R0/R1 analysis to level $n$ (deviation spheres
+under $q^{n\,\EMD}$ with $Q_{n-1}$-weights) is set up by the level-$n$
+analogue of \eqref{eq:local} but was not pursued here.
+
+\medskip
+\noindent\textbf{Artifacts.} Scripts (exact integer/rational arithmetic):
+\texttt{scratch/scripts/seed6\_R2L4\_engine.py} (engine + T1/T2 + local
+formula), \texttt{seed6\_R2L4\_sweep.py} (+ log; Theorem~\ref{thm:sweep}),
+\texttt{seed6\_R2L4\_mono.py}, \texttt{seed6\_R2L4\_mono2.py},
+\texttt{seed6\_R2L4\_mono\_hi.py} (+ log; HM),
+\texttt{seed6\_R2L4\_r1.py} (Lemma~\ref{lem:ingr},
+Proposition~\ref{prop:phi}),
+\texttt{seed6\_R2L4\_r1poly.py} (self-contained certificate of
+Theorems~\ref{thm:chamber} and~\ref{thm:r1}: run with argument
+\texttt{pipeline}); \texttt{repair6L4\_walls.py} (+ log; wall-locus
+pinning certificate for Lemma~\ref{lem:struct} and
+Theorem~\ref{thm:chamber}: sub-chamber full-rank fits and wall-line
+verification); notes \texttt{scratch/prove-seed6-layer4.md} and
+\texttt{scratch/repair-seed6-layer4.md}.
+
+\end{document}
