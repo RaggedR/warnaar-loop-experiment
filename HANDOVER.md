@@ -1,90 +1,88 @@
-# HANDOVER — composition proved, duplicate question decided, anchor corrected
+# HANDOVER — generic validator built; certificate gap is now machine output
 
-Date: 2026-07-04 (evening session). Previous session proved Theorem 3
-(`tau_consolidate`); this session closed the three follow-ups from the last
-handover: **composition** (proved), **the duplicate question** (decided,
-negatively), and the **hand-trace** (which corrected the note's empirical
-anchor). What remains is the generic validator and the paper.
+Date: 2026-07-04 (late session). Previous sessions proved Theorems 4.2/4.3
+and corrected the empirical anchor. This session built the **generic
+validator** — the last artifact before the paper. What remains is the paper.
 
 ## State: what is done and where
 
-Containers repo, RaggedR/ghani-containers, main, through commit `028e12c`:
+Containers repo, RaggedR/ghani-containers, main, through commit `4497b76`
+(pushed; also note `43edaf8` from the other instance landed mid-session —
+MacBeth M4 provenance repair, no conflicts):
 
 ```
-notes/TRUST_SYSTEMS_THEORY.md    # §4 now has Theorem 4.3 (composition) and
-                                 # the two-failure-mode empirical anchor;
-                                 # §6 has the final duplicate verdict
-notes/TRUST_SYSTEMS_THEORY.pdf   # rebuilt, 0 missing glyphs
-lean/Containers/Containers/Trust.lean   # + Consolidation.id, .comp,
-                                        # tau_consolidate_comp; sorry-free,
-                                        # core only, lake build green
+code/trustcheck/trustcheck.py       # the generic validator over (T, phi)
+code/trustcheck/deployments/{loop,clio,macbeth}.json   # (T, phi) as data
+code/trustcheck/README.md           # check <-> lemma dictionary, usage,
+                                    # regression status
+notes/TRUST_SYSTEMS_THEORY.md       # §3 "Built (2026-07-04)" paragraph
+notes/TRUST_SYSTEMS_THEORY.pdf      # rebuilt, 0 missing glyphs
 ```
 
-## What was decided this session
+## What was done this session
 
-1. **Theorem 4.3 (Lean `Consolidation.comp`, `tau_consolidate_comp`)**:
-   consolidations have identities and compose — shapes forward, ρ's
-   backward (contravariantly), caches by transitivity of ≤. Pipelines
-   preserve τ end-to-end iff per layer. Category laws true but unstated:
-   equality of consolidations would hit the membership-indexed-ρ
-   extensionality issue; all uses go through τ values.
-2. **The duplicate question is decided — against.** `Consolidation.comp`
-   uses nothing comonadic (plain cofunctor composition, cf. the M4
-   dictionary in `scratch/M4-plan.md`). Two natural candidates (Theorem 3,
-   composition) both declined `duplicate`. The genuine duplicate-shaped
-   theorem in the ecosystem is `ok_sub` (TrustBoundary.lean, the OTHER
-   instance's work): within-registry decomposition. Final wording is in
-   note §6 — "for τ, language not lemmas; the duplicate content lives in
-   ok_sub; say both". Do NOT soften and do NOT reopen without a new
-   theorem in hand.
-3. **The empirical anchor was WRONG and is now corrected (note §4).**
-   Hand-trace of G13 (d=10 (4,3,3), `2026-07-04/synthesis-layer4.md`):
-   every citation resolves extensionally — all seed/verifier files exist,
-   Warnaar's Prop_finiteform is at exactly source.tex 2672–2687, Uncu's
-   main.tex is at the verifier's N2 path
-   (`~/git/experiments/waarnar/literature/corteel-citations/tex/...`).
-   So a consolidation EXISTS at every layer and τ is preserved. The
-   checker's "zero machine-resolvable citations" is a **format** fact
-   (nothing is written `slug/chunk_NNN`, from the seed scratch files on),
-   i.e. a certificate gap t < τ via Lemma 2.2 (ii) — the validator's sound
-   assignment collapses, canonical trust does not. The two failure modes
-   converge one consolidation layer later (machine-only readers treat
-   unparseable ρ as absent ρ). `ground`/`layer4` in Trust.lean remains the
-   correct shadow of mode 1 AND of the checker's *view* of mode 2.
+1. **One validator, three descriptors.** Unified the four deployed ports
+   (loop registry_validate/citation_check + Clio/MacBeth, local copies in
+   containers `scratch/`). A deployment descriptor is exactly the (T, φ)
+   data: trust chain, extraction chain, φ as blocking thresholds, evidence
+   fields, certificate format. Regression: **identical verdicts** with all
+   deployed ports on warnaar.json + sources.json, Clio's two registries,
+   MacBeth's two registries (cross-refs report byte-identical), Clio's
+   sources index (same 29 advisory problems). Two deliberate deltas:
+   evidence checks are descriptor-driven and exempt `shared` stubs
+   (evidence lives at the canonical node).
+2. **Acyclicity is genuinely new** (Remark 2.3 operational): the one-hop
+   rule does NOT exclude cross-registry citation cycles — a stub in A can
+   point into B whose *descendant* stub points back above the first stub.
+   Fixture: two-registry 2-cycle passes the deployed Clio port silently,
+   the generic validator rejects it printing `a#w -> a#x -> b#y -> b#z ->
+   a#w`. This is Lean `cyc` realizable in production data — say so in the
+   paper.
+3. **Certificate-gap report mechanizes the G13 hand-trace.** On
+   synthesis-layer4.md + prove/verify-seed1-layer4: 0 machine refs, 40+
+   references classified mode 2 (resolve extensionally, fail format) —
+   including Warnaar source.tex 2672–2687 (line range length-checked OK)
+   and Uncu main.tex at its exact corpus path (longest-trailing-suffix
+   resolution) — and 2 mode-1 candidates (noise: a wildcard fragment, a
+   .txt data file). The t < τ gap is a number a machine prints.
 
 ## What remains
 
-1. **Generic validator** parametrized over (T, φ): node-local soundness
-   (Lemma 2.2), acyclicity (load-bearing — Remark 2.3, `cyc`), the
-   Consolidation conditions per layer, and now ALSO: report the
-   certificate gap explicitly (claims whose prose citations resolve by
-   existence-check but not by format — mode 2 candidates for backfill).
-   Reference implementations to unify: `code/citation_check.py` and
-   `code/registry_validate.py` in this repo, plus the Clio/MacBeth
-   validators.
-2. **The paper**: defs + Lemmas 2.2/3.2 + Theorems 4.2/4.3, the three
-   deployments as experiments, the G13 hand-trace as the mode-1/mode-2
-   experiment, prior art §7 (deep-read, corrections folded). §6 verdict as
-   written.
+**The paper.** Defs + Lemmas 2.2/3.2 + Theorems 4.2/4.3; the three
+deployments as experiments; the G13 trace as the mode-1/mode-2 experiment
+— now citable as validator output, run:
+```
+python3 ~/git/containers/code/trustcheck/trustcheck.py \
+  --deployment ~/git/containers/code/trustcheck/deployments/loop.json \
+  report certificate-gap 2026-07-04/synthesis-layer4.md \
+  2026-07-04/scratch/{prove,verify}-seed1-layer4.md   # (from loop-experiment/)
+```
+plus the cycle counterexample as the Remark 2.3 experiment. Prior art §7
+as written; §6 verdict verbatim (do NOT reopen).
 
 ## Traps and known facts (inherited + new)
 
-- `Deriv` uses membership-indexed premise functions — extensionality not
-  developed. Composition avoided it (works at step level, τ values only).
-  It bites only if you state Consolidation category *laws* or map
-  derivations directly. You probably never need to.
-- Other instance: `TrustBoundary.lean` (Phase 4) + `scratch/M4-plan.md`
-  (DCont ≅ Cof, `DContCat.lean` may appear). No file conflicts with
-  Trust.lean work so far; keep it that way.
-- `derivGrade`/`tau` noncomputable — no #eval. Lean core only, no Mathlib;
-  extend the hand-rolled `Chain`. `by decide` fails for ∀ over small
-  inductives — explicit case analysis.
-- Loop-experiment repo is NOT a git repo locally (mirror is
-  RaggedR/warnaar-loop-experiment) — don't look for history there.
-- The literature corpus lives at `~/git/experiments/waarnar/literature/`
-  (chunks + full tex under `corteel-citations/tex/`), NOT inside
-  loop-experiment. `sources.json` extraction levels:
-  `recalled < rag-summary < chunk-read < context-read < paper-read`.
+- trustcheck design notes: missing/invalid extraction ranks at bottom
+  (loop semantics, safer than Clio's equality test); blocking uses join
+  semantics over cited sources (at least one deep source unblocks — as
+  deployed, NOT the (†) meet — don't "fix" this silently, it is a
+  deliberate parity choice); prose detection is conservative
+  (path-shaped tokens with text extensions only).
+- The deployed per-agent ports stay untouched — replacing them inside
+  Clio/MacBeth's containers is their instances' business; descriptors
+  show how.
+- Other instance: TrustBoundary.lean / DCont work continues (43edaf8);
+  still no file conflicts; keep it that way.
+- `Deriv` membership-indexed-ρ extensionality still undeveloped; only
+  bites for Consolidation category *laws* (never needed so far).
+- `derivGrade`/`tau` noncomputable — no #eval; Lean core only, hand-rolled
+  `Chain`; `by decide` fails for ∀ over small inductives.
+- Loop-experiment IS a git repo (main tracks origin/main,
+  RaggedR/warnaar-loop-experiment). A previous handover falsely said it
+  wasn't — that note caused the composition-session handover to go
+  uncommitted (restored as `28ebb9e`). COMMIT handovers here. Literature
+  corpus at `~/git/experiments/waarnar/literature/` (NOT inside
+  loop-experiment).
 - PDF pipeline (unchanged, 0 missing glyphs):
   ```
   pandoc TRUST_SYSTEMS_THEORY.md -o TRUST_SYSTEMS_THEORY.pdf \
@@ -95,18 +93,17 @@ lean/Containers/Containers/Trust.lean   # + Consolidation.id, .comp,
     -V monofontfallback="DejaVuSans:mode=harf" \
     -V geometry:margin=2.5cm -V fontsize=11pt
   ```
-- Bulletin note updated with the same corrections:
-  `~/.claude/tmp/notes/trust-system-third-deployment-loop-experiment.md`.
-- Previous handover (Theorem 3 session) is in git history at `ded8ddc`;
-  the one before at `260bc50`. Design decisions there still stand.
+- Bulletin note: `~/.claude/tmp/notes/trust-system-third-deployment-loop-experiment.md`.
+- Previous handovers in containers git history: `028e12c` (composition),
+  `ded8ddc` (Theorem 3), `260bc50`. Design decisions there stand.
 
 ## Where to start
 
-1. Read note §4 (Theorem 4.3 + the two-mode anchor) and §6 (final verdict)
-   — these are now settled prose; build on them.
-2. The validator is the next artifact: start from `code/citation_check.py`
-   (it already does existence checks) and add the mode-2 report (resolves
-   extensionally, fails format). That single feature operationalizes the
-   t < τ distinction and is the strongest demo for the paper.
-3. Then the paper skeleton. The experiments section writes itself from the
-   three deployments + the G13 trace; keep the §6 verdict verbatim.
+1. Skim `code/trustcheck/README.md` — the dictionary section is
+   essentially the paper's "implementation" subsection already.
+2. Paper skeleton in `notes/` (or a `paper/` dir): §1 defs, §2 Lemma 2.2,
+   §3 morphisms + Cor 3.4/3.5, §4 Theorems 4.2/4.3, §5 experiments (three
+   deployments + G13 certificate-gap output + cycle fixture), §6 verdict
+   verbatim, §7 prior art as researched.
+3. Keep every number in the experiments section reproducible from the
+   commands above.
