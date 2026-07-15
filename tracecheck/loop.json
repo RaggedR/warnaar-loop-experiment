@@ -1,0 +1,31 @@
+{
+  "agent": "loop-experiment",
+  "description": "Trajectory evaluation config for the Warnaar loop experiment",
+  "trajectory": {
+    "chain": [
+      "unsupported",
+      "shallow",
+      "independent",
+      "cross-verified",
+      "mechanically-checked"
+    ],
+    "boundary_at": "independent",
+    "source_blocking": {
+      "independent": {
+        "all_reads_below": "rag-summary",
+        "message": "claim at 'independent' or above requires at least one context-read or deeper in its ancestry"
+      }
+    }
+  },
+  "notes": {
+    "trust_boundaries_deployment": "loop.json",
+    "trust_chain": "speculative < computed < proved < verified < lean-verified",
+    "psi_sketch": {
+      "unsupported": "speculative",
+      "shallow": "computed",
+      "independent": "proved",
+      "cross-verified": "verified",
+      "mechanically-checked": "lean-verified"
+    }
+  }
+}
